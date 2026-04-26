@@ -9,3 +9,5 @@
 [node name="GodotLogo" type="Sprite2D" parent="DronNode" unique_id=1607571731]
 position = Vector2(375, 198)
 texture = ExtResource("1_08m84")
+flip_h = true
+flip_v = true
