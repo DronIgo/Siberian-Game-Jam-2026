@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d80gdv3poing"]
+
+[ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_08m84"]
+
+[node name="Root" type="Node2D" unique_id=1969698456]
+
+[node name="DronNode" type="Node2D" parent="." unique_id=776428770]
+
+[node name="Sprite2D" type="Sprite2D" parent="DronNode" unique_id=1607571731]
+position = Vector2(375, 198)
+texture = ExtResource("1_08m84")
