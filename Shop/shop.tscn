@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://c63j3y4tqatfu"]
+
+[ext_resource type="Script" uid="uid://bo3oif4cg8um7" path="res://Shop/Shop.gd" id="1_3weqf"]
+
+[node name="Shop" type="CanvasLayer" unique_id=740057473]
+script = ExtResource("1_3weqf")
+
+[node name="BaseRect" type="ColorRect" parent="." unique_id=1100522747]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.5019608, 0.2509804, 1)
+
+[node name="ItemNameLabel" type="Label" parent="BaseRect" unique_id=759687579]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 65.0
+offset_top = -33.5
+offset_right = 355.5
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "???"
+
+[node name="ItemPriceLabel" type="Label" parent="BaseRect" unique_id=1211920988]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 375.5
+offset_top = -33.5
+offset_right = 666.0
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "$??"
+
+[node name="ItemInWindowCountLabel" type="Label" parent="BaseRect" unique_id=1854745167]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 686.0
+offset_top = -33.5
+offset_right = 820.0
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "x??"
+
+[node name="ItemInPocketCountLabel" type="Label" parent="BaseRect" unique_id=1935179216]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 840.0
+offset_top = -33.5
+offset_right = 974.0
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "x??"
+
+[node name="PreviousButton" type="Button" parent="BaseRect" unique_id=1199123229]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = -95.0
+offset_right = 135.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="NextButton" type="Button" parent="BaseRect" unique_id=1223926924]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = -95.0
+offset_right = 220.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = ">"
+
+[node name="BuyButton" type="Button" parent="BaseRect" unique_id=430685196]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -95.0
+offset_right = 96.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Buy"
+
+[node name="ExitButton" type="Button" parent="BaseRect" unique_id=1435896005]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -257.0
+offset_top = -95.0
+offset_right = -65.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Exit"
+
+[connection signal="pressed" from="BaseRect/PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="BaseRect/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="BaseRect/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="BaseRect/ExitButton" to="." method="_on_exit_button_pressed"]
