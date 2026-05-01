@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://ehpfchxajgxk"]
+
+[ext_resource type="Script" uid="uid://bdo6hcjqfubs5" path="res://Hub/Hub.gd" id="1_siedd"]
+[ext_resource type="PackedScene" uid="uid://1cab4rslyn1j" path="res://Hub/building.tscn" id="1_vh6jp"]
+
+[node name="Hub" type="CanvasLayer" unique_id=1730030736]
+script = ExtResource("1_siedd")
+
+[node name="BaseRect" type="ColorRect" parent="." unique_id=704254426]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.5019608, 1, 0.5019608, 1)
+
+[node name="House1" parent="." unique_id=523529509 instance=ExtResource("1_vh6jp")]
+offset_left = 324.0
+offset_top = 162.0
+offset_right = 324.0
+offset_bottom = 162.0
+id = "house_1"
+
+[node name="House0" parent="." unique_id=711563378 instance=ExtResource("1_vh6jp")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+id = "house_0"
+
+[node name="BuildingInfoRect" type="ColorRect" parent="." unique_id=1653616954]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_bottom = 648.0
+grow_horizontal = 0
+mouse_filter = 1
+color = Color(0.2509804, 0.5019608, 1, 0.7529412)
+
+[node name="BackButton" type="Button" parent="BuildingInfoRect" unique_id=1746932779]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -63.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="GoButton" type="Button" parent="BuildingInfoRect" unique_id=2055013999]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -63.0
+offset_right = 122.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Go"
+
+[node name="Label" type="Label" parent="BuildingInfoRect" unique_id=1199188840]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -142.0
+offset_top = 20.0
+offset_right = 142.0
+offset_bottom = 360.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "???"
+
+[connection signal="pressed" from="BuildingInfoRect/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BuildingInfoRect/GoButton" to="." method="_on_go_button_pressed"]

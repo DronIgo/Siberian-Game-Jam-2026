@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1cab4rslyn1j"]
+
+[ext_resource type="Script" uid="uid://d2wwkwmllbtne" path="res://Hub/Building.gd" id="1_535iq"]
+[ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_dwxru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_535iq"]
+
+[node name="Building" type="Control" unique_id=523529509]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_535iq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1025640932]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1168213458]
+scale = Vector2(7, 7)
+shape = SubResource("RectangleShape2D_535iq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1416901659]
+texture = ExtResource("1_dwxru")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
