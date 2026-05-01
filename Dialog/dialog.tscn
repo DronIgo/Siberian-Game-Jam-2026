@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bphgw16o7py08"]
+
+[ext_resource type="Script" uid="uid://cgvgvlxxyphpm" path="res://Dialog/Dialog.gd" id="1_yqm1q"]
+[ext_resource type="PackedScene" uid="uid://dnhriu48mjgqj" path="res://Dialog/replicas_box.tscn" id="2_b2mf0"]
+
+[node name="Dialog" type="CanvasLayer" unique_id=1090554352]
+script = ExtResource("1_yqm1q")
+
+[node name="BaseRect" type="ColorRect" parent="." unique_id=135685891]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.5019608, 1)
+
+[node name="ReplicasBox" parent="BaseRect" unique_id=142583026 instance=ExtResource("2_b2mf0")]
+layout_mode = 1
