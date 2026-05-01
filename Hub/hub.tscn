@@ -15,14 +15,14 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.5019608, 1, 0.5019608, 1)
 
-[node name="House1" parent="." unique_id=523529509 instance=ExtResource("1_vh6jp")]
+[node name="House" parent="." unique_id=523529509 instance=ExtResource("1_vh6jp")]
 offset_left = 324.0
 offset_top = 162.0
 offset_right = 324.0
 offset_bottom = 162.0
-id = "house_1"
+id = "house"
 
-[node name="House0" parent="." unique_id=711563378 instance=ExtResource("1_vh6jp")]
+[node name="Shop" parent="." unique_id=711563378 instance=ExtResource("1_vh6jp")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -30,7 +30,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-id = "house_0"
+id = "shop"
 
 [node name="BuildingInfoRect" type="ColorRect" parent="." unique_id=1653616954]
 anchors_preset = 1
