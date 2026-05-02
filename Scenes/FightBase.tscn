@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_qi11o"]
 [ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="2_snu4q"]
+[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_vqao4"]
 [ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_ay0b3"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_ay0b3"]
 [ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="6_3g3hk"]
@@ -14,14 +15,14 @@
 
 [node name="FightBase" type="Node2D" unique_id=831660849]
 
-[node name="Heart" type="Sprite2D" parent="." unique_id=661507203 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component")]
+[node name="Heart" type="Sprite2D" parent="." unique_id=661507203 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 position = Vector2(700, 80)
 texture = ExtResource("1_qi11o")
-script = ExtResource("2_snu4q")
-organ_name = "Heart"
+script = ExtResource("2_vqao4")
 health_bar = NodePath("Health")
 statuses_grid = NodePath("StatusGrid")
 selectable_component = NodePath("HeartSelectable")
+actor = NodePath("Logic")
 
 [node name="Health" parent="Heart" unique_id=502772887 instance=ExtResource("3_ay0b3")]
 position = Vector2(-80, 0)
@@ -33,15 +34,19 @@ position = Vector2(70, -44)
 script = ExtResource("6_vqao4")
 save_selected_state = false
 
-[node name="Bad Liver" type="Sprite2D" parent="." unique_id=696361324 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component")]
+[node name="Logic" type="Node2D" parent="Heart" unique_id=583260047]
+script = ExtResource("2_snu4q")
+organ_name = "Heart"
+
+[node name="Bad Liver" type="Sprite2D" parent="." unique_id=696361324 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(1, 0.27058825, 0.019607844, 1)
 position = Vector2(988, 156)
 texture = ExtResource("1_qi11o")
-script = ExtResource("2_snu4q")
-organ_name = "Sick Liver"
+script = ExtResource("2_vqao4")
 health_bar = NodePath("Health")
 statuses_grid = NodePath("StatusGrid")
 selectable_component = NodePath("LiverSelectable")
+actor = NodePath("Logic")
 
 [node name="Health" parent="Bad Liver" unique_id=536379569 instance=ExtResource("3_ay0b3")]
 position = Vector2(-80, -2)
@@ -53,15 +58,19 @@ position = Vector2(72, -46)
 script = ExtResource("6_vqao4")
 save_selected_state = false
 
-[node name="Bad Essence" type="Sprite2D" parent="." unique_id=662766328 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component")]
+[node name="Logic" type="Node2D" parent="Bad Liver" unique_id=1103792071]
+script = ExtResource("2_snu4q")
+organ_name = "Bad Liver"
+
+[node name="Bad Essence" type="Sprite2D" parent="." unique_id=662766328 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(0.96862745, 0, 0, 1)
 position = Vector2(813, 298)
 texture = ExtResource("1_qi11o")
-script = ExtResource("2_snu4q")
-organ_name = "Evil liver"
+script = ExtResource("2_vqao4")
 health_bar = NodePath("Health")
 statuses_grid = NodePath("StatusGrid")
 selectable_component = NodePath("EssenceSelectable")
+actor = NodePath("Logic")
 
 [node name="Health" parent="Bad Essence" unique_id=932741705 instance=ExtResource("3_ay0b3")]
 position = Vector2(-81, 0)
@@ -72,6 +81,10 @@ position = Vector2(71, -48)
 [node name="EssenceSelectable" parent="Bad Essence" unique_id=514702425 instance=ExtResource("6_to1vr")]
 script = ExtResource("6_vqao4")
 save_selected_state = false
+
+[node name="Logic" type="Node2D" parent="Bad Essence" unique_id=845834675]
+script = ExtResource("2_snu4q")
+organ_name = "Evli Liver"
 
 [node name="PlayerHand1" type="Sprite2D" parent="." unique_id=86551357]
 position = Vector2(317, 461)
@@ -94,4 +107,4 @@ script = ExtResource("9_snu4q")
 action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 friendly_actors = [NodePath("../PlayerHand1"), NodePath("../PlayerHand2")]
-enemy_actors = [NodePath("../Heart"), NodePath("../Bad Liver"), NodePath("../Bad Essence")]
+enemy_actors = [NodePath("../Heart/Logic"), NodePath("../Bad Essence/Logic"), NodePath("../Bad Liver/Logic")]

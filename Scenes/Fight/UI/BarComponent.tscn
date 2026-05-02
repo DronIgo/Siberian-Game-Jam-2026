@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dafida5yqhbwt"]
 
-[ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/BarComponent.gd" id="1_rooy3"]
+[ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_rooy3"]
 [ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_srew8"]
 
 [node name="BarComponent" type="Node2D" unique_id=502772887 node_paths=PackedStringArray("bar")]

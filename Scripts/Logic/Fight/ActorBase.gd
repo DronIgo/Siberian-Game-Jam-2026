@@ -3,11 +3,8 @@ extends Node
 
 @export_category("Stats")
 @export var max_health : int = 20
-@export_category("Nodes")
-@export var health_bar : Node
-@export var statuses_grid : StatusGrid
-@export var selectable_component : SelectableObject
-
+@export_category("UI display")
+@export var actor_ui : ActorUI
 var lore_name : String
 
 var statuses : Array
@@ -19,7 +16,6 @@ var _actions_json_path = "res://Files/ActionStats/avialable_actions.json"
 var actions : Array
 
 func _ready() -> void:
-	selectable_component.on_selected.connect(selected)
 	health = max_health
 
 func selected(_selected : bool) -> void:
@@ -34,14 +30,14 @@ func take_damage(amount : int) -> void:
 	health -= amount
 	if health <= 0:
 		_on_death()
-	health_bar.set_bar(float(health) / float(max_health))
+	actor_ui.update_health()
 		
 func apply_status(status : StatusEffectBase) -> void:
 	statuses.append(status)
-	if statuses_grid:
-		statuses_grid.add_status(status)
+	actor_ui.apply_status(status)
 		
 func _on_death() -> void:
+	actor_ui.on_death()
 	pass
 
 func _load_actions(actor_name : String) -> void:
