@@ -31,6 +31,5 @@ text = "Нижад"
 
 [node name="BarComponent" parent="BaseRect" unique_id=502772887 instance=ExtResource("2_mh57g")]
 position = Vector2(720, 360)
-scale = Vector2(5, 5)
 
 [connection signal="pressed" from="BaseRect/Button" to="." method="_on_button_pressed"]
