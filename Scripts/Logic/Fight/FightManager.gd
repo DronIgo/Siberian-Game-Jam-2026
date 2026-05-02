@@ -81,6 +81,9 @@ func take_turn_friendly(actor : ActorBase) -> void:
 			selected_target.unhighlight()
 			break
 	action_list.clear()
+	if not action_result.has_more():
+		for friendly_actor in friendly_actors:
+			friendly_actor.remove_action(selected_action.action_name)
 	await action_display_text.display_action(action_result)
 
 func take_turn_organ(enemy : OrganBase) -> void:

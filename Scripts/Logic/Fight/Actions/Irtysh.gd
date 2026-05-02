@@ -13,8 +13,9 @@ func parse_stats() -> void:
 
 func take_action(initiator: ActorBase, target : ActorBase) -> ActionResult:
 	target.take_damage(stats["damage"])
+	ItemStateHolder.player_pocket[action_name] -= 1
 	return ActionResult.new(\
 		"{initiator} uses IRTYSH on {target} and deals {damage} damage", { \
 			"initiator": initiator.lore_name,\
 			"target": target.lore_name, \
-			"damage": damage })
+			"damage": damage }, ItemStateHolder.player_pocket[action_name])

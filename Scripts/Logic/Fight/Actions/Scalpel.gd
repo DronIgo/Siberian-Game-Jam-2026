@@ -16,4 +16,4 @@ func take_action(initiator: ActorBase, target : ActorBase) -> ActionResult:
 		"{initiator} uses scalpel on {target} and deals {damage} damage", { \
 			"initiator": initiator.lore_name,\
 			"target": target.lore_name, \
-			"damage": damage })
+			"damage": damage }, 1)

@@ -26,6 +26,12 @@ func init(actor_name : String) -> void:
 
 signal died
 
+func remove_action(action_name: String):
+	var actions_to_erase: Array = actions.filter(\
+		func(action): return action.action_name == action_name)
+	for action_to_erase in actions_to_erase:
+		actions.erase(action_to_erase)
+
 func highlight():
 	highlighted = true
 	print(str("[!] ", lore_name, " highlighted"))
