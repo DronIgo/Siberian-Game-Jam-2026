@@ -73,9 +73,10 @@ func take_turn_friendly(actor : ActorBase) -> void:
 			# reset the target if we choose different action
 			selected_target = null
 			_highlight_valid_enemy_targets(selected_action)
-		if _check_action_valid_target(actor, selected_action, selected_target):
+		if _check_action_valid_target(selected_action, selected_target):
 			print("[!!] taking action")
-			action_result = selected_action.take_action(actor, selected_target)
+			action_result = selected_action.take_action(actor, \
+				selected_target if not selected_action.is_aoe else null)
 			_fight_history.add_action(actor, selected_action)
 			selected_target.unhighlight()
 			break
@@ -101,17 +102,9 @@ func _unhighlight_enemy_targets(except: ActorBase):
 		if enemy.lore_name != except.lore_name:
 			enemy.unhighlight()
 
-func _check_action_valid_target(\
-		initiator: ActorBase, selected_action : ActionBase, selected_actor : ActorBase) -> bool:
-	if !selected_action:
-		return false
-	if !selected_action.needs_target:
-		selected_action.take_action(initiator, null)
-		return true
-	#TODO: some logic to check if target is valid
-	if selected_action and selected_actor:
-		return true
-	return false
+func _check_action_valid_target(selected_action : ActionBase, selected_actor : ActorBase) -> bool:
+	return selected_action and (selected_actor and \
+		(selected_action.is_aoe or selected_action.check_valid_target(selected_actor)))
 
 
 ## DEFEAT/VICTORY management

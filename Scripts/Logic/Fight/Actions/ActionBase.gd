@@ -5,8 +5,7 @@ var manacost : int = 0
 
 var stats : Dictionary
 var lore_name : String
-#TODO: replace with aoe indicator, change logic in FightManager to not immediateluy attack
-var needs_target : bool = true
+var is_aoe: bool = false
 
 const _stats_json_path = "res://Files/ActionStats/attack_stats.json"
 
