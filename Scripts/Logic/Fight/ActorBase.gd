@@ -26,6 +26,8 @@ func init(actor_name : String) -> void:
 signal died
 
 func take_damage(amount : int) -> void:
+	if health <= 0:
+		return
 	health -= amount
 	if health <= 0:
 		_on_death()
