@@ -76,7 +76,7 @@ func take_turn_friendly(actor : ActorBase) -> void:
 		if _check_action_valid_target(selected_action, selected_target):
 			print("[!!] taking action")
 			action_result = selected_action.take_action(actor, \
-				[ selected_target ] if not selected_action.is_aoe else enemy_actors)
+				[ selected_target ] if not selected_action.is_aoe else enemy_organs)
 			_fight_history.add_action(actor, selected_action)
 			selected_target.unhighlight()
 			break
@@ -96,12 +96,12 @@ func take_turn_organ(enemy : OrganBase) -> void:
 	#var action = enemy.take_turn()
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:
-	for enemy: OrganBase in enemy_actors:
+	for enemy: OrganBase in enemy_organs:
 		if selected_action.check_valid_target(enemy):
 			enemy.highlight()
 
 func _unhighlight_enemy_targets(except: ActorBase):
-	for enemy: OrganBase in enemy_actors:
+	for enemy: OrganBase in enemy_organs:
 		if enemy.lore_name != except.lore_name:
 			enemy.unhighlight()
 
