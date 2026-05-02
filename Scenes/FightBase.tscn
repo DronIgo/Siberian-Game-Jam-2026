@@ -10,10 +10,8 @@
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_vqao4"]
 [ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="8_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
-[ext_resource type="Script" uid="uid://dqrfcv8ger8lv" path="res://Scripts/Logic/Fight/Organs/FriendlyAI.gd" id="8_8q2nk"]
-[ext_resource type="Script" uid="uid://2oqywlcbu67e" path="res://Scripts/Logic/Fight/Organs/SickAI.gd" id="9_0d5t2"]
-[ext_resource type="Script" uid="uid://cleeaee5r8f5s" path="res://Scripts/Logic/Fight/Organs/EvilAI.gd" id="10_6uwd6"]
 [ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="8_8q2nk"]
+[ext_resource type="Script" uid="uid://2oqywlcbu67e" path="res://Scripts/Logic/Fight/Organs/SickAI.gd" id="9_0d5t2"]
 [ext_resource type="Script" uid="uid://mckeqwvod73o" path="res://Scripts/Logic/Fight/FightManager.gd" id="9_snu4q"]
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
@@ -48,27 +46,27 @@ position = Vector2(20, 20)
 texture = ExtResource("16_0d5t2")
 
 [node name="CurtainLeftSprite2D" type="Sprite2D" parent="BackControl" unique_id=1341114287]
-position = Vector2(-1596, -310)
+position = Vector2(-788, -145)
 texture = ExtResource("17_r4ejf")
 
 [node name="CurtainRightSprite2D" type="Sprite2D" parent="BackControl" unique_id=810683040]
-position = Vector2(2513, -310)
+position = Vector2(1266, -145)
 texture = ExtResource("18_bhaob")
 
 [node name="FrameTextSprite2D" type="Sprite2D" parent="BackControl" unique_id=6706054]
-position = Vector2(470, 770)
+position = Vector2(245, 395)
 texture = ExtResource("17_6uwd6")
 
 [node name="FramePatientBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1189023969]
-position = Vector2(-1450, -310)
+position = Vector2(-715, -145)
 texture = ExtResource("18_mnvx0")
 
 [node name="FramePatientFrontSprite2D" type="Sprite2D" parent="BackControl" unique_id=424049112]
-position = Vector2(-1450, -310)
+position = Vector2(-715, -145)
 texture = ExtResource("19_r4ejf")
 
 [node name="Heart" type="Sprite2D" parent="." unique_id=661507203 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
-position = Vector2(700, 80)
+position = Vector2(900, 360)
 texture = ExtResource("1_qi11o")
 script = ExtResource("2_vqao4")
 health_bar = NodePath("Health")
@@ -92,7 +90,6 @@ organ_name = "healthy_heart"
 organ_ai = NodePath("../AI")
 
 [node name="AI" type="Node" parent="Heart" unique_id=1607897636]
-script = ExtResource("8_8q2nk")
 
 [node name="HintBox" parent="Heart" unique_id=1472046688 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
 offset_right = 165.0
@@ -102,7 +99,7 @@ hint_target = NodePath("../HeartSelectable")
 
 [node name="Bad Liver" type="Sprite2D" parent="." unique_id=696361324 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(1, 0.27058825, 0.019607844, 1)
-position = Vector2(988, 156)
+position = Vector2(1260, 360)
 texture = ExtResource("1_qi11o")
 script = ExtResource("2_vqao4")
 health_bar = NodePath("Health")
@@ -135,7 +132,7 @@ hint_target = NodePath("../LiverSelectable")
 
 [node name="Bad Essence" type="Sprite2D" parent="." unique_id=662766328 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(0.96862745, 0, 0, 1)
-position = Vector2(813, 298)
+position = Vector2(1620, 360)
 texture = ExtResource("1_qi11o")
 script = ExtResource("2_vqao4")
 health_bar = NodePath("Health")
@@ -153,7 +150,7 @@ position = Vector2(71, -48)
 script = ExtResource("6_vqao4")
 save_selected_state = false
 
-[node name="Logic" type="Node2D" parent="Bad Essence" unique_id=845834675 node_paths=PackedStringArray("organ_ai")]
+[node name="Logic" type="Node2D" parent="Bad Essence" unique_id=845834675]
 script = ExtResource("2_snu4q")
 organ_name = "Evli Liver"
 is_main = true
@@ -177,17 +174,22 @@ script = ExtResource("6_3g3hk")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
 [node name="ActionList" parent="CanvasLayer" unique_id=1970410951 instance=ExtResource("8_3g3hk")]
+offset_left = 469.0
+offset_top = 773.0
+offset_right = 1169.0
+offset_bottom = 1013.0
 
 [node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("9_vqao4")]
+offset_left = 469.0
+offset_top = 773.0
+offset_right = 1169.0
+offset_bottom = 1013.0
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("action_list", "action_display_text", "patient", "friendly_actors", "friendly_organs", "enemy_organs") instance=ExtResource("8_6x1fx")]
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("action_list", "action_display_text", "patient") instance=ExtResource("8_6x1fx")]
 script = ExtResource("9_snu4q")
 action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 patient = NodePath("../Patient/PatientLogic")
-friendly_actors = [NodePath("../PlayerHand1"), NodePath("../PlayerHand2")]
-friendly_organs = [NodePath("../Heart/Logic")]
-enemy_organs = [NodePath("../Bad Essence/Logic"), NodePath("../Bad Liver/Logic")]
 
 [node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("health_bar", "actor")]
 script = ExtResource("13_yt7vv")
