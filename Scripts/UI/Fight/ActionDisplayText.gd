@@ -20,9 +20,9 @@ func display_action(actor: ActorBase, action: ActionBase) -> void:
 	await display(text)
 
 func display(text : String, time: float = wait_after_display) -> void:
-	#TODO: постепенный вывод
+	#TODO: LOW PRIORITY постепенный вывод
 	visible = true
 	label.text = text
-	#TODO: option to wait for full print or mouse click (probably first)
+	#TODO: ожидание зависит от длины текста
 	await get_tree().create_timer(time).timeout
 	visible = false

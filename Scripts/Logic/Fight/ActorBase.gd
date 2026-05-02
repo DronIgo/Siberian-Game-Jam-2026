@@ -17,10 +17,7 @@ var actions : Array
 
 func _ready() -> void:
 	health = max_health
-
-func selected(_selected : bool) -> void:
-	FightEventBus.target_selected.emit(self)
-
+	
 func init(actor_name : String) -> void:
 	_load_actions(actor_name)
 	#TODO load from JSON

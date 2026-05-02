@@ -1,11 +1,13 @@
 class_name ActionBase
 extends Object
 
+#TODO: add action result class
+
 var manacost : int = 0
 
 var stats : Dictionary
 var lore_name : String
-#TODO: parse from JSON
+#TODO: replace with aoe indicator, change logic in FightManager to not immediateluy attack
 var needs_target : bool = true
 
 const _stats_json_path = "res://Files/ActionStats/attack_stats.json"
@@ -30,6 +32,7 @@ func _parse_stats() -> void:
 	if stats.has("name"):
 		lore_name = stats["name"]
 	else:
+		printerr("Couldn't parse name for action")
 		lore_name = "Смекалку"
 
 func _try_parse(stat_name : String):
@@ -39,8 +42,12 @@ func _try_parse(stat_name : String):
 		printerr("Failed to parse characteristic ", stat_name)
 		return null
 
+func check_valid_target(actor : ActorBase) -> bool:
+	return true
+
 func check_avialable(actor : ActorBase) -> bool:
 	return actor.mana >= manacost
 
+#TODO: return action result
 func take_action(target : ActorBase) -> void:
 	pass
