@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cmku0b1qhuq1"]
 
 [ext_resource type="Script" uid="uid://da1awtypvujpf" path="res://Common/TestMain.gd" id="1_ylfgv"]
+[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="2_mh57g"]
 
 [node name="TestMain" type="CanvasLayer" unique_id=323352453]
 script = ExtResource("1_ylfgv")
@@ -27,5 +28,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Нижад"
+
+[node name="BarComponent" parent="BaseRect" unique_id=502772887 instance=ExtResource("2_mh57g")]
+position = Vector2(720, 360)
+scale = Vector2(5, 5)
 
 [connection signal="pressed" from="BaseRect/Button" to="." method="_on_button_pressed"]
