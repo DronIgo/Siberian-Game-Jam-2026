@@ -28,6 +28,7 @@ func _ready() -> void:
 func _input_event(viewport : Viewport, event : InputEvent, shape_idx : int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(viewport, " ", event, " ", shape_idx)
 			set_selected(save_selected_state && !selected)
 
 var _polygons : Array

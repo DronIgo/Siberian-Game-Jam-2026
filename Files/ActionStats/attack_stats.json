@@ -1,0 +1,16 @@
+{
+	"scalpel" : {
+		"damage" : 20,
+		"manacost" : 0,
+		"name" : "Надрез" 
+	},
+	"defend" : {
+		"manacost" : 0,
+		"name" : "Защита"
+	},
+	"heal" : {
+		"manacost" : 10,
+		"amount" : 15,
+		"name" : "Исцеление"
+	}
+}
