@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bm1kx6ohn6gu0"]
+
+[ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_48ff4"]
+[ext_resource type="Texture2D" uid="uid://bm6i5gjgmicrd" path="res://Assets/UI/UI_battle_regular/bottle_doc_health_png.png" id="1_bymth"]
+[ext_resource type="Texture2D" uid="uid://cbkxhbyrghhlf" path="res://Assets/UI/UI_battle_regular/bottle_doc_health_inside.png" id="2_48ff4"]
+
+[node name="DocHealthBarComponent" type="Node2D" unique_id=30255913]
+script = ExtResource("1_48ff4")
+
+[node name="BarMask" type="Sprite2D" parent="." unique_id=741797560]
+clip_children = 1
+texture = ExtResource("1_bymth")
+
+[node name="PhantomBarDisplay" type="Sprite2D" parent="BarMask" unique_id=1942843370]
+modulate = Color(1, 1, 1, 0.8784314)
+texture = ExtResource("2_48ff4")
+
+[node name="ActualBarDisplay" type="Sprite2D" parent="BarMask" unique_id=1720955227]
+texture = ExtResource("2_48ff4")
+
+[node name="BarOutside" type="Sprite2D" parent="." unique_id=892888831]
+texture = ExtResource("1_bymth")

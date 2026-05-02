@@ -6,8 +6,8 @@
 [node name="ActionList" type="Panel" unique_id=1970410951 node_paths=PackedStringArray("vertical_container")]
 offset_left = 418.0
 offset_top = 388.0
-offset_right = 1118.0
-offset_bottom = 628.0
+offset_right = 1888.0
+offset_bottom = 718.0
 mouse_filter = 1
 script = ExtResource("1_sj6t0")
 vertical_container = NodePath("VBoxContainer")

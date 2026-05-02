@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dxxput81q8axq"]
+
+[ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_oatxe"]
+[ext_resource type="Texture2D" uid="uid://dkdbqpoe0fngw" path="res://Assets/UI/UI_battle_regular/bottle_doc_mana_png.png" id="2_k2pvq"]
+[ext_resource type="Texture2D" uid="uid://dd2gbwfhj654b" path="res://Assets/UI/UI_battle_regular/bottle_doc_mana_inside.png" id="3_e6ebi"]
+
+[node name="DocManaBarComponent" type="Node2D" unique_id=1842021143 node_paths=PackedStringArray("actual_bar", "phantom_bar")]
+script = ExtResource("1_oatxe")
+actual_bar = NodePath("BarMask/ActualBarDisplay")
+phantom_bar = NodePath("BarMask/PhantomBarDisplay")
+
+[node name="BarMask" type="Sprite2D" parent="." unique_id=501762385]
+texture = ExtResource("2_k2pvq")
+
+[node name="PhantomBarDisplay" type="Sprite2D" parent="BarMask" unique_id=1521718902]
+modulate = Color(1, 1, 1, 0.8784314)
+texture = ExtResource("3_e6ebi")
+
+[node name="ActualBarDisplay" type="Sprite2D" parent="BarMask" unique_id=398559405]
+texture = ExtResource("3_e6ebi")
+
+[node name="BarOutside" type="Sprite2D" parent="." unique_id=65911664]
+texture = ExtResource("2_k2pvq")
