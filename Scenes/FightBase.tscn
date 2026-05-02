@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_vqao4"]
 [ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="8_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
-[ext_resource type="Script" path="res://Scripts/Logic/Fight/FightManager.gd" id="9_snu4q"]
+[ext_resource type="Script" uid="uid://mckeqwvod73o" path="res://Scripts/Logic/Fight/FightManager.gd" id="9_snu4q"]
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 
 [node name="FightBase" type="Node2D" unique_id=831660849]
@@ -102,7 +102,5 @@ script = ExtResource("6_3g3hk")
 
 [node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("9_vqao4")]
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("action_list", "action_display_text") instance=ExtResource("8_6x1fx")]
+[node name="FightManager" parent="." unique_id=1868931586 instance=ExtResource("8_6x1fx")]
 script = ExtResource("9_snu4q")
-action_list = NodePath("../CanvasLayer/ActionList")
-action_display_text = NodePath("../CanvasLayer/FightText")
