@@ -1,11 +1,19 @@
 {
 	"hand" : [
 		"scalpel",
-		"cauterization",
-		"irtysh"
+		"aspirin"
 	],
-	"hand2" : [
-		"scalpel",
+	"healthy_heart" : [
+		"heal"
+	],
+	"sick_kidney" : [
+		"blow",
+		"filter"
+	],
+	"tentacle" : [
+		"crush",
+		"mitos",
+		"buff"
 		"cauterization",
 		"irtysh"
 	]

@@ -92,8 +92,8 @@ func take_turn_organ(enemy : OrganBase) -> void:
 		print("organ can not take, health is zero, ", enemy)
 		return
 
-	await action_display_text.display(enemy.lore_name + " takes time to think")
-	#var action = enemy.take_turn()
+func take_turn_enemy(enemy : OrganBase) -> void:
+	await enemy.take_turn(enemy_actors, action_display_text)
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:
 	for enemy: OrganBase in enemy_organs:

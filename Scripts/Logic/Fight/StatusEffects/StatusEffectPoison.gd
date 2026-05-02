@@ -1,12 +1,10 @@
 class_name StatusEffectPoison
-extends Object
+extends StatusEffectBase
 
-var _name : String = "poison"
-var _display_scene : PackedScene
-var _amount : int
-
-func _init(amount : int) -> void:
-	_amount = amount
+func _init(amount : int, duration : int) -> void:
+	_name = "poison"
+	type = StatusGenerator.STATUS.BLEED
+	super(amount, duration)
 
 func on_turn_end(actor : ActorBase) -> void:
 	pass

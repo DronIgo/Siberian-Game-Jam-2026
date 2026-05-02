@@ -8,7 +8,6 @@ func _init() -> void:
 	super(action_name)
 
 func _parse_stats() -> void:
-	super._parse_stats()
 	damage = _try_parse("damage")
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:

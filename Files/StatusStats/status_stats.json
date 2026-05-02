@@ -1,0 +1,17 @@
+{
+	"BLEED" : {
+		"damage" : 5
+	},
+	"POISON" : {
+		"damage" : 3
+	},
+	"BUFF_ATTACK" : {
+		"buff" : 50
+	},
+	"BUFF_DEF" : {
+		"buff" : 60
+	},
+	"__default__" : {
+		"duration" : 3
+	}
+}

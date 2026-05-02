@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cjs7aewk47ja1"]
+
+[ext_resource type="Theme" uid="uid://crbgf11gx0noa" path="res://Assets/Themes/Statuses/StatusPoisoned.tres" id="1_1t845"]
+[ext_resource type="Script" uid="uid://b6fe65ih5uvsw" path="res://Scripts/UI/Fight/Statuses/StatusUIItem.gd" id="1_frycw"]
+
+[node name="StatusItem" type="Control" unique_id=1111211913 node_paths=PackedStringArray("status_text")]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1072.0
+offset_bottom = -628.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frycw")
+status_text = NodePath("StatusText")
+
+[node name="StatusText" type="RichTextLabel" parent="." unique_id=193565024]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 26.0
+rotation = -0.063669026
+theme = ExtResource("1_1t845")
+text = "Отравление"

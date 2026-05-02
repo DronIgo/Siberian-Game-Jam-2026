@@ -14,7 +14,6 @@ config/name="Project"
 run/main_scene="uid://dmu60k5wxhn2b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-<<<<<<<Updatedupstreamrun/main_scene="uid://ehpfchxajgxk"
 
 [autoload]
 
@@ -23,6 +22,8 @@ ItemStateHolder="*uid://dcivgxgj5hbc7"
 CityStateHolder="*uid://em4we5gfwk22"
 DialogEventBus="*uid://w8tcddrqaonp"
 Constants="*uid://kw8sn4sxlac5"
+SEG="*uid://bpnp2uh01m56h"
+AG="*uid://gene3dfijibu"
 SoundProcessor="*uid://gqmu7w236l1w"
 FightEventBus="*uid://cbl0i3vix1uln"
 

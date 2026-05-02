@@ -4,6 +4,23 @@
 		"manacost" : 0,
 		"name" : "Надрез" 
 	},
+	"aspirin" : {
+		"amount" : 5,
+		"duration" : 3,
+		"name" : "Аспирин"
+	},
+	"crush" : {
+		"name" : "Сокрушение",
+		"damage" : 30
+	},
+	"mitos" : {
+		"name" : "Размножиться",
+		"duration" : 2
+	},
+	"buff" : {
+		"name" : "Собраться с силами",
+		"duration" : 2
+  },
 	"cauterization": {
 		"damage" : 15,
 		"manacost" : 0,
@@ -22,5 +39,13 @@
 		"manacost" : 10,
 		"amount" : 15,
 		"name" : "Исцеление"
+	},
+	"blow" : {
+		"amount" : 5,
+		"duration" : 3,
+		"name": "Разрыв"
+	},
+	"filter" : {
+		"name" : "Прочистка"
 	}
 }
