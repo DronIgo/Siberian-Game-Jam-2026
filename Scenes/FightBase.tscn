@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_vqao4"]
 [ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="8_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
+[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="8_8q2nk"]
 [ext_resource type="Script" uid="uid://mckeqwvod73o" path="res://Scripts/Logic/Fight/FightManager.gd" id="9_snu4q"]
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
@@ -40,6 +41,10 @@ save_selected_state = false
 script = ExtResource("2_snu4q")
 organ_name = "Heart"
 
+[node name="HintBox" parent="Heart" unique_id=1472046688 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
+hint_text = "Heart"
+hint_target = NodePath("../HeartSelectable")
+
 [node name="Bad Liver" type="Sprite2D" parent="." unique_id=696361324 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(1, 0.27058825, 0.019607844, 1)
 position = Vector2(988, 156)
@@ -63,6 +68,9 @@ save_selected_state = false
 [node name="Logic" type="Node2D" parent="Bad Liver" unique_id=1103792071]
 script = ExtResource("2_snu4q")
 organ_name = "Bad Liver"
+
+[node name="HintBox" parent="Bad Liver" unique_id=1897649089 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
+hint_target = NodePath("../LiverSelectable")
 
 [node name="Bad Essence" type="Sprite2D" parent="." unique_id=662766328 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(0.96862745, 0, 0, 1)
@@ -88,6 +96,10 @@ save_selected_state = false
 script = ExtResource("2_snu4q")
 organ_name = "Evli Liver"
 is_main = true
+
+[node name="HintBox" parent="Bad Essence" unique_id=334207565 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
+hint_text = "Essence"
+hint_target = NodePath("../EssenceSelectable")
 
 [node name="PlayerHand1" type="Node2D" parent="." unique_id=1125611731]
 visible = false

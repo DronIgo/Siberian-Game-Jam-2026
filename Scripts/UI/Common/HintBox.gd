@@ -3,8 +3,11 @@ extends PanelContainer
 
 @export var hint_label: Label
 @export var hint_text: String = ""
-@export var offset_from_target: Vector2 = Vector2(0,30)
+@export var offset_from_target: Vector2 = Vector2(10,-10)
 @export var hint_target: Node
+
+@export var anchor_to_screen_corner: bool = false
+@export var corner_offset: Vector2 = Vector2(20, 20)
 
 var _target: Node2D
 
@@ -52,8 +55,17 @@ func _process(_delta: float) -> void:
 		_update_position()
 
 func _update_position() -> void:
+	if anchor_to_screen_corner:
+		var screen_size = get_viewport().get_visible_rect().size
+		global_position = Vector2(
+			screen_size.x - size.x - corner_offset.x,
+			screen_size.y - size.y - corner_offset.y
+		)
+		return
+
 	if not _target:
 		return
+
 	var sprite = _target as Sprite2D
 	var offset = offset_from_target
 	if sprite and sprite.texture:
