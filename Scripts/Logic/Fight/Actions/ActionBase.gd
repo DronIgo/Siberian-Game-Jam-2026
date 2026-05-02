@@ -1,8 +1,6 @@
 class_name ActionBase
 extends Object
 
-#TODO: add action result class
-
 var manacost : int = 0
 
 var stats : Dictionary

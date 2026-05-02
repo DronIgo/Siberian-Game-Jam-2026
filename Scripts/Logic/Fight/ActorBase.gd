@@ -14,6 +14,7 @@ var mana : int = 10
 
 var _actions_json_path = "res://Files/ActionStats/avialable_actions.json"
 var actions : Array = []
+var highlighted: bool
 
 func _ready() -> void:
 	health = max_health
@@ -24,6 +25,14 @@ func init(actor_name : String) -> void:
 	lore_name = actor_name
 
 signal died
+
+func highlight():
+	highlighted = true
+	print(str("[!] ", lore_name, " highlighted"))
+
+func unhighlight():
+	highlighted = false
+	print(str("[!] ", lore_name, " unhighlighted"))
 
 func take_damage(amount : int) -> void:
 	if health <= 0:
