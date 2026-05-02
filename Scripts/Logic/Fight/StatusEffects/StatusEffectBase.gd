@@ -1,9 +1,14 @@
 class_name StatusEffectBase
 extends Object
 
+var type : StatusGenerator.STATUS
 var _name : String
-var _display_scene : PackedScene
-var _amount : int
+var amount : int
+var duration : int
+
+func _init(amount : int, duration : int) -> void:
+	amount = amount
+	duration = duration
 
 func on_turn_end(actor : ActorBase) -> void:
 	pass

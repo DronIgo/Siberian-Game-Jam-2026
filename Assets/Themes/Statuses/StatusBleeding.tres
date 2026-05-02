@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://p62dxubufhlp"]
+
+[ext_resource type="FontFile" uid="uid://3is4518148j5" path="res://Assets/Fonts/Moyenage.ttf" id="1_fbvke"]
+
+[resource]
+default_font = ExtResource("1_fbvke")
+default_font_size = 20
+RichTextLabel/colors/default_color = Color(0.025951426, 0.48411626, 0.04572305, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.80784315)

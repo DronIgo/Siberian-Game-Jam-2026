@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://h2ts7xdwbo3d"]
+
+[ext_resource type="FontFile" uid="uid://3is4518148j5" path="res://Assets/Fonts/Moyenage.ttf" id="1_3qhba"]
+
+[resource]
+default_font = ExtResource("1_3qhba")
+default_font_size = 20
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)

@@ -32,7 +32,11 @@ func take_damage(amount : int) -> void:
 func apply_status(status : StatusEffectBase) -> void:
 	statuses.append(status)
 	actor_ui.apply_status(status)
-		
+
+func at_end_turn() -> void:
+	for status in statuses:
+		(status as StatusEffectBase).on_turn_end(self)
+
 func _on_death() -> void:
 	actor_ui.on_death()
 	pass

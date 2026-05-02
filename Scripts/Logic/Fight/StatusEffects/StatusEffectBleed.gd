@@ -1,12 +1,10 @@
 class_name StatusEffectBleed
-extends Object
+extends StatusEffectBase
 
-var _name : String = "bleed"
-var _display_scene : PackedScene
-var _amount : int
-
-func _init(amount : int) -> void:
-	_amount = amount
+func _init(amount : int, duration : int) -> void:
+	_name = "bleed"
+	type = StatusGenerator.STATUS.BLEED
+	super(amount, duration)
 
 func on_turn_end(actor : ActorBase) -> void:
 	pass
