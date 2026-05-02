@@ -1,6 +1,6 @@
 class_name ShopItemInfo
 
-extends Node
+extends Object
 
 var id: String
 var item_name: String

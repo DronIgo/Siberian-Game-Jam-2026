@@ -1,0 +1,19 @@
+{
+	"data": [
+		{
+			"speaker_location": "RIGHT",
+			"speaker_name": "Собака",
+			"text": "Привет! Я собака. Теперь ты знаешь обо мне всё."
+		},
+		{
+			"speaker_location": "LEFT",
+			"speaker_name": "Я",
+			"text": "Привет, собака! Нет, не всё. Скажи, ты любишь квадраты?"
+		},
+		{
+			"speaker_location": "RIGHT",
+			"speaker_name": "Собака",
+			"text": "Ох! Я ненавижу проклятые квадраты."
+		}
+	]
+}

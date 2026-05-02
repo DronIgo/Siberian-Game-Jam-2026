@@ -3,36 +3,45 @@ class_name Dialog
 extends CanvasLayer
 
 @export var dialog_next_action_name: String = "dialog_next"
+@export var replicas_box: ReplicasBox
 
-@onready var _replicas_box: ReplicasBox = $BaseRect/ReplicasBox
-
-var _test_dialog: Array = [
-	"Собака: Привет! Я собака. Теперь ты знаешь обо мне всё.",
-	"Собеседник собаки: Привет, собака! Нет, не всё. Скажи, ты любишь квадраты?",
-	"Собака: Ох! Я ненавижу проклятые квадраты."
-]
-
-var _current_replicas: Array
+var _current_replica_dictionaries: Array
 var _next_replica_index: int = 0
 
 func _ready():
 	DialogEventBus.dialog_start.connect(start)
-	start(_test_dialog)
+	if PhaseManager.is_event:
+		start(PhaseManager.current_event())
+	else:
+		start(PhaseManager.current_phase())
 
 func _process(delta):
 	if Input.is_action_just_pressed(dialog_next_action_name):
 		next()
 
-func start(data: Array):
-	_current_replicas = data
+func start(phase: Phase):
+	var config: Dictionary = StorageManager.read_from(phase.args[0])
+	_current_replica_dictionaries = config["data"]
 	next()
 
 func next():
-	if _next_replica_index == _current_replicas.size():
+	if _next_replica_index == _current_replica_dictionaries.size():
 		finish()
 		return
-	_replicas_box.new_replica(_current_replicas[_next_replica_index])
+	var replica = ReplicaData.new(_current_replica_dictionaries[_next_replica_index])
+	replicas_box.new_replica(replica)
 	_next_replica_index += 1
 
 func finish():
 	DialogEventBus.dialog_finished.emit()
+	if PhaseManager.is_event:
+		PhaseManager.finish_event()
+		queue_free()
+		return
+	var next_phase = PhaseManager.try_next_phase()
+	if next_phase == null:
+		get_tree().quit()
+	elif next_phase.is_replacement:
+		get_tree().change_scene_to_file(next_phase.scene_name)
+	else:
+		queue_free()

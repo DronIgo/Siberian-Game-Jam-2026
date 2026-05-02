@@ -1,0 +1,18 @@
+{
+	"phases": [
+		{
+			"id": "test_init",
+			"next_phase_id": "test_dialog"
+		},
+		{
+			"id": "test_dialog",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/test_dialog.json"
+			],
+			"next_phase_id": "."
+		}
+	],
+	"events": [],
+	"init_scene_id": "test_init"
+}
