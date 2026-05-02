@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bj6vnx36qh2er"]
+
+[ext_resource type="Script" uid="uid://c4h4l0uxkgsaa" path="res://Scripts/UI/Fight/ActionItem.gd" id="1_lu0c8"]
+
+[node name="ActionItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("selection_button")]
+text = "Action"
+script = ExtResource("1_lu0c8")
+selection_button = NodePath("SelectButton")
+
+[node name="SelectButton" type="TextureButton" parent="." unique_id=1703572248]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 23.0

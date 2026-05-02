@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bkj6fgm7o1nrl"]
+
+[ext_resource type="Script" uid="uid://wicuw04pqt1e" path="res://Scripts/UI/Fight/Statuses/StatusGrid.gd" id="1_lanlv"]
+
+[node name="StatusGrid" type="Node2D" unique_id=355555301]
+script = ExtResource("1_lanlv")

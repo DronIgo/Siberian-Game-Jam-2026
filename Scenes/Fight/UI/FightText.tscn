@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://32a56pshh308"]
+
+[ext_resource type="Script" uid="uid://b1fpgukkuypmk" path="res://Scripts/UI/Fight/ActionDisplayText.gd" id="1_ha8qo"]
+
+[node name="FightText" type="Panel" unique_id=36838454 node_paths=PackedStringArray("label")]
+offset_left = 418.0
+offset_top = 388.0
+offset_right = 1118.0
+offset_bottom = 628.0
+mouse_filter = 1
+script = ExtResource("1_ha8qo")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=696266441]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 680.0
+offset_bottom = 230.0
+text = "Ass uses shit"
