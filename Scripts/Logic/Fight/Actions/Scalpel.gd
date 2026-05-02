@@ -10,5 +10,10 @@ func _init() -> void:
 func parse_stats() -> void:
 	damage = _try_parse("damage")
 
-func take_action(target : ActorBase) -> void:
+func take_action(initiator: ActorBase, target : ActorBase) -> ActionResult:
 	target.take_damage(stats["damage"])
+	return ActionResult.new(\
+		"{initiator} uses scalpel on {target} and deals {damage} damage", { \
+			"initiator": initiator.lore_name,\
+			"target": target.lore_name, \
+			"damage": damage })

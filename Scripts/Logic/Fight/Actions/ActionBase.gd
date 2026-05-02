@@ -48,6 +48,5 @@ func check_valid_target(actor : ActorBase) -> bool:
 func check_avialable(actor : ActorBase) -> bool:
 	return actor.mana >= manacost
 
-#TODO: return action result
-func take_action(target : ActorBase) -> void:
-	pass
+func take_action(initiator: ActorBase, target : ActorBase) -> ActionResult:
+	return null

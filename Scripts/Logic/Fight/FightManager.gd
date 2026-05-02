@@ -60,6 +60,7 @@ func take_turn_friendly(actor : ActorBase) -> void:
 	action_list.display(actor)
 	var selected_action : ActionBase
 	var selected_target : ActorBase = null
+	var action_result: ActionResult = null
 	while true:
 		# can reselect actions as we please
 		var selection = await _on_any_selection_signal
@@ -71,12 +72,12 @@ func take_turn_friendly(actor : ActorBase) -> void:
 			# reset the target if we choose different action
 			selected_target = null
 		_highlight_valid_targets(selected_action)
-		if _check_action_valid_target(selected_action, selected_target):
-			selected_action.take_action(selected_target)
+		if _check_action_valid_target(actor, selected_action, selected_target):
+			action_result = selected_action.take_action(actor, selected_target)
 			_fight_history.add_action(actor, selected_action)
 			break
 	action_list.clear()
-	await action_display_text.display_action(actor, selected_action)
+	await action_display_text.display_action(action_result)
 
 func take_turn_organ(enemy : OrganBase) -> void:
 
@@ -91,11 +92,12 @@ func _highlight_valid_targets(selected_action: ActionBase) -> void:
 	#TODO
 	pass
 
-func _check_action_valid_target(selected_action : ActionBase, selected_actor : ActorBase) -> bool:
+func _check_action_valid_target(\
+		initiator: ActorBase, selected_action : ActionBase, selected_actor : ActorBase) -> bool:
 	if !selected_action:
 		return false
 	if !selected_action.needs_target:
-		selected_action.take_action(null)
+		selected_action.take_action(initiator, null)
 		return true
 	#TODO: some logic to check if target is valid
 	if selected_action and selected_actor:
