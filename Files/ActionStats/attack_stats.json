@@ -9,13 +9,29 @@
 		"duration" : 3,
 		"name" : "Аспирин"
 	},
-	"defend" : {
-		"manacost" : 0,
-		"name" : "Защита"
+	"crush" : {
+		"name" : "Сокрушение",
+		"damage" : 30
+	},
+	"mitos" : {
+		"name" : "Размножиться",
+		"duration" : 2
+	},
+	"buff" : {
+		"name" : "Собраться с силами",
+		"duration" : 2
 	},
 	"heal" : {
 		"manacost" : 10,
 		"amount" : 15,
 		"name" : "Исцеление"
+	},
+	"blow" : {
+		"amount" : 5,
+		"duration" : 3,
+		"name": "Разрыв"
+	},
+	"filter" : {
+		"name" : "Прочистка"
 	}
 }

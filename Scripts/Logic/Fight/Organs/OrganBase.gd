@@ -7,9 +7,12 @@ extends ActorBase
 func _ready() -> void:
 	super()
 	init(organ_name)
-	if organ_ai:
-		organ_ai.actions = actions
+	organ_ai.actions = actions
 
-func take_turn(possible_targets : Array) -> void:
-	organ_ai.take_turn(possible_targets)
-	super(possible_targets)
+func take_turn(possible_targets : Array, action_display_text : ActionDisplayText) -> void:
+	var turn_info = organ_ai.take_turn(possible_targets)
+	if turn_info.action:
+		await action_display_text.display_action(self as ActorBase, turn_info.action)
+	else:
+		await action_display_text.display(lore_name + " пропускает ход.")
+	await super(possible_targets, action_display_text)

@@ -10,10 +10,10 @@ var max_duration : int
 func reset_duration() -> void:
 	duration = max_duration
 
-func _init(amount : int, duration : int) -> void:
-	amount = amount
-	duration = duration
-	max_duration = duration
+func _init(amount_ : int, duration_ : int) -> void:
+	amount = amount_
+	duration = duration_
+	max_duration = duration_
 
 func on_turn_end(actor : ActorBase) -> void:
 	pass

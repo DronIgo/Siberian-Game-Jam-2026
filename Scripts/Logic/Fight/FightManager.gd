@@ -60,9 +60,7 @@ func take_turn_friendly(actor : ActorBase) -> void:
 	await action_display_text.display_action(actor, selected_action)
 
 func take_turn_enemy(enemy : OrganBase) -> void:
-	print("take_turn_enemy")
-	await action_display_text.display(enemy.lore_name + " takes time to think")
-	#var action = enemy.take_turn()
+	await enemy.take_turn(enemy_actors, action_display_text)
 
 func _highlight_valid_targets(selected_action: ActionBase) -> void:
 	#TODO

@@ -17,7 +17,7 @@ var actions : Array
 
 func _ready() -> void:
 	health = max_health
-	
+
 func init(actor_name : String) -> void:
 	_load_actions(actor_name)
 	#TODO load from JSON
@@ -28,7 +28,13 @@ func take_damage(amount : int) -> void:
 	if health <= 0:
 		_on_death()
 	actor_ui.update_health()
-		
+
+func heal(amount : int) -> void:
+	health += amount
+	if health > max_health:
+		health = max_health
+	actor_ui.update_health()
+
 func apply_status(status : StatusEffectBase) -> void:
 	for s in statuses:
 		if s.type == status.type:
@@ -37,10 +43,16 @@ func apply_status(status : StatusEffectBase) -> void:
 			return
 	statuses.append(status)
 	actor_ui.apply_status(status)
-	
+
+func remove_status(status : StatusEffectBase) -> void:
+	statuses.erase(status)
+	actor_ui.remove_status(status)
+
 func at_end_turn() -> void:
 	for status in statuses:
-		(status as StatusEffectBase).on_turn_end(self)
+		await status.on_turn_end(self)
+		if status.duration <= 0:
+			remove_status(status)
 
 func _on_death() -> void:
 	actor_ui.on_death()
@@ -61,7 +73,7 @@ func _load_actions(actor_name : String) -> void:
 
 func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
-		actions.append(ActionGenerator.generate_action_by_name(a_name))
+		actions.append(AG.generate_action_by_name(a_name))
 
-func take_turn(possible_targets : Array) -> void:
-	at_end_turn()
+func take_turn(possible_targets : Array, action_display_text : ActionDisplayText) -> void:
+	await at_end_turn()

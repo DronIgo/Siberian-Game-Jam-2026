@@ -21,6 +21,9 @@ func apply_status(status : StatusEffectBase) -> void:
 	if statuses_grid:
 		statuses_grid.add_status(status)
 
+func remove_status(status : StatusEffectBase) -> void:
+	statuses_grid.remove_status(status)
+
 func reset_status(status : StatusEffectBase) -> void:
 	statuses_grid.reset_status(status)
 	

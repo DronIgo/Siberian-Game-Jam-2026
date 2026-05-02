@@ -25,6 +25,8 @@ DialogEventBus="*uid://w8tcddrqaonp"
 FightEventBus="*uid://cbl0i3vix1uln"
 SoundProcessor="*uid://gqmu7w236l1w"
 Constants="*uid://kw8sn4sxlac5"
+SEG="*uid://bpnp2uh01m56h"
+AG="*uid://gene3dfijibu"
 
 [input]
 

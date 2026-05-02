@@ -3,8 +3,16 @@
 		"scalpel",
 		"aspirin"
 	],
-	"hand2" : [
-		"scalpel",
-		"aspirin"
+	"healthy_heart" : [
+		"heal"
+	],
+	"sick_kidney" : [
+		"blow",
+		"filter"
+	],
+	"tentacle" : [
+		"crush",
+		"mitos",
+		"buff"
 	]
 }
