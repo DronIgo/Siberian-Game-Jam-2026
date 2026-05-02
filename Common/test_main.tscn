@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cmku0b1qhuq1"]
+
+[ext_resource type="Script" uid="uid://da1awtypvujpf" path="res://Common/TestMain.gd" id="1_ylfgv"]
+
+[node name="TestMain" type="CanvasLayer" unique_id=323352453]
+script = ExtResource("1_ylfgv")
+
+[node name="BaseRect" type="ColorRect" parent="." unique_id=1018597559]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="BaseRect" unique_id=469208402]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.5
+offset_top = -37.5
+offset_right = 86.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Нижад"
+
+[connection signal="pressed" from="BaseRect/Button" to="." method="_on_button_pressed"]

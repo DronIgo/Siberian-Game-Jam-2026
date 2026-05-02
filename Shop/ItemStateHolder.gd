@@ -6,10 +6,10 @@ var items: Array = [
 	ShopItemInfo.new("syrok", "Сырок", 33)
 ]
 
-var window: Dictionary = {
+var shop_window: Dictionary = {
 	"liho-96": 1,
 	"irtysh": 1,
 	"syrok": 11
 }
 
-var pocket: Dictionary = {}
+var player_pocket: Dictionary = {}

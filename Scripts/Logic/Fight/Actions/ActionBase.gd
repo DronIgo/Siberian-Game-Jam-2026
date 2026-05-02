@@ -1,14 +1,11 @@
 class_name ActionBase
 extends Object
 
-#TODO: add action result class
-
 var manacost : int = 0
 
 var stats : Dictionary
 var lore_name : String
-#TODO: replace with aoe indicator, change logic in FightManager to not immediateluy attack
-var needs_target : bool = true
+var is_aoe: bool = false
 
 const _stats_json_path = "res://Files/ActionStats/attack_stats.json"
 
@@ -48,6 +45,5 @@ func check_valid_target(actor : ActorBase) -> bool:
 func check_avialable(actor : ActorBase) -> bool:
 	return actor.mana >= manacost
 
-#TODO: return action result
-func take_action(target : ActorBase) -> void:
-	pass
+func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	return null

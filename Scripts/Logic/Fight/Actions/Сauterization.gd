@@ -1,7 +1,7 @@
-class_name ActionScalpel
+class_name ActionСauterization
 extends ActionBase
 
-var action_name = "scalpel"
+var action_name = "cauterization"
 var damage : int
 
 func _init() -> void:
@@ -17,7 +17,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 		target.take_damage(stats["damage"])
 		target_names.append(target.lore_name)
 	return ActionResult.new(\
-		"{initiator} uses scalpel on {targets} and deals {damage} damage", { \
+		"{initiator} cauterizes {targets} and deals {damage} damage", { \
 			"initiator": initiator.lore_name,\
 			"targets": ", ".join(target_names), \
 			"damage": damage }, 1)

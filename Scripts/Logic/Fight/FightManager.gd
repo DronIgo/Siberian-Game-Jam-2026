@@ -60,23 +60,31 @@ func take_turn_friendly(actor : ActorBase) -> void:
 	action_list.display(actor)
 	var selected_action : ActionBase
 	var selected_target : ActorBase = null
+	var action_result: ActionResult = null
 	while true:
 		# can reselect actions as we please
 		var selection = await _on_any_selection_signal
 		print("selection")
 		if selection is ActorBase:
 			selected_target = selection
+			_unhighlight_enemy_targets(selected_target)
 		else:
 			selected_action = selection
 			# reset the target if we choose different action
 			selected_target = null
-		_highlight_valid_targets(selected_action)
+			_highlight_valid_enemy_targets(selected_action)
 		if _check_action_valid_target(selected_action, selected_target):
-			selected_action.take_action(selected_target)
+			print("[!!] taking action")
+			action_result = selected_action.take_action(actor, \
+				[ selected_target ] if not selected_action.is_aoe else enemy_organs)
 			_fight_history.add_action(actor, selected_action)
+			selected_target.unhighlight()
 			break
 	action_list.clear()
-	await action_display_text.display_action(actor, selected_action)
+	if not action_result.has_more():
+		for friendly_actor in friendly_actors:
+			friendly_actor.remove_action(selected_action.action_name)
+	await action_display_text.display_action(action_result)
 
 func take_turn_organ(enemy : OrganBase) -> void:
 
@@ -87,20 +95,19 @@ func take_turn_organ(enemy : OrganBase) -> void:
 	await action_display_text.display(enemy.lore_name + " takes time to think")
 	#var action = enemy.take_turn()
 
-func _highlight_valid_targets(selected_action: ActionBase) -> void:
-	#TODO
-	pass
+func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:
+	for enemy: OrganBase in enemy_organs:
+		if selected_action.check_valid_target(enemy):
+			enemy.highlight()
+
+func _unhighlight_enemy_targets(except: ActorBase):
+	for enemy: OrganBase in enemy_organs:
+		if enemy.lore_name != except.lore_name:
+			enemy.unhighlight()
 
 func _check_action_valid_target(selected_action : ActionBase, selected_actor : ActorBase) -> bool:
-	if !selected_action:
-		return false
-	if !selected_action.needs_target:
-		selected_action.take_action(null)
-		return true
-	#TODO: some logic to check if target is valid
-	if selected_action and selected_actor:
-		return true
-	return false
+	return selected_action and (selected_actor and \
+		(selected_action.is_aoe or selected_action.check_valid_target(selected_actor)))
 
 
 ## DEFEAT/VICTORY management
