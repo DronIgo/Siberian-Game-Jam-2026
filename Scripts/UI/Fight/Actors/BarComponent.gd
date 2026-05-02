@@ -5,6 +5,7 @@ extends Node2D
 @export var bar_name : String
 @export var actual_reducing_seconds: float = 1
 @export var phantom_disappearing_seconds: float = 2
+@export var empty_sprite_space_heights_sum: int = 42
 
 var _current_tweens: Array = []
 var _init_position: Vector2
@@ -18,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _current_tweens.is_empty():
 		return
-	var actual_bar_original_height = actual_bar.texture.get_size().y
+	var actual_bar_original_height = actual_bar.texture.get_size().y - empty_sprite_space_heights_sum
 	var actual_bar_height_current = actual_bar_original_height * actual_bar.scale.y
 	var actual_bar_height_delta = (actual_bar_original_height - actual_bar_height_current) / 2
 	actual_bar.position.y = _init_position.y + actual_bar_height_delta
