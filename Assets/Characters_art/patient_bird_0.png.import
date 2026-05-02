@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7vwmtfgr0res"
-path="res://.godot/imported/bottle_organ_health_mask_png.png-f9db97a159e4c4c30f6d43bcfdef599b.ctex"
+uid="uid://dqy1vxmo8rt2i"
+path="res://.godot/imported/patient_bird_0.png-ff9be1071eed16327cd4c508c9f2f1cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/UI_battle_regular/bottle_organ_health_mask_png.png"
-dest_files=["res://.godot/imported/bottle_organ_health_mask_png.png-f9db97a159e4c4c30f6d43bcfdef599b.ctex"]
+source_file="res://Assets/Characters_art/patient_bird_0.png"
+dest_files=["res://.godot/imported/patient_bird_0.png-ff9be1071eed16327cd4c508c9f2f1cc.ctex"]
 
 [params]
 
