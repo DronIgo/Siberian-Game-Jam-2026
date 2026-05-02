@@ -66,4 +66,6 @@ func _load_actions(actor_name : String) -> void:
 
 func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
-		actions.append(ActionGenerator.generate_action_by_name(a_name))
+		var action: ActionBase = ActionGenerator.generate_action_by_name(a_name)
+		if action != null:
+			actions.append(action)
