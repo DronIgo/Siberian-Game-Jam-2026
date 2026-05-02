@@ -34,3 +34,14 @@ func next():
 
 func finish():
 	DialogEventBus.dialog_finished.emit()
+	if PhaseManager.is_event:
+		PhaseManager.finish_event()
+		queue_free()
+		return
+	var next_phase = PhaseManager.try_next_phase()
+	if next_phase == null:
+		get_tree().quit()
+	elif next_phase.is_replacement:
+		get_tree().change_scene_to_file(next_phase.scene_name)
+	else:
+		queue_free()
