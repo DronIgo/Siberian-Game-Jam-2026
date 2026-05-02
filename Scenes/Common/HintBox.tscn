@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cgj2hrh7wl8xp"]
+
+[ext_resource type="Script" uid="uid://ouq2jm65x4f3" path="res://Scripts/UI/Common/HintBox.gd" id="1_8mjqg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t72mp"]
+bg_color = Color(0.07846785, 0.07846785, 0.07846785, 0.70000005)
+
+[node name="HintBox" type="PanelContainer" unique_id=1074084737 node_paths=PackedStringArray("hint_label")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_t72mp")
+script = ExtResource("1_8mjqg")
+hint_label = NodePath("HintLabel")
+hint_text = "This is the hint"
+
+[node name="HintLabel" type="Label" parent="." unique_id=2103189357]
+layout_mode = 2
+text = "Hint"
