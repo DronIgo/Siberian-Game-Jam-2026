@@ -27,6 +27,12 @@ AG="*uid://gene3dfijibu"
 SoundProcessor="*uid://gqmu7w236l1w"
 FightEventBus="*uid://cbl0i3vix1uln"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+
 [input]
 
 dialog_next={
@@ -49,3 +55,4 @@ left_mouse={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

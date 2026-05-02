@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dlfwj0llq0bqy"]
+[gd_scene format=3 uid="uid://dv0h0kvyq0lgu"]
 
 [ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_qi11o"]
 [ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="2_snu4q"]
@@ -18,8 +18,54 @@
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
 [ext_resource type="Script" uid="uid://bc10xeah8w1ae" path="res://Scripts/Logic/Fight/ActorBase.gd" id="14_m54b6"]
+[ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
+[ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
+[ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
+[ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 
-[node name="FightBase" type="Node2D" unique_id=831660849]
+[node name="FightBase" type="CanvasLayer" unique_id=60080579]
+
+[node name="BackControl" type="Control" parent="." unique_id=550811061]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ReferenceBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1867239223]
+visible = false
+position = Vector2(20, 20)
+texture = ExtResource("16_0d5t2")
+
+[node name="CurtainLeftSprite2D" type="Sprite2D" parent="BackControl" unique_id=1341114287]
+position = Vector2(-1596, -310)
+texture = ExtResource("17_r4ejf")
+
+[node name="CurtainRightSprite2D" type="Sprite2D" parent="BackControl" unique_id=810683040]
+position = Vector2(2513, -310)
+texture = ExtResource("18_bhaob")
+
+[node name="FrameTextSprite2D" type="Sprite2D" parent="BackControl" unique_id=6706054]
+position = Vector2(470, 770)
+texture = ExtResource("17_6uwd6")
+
+[node name="FramePatientBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1189023969]
+position = Vector2(-1450, -310)
+texture = ExtResource("18_mnvx0")
+
+[node name="FramePatientFrontSprite2D" type="Sprite2D" parent="BackControl" unique_id=424049112]
+position = Vector2(-1450, -310)
+texture = ExtResource("19_r4ejf")
 
 [node name="Heart" type="Sprite2D" parent="." unique_id=661507203 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 position = Vector2(700, 80)
@@ -49,6 +95,8 @@ organ_ai = NodePath("../AI")
 script = ExtResource("8_8q2nk")
 
 [node name="HintBox" parent="Heart" unique_id=1472046688 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
+offset_right = 165.0
+offset_bottom = 110.0
 hint_text = "Heart"
 hint_target = NodePath("../HeartSelectable")
 
@@ -81,6 +129,8 @@ organ_ai = NodePath("../AI")
 script = ExtResource("9_0d5t2")
 
 [node name="HintBox" parent="Bad Liver" unique_id=1897649089 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
+offset_right = 165.0
+offset_bottom = 110.0
 hint_target = NodePath("../LiverSelectable")
 
 [node name="Bad Essence" type="Sprite2D" parent="." unique_id=662766328 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
@@ -109,6 +159,8 @@ organ_name = "Evli Liver"
 is_main = true
 
 [node name="HintBox" parent="Bad Essence" unique_id=334207565 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_8q2nk")]
+offset_right = 165.0
+offset_bottom = 110.0
 hint_text = "Essence"
 hint_target = NodePath("../EssenceSelectable")
 
