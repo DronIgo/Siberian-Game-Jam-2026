@@ -16,3 +16,4 @@ offset_bottom = 23.0
 
 [node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
 layout_mode = 0
+anchor_to_screen_corner = true

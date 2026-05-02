@@ -6,6 +6,7 @@ var _name : String
 var amount : int
 var duration : int
 var max_duration : int
+var lore_name : String = "негативный эффект"
 
 func reset_duration() -> void:
 	duration = max_duration

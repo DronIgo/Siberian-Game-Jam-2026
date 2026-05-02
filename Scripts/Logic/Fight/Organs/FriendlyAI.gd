@@ -12,6 +12,6 @@ func take_turn(initiator : ActorBase, possible_targets : Array) -> ActionResult:
 	counter = counter % turn_cicle_length
 	if counter == 0:
 		var action = actions[0]
-		var targets = action.pick_targets(possible_targets)
+		var targets = action.pick_targets(possible_targets, initiator)
 		return action.take_action(initiator, targets)
 	return null
