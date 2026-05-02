@@ -10,6 +10,10 @@ var _current_building_id: String = ""
 func _ready() -> void:
 	building_info_rect.hide()
 	HubEventBus.building_selected.connect(_try_select_building)
+	# test
+	PhaseManager.init()
+	var phase: Phase = PhaseManager.try_next_phase()
+	get_tree().change_scene_to_file(phase.scene_name)
 
 func _on_go_button_pressed() -> void:
 	var building: BuildingInfo = _get_building_info(_current_building_id)
