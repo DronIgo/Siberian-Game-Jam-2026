@@ -26,6 +26,7 @@ func _ready() -> void:
 	input_event.connect(_input_event)
 
 func _input_event(viewport : Viewport, event : InputEvent, shape_idx : int) -> void:
+	#TODO: BUG: нажимается дважды
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			print(viewport, " ", event, " ", shape_idx)
