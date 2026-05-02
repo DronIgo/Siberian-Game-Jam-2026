@@ -3,12 +3,14 @@ extends Node2D
 
 @export var action_list : ActionList
 @export var action_display_text : ActionDisplayText
+@export var organ_summoner : OrganSummoner
 
 @export var patient : ActorBase
 @export var friendly_actors : Array[ActorBase]
-@export var friendly_organs : Array[OrganBase]
-@export var enemy_organs : Array[OrganBase]
 
+@export var list_organs : Array[String]
+var friendly_organs : Array[OrganBase]
+var enemy_organs : Array[OrganBase]
 var all_organs : Array[OrganBase]
 
 var round_num : int = 0
@@ -23,8 +25,14 @@ signal _on_any_selection_signal(arg)
 func _ready() -> void:
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
-	all_organs = enemy_organs.duplicate()
-	all_organs.append_array(friendly_organs.duplicate())
+	for organ_name in list_organs:
+		var organ = organ_summoner.summon_by_name(organ_name)
+		if organ.is_healthy:
+			friendly_organs.append(organ)
+		else:
+			enemy_organs.append(organ)
+		all_organs.append(organ)
+		
 	## defeat/victory management
 	patient.died.connect(_on_patient_died)
 	for organ in friendly_organs:
@@ -97,7 +105,8 @@ func take_turn_organ(enemy : OrganBase) -> void:
 	var action_resilt = await enemy.take_turn(all_organs)
 	if !action_resilt:
 		action_display_text.display(enemy.lore_name + " пропускает ход")
-	action_display_text.display_action(action_resilt)
+	else:
+		action_display_text.display_action(action_resilt)
 	await enemy.at_end_turn()
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:

@@ -14,8 +14,8 @@ func init() -> void:
 		action_stats = JSON.parse_string(json_text) as Dictionary
 	else:
 		printerr("couldn't find file ", _stats_json_path)
-		
 	initialized = true
+
 func _ready() -> void:
 	init()
 

@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func take_turn(initiator : ActorBase, possible_targets : Array) -> ActionResult:
 	var action = actions[counter]
-	var targets = action.pick_targets(possible_targets)
+	var targets = action.pick_targets(possible_targets, initiator)
 	var result = action.take_action(initiator, targets)
 	counter += 1
 	counter = counter % turn_cicle_length

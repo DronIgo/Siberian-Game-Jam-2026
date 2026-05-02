@@ -13,6 +13,12 @@ func _init() -> void:
 func _parse_stats() -> void:
 	duration = _try_parse("duration")
 
+func get_priority(actor : OrganBase, own : OrganBase) -> int:
+	if actor.is_healthy:
+		return 2
+	else:
+		return 1
+
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	targets[0].apply_status(SEG.create_status(StatusGenerator.STATUS.BLEED))
 	return ActionResult.new(formated_result,\
