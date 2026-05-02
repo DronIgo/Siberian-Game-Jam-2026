@@ -4,8 +4,10 @@ extends Node2D
 @export var action_list : ActionList
 @export var action_display_text : ActionDisplayText
 
+@export var patient : ActorBase
 @export var friendly_actors : Array[ActorBase]
-@export var enemy_actors : Array[OrganBase]
+@export var friendly_organs : Array[OrganBase]
+@export var enemy_organs : Array[OrganBase]
 var round_num : int = 0
 
 var _fight_history : FightHistory
@@ -18,26 +20,43 @@ signal _on_any_selection_signal(arg)
 func _ready() -> void:
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
+
+	## defeat/victory management
+	patient.died.connect(_on_patient_died)
+	for organ in friendly_organs:
+		organ.died.connect(_on_friendly_organ_died)
+	for organ in enemy_organs:
+		organ.died.connect(_on_enemy_organ_died)
+
 	round_num = 0
 	_fight_history = FightHistory.new()
 	while !(_victory or _defeat):
 		await play_round()
-	
+	if _victory:
+		_on_victory()
+	elif _defeat:
+		_on_defeat()
+
 func play_round() -> void:
 	for friend in friendly_actors:
 		await take_turn_friendly(friend)
-		_check_victory()
-		_check_defeat()
-	for enemy in enemy_actors:
-		await take_turn_enemy(enemy)
-		_check_victory()
-		_check_defeat()
+		if _defeat || _victory: return
+	for enemy in enemy_organs:
+		await take_turn_organ(enemy)
+		if _defeat || _victory: return
+	for friend_organ in friendly_organs:
+		await take_turn_organ(friend_organ)
+		if _defeat || _victory: return
 
 func _on_any_selection(arg) -> void:
 	_on_any_selection_signal.emit(arg)
 
 func take_turn_friendly(actor : ActorBase) -> void:
 	print("take_turn_friendly")
+	if actor == null:
+		printerr("Actor is null!")
+		return
+
 	action_list.display(actor)
 	var selected_action : ActionBase
 	var selected_target : ActorBase = null
@@ -59,8 +78,12 @@ func take_turn_friendly(actor : ActorBase) -> void:
 	action_list.clear()
 	await action_display_text.display_action(actor, selected_action)
 
-func take_turn_enemy(enemy : OrganBase) -> void:
-	print("take_turn_enemy")
+func take_turn_organ(enemy : OrganBase) -> void:
+
+	if enemy.health <= 0:
+		print("organ can not take, health is zero, ", enemy)
+		return
+
 	await action_display_text.display(enemy.lore_name + " takes time to think")
 	#var action = enemy.take_turn()
 
@@ -79,10 +102,28 @@ func _check_action_valid_target(selected_action : ActionBase, selected_actor : A
 		return true
 	return false
 
+
+## DEFEAT/VICTORY management
+# only main should die
 func _check_victory() -> void:
-	#TODO: Natasha
+	print("check victory")
+	for enemy in enemy_organs:
+		if enemy.is_main and enemy.health <= 0:
+			_victory = true
+
+func _on_patient_died() -> void:
+	_defeat = true
+
+func _on_friendly_organ_died() -> void:
+	_defeat = true
+
+func _on_enemy_organ_died() -> void:
+	_check_victory()
+
+func _on_victory() -> void:
+	print("VICTORY!")
 	pass
-	
-func _check_defeat() -> void:
-	#TODO: Natasha
+
+func _on_defeat() -> void:
+	print("GAME OVER")
 	pass

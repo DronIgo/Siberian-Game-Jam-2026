@@ -9,7 +9,10 @@ extends Node
 
 func _ready() -> void:
 	actor.actor_ui = self
-	selectable_component.on_selected.connect(selected)
+	if selectable_component:
+		selectable_component.on_selected.connect(selected)
+	else:
+		printerr("THIS ACTOR UI IS NOT SELECTABLE! --> ", self)
 
 func selected(_selected : bool) -> void:
 	FightEventBus.target_selected.emit(actor)
