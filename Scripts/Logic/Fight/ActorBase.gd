@@ -13,7 +13,7 @@ var health : int
 var mana : int = 10
 
 var _actions_json_path = "res://Files/ActionStats/avialable_actions.json"
-var actions : Array
+var actions : Array = []
 
 func _ready() -> void:
 	health = max_health
@@ -23,7 +23,11 @@ func init(actor_name : String) -> void:
 	#TODO load from JSON
 	lore_name = actor_name
 
+signal died
+
 func take_damage(amount : int) -> void:
+	if health <= 0:
+		return
 	health -= amount
 	if health <= 0:
 		_on_death()
@@ -35,6 +39,7 @@ func apply_status(status : StatusEffectBase) -> void:
 		
 func _on_death() -> void:
 	actor_ui.on_death()
+	died.emit()
 	pass
 
 func _load_actions(actor_name : String) -> void:
