@@ -4,15 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="2_1cu48"]
 
 [node name="ActionItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("selection_button", "hint_box")]
+theme_override_font_sizes/font_size = 42
 text = "Action"
 script = ExtResource("1_lu0c8")
+theme_override_font_sizes/font_size = 42
 selection_button = NodePath("SelectButton")
 hint_box = NodePath("HintBox")
 
 [node name="SelectButton" type="TextureButton" parent="." unique_id=1703572248]
 layout_mode = 0
 offset_right = 500.0
-offset_bottom = 23.0
+offset_bottom = 58.0
 
 [node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
 layout_mode = 0

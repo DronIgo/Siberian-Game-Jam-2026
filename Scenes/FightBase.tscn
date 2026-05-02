@@ -1,14 +1,8 @@
-[gd_scene format=3 uid="uid://dlfwj0llq0bqy"]
+[gd_scene format=3 uid="uid://dv0h0kvyq0lgu"]
 
-[ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_qi11o"]
-[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="2_snu4q"]
-[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_vqao4"]
+[ext_resource type="Script" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="1_vqao4"]
 [ext_resource type="Texture2D" uid="uid://bw3dshr32ivoe" path="res://Assets/UI/UI_battle_regular/bg_organ_dark.png" id="2_xx2d7"]
-[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_ay0b3"]
 [ext_resource type="Texture2D" uid="uid://b60at1ldfoo6n" path="res://Assets/UI/UI_battle_regular/bg_organ_light.png" id="3_g5117"]
-[ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_ay0b3"]
-[ext_resource type="Script" uid="uid://d0s2y4y285p4t" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="1_vqao4"]
-[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_ay0b3"]
 [ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="6_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="8_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
@@ -18,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
-[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
@@ -42,6 +36,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="ReferenceBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1867239223]
+visible = false
 position = Vector2(20, 20)
 texture = ExtResource("16_0d5t2")
 
@@ -80,10 +75,10 @@ script = ExtResource("6_3g3hk")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
 [node name="ActionList" parent="CanvasLayer" unique_id=1970410951 instance=ExtResource("8_3g3hk")]
-offset_left = 469.0
-offset_top = 773.0
-offset_right = 1169.0
-offset_bottom = 1013.0
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("9_vqao4")]
 anchors_preset = 3

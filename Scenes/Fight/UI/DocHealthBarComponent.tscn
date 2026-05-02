@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bm6i5gjgmicrd" path="res://Assets/UI/UI_battle_regular/bottle_doc_health_png.png" id="1_bymth"]
 [ext_resource type="Texture2D" uid="uid://cbkxhbyrghhlf" path="res://Assets/UI/UI_battle_regular/bottle_doc_health_inside.png" id="2_48ff4"]
 
-[node name="DocHealthBarComponent" type="Node2D" unique_id=30255913]
+[node name="DocHealthBarComponent" type="Node2D" unique_id=30255913 node_paths=PackedStringArray("actual_bar", "phantom_bar")]
 script = ExtResource("1_48ff4")
+actual_bar = NodePath("BarMask/ActualBarDisplay")
+phantom_bar = NodePath("BarMask/PhantomBarDisplay")
 
 [node name="BarMask" type="Sprite2D" parent="." unique_id=741797560]
 clip_children = 1
