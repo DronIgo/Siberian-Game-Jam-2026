@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://81ufm7cjfjr0"]
+
+[ext_resource type="Script" uid="uid://dqkxk0iu8mg3b" path="res://Dialog/Speaker.gd" id="1_i0kwh"]
+
+[node name="Speaker" type="Control" unique_id=1811686688 node_paths=PackedStringArray("name_label")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i0kwh")
+name_label = NodePath("BaseRect/Label")
+
+[node name="BaseRect" type="ColorRect" parent="." unique_id=891177996]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 240.0
+grow_vertical = 0
+color = Color(0.7529412, 0.2509804, 0.2509804, 0.7529412)
+
+[node name="Label" type="Label" parent="BaseRect" unique_id=131540371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3

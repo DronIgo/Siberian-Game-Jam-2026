@@ -5,7 +5,7 @@ extends CanvasLayer
 @export var dialog_next_action_name: String = "dialog_next"
 @export var replicas_box: ReplicasBox
 
-var _current_replicas: Array
+var _current_replica_dictionaries: Array
 var _next_replica_index: int = 0
 
 func _ready():
@@ -21,14 +21,15 @@ func _process(delta):
 
 func start(phase: Phase):
 	var config: Dictionary = StorageManager.read_from(phase.args[0])
-	_current_replicas = config["data"]
+	_current_replica_dictionaries = config["data"]
 	next()
 
 func next():
-	if _next_replica_index == _current_replicas.size():
+	if _next_replica_index == _current_replica_dictionaries.size():
 		finish()
 		return
-	replicas_box.new_replica(_current_replicas[_next_replica_index])
+	var replica = ReplicaData.new(_current_replica_dictionaries[_next_replica_index])
+	replicas_box.new_replica(replica)
 	_next_replica_index += 1
 
 func finish():
