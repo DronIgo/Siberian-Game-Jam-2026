@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://bj6vnx36qh2er"]
 
 [ext_resource type="Script" uid="uid://c4h4l0uxkgsaa" path="res://Scripts/UI/Fight/ActionItem.gd" id="1_lu0c8"]
+[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="2_1cu48"]
 
-[node name="ActionItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("selection_button")]
+[node name="ActionItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("selection_button", "hint_box")]
 text = "Action"
 script = ExtResource("1_lu0c8")
 selection_button = NodePath("SelectButton")
+hint_box = NodePath("HintBox")
 
 [node name="SelectButton" type="TextureButton" parent="." unique_id=1703572248]
 layout_mode = 0
 offset_right = 500.0
 offset_bottom = 23.0
+
+[node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
+layout_mode = 0

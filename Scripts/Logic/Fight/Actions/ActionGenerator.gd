@@ -19,5 +19,9 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionCrush.new()
 		"filter":
 			return ActionFilter.new()
-		
-	return ActionBase.new("null action")
+    "cauterization":
+			return ActionСauterization.new()
+		"irtysh":
+			if ItemStateHolder.player_pocket.has("irtysh") and ItemStateHolder.player_pocket["irtysh"] > 0:
+				return ActionIrtysh.new()
+	return null

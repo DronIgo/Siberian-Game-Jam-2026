@@ -56,5 +56,5 @@ static func _parse_phase(source: Dictionary) -> Phase:
 	phase.args = source["args"] if source.has("args") else []
 	phase.music = source["music"] if source.has("music") else Constants.SOUND_NOTHING
 	phase.next_phase_id = source["next_phase_id"]
-	phase.is_replacement = source["is_replacement"] if source.has("is_replacement") else false
+	phase.is_replacement = source["is_replacement"] if source.has("is_replacement") else true
 	return phase

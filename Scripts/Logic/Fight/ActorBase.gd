@@ -13,7 +13,8 @@ var health : int
 var mana : int = 10
 
 var _actions_json_path = "res://Files/ActionStats/avialable_actions.json"
-var actions : Array
+var actions : Array = []
+var highlighted: bool
 
 func _ready() -> void:
 	health = max_health
@@ -23,7 +24,25 @@ func init(actor_name : String) -> void:
 	#TODO load from JSON
 	lore_name = actor_name
 
+signal died
+
+func remove_action(action_name: String):
+	var actions_to_erase: Array = actions.filter(\
+		func(action): return action.action_name == action_name)
+	for action_to_erase in actions_to_erase:
+		actions.erase(action_to_erase)
+
+func highlight():
+	highlighted = true
+	print(str("[!] ", lore_name, " highlighted"))
+
+func unhighlight():
+	highlighted = false
+	print(str("[!] ", lore_name, " unhighlighted"))
+
 func take_damage(amount : int) -> void:
+	if health <= 0:
+		return
 	health -= amount
 	if health <= 0:
 		_on_death()
@@ -56,6 +75,7 @@ func at_end_turn() -> void:
 
 func _on_death() -> void:
 	actor_ui.on_death()
+	died.emit()
 	pass
 
 func _load_actions(actor_name : String) -> void:
@@ -73,7 +93,9 @@ func _load_actions(actor_name : String) -> void:
 
 func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
-		actions.append(AG.generate_action_by_name(a_name))
+    var action: ActionBase = AG.generate_action_by_name(a_name)
+		if action != null:
+			actions.append(action)
 
 func take_turn(possible_targets : Array, action_display_text : ActionDisplayText) -> void:
 	await at_end_turn()

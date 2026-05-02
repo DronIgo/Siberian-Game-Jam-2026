@@ -1,6 +1,6 @@
 {
 	"scalpel" : {
-		"damage" : 20,
+		"damage" : 15,
 		"manacost" : 0,
 		"name" : "Надрез" 
 	},
@@ -20,6 +20,20 @@
 	"buff" : {
 		"name" : "Собраться с силами",
 		"duration" : 2
+  },
+	"cauterization": {
+		"damage" : 15,
+		"manacost" : 0,
+		"name" : "Прижигание" 
+	},
+	"irtysh" : {
+		"damage": 69,
+		"manacost": 0,
+		"name": "ИРТЫШ"
+	},
+	"defend" : {
+		"manacost" : 0,
+		"name" : "Защита"
 	},
 	"heal" : {
 		"manacost" : 10,

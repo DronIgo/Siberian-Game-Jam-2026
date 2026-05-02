@@ -4,6 +4,7 @@ extends Label
 var _action : ActionBase
 var avialable : bool = true
 @export var selection_button : TextureButton
+@export var hint_box: HintBox
 
 func _ready() -> void:
 	selection_button.pressed.connect(selected)
@@ -12,6 +13,9 @@ func init(action: ActionBase, actor : ActorBase) -> void:
 	_action = action
 	text = action.lore_name
 	print(text)
+	if hint_box:
+		hint_box.hint_target = selection_button
+		hint_box.hint_text = action.lore_name
 	if !check_avialable(actor):
 		avialable = false
 		self_modulate = Color(1.0, 1.0, 1.0, 0.5);

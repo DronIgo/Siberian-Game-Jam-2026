@@ -3,6 +3,7 @@ extends ActorBase
 
 @export var organ_name : String
 @export var organ_ai : OrganAIBase
+@export var is_main : bool = false
 
 func _ready() -> void:
 	super()
