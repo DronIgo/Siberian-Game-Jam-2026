@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dnhriu48mjgqj"]
 
 [ext_resource type="Script" uid="uid://kal8a3dtgbfg" path="res://Dialog/ReplicasBox.gd" id="1_w4l6l"]
+[ext_resource type="PackedScene" uid="uid://81ufm7cjfjr0" path="res://Dialog/speaker.tscn" id="2_n4433"]
 
-[node name="ReplicasBox" type="Control" unique_id=142583026]
+[node name="ReplicasBox" type="Control" unique_id=142583026 node_paths=PackedStringArray("text_label", "speaker_left", "speaker_right")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -12,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_w4l6l")
+text_label = NodePath("BaseRect/Label")
+speaker_left = NodePath("BaseRect/SpeakerLeft")
+speaker_right = NodePath("BaseRect/SpeakerRight")
 
 [node name="BaseRect" type="ColorRect" parent="." unique_id=33175070]
 layout_mode = 1
@@ -41,3 +45,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 autowrap_mode = 3
+
+[node name="SpeakerLeft" parent="BaseRect" unique_id=1811686688 instance=ExtResource("2_n4433")]
+layout_mode = 0
+
+[node name="SpeakerRight" parent="BaseRect" unique_id=2137729751 instance=ExtResource("2_n4433")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_right = -240.0
+grow_horizontal = 0

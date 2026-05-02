@@ -1,6 +1,6 @@
 class_name BuildingInfo
 
-extends Node
+extends Object
 
 var id: String
 var building_name: String

@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://cgvgvlxxyphpm" path="res://Dialog/Dialog.gd" id="1_yqm1q"]
 [ext_resource type="PackedScene" uid="uid://dnhriu48mjgqj" path="res://Dialog/replicas_box.tscn" id="2_b2mf0"]
 
-[node name="Dialog" type="CanvasLayer" unique_id=1090554352]
+[node name="Dialog" type="CanvasLayer" unique_id=1090554352 node_paths=PackedStringArray("replicas_box")]
 script = ExtResource("1_yqm1q")
+replicas_box = NodePath("BaseRect/ReplicasBox")
 
 [node name="BaseRect" type="ColorRect" parent="." unique_id=135685891]
 anchors_preset = 15
