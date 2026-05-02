@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bo3oif4cg8um7" path="res://Shop/Shop.gd" id="1_3weqf"]
 
-[node name="Shop" type="CanvasLayer" unique_id=740057473]
+[node name="Shop" type="CanvasLayer" unique_id=740057473 node_paths=PackedStringArray("item_name_label", "item_price_label", "item_in_window_count_label", "item_in_pocket_count_label", "previous_button", "next_button", "buy_button")]
 script = ExtResource("1_3weqf")
+item_name_label = NodePath("BaseRect/ItemNameLabel")
+item_price_label = NodePath("BaseRect/ItemPriceLabel")
+item_in_window_count_label = NodePath("BaseRect/ItemInWindowCountLabel")
+item_in_pocket_count_label = NodePath("BaseRect/ItemInPocketCountLabel")
+previous_button = NodePath("BaseRect/PreviousButton")
+next_button = NodePath("BaseRect/NextButton")
+buy_button = NodePath("BaseRect/BuyButton")
 
 [node name="BaseRect" type="ColorRect" parent="." unique_id=1100522747]
 anchors_preset = 15
