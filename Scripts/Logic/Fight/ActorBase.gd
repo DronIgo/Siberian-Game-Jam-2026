@@ -40,13 +40,14 @@ func unhighlight():
 	highlighted = false
 	print(str("[!] ", lore_name, " unhighlighted"))
 
-func take_damage(amount : int) -> void:
+func take_damage(amount : int) -> int:
 	if health <= 0:
-		return
+		return 0
 	health -= amount
 	if health <= 0:
 		_on_death()
 	actor_ui.update_health()
+	return amount
 
 func heal(amount : int) -> void:
 	health += amount
@@ -93,9 +94,9 @@ func _load_actions(actor_name : String) -> void:
 
 func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
-    var action: ActionBase = AG.generate_action_by_name(a_name)
+		var action: ActionBase = AG.generate_action_by_name(a_name)
 		if action != null:
 			actions.append(action)
 
-func take_turn(possible_targets : Array, action_display_text : ActionDisplayText) -> void:
-	await at_end_turn()
+func take_turn(possible_targets : Array) -> ActionResult:
+	return null

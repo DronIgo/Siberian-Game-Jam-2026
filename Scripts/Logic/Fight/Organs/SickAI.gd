@@ -13,14 +13,15 @@ func _ready() -> void:
 	if actions.size() != 2:
 		printerr("Number of actions != 2 for sick AI")
 
-func take_turn(possible_targets : Array) -> TurnInfo:
+func take_turn(initiator : ActorBase, possible_targets : Array) -> ActionResult:
 	counter += 1
 	counter = counter % turn_cicle_length
-	var result = TurnInfo.new()
 	if counter == attack_1_idx:
-		result.action = actions[0]
-		result.target = pick_random(possible_targets)
+		var action = actions[0]
+		var targets = action.pick_targets(possible_targets)
+		return action.take_action(initiator, targets)
 	if counter == attack_2_idx:
-		result.action = actions[1]
-		result.target = pick_random(possible_targets)
-	return result
+		var action = actions[1]
+		var targets = action.pick_targets(possible_targets)
+		return action.take_action(initiator, targets)
+	return null

@@ -10,21 +10,10 @@ var is_aoe: bool = false
 const _stats_json_path = "res://Files/ActionStats/attack_stats.json"
 
 func _init(name : String) -> void:
-	_load_stats(name)
+	AG.init()
+	stats = AG.action_stats[name]
 	_parse_lore_name()
 	_parse_stats()
-
-func _load_stats(name : String) -> void:
-	if FileAccess.file_exists(_stats_json_path):
-		var json_text = FileAccess.get_file_as_string(_stats_json_path)
-		var data = JSON.parse_string(json_text) as Dictionary
-		if data and data.has(name):
-			stats = data[name]
-		else:
-			printerr("couldn't parse action by name ", name)
-	else:
-		printerr("couldn't find file ", _stats_json_path)
-	return
 
 func _parse_lore_name() -> void:
 	if stats.has("name"):
@@ -45,6 +34,27 @@ func _try_parse(stat_name : String):
 
 func check_valid_target(actor : ActorBase) -> bool:
 	return true
+
+func pick_targets(possible_targets : Array) -> Array:
+	if is_aoe:
+		return possible_targets
+	var best_targets : Array
+	var max_priority = -1
+	for target in possible_targets:
+		var target_priority = get_priority(target)
+		if target_priority > max_priority:
+			best_targets.clear()
+			best_targets.append(target)
+			max_priority = target_priority
+		elif target_priority == max_priority:
+			best_targets.append(target)
+	return [pick_random(best_targets)]
+
+func pick_random(possible_targets : Array) -> ActorBase:
+	return possible_targets[randi_range(0, possible_targets.size() - 1)]
+
+func get_priority(actor : OrganBase) -> int:
+	return 1
 
 func check_avialable(actor : ActorBase) -> bool:
 	return actor.mana >= manacost

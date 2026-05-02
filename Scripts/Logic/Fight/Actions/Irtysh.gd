@@ -1,5 +1,4 @@
 class_name ActionIrtysh
-
 extends ActionBase
 
 var action_name = "irtysh"

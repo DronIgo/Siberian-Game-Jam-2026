@@ -7,11 +7,11 @@ const turn_cicle_length : int = 3
 func _ready() -> void:
 	counter = randi_range(0, turn_cicle_length - 1)
 
-func take_turn(possible_targets : Array) -> TurnInfo:
+func take_turn(initiator : ActorBase, possible_targets : Array) -> ActionResult:
 	counter += 1
 	counter = counter % turn_cicle_length
-	var result = TurnInfo.new()
 	if counter == 0:
-		result.action = actions[0]
-		result.target = pick_random(possible_targets)
-	return result
+		var action = actions[0]
+		var targets = action.pick_targets(possible_targets)
+		return action.take_action(initiator, targets)
+	return null

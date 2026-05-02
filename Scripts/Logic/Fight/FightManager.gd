@@ -8,6 +8,9 @@ extends Node2D
 @export var friendly_actors : Array[ActorBase]
 @export var friendly_organs : Array[OrganBase]
 @export var enemy_organs : Array[OrganBase]
+
+var all_organs : Array[OrganBase]
+
 var round_num : int = 0
 
 var _fight_history : FightHistory
@@ -20,7 +23,8 @@ signal _on_any_selection_signal(arg)
 func _ready() -> void:
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
-
+	all_organs = enemy_organs.duplicate()
+	all_organs.append_array(friendly_organs.duplicate())
 	## defeat/victory management
 	patient.died.connect(_on_patient_died)
 	for organ in friendly_organs:
@@ -87,13 +91,14 @@ func take_turn_friendly(actor : ActorBase) -> void:
 	await action_display_text.display_action(action_result)
 
 func take_turn_organ(enemy : OrganBase) -> void:
-
 	if enemy.health <= 0:
-		print("organ can not take, health is zero, ", enemy)
+		print("organ can not take turn, health is zero, ", enemy)
 		return
-
-func take_turn_enemy(enemy : OrganBase) -> void:
-	await enemy.take_turn(enemy_actors, action_display_text)
+	var action_resilt = await enemy.take_turn(all_organs)
+	if !action_resilt:
+		action_display_text.display(enemy.lore_name + " пропускает ход")
+	action_display_text.display_action(action_resilt)
+	await enemy.at_end_turn()
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:
 	for enemy: OrganBase in enemy_organs:
