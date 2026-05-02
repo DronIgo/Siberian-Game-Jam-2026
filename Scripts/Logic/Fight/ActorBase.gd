@@ -30,9 +30,14 @@ func take_damage(amount : int) -> void:
 	actor_ui.update_health()
 		
 func apply_status(status : StatusEffectBase) -> void:
+	for s in statuses:
+		if s.type == status.type:
+			s.reset_duration()
+			actor_ui.reset_status(status)
+			return
 	statuses.append(status)
 	actor_ui.apply_status(status)
-
+	
 func at_end_turn() -> void:
 	for status in statuses:
 		(status as StatusEffectBase).on_turn_end(self)
@@ -57,3 +62,6 @@ func _load_actions(actor_name : String) -> void:
 func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
 		actions.append(ActionGenerator.generate_action_by_name(a_name))
+
+func take_turn(possible_targets : Array) -> void:
+	at_end_turn()

@@ -11,7 +11,7 @@ func _ready() -> void:
 func init(action: ActionBase, actor : ActorBase) -> void:
 	_action = action
 	#TODO: сделать lore_name после того, как будет включена кириллица
-	text = action.action_name
+	text = action.lore_name
 	print(text)
 	if !check_avialable(actor):
 		avialable = false

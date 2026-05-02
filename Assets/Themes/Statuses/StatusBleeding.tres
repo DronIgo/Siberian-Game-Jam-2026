@@ -5,5 +5,5 @@
 [resource]
 default_font = ExtResource("1_fbvke")
 default_font_size = 20
-RichTextLabel/colors/default_color = Color(0.025951426, 0.48411626, 0.04572305, 1)
+RichTextLabel/colors/default_color = Color(0.6375941, 0.1440494, 0.11234797, 1)
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.80784315)

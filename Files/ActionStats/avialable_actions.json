@@ -1,8 +1,10 @@
 {
 	"hand" : [
-		"scalpel"
+		"scalpel",
+		"aspirin"
 	],
 	"hand2" : [
-		"scalpel"
+		"scalpel",
+		"aspirin"
 	]
 }

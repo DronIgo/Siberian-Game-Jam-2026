@@ -4,6 +4,11 @@
 		"manacost" : 0,
 		"name" : "Надрез" 
 	},
+	"aspirin" : {
+		"amount" : 5,
+		"duration" : 3,
+		"name" : "Аспирин"
+	},
 	"defend" : {
 		"manacost" : 0,
 		"name" : "Защита"

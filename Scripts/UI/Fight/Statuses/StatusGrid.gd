@@ -14,6 +14,9 @@ func add_status(status : StatusEffectBase) -> void:
 func remove_status(status: StatusEffectBase) -> void:
 	_status_to_status_item.erase(status.type)
  
+func reset_status(status: StatusEffectBase) -> void:
+	_status_to_status_item[status.type].reset()
+
 func tick_down_status(status : StatusEffectBase) -> void:
 	_status_to_status_item[status.type].tick_down()
 	if _status_to_status_item[status.type].duration <= 0:

@@ -7,7 +7,8 @@ func _init(amount : int, duration : int) -> void:
 	super(amount, duration)
 
 func on_turn_end(actor : ActorBase) -> void:
-	pass
+	actor.take_damage(amount)
+	duration -= 1
 
 func on_turn_start(actor : ActorBase) -> void:
 	pass
