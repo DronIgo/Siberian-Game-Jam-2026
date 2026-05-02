@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bdo6hcjqfubs5" path="res://Hub/Hub.gd" id="1_siedd"]
 [ext_resource type="PackedScene" uid="uid://1cab4rslyn1j" path="res://Hub/building.tscn" id="1_vh6jp"]
 
-[node name="Hub" type="CanvasLayer" unique_id=1730030736]
+[node name="Hub" type="CanvasLayer" unique_id=1730030736 node_paths=PackedStringArray("building_info_rect", "building_info_label")]
 script = ExtResource("1_siedd")
+building_info_rect = NodePath("BuildingInfoRect")
+building_info_label = NodePath("BuildingInfoRect/Label")
 
 [node name="BaseRect" type="ColorRect" parent="." unique_id=704254426]
 anchors_preset = 15

@@ -3,8 +3,7 @@ class_name Dialog
 extends CanvasLayer
 
 @export var dialog_next_action_name: String = "dialog_next"
-
-@onready var _replicas_box: ReplicasBox = $BaseRect/ReplicasBox
+@export var replicas_box: ReplicasBox
 
 var _test_dialog: Array = [
 	"Собака: Привет! Я собака. Теперь ты знаешь обо мне всё.",
@@ -31,7 +30,7 @@ func next():
 	if _next_replica_index == _current_replicas.size():
 		finish()
 		return
-	_replicas_box.new_replica(_current_replicas[_next_replica_index])
+	replicas_box.new_replica(_current_replicas[_next_replica_index])
 	_next_replica_index += 1
 
 func finish():
