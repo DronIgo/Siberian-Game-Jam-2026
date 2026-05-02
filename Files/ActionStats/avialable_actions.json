@@ -1,10 +1,12 @@
 {
 	"hand" : [
 		"scalpel",
+		"cauterization",
 		"irtysh"
 	],
 	"hand2" : [
 		"scalpel",
+		"cauterization",
 		"irtysh"
 	]
 }

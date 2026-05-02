@@ -1,8 +1,13 @@
 {
 	"scalpel" : {
-		"damage" : 20,
+		"damage" : 15,
 		"manacost" : 0,
 		"name" : "Надрез" 
+	},
+	"cauterization": {
+		"damage" : 15,
+		"manacost" : 0,
+		"name" : "Прижигание" 
 	},
 	"irtysh" : {
 		"damage": 69,
