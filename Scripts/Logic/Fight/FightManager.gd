@@ -76,7 +76,7 @@ func take_turn_friendly(actor : ActorBase) -> void:
 		if _check_action_valid_target(selected_action, selected_target):
 			print("[!!] taking action")
 			action_result = selected_action.take_action(actor, \
-				selected_target if not selected_action.is_aoe else null)
+				[ selected_target ] if not selected_action.is_aoe else enemy_actors)
 			_fight_history.add_action(actor, selected_action)
 			selected_target.unhighlight()
 			break

@@ -45,5 +45,5 @@ func check_valid_target(actor : ActorBase) -> bool:
 func check_avialable(actor : ActorBase) -> bool:
 	return actor.mana >= manacost
 
-func take_action(initiator: ActorBase, target : ActorBase) -> ActionResult:
+func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	return null
