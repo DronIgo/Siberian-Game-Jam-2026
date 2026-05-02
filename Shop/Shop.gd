@@ -2,7 +2,6 @@ class_name Shop
 
 extends CanvasLayer
 
-@export var hub_scene_name: String = "res://Hub/hub.tscn"
 @export var item_name_label: Label
 @export var item_price_label: Label
 @export var item_in_window_count_label: Label
@@ -53,7 +52,8 @@ func _on_buy_button_pressed() -> void:
 	_represent_current_item_counts()
 
 func _on_exit_button_pressed() -> void:
-	get_tree().change_scene_to_file(hub_scene_name)
+	var next_phase: Phase = PhaseManager.try_next_phase()
+	get_tree().change_scene_to_file(next_phase.scene_name)
 
 func _find_next_available_item_id(from_id: int, direction: int) -> int:
 	var items: Array = ShopStateHolder.items
