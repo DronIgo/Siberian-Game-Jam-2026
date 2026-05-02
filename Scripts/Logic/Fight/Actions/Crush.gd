@@ -11,6 +11,12 @@ func _init() -> void:
 func _parse_stats() -> void:
 	damage = _try_parse("damage")
 
+func get_priority(actor : OrganBase, own : OrganBase) -> int:
+	if actor.is_healthy:
+		return 2
+	else:
+		return 1
+
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var amount = targets[0].take_damage(stats["damage"])
 	return ActionResult.new(

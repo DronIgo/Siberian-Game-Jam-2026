@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://x6staq5pspoj"]
+
+[ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_rkxcm"]
+[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_ix7xx"]
+[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_1wx3j"]
+[ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_f0vmv"]
+[ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_otgh5"]
+[ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_xcwnb"]
+[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="7_gsxy5"]
+[ext_resource type="Script" uid="uid://dqrfcv8ger8lv" path="res://Scripts/Logic/Fight/Organs/FriendlyAI.gd" id="8_d481k"]
+[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="9_ocbgs"]
+
+[node name="Heart" type="Sprite2D" unique_id=253183415 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
+texture = ExtResource("1_rkxcm")
+script = ExtResource("2_ix7xx")
+health_bar = NodePath("Health")
+statuses_grid = NodePath("StatusGrid")
+selectable_component = NodePath("HeartSelectable")
+actor = NodePath("Logic")
+
+[node name="Health" parent="." unique_id=502772887 instance=ExtResource("3_1wx3j")]
+position = Vector2(-80, 0)
+
+[node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("4_f0vmv")]
+position = Vector2(70, -44)
+
+[node name="HeartSelectable" parent="." unique_id=1089380166 instance=ExtResource("5_otgh5")]
+script = ExtResource("6_xcwnb")
+save_selected_state = false
+
+[node name="Logic" type="Node2D" parent="." unique_id=218571327 node_paths=PackedStringArray("organ_ai")]
+script = ExtResource("7_gsxy5")
+organ_name = "healthy_heart"
+organ_ai = NodePath("../AI")
+is_main = null
+
+[node name="AI" type="Node" parent="." unique_id=353645686]
+script = ExtResource("8_d481k")
+
+[node name="HintBox" parent="." unique_id=1074084737 node_paths=PackedStringArray("hint_target") instance=ExtResource("9_ocbgs")]
+hint_text = "Heart"
+hint_target = NodePath("../HeartSelectable")
+anchor_to_screen_corner = true

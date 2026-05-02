@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://5qi45hecqpb8"]
 
+[ext_resource type="Script" uid="uid://mckeqwvod73o" path="res://Scripts/Logic/Fight/FightManager.gd" id="1_5q1lq"]
+
 [node name="FightManager" type="Node2D" unique_id=1868931586]
+script = ExtResource("1_5q1lq")

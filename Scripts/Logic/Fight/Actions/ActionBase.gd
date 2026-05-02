@@ -35,13 +35,13 @@ func _try_parse(stat_name : String):
 func check_valid_target(actor : ActorBase) -> bool:
 	return true
 
-func pick_targets(possible_targets : Array) -> Array:
+func pick_targets(possible_targets : Array, initiator : OrganBase) -> Array:
 	if is_aoe:
 		return possible_targets
 	var best_targets : Array
 	var max_priority = -1
 	for target in possible_targets:
-		var target_priority = get_priority(target)
+		var target_priority = get_priority(target, initiator)
 		if target_priority > max_priority:
 			best_targets.clear()
 			best_targets.append(target)
@@ -53,7 +53,7 @@ func pick_targets(possible_targets : Array) -> Array:
 func pick_random(possible_targets : Array) -> ActorBase:
 	return possible_targets[randi_range(0, possible_targets.size() - 1)]
 
-func get_priority(actor : OrganBase) -> int:
+func get_priority(actor : OrganBase, own : OrganBase) -> int:
 	return 1
 
 func check_avialable(actor : ActorBase) -> bool:

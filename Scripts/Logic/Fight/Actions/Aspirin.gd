@@ -8,6 +8,7 @@ var duration : int
 var formated_result : String = "{initiator} использует аспирин, у пациента снизилась свертываемость крови"
 
 func _init() -> void:
+	is_aoe = true
 	super(action_name)
 
 func _parse_stats() -> void:
