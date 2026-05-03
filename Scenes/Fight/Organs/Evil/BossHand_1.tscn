@@ -157,7 +157,7 @@ animator = NodePath("AnimationPlayer")
 position = Vector2(-359, -256)
 
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("3_mkw2i")]
-position = Vector2(71, -48)
+position = Vector2(-298, -69)
 
 [node name="Logic" type="Node2D" parent="." unique_id=1432745422 node_paths=PackedStringArray("organ_ai")]
 script = ExtResource("4_i6ggr")

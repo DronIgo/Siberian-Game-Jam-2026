@@ -106,10 +106,16 @@ func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 			new_item.set_effect("Уклонение", HASTE_COLOR)
 		STATUS.SHIELD:
 			new_item.set_effect("ЗАЩИЩАЕТ", SHIELD_COLOR)
+		STATUS.BUFF_DEF:
+			new_item.set_effect("Блок", DEFENCE_COLOR)
+		STATUS.BUFF_ATTACK:
+			new_item.set_effect("Сила", ATTACK_COLOR)
 		STATUS.PROTECTED:
 			new_item.set_effect("ПОД ЗАЩИТОЙ", PROTECTED_COLOR)
 		STATUS.HIDE:
 			new_item.set_effect("Прятки", HIDE_COLOR)
 		STATUS.BURN:
-			new_item.set_effect("Ожог", BURN_COLOR)
+			new_item.set_effect("Ожог", BURN_COLOR)		
+		STATUS.MARK:
+			new_item.set_effect("Уязвимый", MARK_COLOR)
 	return new_item

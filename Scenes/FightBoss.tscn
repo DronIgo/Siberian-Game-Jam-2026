@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="21_6cm7d"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="23_vepc5"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="24_6cm7d"]
-[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="27_42swo"]
 [ext_resource type="Texture2D" uid="uid://ba1a4tsfpgvqe" path="res://Assets/Doctor_art/doctor_all_0.png" id="29_6dyu3"]
 
 [sub_resource type="Animation" id="Animation_6uwd6"]
@@ -359,11 +358,14 @@ patient = NodePath("../Player/Player")
 friendly_actors = [NodePath("../Player/Player"), NodePath("../Player/Player"), NodePath("../Player/Player")]
 friendly_organs = [NodePath("../Player/Player")]
 enemy_organs = [NodePath("../Head/Logic"), NodePath("../Hand2/Logic"), NodePath("../Hand1/Logic")]
-all_organs = [NodePath("../Player/Player")]
+all_organs = [NodePath("../Player/Player"), NodePath("../Head/Logic"), NodePath("../Hand2/Logic"), NodePath("../Hand1/Logic")]
 skip_friendly_organs = true
 
 [node name="Head" parent="." unique_id=2081682971 instance=ExtResource("13_qpvpn")]
 position = Vector2(1014, 427)
+
+[node name="StatusGrid" parent="Head" index="1" unique_id=355555301]
+position = Vector2(45, -36)
 
 [node name="BossBack" type="Sprite2D" parent="." unique_id=1837887491]
 position = Vector2(1168, 424)
@@ -373,8 +375,17 @@ texture = ExtResource("15_62h5o")
 [node name="Hand2" parent="." unique_id=1039892588 instance=ExtResource("14_m6k2n")]
 position = Vector2(1024, 421)
 
+[node name="Logic" parent="Hand2" index="2" unique_id=1432745422]
+is_main = false
+
 [node name="Hand1" parent="." unique_id=1204455438 instance=ExtResource("16_vepc5")]
 position = Vector2(1020, 423)
+
+[node name="StatusGrid" parent="Hand1" index="1" unique_id=355555301]
+position = Vector2(-377, -32)
+
+[node name="Logic" parent="Hand1" index="2" unique_id=1432745422]
+is_main = false
 
 [node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "slot4", "slot5")]
 script = ExtResource("17_i2ssr")
@@ -432,13 +443,8 @@ animator = NodePath("AnimationPlayer")
 [node name="OrganHealthBarComponent" parent="Player" unique_id=502772887 instance=ExtResource("21_6cm7d")]
 position = Vector2(-880, 489)
 
-[node name="StatusGrid" parent="Player" unique_id=355555301 instance=ExtResource("19_m6k2n")]
+[node name="StatusGrid" parent="Player" unique_id=429340572 instance=ExtResource("19_m6k2n")]
 position = Vector2(-769, -82)
-
-[node name="Logic" type="Node2D" parent="Player" unique_id=1432745422 node_paths=PackedStringArray("organ_ai")]
-script = ExtResource("27_42swo")
-organ_name = "player"
-organ_ai = NodePath("../AI")
 
 [node name="AI" type="Node" parent="Player" unique_id=13203856]
 script = ExtResource("21_2n4yq")
@@ -452,7 +458,7 @@ position = Vector2(-662, 494)
 [node name="Player" type="Node2D" parent="Player" unique_id=1125611731]
 position = Vector2(-703, 38)
 script = ExtResource("15_ef38a")
-organ_name = "player_fin"
+organ_name = "hand"
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1589655490]
 position = Vector2(-795, -46)
