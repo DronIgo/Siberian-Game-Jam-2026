@@ -15,7 +15,7 @@ var all_organs : Array[OrganBase]
 
 var round_num : int = 0
 
-var _fight_history : FightHistory
+#var _fight_history : FightHistory
 var _victory : bool = false
 var _defeat : bool = false
 
@@ -41,7 +41,7 @@ func _ready() -> void:
 		organ.died.connect(_on_enemy_organ_died)
 
 	round_num = 0
-	_fight_history = FightHistory.new()
+	#_fight_history = FightHistory.new()
 	while !(_victory or _defeat):
 		await play_round()
 	if _victory:
@@ -88,8 +88,8 @@ func take_turn_friendly(actor : ActorBase) -> void:
 		if _check_action_valid_target(selected_action, selected_target):
 			print("[!!] taking action")
 			action_result = selected_action.take_action(actor, \
-				[ selected_target ] if not selected_action.is_aoe else enemy_organs)
-			_fight_history.add_action(actor, selected_action)
+				[ selected_target ] if not selected_action.is_aoe else all_organs)
+			#_fight_history.add_action(actor, selected_action)
 			selected_target.unhighlight()
 			break
 	action_list.clear()

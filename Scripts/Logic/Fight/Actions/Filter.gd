@@ -25,7 +25,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var removed_status_name = "ничего"
 	if targets[0].statuses.size() > 0:
 		removed_status_name = (targets[0].statuses[0] as StatusEffectBase).lore_name
-	targets[0].remove_status(targets[0].statuses[0])
+		targets[0].remove_status(targets[0].statuses[0])
 	return ActionResult.new(formated_result,\
 		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name,\
 		"status" : removed_status_name}, 1)
