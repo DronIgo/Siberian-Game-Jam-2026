@@ -1,5 +1,10 @@
 extends Node
 
+var collected_organs: Array[String] = ["sick_heart", "sick_lung", "sick_kidney"]
+var organ_to_action: Dictionary[String, String] = {"sick_heart": "antalgetic",
+												   "sick_lung": "haste",
+												   "sick_kidney": "filter"}
+
 var items: Array = [
 	ShopItemInfo.new("bandage", "Бинты", "Позволяет снять кроватечение", 20),
 	ShopItemInfo.new("mana_potion", "Витамины", "Позваляет восстановить иммунитет", 20),
