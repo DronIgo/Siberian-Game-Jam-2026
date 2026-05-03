@@ -14,6 +14,7 @@ var damage_type : DAMAGE_TYPE = DAMAGE_TYPE.NONE
 var stats : Dictionary
 var lore_name : String
 var is_aoe: bool = false
+var is_shop: bool = false
 var description: String = ""
 
 var usage_sound_name: String

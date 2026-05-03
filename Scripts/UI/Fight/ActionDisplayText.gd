@@ -13,8 +13,8 @@ func clear() -> void:
 	label.text = ""
 	visible = false
 
-func display_action(result: ActionResult) -> void:
-	await display(result.get_formatted_description())
+func display_action(result: ActionResult, wait_time : float = wait_after_display) -> void:
+	await display(result.get_formatted_description(), wait_time)
 
 func display(text: String, time: float = wait_after_display) -> void:
 	visible = true

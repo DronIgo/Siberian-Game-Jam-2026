@@ -14,6 +14,8 @@ var health : int
 var mana : int = 10
 
 var actions : Array = []
+var item_actions : Array = []
+var amount_by_action : Dictionary
 var highlighted: bool
 
 var vulnerable : ActionBase.DAMAGE_TYPE
@@ -35,10 +37,13 @@ func init(actor_name : String) -> void:
 signal died(actor : ActorBase)
 
 func remove_action(action_name: String):
-	var actions_to_erase: Array = actions.filter(\
-		func(action): return action.action_name == action_name)
-	for action_to_erase in actions_to_erase:
-		actions.erase(action_to_erase)
+	amount_by_action[action_name] -= 1
+	if amount_by_action[action_name] <= 0:
+		for action in item_actions:
+			if action.lore_name == action_name:
+				item_actions.erase(action)
+		amount_by_action.erase(action_name)
+	
 
 func after_action() -> void:
 	actor_ui.update_mana()
@@ -132,6 +137,12 @@ func _init_actions(action_names : Array) -> void:
 		var action: ActionBase = AG.generate_action_by_name(a_name)
 		if action != null:
 			actions.append(action)
+
+func _init_item_actions() -> void:
+	for key in ISH.player_pocket:
+		var action: ActionBase = AG.generate_action_by_name(key)
+		item_actions.append(action)
+		amount_by_action[action.lore_name] = ISH.player_pocket[key]
 
 func _init_stats(stats : Dictionary) -> void:
 	var mh = _try_parse(stats, "max_health")

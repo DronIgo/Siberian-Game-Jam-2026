@@ -5,6 +5,22 @@
 	},
 	"healthy_heart" : {
 		"max_health" : 80,
+		"name" : "здоровое сердце"
+	},
+	"healthy_brain" : {
+		"max_health" : 80,
+		"name" : "здоровый мозг"
+	},
+	"healthy_lung" : {
+		"max_health" : 80,
+		"name" : "Здоровое сердце"
+	},
+	"healthy_kidney" : {
+		"max_health" : 80,
+		"name" : "Здоровое сердце"
+	},
+	"healthy_liver" : {
+		"max_health" : 80,
 		"name" : "Здоровое сердце"
 	},
 	"sick_kidney" : {
