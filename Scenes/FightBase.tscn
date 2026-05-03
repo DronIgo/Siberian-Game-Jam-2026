@@ -11,11 +11,96 @@
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
-[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
 [ext_resource type="PackedScene" uid="uid://bm1kx6ohn6gu0" path="res://Scenes/Fight/UI/DocHealthBarComponent.tscn" id="23_khk4b"]
+
+[sub_resource type="Animation" id="Animation_6uwd6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLeftSprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-122.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurtainRightSprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [613.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BgOrganLightSprite2D:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0d5t2"]
+resource_name = "curtains_opening"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLeftSprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-122.0, -788.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurtainRightSprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [613.0, 1266.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BgOrganLightSprite2D:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uwd6"]
+_data = {
+&"RESET": SubResource("Animation_6uwd6"),
+&"curtains_opening": SubResource("Animation_0d5t2")
+}
 
 [node name="FightBase" type="CanvasLayer" unique_id=60080579]
 
@@ -44,15 +129,16 @@ position = Vector2(245, -145)
 texture = ExtResource("2_xx2d7")
 
 [node name="BgOrganLightSprite2D" type="Sprite2D" parent="BackControl" unique_id=19293288]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(245, -145)
 texture = ExtResource("3_g5117")
 
 [node name="CurtainLeftSprite2D" type="Sprite2D" parent="BackControl" unique_id=1341114287]
-position = Vector2(-788, -145)
+position = Vector2(-122, -145)
 texture = ExtResource("17_r4ejf")
 
 [node name="CurtainRightSprite2D" type="Sprite2D" parent="BackControl" unique_id=810683040]
-position = Vector2(1266, -145)
+position = Vector2(613, -145)
 texture = ExtResource("18_bhaob")
 
 [node name="FrameTextSprite2D" type="Sprite2D" parent="BackControl" unique_id=6706054]
@@ -66,6 +152,9 @@ texture = ExtResource("18_mnvx0")
 [node name="FramePatientFrontSprite2D" type="Sprite2D" parent="BackControl" unique_id=424049112]
 position = Vector2(-715, -145)
 texture = ExtResource("19_r4ejf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackControl" unique_id=252956924]
+libraries/ = SubResource("AnimationLibrary_6uwd6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
@@ -89,7 +178,8 @@ grow_horizontal = 0
 grow_vertical = 0
 wait_after_display = 2.0
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
+back_animation_player = NodePath("../BackControl/AnimationPlayer")
 action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
