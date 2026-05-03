@@ -159,7 +159,7 @@ position = Vector2(72, -46)
 
 [node name="Logic" type="Node2D" parent="." unique_id=258606152 node_paths=PackedStringArray("organ_ai")]
 script = ExtResource("7_wqqt1")
-organ_name = "sick_liver"
+organ_name = "sick_kidney"
 organ_ai = NodePath("../AI")
 is_healthy = false
 

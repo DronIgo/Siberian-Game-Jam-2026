@@ -5,7 +5,7 @@ extends Node2D
 #TODO: для маленького тентакля всетаки сделать preload - он может появляться много раз за бой
 const HEALTHY_HEART_UID = "uid://x6staq5pspoj"
 
-const SICK_LIVER_UID = "uid://taivcdbkqdb8"
+const SICK_KIDNEY_UID = "uid://taivcdbkqdb8"
 
 const EVIL_TENTACLE_UID = "uid://doa8o4i0u2wco"
 
@@ -25,8 +25,8 @@ func summon_by_name(organ_name : String) -> OrganBase:
 	match organ_name:
 		"healthy_heart":
 			organ_res = load(HEALTHY_HEART_UID)
-		"sick_liver":
-			organ_res = load(SICK_LIVER_UID)
+		"sick_kidney":
+			organ_res = load(SICK_KIDNEY_UID)
 		"tentacle":
 			organ_res = load(EVIL_TENTACLE_UID)
 	var organ = organ_res.instantiate()

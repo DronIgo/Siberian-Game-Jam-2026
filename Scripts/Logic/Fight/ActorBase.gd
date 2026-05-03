@@ -60,8 +60,14 @@ func unhighlight():
 
 func take_damage(amount : int, type : ActionBase.DAMAGE_TYPE) -> int:
 	if health <= 0:
+		print("HEALTH IS ZERO %s takesdamage (had %d health)" % [lore_name, health])
 		return 0
+	for s in statuses:
+		if s.type == StatusGenerator.STATUS.PROTECTED and s.shield_bearer and s.shield_bearer.health > 0:
+			print("Redirecting %d damage from %s to %s" % [amount, lore_name, s.shield_bearer.lore_name])
+			return s.shield_bearer.take_damage(amount, type)
 	var actual_amount = calc_damage_taken(amount, type)
+	print("%s takes %d damage (had %d health)" % [lore_name, actual_amount, health])
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
@@ -166,3 +172,9 @@ func _try_parse(stats : Dictionary, stat_name : String):
 
 func take_turn(possible_targets : Array) -> ActionResult:
 	return null
+
+func remove_status_by_type(type: StatusGenerator.STATUS) -> void:
+	var to_remove = statuses.filter(func(s): return s.type == type)
+	for s in to_remove:
+		statuses.erase(s)
+		actor_ui.remove_status(s)

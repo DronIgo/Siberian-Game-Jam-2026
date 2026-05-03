@@ -9,7 +9,7 @@
 		"scalpel",
 		"scalpel",
 		"scalpel",
-		"aspirin",
+		"aspirin"
 	],
 	"healthy_heart" : [
 		"heal"
@@ -21,6 +21,7 @@
 	"tentacle" : [
 		"mark-for-death",
 		"mark-for-death",
-		"mark-for-death"
+		"mark-for-death",
+		"defend"
 	]
 }

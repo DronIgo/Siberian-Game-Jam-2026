@@ -49,4 +49,6 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionMarkForDeath.new()
 		"irtysh":
 			return ActionIrtysh.new()
+		"defend":
+			return ActionDefend.new()
 	return null

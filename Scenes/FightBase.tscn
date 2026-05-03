@@ -266,7 +266,7 @@ action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
 patient = NodePath("../Patient/Player")
 friendly_actors = [NodePath("../Patient/Player"), NodePath("../Patient/Player")]
-list_organs = Array[String](["healthy_heart", "sick_liver", "tentacle"])
+list_organs = Array[String](["healthy_heart", "sick_kidney", "tentacle"])
 
 [node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
 script = ExtResource("13_yt7vv")
