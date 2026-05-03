@@ -1,8 +1,16 @@
 {
 	"phases": [
 		{
-			"id": "test",
+			"id": "start",
 			"scene_name": "",
+			"next_phase_id": "start_dialog"
+		},
+		{
+			"id": "start_dialog",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/start.json"
+			],
 			"next_phase_id": "hub"
 		},
 		{
@@ -16,19 +24,11 @@
 			"next_phase_id": "hub"
 		},
 		{
-			"id": "house_dialog",
-			"scene_name": "res://Dialog/dialog.tscn",
-			"args": [
-				"res://Dialog/test_dialog.json"
-			],
-			"next_phase_id": "house_fight"
-		},
-		{
 			"id": "house_fight",
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"next_phase_id": "hub"
 		}
 	],
 	"events": [],
-	"init_scene_id": "test"
+	"init_scene_id": "start"
 }
