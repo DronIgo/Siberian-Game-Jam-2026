@@ -73,4 +73,6 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionManaPotion.new()
 		"health_potion":
 			return ActionHealthPotion.new()
+		"hide":
+			return ActionHide.new()
 	return null

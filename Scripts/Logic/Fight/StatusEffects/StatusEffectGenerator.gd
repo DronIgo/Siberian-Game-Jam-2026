@@ -12,6 +12,7 @@ const BURN_COLOR : Color = Color(1.0, 0.349, 0.0, 1.0)
 const HASTE_COLOR : Color = Color(0.58, 0.893, 0.961, 1.0)
 const SHIELD_COLOR : Color = Color(0.4, 0.6, 0.8)
 const PROTECTED_COLOR : Color = Color(0.4, 0.6, 0.8)
+const HIDE_COLOR : Color = Color(0.5, 0.5, 0.5)
 
 const _stats_json_path = "res://Files/StatusStats/status_stats.json"
 
@@ -29,7 +30,8 @@ enum STATUS {
 	HEAL,
 	HASTE,
 	SHIELD,
-	PROTECTED
+	PROTECTED,
+	HIDE
 }
 
 func _ready() -> void:
@@ -77,6 +79,9 @@ func create_status(type : STATUS) -> StatusEffectBase:
 		STATUS.PROTECTED:
 			var status = StatusEffectProtected.new(duration)
 			return status
+		STATUS.HIDE:
+			var status = StatusEffectHide.new(duration)
+			return status
 
 	printerr("unsupported status type")
 	return StatusEffectBase.new(amount, duration)
@@ -103,4 +108,6 @@ func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 			new_item.set_effect("ЗАЩИЩАЕТ", SHIELD_COLOR)
 		STATUS.PROTECTED:
 			new_item.set_effect("ПОД ЗАЩИТОЙ", PROTECTED_COLOR)
+		STATUS.HIDE:
+			new_item.set_effect("Прятки", HIDE_COLOR)
 	return new_item

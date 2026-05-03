@@ -79,6 +79,8 @@ func calc_damage_taken(damage : int, type : ActionBase.DAMAGE_TYPE) -> int:
 	var mult : float = 100.0
 	var extra : int = 0
 	for s in statuses:
+		if s.type == StatusGenerator.STATUS.HIDE:
+			return 0
 		if s.type == StatusGenerator.STATUS.BUFF_DEF:
 			mult -= float(s.amount)
 		if s.type == StatusGenerator.STATUS.MARK:
