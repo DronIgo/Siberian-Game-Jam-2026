@@ -1,0 +1,322 @@
+[gd_scene format=3 uid="uid://nvibge26v1mh"]
+
+[ext_resource type="Texture2D" uid="uid://bd2j7oexio8dd" path="res://Assets/UI/UI_battle_boss/bg_boss_dark.png" id="1_ikx48"]
+[ext_resource type="Texture2D" uid="uid://d23rgh1c8p63l" path="res://Assets/UI/UI_battle_boss/bg_boss_light.png" id="2_8w6ld"]
+[ext_resource type="Texture2D" uid="uid://c71i5p8qsf0xw" path="res://Assets/UI/UI_battle_boss/boss_1.png" id="3_fg4gi"]
+[ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="4_vepc5"]
+[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="5_6cm7d"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="7_nhr7w"]
+[ext_resource type="Texture2D" uid="uid://b04owl16n0nip" path="res://Assets/UI/UI_battle_regular/paper_text.png" id="8_1pvrh"]
+[ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="9_6dyu3"]
+[ext_resource type="Texture2D" uid="uid://bcwkcv318pxqg" path="res://Assets/UI/UI_action_button/selected.png" id="10_q1sl8"]
+[ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="11_42swo"]
+[ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="12_g6qfc"]
+[ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="13_2n4yq"]
+[ext_resource type="PackedScene" uid="uid://bp8aaeeymfq30" path="res://Scenes/Fight/Organs/Evil/BossHand_1.tscn" id="13_qpvpn"]
+[ext_resource type="PackedScene" uid="uid://drrn1o6325cvj" path="res://Scenes/Fight/Organs/Evil/BossHand_2.tscn" id="14_m6k2n"]
+[ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="14_mncj4"]
+[ext_resource type="Texture2D" uid="uid://cngt81n2mjpy0" path="res://Assets/UI/UI_battle_boss/boss_body.png" id="15_62h5o"]
+[ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="15_ef38a"]
+[ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="16_a2e2o"]
+[ext_resource type="PackedScene" uid="uid://bob863b4ranhk" path="res://Scenes/Fight/Organs/Evil/BossHead.tscn" id="16_vepc5"]
+[ext_resource type="Script" uid="uid://d0s2y4y285p4t" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="17_i2ssr"]
+[ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="19_tfmcw"]
+
+[sub_resource type="Animation" id="Animation_6uwd6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLeftSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-480, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurtainRightSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(620, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0d5t2"]
+resource_name = "curtains_opening"
+length = 3.0
+
+[sub_resource type="Animation" id="Animation_tuuug"]
+resource_name = "curtains_opening_boss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLeftSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-480, 0), Vector2(-1509, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurtainRightSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(620, 0), Vector2(1556, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uwd6"]
+_data = {
+&"RESET": SubResource("Animation_6uwd6"),
+&"curtains_opening": SubResource("Animation_0d5t2"),
+&"curtains_opening_boss": SubResource("Animation_tuuug")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjaq6"]
+
+[node name="FightBase" type="CanvasLayer" unique_id=60080579]
+
+[node name="BackControl" type="Control" parent="." unique_id=550811061]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ReferenceBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1867239223]
+position = Vector2(0, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ikx48")
+
+[node name="ReferenceBackSprite2D2" type="Sprite2D" parent="BackControl" unique_id=1613705777]
+self_modulate = Color(1, 1, 1, 0.2509804)
+position = Vector2(0, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_8w6ld")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackControl" unique_id=252956924]
+libraries/ = SubResource("AnimationLibrary_6uwd6")
+
+[node name="BossFullSprite" type="Sprite2D" parent="BackControl" unique_id=1926939245]
+position = Vector2(228.00002, -96.00001)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_fg4gi")
+
+[node name="CurtainLeftSprite2D" type="Sprite2D" parent="BackControl" unique_id=1010971228]
+visible = false
+z_index = 2
+position = Vector2(-480, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_vepc5")
+
+[node name="CurtainRightSprite2D" type="Sprite2D" parent="BackControl" unique_id=263832012]
+visible = false
+z_index = 2
+position = Vector2(620, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_6cm7d")
+
+[node name="HintSprite2D" type="Sprite2D" parent="." unique_id=837589550]
+z_index = 7
+position = Vector2(1743, 1124)
+texture = ExtResource("8_1pvrh")
+
+[node name="HintLabel" type="Label" parent="HintSprite2D" unique_id=1018833370]
+offset_left = -358.0
+offset_top = -231.0
+offset_right = 142.0
+offset_bottom = -81.0
+theme = ExtResource("7_nhr7w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
+
+[node name="ActionList" parent="CanvasLayer" unique_id=1970410951 node_paths=PackedStringArray("back_b", "menu") instance=ExtResource("9_6dyu3")]
+visible = false
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bjaq6")
+back_b = NodePath("Back/SelectButton")
+menu = NodePath("../Menu")
+
+[node name="Back" type="Label" parent="CanvasLayer/ActionList" unique_id=1125444139]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 1167.0
+offset_top = 29.0
+offset_right = 1447.0
+offset_bottom = 87.0
+theme = ExtResource("7_nhr7w")
+theme_override_font_sizes/font_size = 42
+text = "Назад"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/ActionList/Back" unique_id=1881412322]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("10_q1sl8")
+texture_hover = ExtResource("11_42swo")
+
+[node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("12_g6qfc")]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1470.0
+offset_top = -330.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+wait_after_display = 3.0
+
+[node name="Menu" type="Panel" parent="CanvasLayer" unique_id=1418809547]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+
+[node name="Attack" type="Label" parent="CanvasLayer/Menu" unique_id=734473577]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 96.0
+offset_right = 342.0
+offset_bottom = 154.0
+theme = ExtResource("7_nhr7w")
+theme_override_font_sizes/font_size = 42
+text = "Атака"
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/Menu/Attack" unique_id=1703572248]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("10_q1sl8")
+texture_hover = ExtResource("11_42swo")
+
+[node name="Items" type="Label" parent="CanvasLayer/Menu" unique_id=2079220080]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 154.0
+offset_right = 342.0
+offset_bottom = 212.0
+theme = ExtResource("7_nhr7w")
+theme_override_font_sizes/font_size = 42
+text = "Предметы"
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/Menu/Items" unique_id=446089621]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("10_q1sl8")
+texture_hover = ExtResource("11_42swo")
+
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "hint_label", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient") instance=ExtResource("13_2n4yq")]
+curtains_opening_animation_name = "curtains_opening_boss"
+skip_friendly_organs = true
+back_animation_player = NodePath("../BackControl/AnimationPlayer")
+hint_label = NodePath("../HintSprite2D/HintLabel")
+menu = NodePath("../CanvasLayer/Menu")
+attack_b = NodePath("../CanvasLayer/Menu/Attack/SelectButton")
+item_b = NodePath("../CanvasLayer/Menu/Items/SelectButton")
+action_list = NodePath("../CanvasLayer/ActionList")
+action_display_text = NodePath("../CanvasLayer/FightText")
+organ_summoner = NodePath("../OrganSummoner")
+patient = NodePath("../Patient/Player")
+
+[node name="Head" parent="." unique_id=2081682971 instance=ExtResource("13_qpvpn")]
+position = Vector2(1014, 427)
+
+[node name="BossBack" type="Sprite2D" parent="." unique_id=1837887491]
+position = Vector2(1168, 424)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("15_62h5o")
+
+[node name="Hand2" parent="." unique_id=1039892588 instance=ExtResource("14_m6k2n")]
+position = Vector2(1024, 421)
+
+[node name="Hand1" parent="." unique_id=1204455438 instance=ExtResource("16_vepc5")]
+position = Vector2(1020, 423)
+
+[node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
+script = ExtResource("14_mncj4")
+mana_bar = NodePath("PatientMana")
+actor = NodePath("Player")
+
+[node name="Player" type="Node2D" parent="Patient" unique_id=1125611731]
+position = Vector2(317, 461)
+script = ExtResource("15_ef38a")
+
+[node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("16_a2e2o")]
+position = Vector2(358, 917)
+
+[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "slot4", "slot5")]
+script = ExtResource("17_i2ssr")
+slots_container = NodePath(".")
+friendly_slots = [NodePath("Slot"), NodePath("Slot4")]
+enemy_slots = [NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot5")]
+slot4 = NodePath("Slot4")
+slot5 = NodePath("Slot5")
+
+[node name="Slot" type="Node2D" parent="OrganSummoner" unique_id=984775769]
+position = Vector2(750, 200)
+
+[node name="Slot2" type="Node2D" parent="OrganSummoner" unique_id=1735350151]
+position = Vector2(1150, 200)
+
+[node name="Slot3" type="Node2D" parent="OrganSummoner" unique_id=1293658669]
+position = Vector2(1550, 200)
+
+[node name="Slot4" type="Node2D" parent="OrganSummoner" unique_id=548574260]
+position = Vector2(950, 520)
+
+[node name="Slot5" type="Node2D" parent="OrganSummoner" unique_id=1926079143]
+position = Vector2(1350, 520)
+
+[node name="FrontControl" type="Control" parent="." unique_id=1358595519]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrameTextSprite2D" type="Sprite2D" parent="FrontControl" unique_id=6706054]
+position = Vector2(1185, 915)
+texture = ExtResource("19_tfmcw")

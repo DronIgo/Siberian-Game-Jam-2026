@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
 [ext_resource type="Texture2D" uid="uid://bfecpl07fm7tg" path="res://Assets/UI/UI_battle_regular/paper_patient.png" id="17_veage"]
-[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="18_veage"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
@@ -108,7 +108,7 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjaq6"]
 
-[node name="FightBase" type="CanvasLayer" unique_id=60080579]
+[node name="FightBase2" type="CanvasLayer" unique_id=60080579]
 
 [node name="BackControl" type="Control" parent="." unique_id=550811061]
 layout_mode = 3
@@ -271,7 +271,7 @@ offset_bottom = 58.0
 texture_pressed = ExtResource("11_khk4b")
 texture_hover = ExtResource("12_1aue6")
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "patient_label", "patien_table", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "patient_label", "patien_table", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient") instance=ExtResource("8_6x1fx")]
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
 patient_label = NodePath("../PatientPaperSprite2D/PatientPaperLabel")
 patien_table = NodePath("../PatientTable")
@@ -282,7 +282,6 @@ action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
 patient = NodePath("../Patient/Player")
-friendly_actors = [NodePath("../Patient/Player"), NodePath("../Patient/Player")]
 
 [node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
 script = ExtResource("13_yt7vv")

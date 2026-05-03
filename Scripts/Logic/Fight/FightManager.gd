@@ -20,10 +20,11 @@ extends Node2D
 @export var patient : ActorBase
 @export var friendly_actors : Array[ActorBase]
 
-var list_organs : Array
-var friendly_organs : Array[OrganBase]
-var enemy_organs : Array[OrganBase]
-var all_organs : Array[OrganBase]
+@export var list_organs : Array[String]
+@export var friendly_organs : Array[ActorBase]
+@export var enemy_organs : Array[OrganBase]
+@export var all_organs : Array[OrganBase]
+@export var skip_friendly_organs : bool = false
 
 var round_num : int = 0
 
@@ -35,7 +36,7 @@ var _main_organ_name : String = "Инородный орган"
 signal _on_any_selection_signal(arg)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#PhaseManager.init()
+	PhaseManager.init()
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
 	
@@ -70,6 +71,8 @@ func _ready() -> void:
 	round_num = 0
 	#_fight_history = FightHistory.new()
 	
+	if patient_label:
+		patient_label.text = current_phase.args[0]
 	back_animation_player.play(curtains_opening_animation_name)
 	SoundProcessor.process_sound(battle_start_sound_name)
 	
@@ -92,6 +95,8 @@ func play_round() -> void:
 	for enemy in enemy_organs:
 		await take_turn_organ(enemy)
 		if _defeat || _victory: return
+	if skip_friendly_organs:
+		return
 	for friend_organ in friendly_organs:
 		await take_turn_organ(friend_organ)
 		if _defeat || _victory: return
@@ -250,5 +255,6 @@ func _on_victory() -> void:
 	pass
 
 func _on_defeat() -> void:
+	get_tree().change_scene_to_file("res://Hub/hub.tscn")
 	print("GAME OVER")
 	pass
