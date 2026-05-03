@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bqufpe74r3wu" path="res://Assets/UI/UI_city/city_house_0.png" id="5_842jq"]
 [ext_resource type="Texture2D" uid="uid://df70j3vea24rm" path="res://Assets/UI/UI_city/city_house_2.png" id="5_hvhe6"]
 [ext_resource type="Script" uid="uid://d2wwkwmllbtne" path="res://Hub/Building.gd" id="14_vk2n8"]
-[ext_resource type="Texture2D" uid="uid://df1orx4ayamet" path="res://Assets/UI/UI_city/REF_CITY.png" id="15_qje4f"]
-[ext_resource type="Texture2D" uid="uid://bmsjf4aqn6q2v" path="res://Assets/UI/UI_city/city_paper.png" id="16_m76ao"]
+[ext_resource type="Texture2D" uid="uid://hjdntvsb4b68" path="res://Assets/UI/UI_city/REF_CITY.png" id="15_qje4f"]
+[ext_resource type="Texture2D" uid="uid://u1ac2tq4830e" path="res://Assets/UI/UI_city/city_paper.png" id="16_m76ao"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="17_nwqdf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qje4f"]
@@ -48,6 +48,26 @@ radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wy3r"]
 radius = 125.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwqdf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3wy3r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1t70r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oclx3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ctn4a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njb3o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_spi26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn3c0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsn0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8s3js"]
 
 [node name="Hub" type="CanvasLayer" unique_id=1730030736 node_paths=PackedStringArray("building_info_rect", "building_info_label")]
 script = ExtResource("1_siedd")
@@ -283,8 +303,15 @@ offset_bottom = -597.0
 grow_horizontal = 0
 grow_vertical = 0
 rotation = -0.017453292
-theme_override_font_sizes/font_size = 32
-text = "Back"
+theme = ExtResource("17_nwqdf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nwqdf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3wy3r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1t70r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oclx3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ctn4a")
+text = "Назад"
 
 [node name="GoButton" type="Button" parent="Paper" unique_id=2055013999]
 anchors_preset = 2
@@ -296,8 +323,15 @@ offset_right = -45.0
 offset_bottom = -593.0
 grow_vertical = 0
 rotation = -0.017453292
-theme_override_font_sizes/font_size = 32
-text = "Go"
+theme = ExtResource("17_nwqdf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_njb3o")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_spi26")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dn3c0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lsn0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8s3js")
+text = "Перейти"
 
 [connection signal="pressed" from="Paper/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Paper/GoButton" to="." method="_on_go_button_pressed"]
