@@ -25,6 +25,12 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionScalpel.new()
 		"aspirin":
 			return ActionAspirin.new()
+		"penicillin":
+			return ActionPenicillin.new()
+		"syringe_green":
+			return ActionSyringeGreen.new()
+		"syringe_blue":
+			return ActionSyringeBlue.new()
 		"heal":
 			return ActionHeal.new()
 		"mitosis":
@@ -37,6 +43,10 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionFilter.new()
 		"cauterization":
 			return ActionСauterization.new()
+		"haste":
+			return ActionHaste.new()
+		"mark-for-death":
+			return ActionMarkForDeath.new()
 		"irtysh":
 			return ActionIrtysh.new()
 	return null

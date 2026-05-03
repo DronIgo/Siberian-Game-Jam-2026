@@ -1,10 +1,10 @@
-class_name ActionAspirin
+class_name ActionPenicillin
 extends ActionBase
 
-var action_name = "aspirin"
+var action_name = "penicillin"
 var damage
 
-var formated_result : String = "{initiator} использует аспирин, у пациента снизилась свертываемость крови"
+var formated_result : String = "{initiator} использует антибиотик"
 
 func _init() -> void:
 	is_aoe = true
@@ -19,6 +19,6 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	for target in targets:
 		target.take_damage(actual_damage)
 		target.apply_status(\
-			SEG.create_status(StatusGenerator.STATUS.BLEED))
+			SEG.create_status(StatusGenerator.STATUS.POISON))
 	return ActionResult.new(formated_result,\
 		{"initiator" : initiator.lore_name}, 1)

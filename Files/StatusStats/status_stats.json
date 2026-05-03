@@ -23,6 +23,10 @@
 		"amount" : 3,
 		"duration" : 5
 	},
+	"HASTE" : {
+		"amount" : 80,
+		"duration" : 2
+	},
 	"__default__" : {
 		"duration" : 3
 	}
