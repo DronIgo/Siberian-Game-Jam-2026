@@ -39,7 +39,7 @@
 			"args": [
 				"Зофья Птакска",
 				"bird",
-				[ "tentacle", "healthy_heart" ]
+				[ "wings", "healthy_kidney", "sick_liver" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -49,7 +49,7 @@
 			"args": [
 				"Стани́слав Латачски",
 				"fly",
-				[ "tentacle", "healthy_heart" ]
+				[ "eyes", "healthy_brain", "sick_lung" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -59,7 +59,7 @@
 			"args": [
 				"Елена Рожинска",
 				"deer",
-				[ "tentacle", "healthy_heart" ]
+				[ "horns", "healthy_lung", "sick_brain" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -69,7 +69,7 @@
 			"args": [
 				"Кара Пасынич",
 				"beetle",
-				[ "tentacle", "healthy_heart" ]
+				[ "shell", "healthy_liver", "sick_kidney" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -79,7 +79,7 @@
 			"args": [
 				"Пётрек Ваговски",
 				"fish",
-				[ "tentacle", "healthy_heart" ]
+				[ "scales", "healthy_heart", "sick_kidney" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -89,7 +89,7 @@
 			"args": [
 				"Марек Жадлович",
 				"scorpion",
-				[ "tentacle", "healthy_heart" ]
+				[ "tail", "healthy_brain", "sick_liver" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -99,7 +99,7 @@
 			"args": [
 				"Майя Хрилетич",
 				"axolotl",
-				[ "tentacle", "healthy_heart" ]
+				[ "axolotl", "healthy_kidney", "sick_lung" ]
 			],
 			"next_phase_id": "hub"
 		},
@@ -109,7 +109,7 @@
 			"args": [
 				"Святлослав Глович",
 				"firefly",
-				[ "tentacle", "healthy_heart" ]
+				[ "firefly", "healthy_liver", "sick_brain" ]
 			],
 			"next_phase_id": "hub"
 		}
