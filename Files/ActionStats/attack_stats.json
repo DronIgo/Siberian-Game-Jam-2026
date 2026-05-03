@@ -1,41 +1,46 @@
 {
 		"scalpel" : {
 			"damage" : 15,
+			"damage_type" : "RED",
 			"manacost" : 0,
 			"name" : "Надрез",
-			"description" : "Наносит %d урона скальпелем",
+			"description" : "Наносит режущий урон.",
 			"sound": "res://Assets/SFX/player_cut.mp3"
 		},
 		"aspirin" : {
 			"amount" : 5,
 			"damage" : 15,
+			"damage_type" : "RED",
 			"manacost" : 20,
 			"name" : "Аспирин",
-			"description" : "Снижает свертываемость крови у всех врагов. Накладывает кровотечение %d на %d хода",
+			"description" : "Наносит режущий урон и вызывает кровотечение всем органам.",
 			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"penicillin" : {
 			"amount" : 5,
 			"damage" : 15,
+			"damage_type" : "GREEN",
 			"manacost" : 20,
 			"name" : "Пенициллин",
-			"description" : "Уничтожает микрофлору всех врагов. Накладывает отравление %d на %d хода",
+			"description" : "Наносит токсичный урон и отравляет все органы.",
 			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"syringe_green" : {
 			"amount" : 5,
 			"damage" : 20,
+			"damage_type" : "GREEN",
 			"manacost" : 10,
 			"name" : "Эпинефрин",
-			"description" : " Наносит урон и накладывает отравление %d на %d хода",
+			"description" : " Наносит токсичный урон и отравляет.",
 			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"syringe_blue" : {
 			"amount" : 5,
 			"damage" : 20,
+			"damage_type" : "BLUE",
 			"manacost" : 10,
 			"name" : "Гидрокортизон",
-			"description" : " Наносит урон и накладывает ожог %d на %d хода",
+			"description" : " Наносит огненный урон и накладывает ожог.",
 			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"antalgetic" : {
@@ -47,29 +52,30 @@
 		"crush" : {
 			"name" : "Сокрушение",
 			"damage" : 30,
-			"description" : "Мощный удар, сокрушающий орган. Наносит %d урона"
+			"description" : "Мощный удар, сокрушающий орган."
 		},
 		"roll" : {
 			"name" : "Раскатывание",
 			"damage" : 30,
-			"description" : "Мощный удар, расплющивающий орган. Наносит %d урона"
+			"description" : "Мощный удар, расплющивающий орган."
 		},
 		"mitos" : {
 			"name" : "Размножиться",
-			"description" : "Создает ещё одно щупальце на %d хода"
+			"description" : "Создает ещё одно щупальце."
 		},
 		"buff" : {
 			"name" : "Кортизол",
-			"description" : "Повышает урон органа на %d хода"
+			"description" : "Повышает урон"
 		},
 		"buff_defense" : {
 			"name" : "Блокировать",
-			"description" : "Повышает защиту органа на %d хода"
+			"description" : "Повышает защиту"
 		},
 		"cauterization": {
-			"manacost" : 0,
+			"damage" : 15,
+			"damage_type" : "BLUE",
 			"name" : "Прижигание",
-			"description" : "Накладывает ожог (противник получает дополнительно %d урона при атаке по нему)",
+			"description" : "Наносит огненный урон и накладывает ожог.",
 			"sound": "res://Assets/SFX/player_burn.mp3"
 		},
 		"irtysh" : {

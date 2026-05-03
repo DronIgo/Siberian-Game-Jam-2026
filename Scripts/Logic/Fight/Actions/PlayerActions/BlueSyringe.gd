@@ -20,7 +20,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 		target.apply_status(\
 			SEG.create_status(StatusGenerator.STATUS.BURN))
 	return ActionResult.new(\
-		"{initiator} вкалываете гидрокортизон. {targets} получает {damage} урона и ожог", { \
+		"{initiator} вкалываете эпинефрин. {targets} получает {damage} урона и отравлен", { \
 			"initiator": initiator.lore_name,\
 			"targets": ", ".join(target_names), \
 			"damage": damage }, 1)
