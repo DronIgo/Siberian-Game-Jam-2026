@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://eecx3a0dv71q" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
-[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
@@ -203,25 +203,28 @@ script = ExtResource("6_3g3hk")
 [node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("23_8aayq")]
 position = Vector2(179, 917)
 
-[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("friendly_slots", "enemy_slots")]
+[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "slot4", "slot5")]
 script = ExtResource("1_vqao4")
+slots_container = NodePath(".")
 friendly_slots = [NodePath("Slot"), NodePath("Slot4")]
 enemy_slots = [NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot5")]
+slot4 = NodePath("Slot4")
+slot5 = NodePath("Slot5")
 
 [node name="Slot" type="Node2D" parent="OrganSummoner" unique_id=984775769]
-position = Vector2(750, 182)
+position = Vector2(750, 200)
 
 [node name="Slot2" type="Node2D" parent="OrganSummoner" unique_id=1735350151]
-position = Vector2(1160, 187)
+position = Vector2(1150, 200)
 
 [node name="Slot3" type="Node2D" parent="OrganSummoner" unique_id=1293658669]
-position = Vector2(1570, 191)
+position = Vector2(1550, 200)
 
 [node name="Slot4" type="Node2D" parent="OrganSummoner" unique_id=548574260]
-position = Vector2(844, 443)
+position = Vector2(950, 520)
 
 [node name="Slot5" type="Node2D" parent="OrganSummoner" unique_id=1926079143]
-position = Vector2(1365, 422)
+position = Vector2(1350, 520)
 
 [node name="PatientTable" parent="." unique_id=1637330193 instance=ExtResource("16_6uwd6")]
 position = Vector2(224, 375)
