@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c26aqqh3msrka"]
+
+[ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_q7oks"]
+[ext_resource type="Texture2D" uid="uid://bad43mqi08si1" path="res://Assets/Characters_art/patient_bird_0.png" id="2_ipmpq"]
+[ext_resource type="Texture2D" uid="uid://brxr6d6rq0q4d" path="res://Assets/Characters_art/patient_bird_1.png" id="3_sd717"]
+[ext_resource type="Texture2D" uid="uid://dhkaua6q044l3" path="res://Assets/Characters_art/patient_bird_2.png" id="4_tx2wg"]
+[ext_resource type="Texture2D" uid="uid://cv0mqluolo2vw" path="res://Assets/Characters_art/patient_bird_3.png" id="5_b2xof"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ub1i1"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ipmpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sd717")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tx2wg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b2xof")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="PatientBird" type="Node2D" unique_id=1736270522 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_q7oks")
+id = "bird"
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1615582161]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ub1i1")
+animation = &"idle"
+frame = 1
+frame_progress = 0.16853462

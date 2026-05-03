@@ -19,7 +19,6 @@ var _current_logic_value: float
 
 func _ready() -> void:
 	_init_position = actual_bar.position
-	# todo: init from actors
 	init(100)
 
 func _process(delta: float) -> void:
@@ -59,11 +58,11 @@ func set_bar(value : float) -> void:
 func _display_intermediate_status_text(logic_delta: float):
 	var delta_color: String = "red" if logic_delta < 0 else "blue"
 	var delta_formatted: String = str("[color=", delta_color, "]", \
-		" - " if logic_delta < 0 else " + ", abs(logic_delta), "[/color]")
+		" - " if logic_delta < 0 else " + ", abs(logic_delta as int), "[/color]")
 	var current: String = str(_current_logic_value, delta_formatted) if logic_delta < 0 \
 		else str(_current_logic_value, delta_formatted)
 	right_text_label.text = value_format_string.format({ \
-			"current": current, \
+			"current": current as int, \
 			"total": _max_logic_value })
 	intermediate_status_timer.start(intermediate_status_seconds)
 
@@ -72,5 +71,5 @@ func _on_intermediate_status_timer_timeout() -> void:
 
 func _display_final_status_text():
 	right_text_label.text = value_format_string.format({ \
-			"current": _current_logic_value, \
+			"current": _current_logic_value as int, \
 			"total": _max_logic_value })
