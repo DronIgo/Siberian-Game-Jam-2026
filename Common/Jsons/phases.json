@@ -6,7 +6,7 @@
 			"args": [
 				"res://Dialog/Jsons/day_1_day.json"
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "boss_fight"
 		},
 		{
 			"id": "day_1_night",
@@ -158,7 +158,7 @@
 		},
 		{
 			"id": "boss_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/FightBoss.tscn",
 			"args": [
 				"",
 				"",
