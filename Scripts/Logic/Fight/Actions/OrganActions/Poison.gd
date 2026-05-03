@@ -3,7 +3,7 @@ extends ActionBase
 
 var action_name = "mark-for-death"
 
-var formated_result : String = "{initiator} не выводит токсины. {target} получает отравление."
+var formated_result : String = "Токсины задерживаются в {initiator}. {target} получает отравление."
 
 func _init() -> void:
 	super(action_name)

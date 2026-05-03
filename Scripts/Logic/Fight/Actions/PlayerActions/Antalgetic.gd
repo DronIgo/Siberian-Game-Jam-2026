@@ -2,23 +2,22 @@ class_name ActionAntalgetic
 extends ActionBase
 
 var action_name = "antalgetic"
-var damage : int
+var heal_amount : int
 
 func _init() -> void:
 	super(action_name)
 
 func _parse_stats() -> void:
-	damage = _try_parse("damage")
+	heal_amount = _try_parse("heal_amount")
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
-	var actual_damage = initiator.calc_damage_dealt(damage)
 	var target_names: Array = []
 	for target: ActorBase in targets:
-		target.take_damage(actual_damage, damage_type)
+		target.heal(heal_amount)
 		target_names.append(target.lore_name)
 	return ActionResult.new(\
-		"{initiator} наносите анальгетический гель на {targets} и исцеляете {-damage} здоровья", { \
+		"{initiator} наносите анальгетический гель на {targets} и исцеляете {heal_amount} здоровья", { \
 			"initiator": initiator.lore_name,\
 			"targets": ", ".join(target_names), \
-			"damage": damage }, 1)
+			"heal_amount": heal_amount }, 1)

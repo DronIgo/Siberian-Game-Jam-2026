@@ -45,12 +45,18 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionBlow.new()
 		"crush":
 			return ActionCrush.new()
+		"slam":
+			return ActionSlam.new()
 		"filter":
 			return ActionFilter.new()
 		"cauterization":
 			return ActionСauterization.new()
 		"haste":
 			return ActionHaste.new()
+		"scan_vul":
+			return ActionScanVul.new()
+		"vampirism":
+			return ActionVampirism.new()
 		"mark-for-death":
 			return ActionMarkForDeath.new()
 		"irtysh":
