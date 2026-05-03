@@ -7,6 +7,7 @@ var formated_result : String = "{initiator} получает бонус к ат�
 
 func _init() -> void:
 	super(action_name)
+	is_aoe = true
 
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:

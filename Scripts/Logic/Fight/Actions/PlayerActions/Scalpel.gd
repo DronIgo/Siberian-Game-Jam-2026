@@ -18,7 +18,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 		target.take_damage(actual_damage, damage_type)
 		target_names.append(target.lore_name)
 	return ActionResult.new(\
-		"{initiator} делаете надрез на {targets} и наносите {damage} урона", { \
+		"{initiator} делаете надрез на {targets}", { \
 			"initiator": initiator.lore_name,\
 			"targets": ", ".join(target_names), \
 			"damage": damage }, 1)
