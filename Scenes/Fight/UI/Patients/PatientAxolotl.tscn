@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c8vfiavma7v2n"]
+
+[ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_baruj"]
+[ext_resource type="Texture2D" uid="uid://dldovlcr1hvbg" path="res://Assets/Characters_art/patient_beetle_0.png" id="2_huibt"]
+[ext_resource type="Texture2D" uid="uid://d1dap8ao0vrc7" path="res://Assets/Characters_art/patient_beetle_1.png" id="3_aindo"]
+[ext_resource type="Texture2D" uid="uid://bpdmc81p4qxg5" path="res://Assets/Characters_art/patient_beetle_2.png" id="4_50683"]
+[ext_resource type="Texture2D" uid="uid://cds515w876s3" path="res://Assets/Characters_art/patient_beetle_3.png" id="5_1t4wc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdcpi"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_huibt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aindo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_50683")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1t4wc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="PatientAxolotl" type="Node2D" unique_id=739772376 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_baruj")
+id = "axolotl"
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=16238231]
+z_index = 5
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_hdcpi")
+animation = &"idle"

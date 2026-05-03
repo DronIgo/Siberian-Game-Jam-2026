@@ -28,7 +28,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Ян Такле́вич",
-				"fly",
+				"octopus",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -38,7 +38,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Зофья Птакска",
-				"fly",
+				"bird",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -58,7 +58,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Елена Рожинска",
-				"fly",
+				"deer",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -68,7 +68,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Кара Пасынич",
-				"fly",
+				"beetle",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -78,7 +78,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Пётрек Ваговски",
-				"fly",
+				"fish",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -88,7 +88,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Марек Жадлович",
-				"fly",
+				"scorpion",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -98,7 +98,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Майя Хрилетич",
-				"fly",
+				"axolotl",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
@@ -108,7 +108,7 @@
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
 				"Святлослав Глович",
-				"fly",
+				"firefly",
 				[ "tentacle", "healthy_heart" ]
 			],
 			"next_phase_id": "hub"
