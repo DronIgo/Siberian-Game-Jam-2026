@@ -98,4 +98,19 @@
 		"vulnerable" : "BLUE",
 		"name" : "Торакс светлячка"
 	},
+	"boss_head" : {
+		"max_health" : 300,
+		"vulnerable" : "RED",
+		"name" : "ЕГО Голова"
+	},
+	"boss_hand_1" : {
+		"max_health" : 300,
+		"vulnerable" : "GREEN",
+		"name" : "ЕГО Правая рука"
+	},
+	"boss_hand_2" : {
+		"max_health" : 300,
+		"vulnerable" : "BLUE",
+		"name" : "ЕГО Левая рука"
+	},
 }

@@ -71,4 +71,19 @@
 		"roll",
 		"roll",
 	],
+	"boss_head" : [
+		"scan_vul",
+		"mark-for-death",
+		"defend",
+	],
+	"boss_hand_1" : [
+		"crush",
+		"roll",
+		"blow",
+	],
+	"boss_hand_2" : [
+		"heal",
+		"detox",
+		"haste",
+	],
 }
