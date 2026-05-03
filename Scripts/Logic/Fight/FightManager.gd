@@ -1,6 +1,9 @@
 class_name FightManager
 extends Node2D
 
+@export var curtains_opening_animation_name: String = "curtains_opening"
+@export var back_animation_player: AnimationPlayer
+
 @export var action_list : ActionList
 @export var action_display_text : ActionDisplayText
 @export var organ_summoner : OrganSummoner
@@ -44,6 +47,9 @@ func _ready() -> void:
 	# let everything load
 	await get_tree().create_timer(0.5).timeout
 	#_fight_history = FightHistory.new()
+	
+	back_animation_player.play(curtains_opening_animation_name)	
+	
 	while !(_victory or _defeat):
 		await play_round()
 	if _victory:
