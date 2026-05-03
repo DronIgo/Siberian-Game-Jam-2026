@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://cfpbydsb11qf3"]
+
+[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="1_hu5cp"]
+[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_57ngv"]
+[ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="3_1beld"]
+[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="4_unkkn"]
+[ext_resource type="Script" uid="uid://2oqywlcbu67e" path="res://Scripts/Logic/Fight/Organs/SickAI.gd" id="5_gvsqf"]
+[ext_resource type="Texture2D" uid="uid://copv6s7707cli" path="res://Assets/Organs_art/Organs_human/organ_liver_bad.png" id="6_7h17x"]
+[ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="7_pi32f"]
+[ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="8_o0giw"]
+
+[sub_resource type="Animation" id="Animation_b8pi3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(146, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_85n6h"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uucch"]
+resource_name = "healing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.28917018, 0.5541392, 0.1252602, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ie5am"]
+resource_name = "taking_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.98039216, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2tdou"]
+resource_name = "taking_vulnerable_damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.6034334, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.22, 0.36666667, 0.46, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(146, 0), Vector2(118, -26), Vector2(159, 23.000002), Vector2(135, -11), Vector2(149, 8), Vector2(146, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlbft"]
+_data = {
+&"RESET": SubResource("Animation_b8pi3"),
+&"death": SubResource("Animation_85n6h"),
+&"healing": SubResource("Animation_uucch"),
+&"taking_damage": SubResource("Animation_ie5am"),
+&"taking_vulnerable_damage": SubResource("Animation_2tdou")
+}
+
+[node name="Bad Liver" type="Sprite2D" unique_id=1647623734 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
+script = ExtResource("1_hu5cp")
+health_bar = NodePath("OrganHealthBarComponent")
+statuses_grid = NodePath("StatusGrid")
+selectable_component = NodePath("Sprite2D/LiverSelectable")
+actor = NodePath("Logic")
+animator = NodePath("AnimationPlayer")
+
+[node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_57ngv")]
+
+[node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("3_1beld")]
+position = Vector2(72, -46)
+
+[node name="Logic" type="Node2D" parent="." unique_id=258606152 node_paths=PackedStringArray("organ_ai")]
+script = ExtResource("4_unkkn")
+organ_name = "sick_lung"
+organ_ai = NodePath("../AI")
+is_healthy = false
+
+[node name="AI" type="Node" parent="." unique_id=1204999763]
+script = ExtResource("5_gvsqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2047644253]
+position = Vector2(146, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_7h17x")
+
+[node name="LiverSelectable" parent="Sprite2D" unique_id=1089380166 instance=ExtResource("7_pi32f")]
+scale = Vector2(4, 4)
+script = ExtResource("8_o0giw")
+save_selected_state = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1463447728]
+libraries/ = SubResource("AnimationLibrary_qlbft")

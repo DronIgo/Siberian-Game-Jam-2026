@@ -6,7 +6,10 @@
 [ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="6_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="8_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="9_aghpr"]
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
+[ext_resource type="Texture2D" uid="uid://bcwkcv318pxqg" path="res://Assets/UI/UI_action_button/selected.png" id="11_khk4b"]
+[ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="12_1aue6"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
 [ext_resource type="PackedScene" uid="uid://eecx3a0dv71q" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
@@ -58,7 +61,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_0d5t2"]
 resource_name = "curtains_opening"
-length = 1.5
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,10 +69,10 @@ tracks/0/path = NodePath("CurtainLeftSprite2D:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-122.0, -788.0]
+"values": [-122.0, -455.0, -788.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -78,10 +81,10 @@ tracks/1/path = NodePath("CurtainRightSprite2D:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [613.0, 1266.0]
+"values": [613.0, 920.0, 1266.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -90,7 +93,7 @@ tracks/2/path = NodePath("BgOrganLightSprite2D:modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1, 1.5),
+"times": PackedFloat32Array(2, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -162,13 +165,8 @@ libraries/ = SubResource("AnimationLibrary_6uwd6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
-[node name="ActionList" parent="CanvasLayer" unique_id=1970410951 instance=ExtResource("8_3g3hk")]
-offset_left = 450.0
-offset_top = 750.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
 [node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("9_vqao4")]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -182,14 +180,93 @@ grow_horizontal = 0
 grow_vertical = 0
 wait_after_display = 3.0
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
+[node name="Menu" type="Panel" parent="CanvasLayer" unique_id=1970410951]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+
+[node name="Attack" type="Label" parent="CanvasLayer/Menu" unique_id=734473577]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 96.0
+offset_right = 342.0
+offset_bottom = 154.0
+theme = ExtResource("9_aghpr")
+theme_override_font_sizes/font_size = 42
+text = "Атака"
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/Menu/Attack" unique_id=1703572248]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("11_khk4b")
+texture_hover = ExtResource("12_1aue6")
+
+[node name="Items" type="Label" parent="CanvasLayer/Menu" unique_id=2079220080]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 154.0
+offset_right = 342.0
+offset_bottom = 212.0
+theme = ExtResource("9_aghpr")
+theme_override_font_sizes/font_size = 42
+text = "Предметы"
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/Menu/Items" unique_id=446089621]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("11_khk4b")
+texture_hover = ExtResource("12_1aue6")
+
+[node name="ActionList" parent="CanvasLayer" unique_id=749554588 node_paths=PackedStringArray("back_b", "menu") instance=ExtResource("8_3g3hk")]
+visible = false
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+back_b = NodePath("Back/SelectButton")
+menu = NodePath("../Menu")
+
+[node name="Back" type="Label" parent="CanvasLayer/ActionList" unique_id=1125444139]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 1167.0
+offset_top = 250.0
+offset_right = 1447.0
+offset_bottom = 308.0
+theme = ExtResource("9_aghpr")
+theme_override_font_sizes/font_size = 42
+text = "Назад"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/ActionList/Back" unique_id=1881412322]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("11_khk4b")
+texture_hover = ExtResource("12_1aue6")
+
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
+menu = NodePath("../CanvasLayer/Menu")
+attack_b = NodePath("../CanvasLayer/Menu/Attack/SelectButton")
+item_b = NodePath("../CanvasLayer/Menu/Items/SelectButton")
 action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
 patient = NodePath("../Patient/Player")
 friendly_actors = [NodePath("../Patient/Player"), NodePath("../Patient/Player")]
-list_organs = Array[String](["healthy_heart", "sick_liver", "tentacle"])
+list_organs = Array[String](["healthy_heart", "sick_kidney", "tentacle"])
 
 [node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
 script = ExtResource("13_yt7vv")
@@ -203,25 +280,28 @@ script = ExtResource("6_3g3hk")
 [node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("23_8aayq")]
 position = Vector2(179, 917)
 
-[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("friendly_slots", "enemy_slots")]
+[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "slot4", "slot5")]
 script = ExtResource("1_vqao4")
+slots_container = NodePath(".")
 friendly_slots = [NodePath("Slot"), NodePath("Slot4")]
 enemy_slots = [NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot5")]
+slot4 = NodePath("Slot4")
+slot5 = NodePath("Slot5")
 
 [node name="Slot" type="Node2D" parent="OrganSummoner" unique_id=984775769]
-position = Vector2(750, 182)
+position = Vector2(750, 200)
 
 [node name="Slot2" type="Node2D" parent="OrganSummoner" unique_id=1735350151]
-position = Vector2(1160, 187)
+position = Vector2(1150, 200)
 
 [node name="Slot3" type="Node2D" parent="OrganSummoner" unique_id=1293658669]
-position = Vector2(1570, 191)
+position = Vector2(1550, 200)
 
 [node name="Slot4" type="Node2D" parent="OrganSummoner" unique_id=548574260]
-position = Vector2(844, 443)
+position = Vector2(950, 520)
 
 [node name="Slot5" type="Node2D" parent="OrganSummoner" unique_id=1926079143]
-position = Vector2(1365, 422)
+position = Vector2(1350, 520)
 
 [node name="PatientTable" parent="." unique_id=1637330193 instance=ExtResource("16_6uwd6")]
 position = Vector2(224, 375)

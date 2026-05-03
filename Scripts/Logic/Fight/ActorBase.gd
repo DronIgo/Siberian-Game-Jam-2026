@@ -14,6 +14,8 @@ var health : int
 var mana : int = 10
 
 var actions : Array = []
+var item_actions : Array = []
+var amount_by_action : Dictionary
 var highlighted: bool
 
 var vulnerable : ActionBase.DAMAGE_TYPE
@@ -35,26 +37,37 @@ func init(actor_name : String) -> void:
 signal died(actor : ActorBase)
 
 func remove_action(action_name: String):
-	var actions_to_erase: Array = actions.filter(\
-		func(action): return action.action_name == action_name)
-	for action_to_erase in actions_to_erase:
-		actions.erase(action_to_erase)
+	amount_by_action[action_name] -= 1
+	if amount_by_action[action_name] <= 0:
+		for action in item_actions:
+			if action.lore_name == action_name:
+				item_actions.erase(action)
+		amount_by_action.erase(action_name)
+	
 
 func after_action() -> void:
 	actor_ui.update_mana()
 
 func highlight():
 	highlighted = true
+	actor_ui.modulate = Color(0.782, 0.801, 0.433, 1.0)
 	print(str("[!] ", lore_name, " highlighted"))
 
 func unhighlight():
 	highlighted = false
+	actor_ui.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	print(str("[!] ", lore_name, " unhighlighted"))
 
 func take_damage(amount : int, type : ActionBase.DAMAGE_TYPE) -> int:
 	if health <= 0:
+		print("HEALTH IS ZERO %s takesdamage (had %d health)" % [lore_name, health])
 		return 0
+	for s in statuses:
+		if s.type == StatusGenerator.STATUS.PROTECTED and s.shield_bearer and s.shield_bearer.health > 0:
+			print("Redirecting %d damage from %s to %s" % [amount, lore_name, s.shield_bearer.lore_name])
+			return s.shield_bearer.take_damage(amount, type)
 	var actual_amount = calc_damage_taken(amount, type)
+	print("%s takes %d damage (had %d health)" % [lore_name, actual_amount, health])
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
@@ -131,6 +144,12 @@ func _init_actions(action_names : Array) -> void:
 		if action != null:
 			actions.append(action)
 
+func _init_item_actions() -> void:
+	for key in ISH.player_pocket:
+		var action: ActionBase = AG.generate_action_by_name(key)
+		item_actions.append(action)
+		amount_by_action[action.lore_name] = ISH.player_pocket[key]
+
 func _init_stats(stats : Dictionary) -> void:
 	var mh = _try_parse(stats, "max_health")
 	if mh:
@@ -153,3 +172,9 @@ func _try_parse(stats : Dictionary, stat_name : String):
 
 func take_turn(possible_targets : Array) -> ActionResult:
 	return null
+
+func remove_status_by_type(type: StatusGenerator.STATUS) -> void:
+	var to_remove = statuses.filter(func(s): return s.type == type)
+	for s in to_remove:
+		statuses.erase(s)
+		actor_ui.remove_status(s)

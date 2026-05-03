@@ -5,16 +5,39 @@ const ACTION_ITEM = preload("uid://bj6vnx36qh2er")
 @export var vertical_container : VBoxContainer
 @export var actions_per_row : int = 3
 @export var separation_h : int = 10
+@export var back_b : TextureButton
+@export var menu : Control
 
 var items : Array
 
 func _ready() -> void:
+	back_b.pressed.connect(back_to_menu)
 	clear()
 
-func display(actor : ActorBase) -> void:
+func back_to_menu() -> void:
+	menu.visible = true
+	clear()
+
+func display_actions(actor : ActorBase) -> void:
+	menu.visible = false
 	clear()
 	var row = new_row()
 	for a in actor.actions:
+		var action = a as ActionBase
+		var action_item = ACTION_ITEM.instantiate()
+		action_item.init(action, actor)
+		action_item.action_list = self
+		row.add_child(action_item)
+		if (row.get_child_count() >= actions_per_row):
+			row = new_row()
+		items.append(action_item)
+	visible = true
+
+func display_items(actor : ActorBase) -> void:
+	menu.visible = false
+	clear()
+	var row = new_row()
+	for a in actor.item_actions:
 		var action = a as ActionBase
 		var action_item = ACTION_ITEM.instantiate()
 		action_item.init(action, actor)

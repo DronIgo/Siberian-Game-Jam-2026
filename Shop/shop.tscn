@@ -1,136 +1,102 @@
 [gd_scene format=3 uid="uid://c63j3y4tqatfu"]
 
 [ext_resource type="Script" uid="uid://bo3oif4cg8um7" path="res://Shop/Shop.gd" id="1_3weqf"]
+[ext_resource type="Texture2D" uid="uid://bmp4nlp812pss" path="res://Assets/UI/UI_city/shop_bg.png" id="2_qlv7h"]
+[ext_resource type="Texture2D" uid="uid://6pouwqkh6cpe" path="res://Assets/UI/UI_city/REF_SHOP.png" id="3_6mmxm"]
+[ext_resource type="Texture2D" uid="uid://dgwvw4su8e3ra" path="res://Assets/UI/UI_city/shop_frame.png" id="4_nunvh"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="5_u3phx"]
+[ext_resource type="PackedScene" uid="uid://cx83xhdn57x8c" path="res://Shop/shop_item.tscn" id="6_56y0i"]
 
-[node name="Shop" type="CanvasLayer" unique_id=740057473 node_paths=PackedStringArray("item_name_label", "item_price_label", "item_in_window_count_label", "item_in_pocket_count_label", "previous_button", "next_button", "buy_button")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56y0i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_so0yi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfkrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gdb2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_buhfn"]
+
+[node name="Shop" type="CanvasLayer" unique_id=740057473 node_paths=PackedStringArray("items_base", "description_label", "cash_label")]
 script = ExtResource("1_3weqf")
-item_name_label = NodePath("BaseRect/ItemNameLabel")
-item_price_label = NodePath("BaseRect/ItemPriceLabel")
-item_in_window_count_label = NodePath("BaseRect/ItemInWindowCountLabel")
-item_in_pocket_count_label = NodePath("BaseRect/ItemInPocketCountLabel")
-previous_button = NodePath("BaseRect/PreviousButton")
-next_button = NodePath("BaseRect/NextButton")
-buy_button = NodePath("BaseRect/BuyButton")
+display_item_scene = ExtResource("6_56y0i")
+items_base = NodePath("ItemsBaseControl")
+description_label = NodePath("DescriptionLabel")
+cash_label = NodePath("CashLabel")
 
-[node name="BaseRect" type="ColorRect" parent="." unique_id=1100522747]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.5019608, 0.2509804, 1)
+[node name="BackControl" type="Control" parent="." unique_id=698830720]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ItemNameLabel" type="Label" parent="BaseRect" unique_id=759687579]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 65.0
-offset_top = -33.5
-offset_right = 355.5
-offset_bottom = 33.5
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "???"
+[node name="BackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1739335640]
+position = Vector2(960, 540)
+texture = ExtResource("2_qlv7h")
 
-[node name="ItemPriceLabel" type="Label" parent="BaseRect" unique_id=1211920988]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 375.5
-offset_top = -33.5
-offset_right = 666.0
-offset_bottom = 33.5
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "$??"
+[node name="FrameSprite2D" type="Sprite2D" parent="." unique_id=1041054593]
+position = Vector2(960, 540)
+texture = ExtResource("4_nunvh")
 
-[node name="ItemInWindowCountLabel" type="Label" parent="BaseRect" unique_id=1854745167]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 686.0
-offset_top = -33.5
-offset_right = 820.0
-offset_bottom = 33.5
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "x??"
+[node name="Ref" type="Sprite2D" parent="." unique_id=476563587]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_6mmxm")
 
-[node name="ItemInPocketCountLabel" type="Label" parent="BaseRect" unique_id=1935179216]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 840.0
-offset_top = -33.5
-offset_right = 974.0
-offset_bottom = 33.5
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "x??"
+[node name="CommonLabel" type="Label" parent="." unique_id=1021790974]
+offset_left = 155.0
+offset_top = 296.0
+offset_right = 515.0
+offset_bottom = 339.0
+theme = ExtResource("5_u3phx")
+theme_override_font_sizes/font_size = 42
+text = "Налетай, покупай!"
 
-[node name="PreviousButton" type="Button" parent="BaseRect" unique_id=1199123229]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 65.0
-offset_top = -95.0
-offset_right = 135.0
-offset_bottom = -20.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = "<"
+[node name="ItemsBaseControl" type="Control" parent="." unique_id=1079691664]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 135.0
+offset_top = 370.0
+offset_right = 175.0
+offset_bottom = 410.0
 
-[node name="NextButton" type="Button" parent="BaseRect" unique_id=1223926924]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 150.0
-offset_top = -95.0
-offset_right = 220.0
-offset_bottom = -20.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = ">"
+[node name="CashLabel" type="Label" parent="." unique_id=786247379]
+offset_left = 988.0
+offset_top = 752.0
+offset_right = 1213.0
+offset_bottom = 803.0
+theme = ExtResource("5_u3phx")
+theme_override_font_sizes/font_size = 50
+text = "100"
+horizontal_alignment = 2
 
-[node name="BuyButton" type="Button" parent="BaseRect" unique_id=430685196]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -95.0
-offset_right = 96.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = "Buy"
+[node name="DescriptionLabel" type="Label" parent="." unique_id=442622229]
+offset_left = 1315.0
+offset_top = 365.0
+offset_right = 1815.0
+offset_bottom = 725.0
+theme = ExtResource("5_u3phx")
+theme_override_font_sizes/font_size = 34
 
-[node name="ExitButton" type="Button" parent="BaseRect" unique_id=1435896005]
-layout_mode = 1
+[node name="ExitButton" type="Button" parent="." unique_id=1435896005]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -257.0
-offset_top = -95.0
-offset_right = -65.0
-offset_bottom = -20.0
+offset_left = -1765.0
+offset_top = -340.0
+offset_right = -1620.0
+offset_bottom = -265.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = "Exit"
+theme = ExtResource("5_u3phx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56y0i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_so0yi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hfkrb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7gdb2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_buhfn")
+text = "Выход"
 
-[connection signal="pressed" from="BaseRect/PreviousButton" to="." method="_on_previous_button_pressed"]
-[connection signal="pressed" from="BaseRect/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="BaseRect/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="BaseRect/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

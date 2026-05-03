@@ -18,9 +18,8 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	for target: ActorBase in targets:
 		target.take_damage(damage, damage_type)
 		target_names.append(target.lore_name)
-	ItemStateHolder.player_pocket[action_name] -= 1
 	return ActionResult.new(\
 		"{initiator} uses IRTYSH on {targets} and deals {damage} damage", { \
 			"initiator": initiator.lore_name,\
 			"targets": ", ".join(target_names), \
-			"damage": damage }, ItemStateHolder.player_pocket[action_name])
+			"damage": damage }, 3)

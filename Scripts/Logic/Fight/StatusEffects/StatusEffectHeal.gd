@@ -3,7 +3,7 @@ extends StatusEffectBase
 
 func _init(amount : int, duration : int) -> void:
 	_name = "burn"
-	type = StatusGenerator.STATUS.BURN
+	type = StatusGenerator.STATUS.HEAL
 	super(amount, duration)
 
 func on_turn_end(actor : ActorBase) -> void:

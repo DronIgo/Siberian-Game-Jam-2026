@@ -2,11 +2,15 @@ class_name FightManager
 extends Node2D
 
 @export var wait_between_turns : float = 0.5
+@export var wait_after_player_turn : float = 1.5
 
 @export var curtains_opening_animation_name: String = "curtains_opening"
 @export var back_animation_player: AnimationPlayer
 @export var battle_start_sound_name: String = "res://Assets/SFX/batte_start.mp3"
 
+@export var menu : Control
+@export var attack_b : TextureButton
+@export var item_b : TextureButton
 @export var action_list : ActionList
 @export var action_display_text : ActionDisplayText
 @export var organ_summoner : OrganSummoner
@@ -27,20 +31,26 @@ var _defeat : bool = false
 var _main_organ_name : String = "Инородный орган"
 
 signal _on_any_selection_signal(arg)
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
+	
+	attack_b.pressed.connect(_on_menu_button_press.bind("attack"))
+	item_b.pressed.connect(_on_menu_button_press.bind("item"))
+	
 	for organ_name in list_organs:
 		var organ = organ_summoner.summon_by_name(organ_name)
 		if organ.is_healthy:
 			friendly_organs.append(organ)
 		else:
 			enemy_organs.append(organ)
-			if organ.is_main:
-				_main_organ_name = organ.lore_name
 		all_organs.append(organ)
+	# let everything load
+	await get_tree().create_timer(0.5).timeout
+	for organ in enemy_organs:
+		if organ.is_main:
+			_main_organ_name = organ.lore_name
 		
 	## defeat/victory management
 	patient.died.connect(_on_patient_died)
@@ -50,8 +60,6 @@ func _ready() -> void:
 		organ.died.connect(_on_enemy_organ_died)
 
 	round_num = 0
-	# let everything load
-	await get_tree().create_timer(0.5).timeout
 	#_fight_history = FightHistory.new()
 	
 	back_animation_player.play(curtains_opening_animation_name)
@@ -64,10 +72,15 @@ func _ready() -> void:
 	elif _defeat:
 		_on_defeat()
 
+var _player_turn_counter = 0
 func play_round() -> void:
+	_player_turn_counter = 0
 	for friend in friendly_actors:
 		await take_turn_friendly(friend)
+		while extra_turn:
+			await take_turn_friendly(friend)
 		if _defeat || _victory: return
+		_player_turn_counter += 1
 	for enemy in enemy_organs:
 		await take_turn_organ(enemy)
 		if _defeat || _victory: return
@@ -78,13 +91,34 @@ func play_round() -> void:
 func _on_any_selection(arg) -> void:
 	_on_any_selection_signal.emit(arg)
 
+func _on_menu_button_press(button : String) -> void:
+	if button == "attack":
+		action_list.display_actions(friendly_actors[0])
+	else:
+		action_list.display_items(friendly_actors[0])
+
+var extra_turn = false
 func take_turn_friendly(actor : ActorBase) -> void:
+	extra_turn = false
 	print("take_turn_friendly")
 	if actor == null:
 		printerr("Actor is null!")
 		return
+	
+	var msg = false
+	for status in actor.statuses:
+		match status.type:
+			StatusGenerator.STATUS.BUFF_ATTACK:
+				action_display_text.display(\
+					"Ваш ход. Урон повышен. Ещё " + status.duration + " хода", 2.0)
+				msg = true
+	if !msg:
+		action_display_text.display(\
+			"Ваш ход. " + str(_player_turn_counter) + \
+			"/" + str(friendly_actors.size()), 2.0)
+			
+	menu.visible = true
 
-	action_list.display(actor)
 	var selected_action : ActionBase
 	var selected_target : ActorBase = null
 	var action_result: ActionResult = null
@@ -92,10 +126,12 @@ func take_turn_friendly(actor : ActorBase) -> void:
 		# can reselect actions as we please
 		var selection = await _on_any_selection_signal
 		print("selection")
+		var highlighted_targets : Array
 		if selection is ActorBase:
 			selected_target = selection
-			_unhighlight_enemy_targets(selected_target)
+			_unhighlight_all()
 		else:
+			_unhighlight_all()
 			selected_action = selection
 			# reset the target if we choose different action
 			selected_target = null
@@ -105,14 +141,48 @@ func take_turn_friendly(actor : ActorBase) -> void:
 			action_result = selected_action.take_action(actor, \
 				[ selected_target ] if not selected_action.is_aoe else all_organs)
 			#_fight_history.add_action(actor, selected_action)
-			selected_target.unhighlight()
+			_unhighlight_all()
+			break
+	action_list.clear()
+	if selected_action.is_shop:
+		actor.remove_action(selected_action.lore_name)
+		extra_turn = true
+	actor.after_action()
+	actor.at_end_turn()
+	await action_display_text.display_action(action_result, wait_after_player_turn)
+
+func player_wait_action(actor : ActorBase) -> void:
+	var selected_action : ActionBase
+	var selected_target : ActorBase = null
+	var action_result: ActionResult = null
+	while true:
+		# can reselect actions as we please
+		var selection = await _on_any_selection_signal
+		print("selection")
+		var highlighted_targets : Array
+		if selection is ActorBase:
+			selected_target = selection
+			_unhighlight_all()
+		else:
+			_unhighlight_all()
+			selected_action = selection
+			# reset the target if we choose different action
+			selected_target = null
+			_highlight_valid_enemy_targets(selected_action)
+		if _check_action_valid_target(selected_action, selected_target):
+			print("[!!] taking action")
+			action_result = selected_action.take_action(actor, \
+				[ selected_target ] if not selected_action.is_aoe else all_organs)
+			#_fight_history.add_action(actor, selected_action)
+			_unhighlight_all()
 			break
 	action_list.clear()
 	if not action_result.has_more():
 		for friendly_actor in friendly_actors:
 			friendly_actor.remove_action(selected_action.action_name)
 	actor.after_action()
-	await action_display_text.display_action(action_result)
+	actor.at_end_turn()
+	await action_display_text.display_action(action_result, wait_after_player_turn)
 
 func take_turn_organ(enemy : OrganBase) -> void:
 	if enemy.health <= 0:
@@ -127,27 +197,27 @@ func take_turn_organ(enemy : OrganBase) -> void:
 	await get_tree().create_timer(wait_between_turns).timeout
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:
-	for enemy: OrganBase in enemy_organs:
-		if selected_action.check_valid_target(enemy):
-			enemy.highlight()
+	for organ in all_organs:
+		if selected_action.check_valid_target(organ):
+			organ.highlight()
 
-func _unhighlight_enemy_targets(except: ActorBase):
-	for enemy: OrganBase in enemy_organs:
-		if enemy.lore_name != except.lore_name:
-			enemy.unhighlight()
+func _unhighlight_all():
+	for organ in all_organs:
+		organ.unhighlight()
 
 func _check_action_valid_target(selected_action : ActionBase, selected_actor : ActorBase) -> bool:
-	return selected_action and (selected_actor and \
-		(selected_action.is_aoe or selected_action.check_valid_target(selected_actor)))
-
+	return selected_action and \
+		(selected_action.is_aoe or selected_action.check_valid_target(selected_actor))
 
 ## DEFEAT/VICTORY management
 # only main should die
 func _check_victory() -> void:
 	print("check victory")
 	for enemy in enemy_organs:
-		if enemy.is_main and enemy.health <= 0:
-			_victory = true
+		if enemy.is_main and enemy.health > 0:
+			_victory = false
+			return
+	_victory = true
 
 func _on_patient_died() -> void:
 	_defeat = true

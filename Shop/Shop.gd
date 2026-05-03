@@ -2,102 +2,60 @@ class_name Shop
 
 extends CanvasLayer
 
-@export var item_name_label: Label
-@export var item_price_label: Label
-@export var item_in_window_count_label: Label
-@export var item_in_pocket_count_label: Label
-@export var previous_button: Button
-@export var next_button: Button
-@export var buy_button: Button
+@export var display_x_px_delta: int = 550
+@export var display_y_px_delta: int = 55
+@export var display_x_max: int = 2
+@export var display_y_max: int = 5
+@export var display_item_scene: PackedScene
+@export var items_base: Control
+@export var description_label: Label
+@export var cash_label: Label
 
-const price_prefix: String = "$"
-const count_prefix: String = "x"
-const no_item_index: int = -1
-
-var _current_item_index: int = no_item_index
+var items_map: Dictionary = {}
 
 func _ready() -> void:
-	item_name_label.text = ""
-	item_price_label.text = ""
-	item_in_window_count_label.text = ""
-	item_in_pocket_count_label.text = ""
-	var first_available_item_id: int = _find_next_available_item_id(no_item_index, 1)
-	if first_available_item_id == no_item_index:
-		previous_button.hide()
-		next_button.hide()
-		buy_button.hide()
-		return
-	_current_item_index = first_available_item_id
-	_represent_current_item()
+	ShopEventBus.item_selected.connect(_on_item_selected)
+	ShopEventBus.item_unselected.connect(_on_item_unselected)
+	ShopEventBus.item_bought.connect(_on_item_bought)
+	_display_items()
 
-func _on_previous_button_pressed() -> void:
-	var previous_id: int = _find_next_available_item_id(_current_item_index, -1)
-	if previous_id != no_item_index:
-		_current_item_index = previous_id
-		_represent_current_item()
+func _on_item_selected(id: String):
+	description_label.show()
+	description_label.text = items_map[id].description
 
-func _on_next_button_pressed() -> void:
-	var next_id: int = _find_next_available_item_id(_current_item_index, 1)
-	if next_id != no_item_index:
-		_current_item_index = next_id
-		_represent_current_item()
+func _on_item_unselected(id: String):
+	description_label.hide()
 
-func _on_buy_button_pressed() -> void:
-	var item: ShopItemInfo = ItemStateHolder.items[_current_item_index]
-	ItemStateHolder.shop_window[item.id] -= 1
-	if not ItemStateHolder.player_pocket.has(item.id):
-		ItemStateHolder.player_pocket[item.id] = 1
-	else:
-		ItemStateHolder.player_pocket[item.id] += 1
-	_represent_current_item_counts()
+func _on_item_bought(id: String):
+	description_label.hide()
+	cash_label.text = str(ItemStateHolder.player_cash)
+	_display_items()
 
 func _on_exit_button_pressed() -> void:
 	var next_phase: Phase = PhaseManager.try_next_phase()
 	get_tree().change_scene_to_file(next_phase.scene_name)
 
-func _find_next_available_item_id(from_id: int, direction: int) -> int:
+func _display_items():
+	for existing_item in items_base.get_children():
+		existing_item.queue_free()
 	var items: Array = ItemStateHolder.items
-	if from_id == 0 and direction == -1:
-		return no_item_index
-	if from_id == items.size() - 1 and direction == 1:
-		return no_item_index
-	from_id += direction
-	var item: ShopItemInfo = items[from_id]
-	var count: int = _get_count(item.id, ItemStateHolder.shop_window)
-	return from_id if count > 0 else _find_next_available_item_id(from_id, direction)
-
-func _represent_current_item():
-	var item: ShopItemInfo = ItemStateHolder.items[_current_item_index]
-	item_name_label.text = item.item_name
-	item_price_label.text = str(price_prefix, item.price)
-	_represent_current_item_counts()
-
-func _represent_current_item_counts():
-	var item: ShopItemInfo = ItemStateHolder.items[_current_item_index]
-	var window_count: int = _get_count(item.id, ItemStateHolder.shop_window)
-	item_in_window_count_label.text = str(count_prefix, window_count)
-	var pocket_count: int = _get_count(item.id, ItemStateHolder.player_pocket)
-	item_in_pocket_count_label.text = str(count_prefix, pocket_count)
-	_update_buttons_appearance()
-
-func _update_buttons_appearance():
-	var item: ShopItemInfo = ItemStateHolder.items[_current_item_index]
-	var has_previous: bool = \
-		_find_next_available_item_id(_current_item_index, -1) != no_item_index
-	var has_next: bool = \
-		_find_next_available_item_id(_current_item_index, 1) != no_item_index
-	if not has_previous and previous_button.visible:
-		previous_button.hide()
-	elif has_previous and not previous_button.visible:
-		previous_button.show()
-	if not has_next and next_button.visible:
-		next_button.hide()
-	elif has_next and not next_button.visible:
-		next_button.show()
-	if ItemStateHolder.shop_window[item.id] == 0 and buy_button.visible:
-		buy_button.hide()
-	elif ItemStateHolder.shop_window[item.id] > 0 and not buy_button.visible:
-		buy_button.show()
-
-func _get_count(id: String, source: Dictionary) -> int:
-	return 0 if not source.has(id) else source[id]
+	var x: int = 0
+	var y: int = 0
+	for item: ShopItemInfo in items:
+		if not ItemStateHolder.shop_window.has(item.id):
+			continue
+		var count = ItemStateHolder.shop_window[item.id]
+		if count == 0:
+			continue
+		items_map[item.id] = item
+		while count > 0:
+			var display_item: ShopItem = display_item_scene.instantiate()
+			display_item.init(item.id, item.item_name, item.price)
+			display_item.position.x = display_x_px_delta * x
+			display_item.position.y = display_y_px_delta * y
+			items_base.add_child(display_item)
+			y += 1
+			if y > display_y_max:
+				y = 0
+				x += 1
+			count -= 1

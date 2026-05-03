@@ -9,7 +9,6 @@ extends Node2D
 @export var empty_sprite_space_heights_sum: int = 42
 @export var right_text_label: RichTextLabel
 @export var value_format_string: String = "{current}\n/\n{total}"
-@export var intermediate_status_timer: Timer
 @export var intermediate_status_seconds: float = 1
 
 var _current_tweens: Array = []
@@ -64,7 +63,8 @@ func _display_intermediate_status_text(logic_delta: float):
 	right_text_label.text = value_format_string.format({ \
 			"current": current, \
 			"total": _max_logic_value as int })
-	intermediate_status_timer.start(intermediate_status_seconds)
+	get_tree().create_timer(intermediate_status_seconds).timeout.\
+		connect(_on_intermediate_status_timer_timeout)
 
 func _on_intermediate_status_timer_timeout() -> void:
 	_display_final_status_text()
