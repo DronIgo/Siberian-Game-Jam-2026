@@ -2,7 +2,7 @@ class_name Hub
 
 extends CanvasLayer
 
-@export var building_info_rect: ColorRect
+@export var building_info_rect: Sprite2D
 @export var building_info_label: Label
 
 var _current_building_id: String = ""

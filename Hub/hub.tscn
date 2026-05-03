@@ -1,90 +1,303 @@
 [gd_scene format=3 uid="uid://ehpfchxajgxk"]
 
 [ext_resource type="Script" uid="uid://bdo6hcjqfubs5" path="res://Hub/Hub.gd" id="1_siedd"]
-[ext_resource type="PackedScene" uid="uid://1cab4rslyn1j" path="res://Hub/building.tscn" id="1_vh6jp"]
+[ext_resource type="Texture2D" uid="uid://p1pkxwrcehu3" path="res://Assets/UI/UI_city/city_clear.png" id="2_lcg3h"]
+[ext_resource type="Texture2D" uid="uid://ucgrwirqxjk6" path="res://Assets/UI/UI_city/city_highlight_only.png" id="3_m76ao"]
+[ext_resource type="Texture2D" uid="uid://6cr1o0nkx3yd" path="res://Assets/UI/UI_city/city_house_8.png" id="4_4iet2"]
+[ext_resource type="Texture2D" uid="uid://d2hxtn6c3ty7g" path="res://Assets/UI/UI_city/city_house_7.png" id="4_dgf14"]
+[ext_resource type="Texture2D" uid="uid://ybu4pjp6shqn" path="res://Assets/UI/UI_city/city_house_5.png" id="4_efed5"]
+[ext_resource type="Texture2D" uid="uid://b2wv2exjertj0" path="res://Assets/UI/UI_city/city_house_3.png" id="4_hfr2t"]
+[ext_resource type="Texture2D" uid="uid://cg6ew8shypvsf" path="res://Assets/UI/UI_city/city_house_4.png" id="4_hvhe6"]
+[ext_resource type="Texture2D" uid="uid://2s1bakgeblda" path="res://Assets/UI/UI_city/city_house_1.png" id="4_kugyw"]
+[ext_resource type="Texture2D" uid="uid://baiwnx4chkgs2" path="res://Assets/UI/UI_city/city_house_6.png" id="4_s1vux"]
+[ext_resource type="Texture2D" uid="uid://4yb7cp3s435n" path="res://Assets/UI/UI_city/city_house_shop.png" id="4_vk2n8"]
+[ext_resource type="Texture2D" uid="uid://bqufpe74r3wu" path="res://Assets/UI/UI_city/city_house_0.png" id="5_842jq"]
+[ext_resource type="Texture2D" uid="uid://df70j3vea24rm" path="res://Assets/UI/UI_city/city_house_2.png" id="5_hvhe6"]
+[ext_resource type="Script" uid="uid://d2wwkwmllbtne" path="res://Hub/Building.gd" id="14_vk2n8"]
+[ext_resource type="Texture2D" uid="uid://df1orx4ayamet" path="res://Assets/UI/UI_city/REF_CITY.png" id="15_qje4f"]
+[ext_resource type="Texture2D" uid="uid://bmsjf4aqn6q2v" path="res://Assets/UI/UI_city/city_paper.png" id="16_m76ao"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="17_nwqdf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qje4f"]
+radius = 60.0
+height = 262.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vk2n8"]
+radius = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vk2n8"]
+radius = 90.0
+height = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qje4f"]
+radius = 85.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m76ao"]
+radius = 40.0
+height = 141.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nwqdf"]
+radius = 46.0
+height = 160.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m76ao"]
+radius = 95.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwqdf"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wy3r"]
+radius = 125.0
 
 [node name="Hub" type="CanvasLayer" unique_id=1730030736 node_paths=PackedStringArray("building_info_rect", "building_info_label")]
 script = ExtResource("1_siedd")
-building_info_rect = NodePath("BuildingInfoRect")
-building_info_label = NodePath("BuildingInfoRect/Label")
+building_info_rect = NodePath("Paper")
+building_info_label = NodePath("Paper/Label")
 
-[node name="BaseRect" type="ColorRect" parent="." unique_id=704254426]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0.5019608, 1, 0.5019608, 1)
+[node name="BackControl" type="Control" parent="." unique_id=395668535]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="House" parent="." unique_id=523529509 instance=ExtResource("1_vh6jp")]
-offset_left = 324.0
-offset_top = 162.0
-offset_right = 324.0
-offset_bottom = 162.0
-id = "house"
+[node name="CityClear" type="Sprite2D" parent="BackControl" unique_id=959857469]
+position = Vector2(960, 540)
+texture = ExtResource("2_lcg3h")
 
-[node name="Shop" parent="." unique_id=711563378 instance=ExtResource("1_vh6jp")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CityHighlight" type="Sprite2D" parent="BackControl" unique_id=99222890]
+position = Vector2(960, 540)
+texture = ExtResource("3_m76ao")
+
+[node name="House0" type="Node2D" parent="." unique_id=723777492 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_0"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House0" unique_id=599561509]
+texture = ExtResource("5_842jq")
+
+[node name="Area2D" type="Area2D" parent="House0" unique_id=1203318221]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House0/Area2D" unique_id=652044737]
+position = Vector2(-770, -292)
+rotation = 0.87266463
+shape = SubResource("CapsuleShape2D_qje4f")
+
+[node name="House1" type="Node2D" parent="." unique_id=1411270413 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_1"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House1" unique_id=1761883772]
+texture = ExtResource("4_kugyw")
+
+[node name="Area2D" type="Area2D" parent="House1" unique_id=1911190068]
+position = Vector2(0, 53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House1/Area2D" unique_id=1337530578]
+position = Vector2(-650, -195)
+rotation = 0.87266463
+shape = SubResource("CircleShape2D_vk2n8")
+
+[node name="House2" type="Node2D" parent="." unique_id=361852310 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_2"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House2" unique_id=1115438115]
+texture = ExtResource("5_hvhe6")
+
+[node name="Area2D" type="Area2D" parent="House2" unique_id=211581498]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House2/Area2D" unique_id=1806995709]
+position = Vector2(-273, -114)
+rotation = 0.87266463
+shape = SubResource("CapsuleShape2D_vk2n8")
+
+[node name="House3" type="Node2D" parent="." unique_id=747213866 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_3"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House3" unique_id=1894635345]
+texture = ExtResource("4_hfr2t")
+
+[node name="Area2D" type="Area2D" parent="House3" unique_id=843097431]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House3/Area2D" unique_id=2044165642]
+position = Vector2(-425, 22)
+rotation = 0.87266463
+shape = SubResource("CircleShape2D_qje4f")
+
+[node name="House4" type="Node2D" parent="." unique_id=1973377441 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_4"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House4" unique_id=1416959975]
+texture = ExtResource("4_hvhe6")
+
+[node name="Area2D" type="Area2D" parent="House4" unique_id=2093562940]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House4/Area2D" unique_id=1023935528]
+position = Vector2(-797, 298)
+rotation = 0.87266463
+shape = SubResource("CircleShape2D_qje4f")
+
+[node name="House5" type="Node2D" parent="." unique_id=615051666 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_5"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House5" unique_id=316952060]
+texture = ExtResource("4_efed5")
+
+[node name="Area2D" type="Area2D" parent="House5" unique_id=1041886181]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House5/Area2D" unique_id=379940624]
+position = Vector2(270, -173)
+rotation = -0.38397244
+shape = SubResource("CapsuleShape2D_m76ao")
+
+[node name="House6" type="Node2D" parent="." unique_id=1094088862 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_6"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House6" unique_id=1127981102]
+texture = ExtResource("4_s1vux")
+
+[node name="Area2D" type="Area2D" parent="House6" unique_id=288086707]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House6/Area2D" unique_id=812626838]
+position = Vector2(540, -236)
+rotation = 1.3962634
+shape = SubResource("CapsuleShape2D_nwqdf")
+
+[node name="House7" type="Node2D" parent="." unique_id=325454936 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_7"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House7" unique_id=1954072896]
+texture = ExtResource("4_dgf14")
+
+[node name="Area2D" type="Area2D" parent="House7" unique_id=1465273506]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House7/Area2D" unique_id=2019767274]
+position = Vector2(432.99994, 105)
+rotation = 1.3962634
+shape = SubResource("CircleShape2D_m76ao")
+
+[node name="House8" type="Node2D" parent="." unique_id=276173824 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
+id = "house_8"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="House8" unique_id=1258813891]
+texture = ExtResource("4_4iet2")
+
+[node name="Area2D" type="Area2D" parent="House8" unique_id=1572513680]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House8/Area2D" unique_id=1699460210]
+position = Vector2(648, 231.00002)
+rotation = 1.3962634
+shape = SubResource("CircleShape2D_nwqdf")
+
+[node name="Shop" type="Node2D" parent="." unique_id=1014474103 node_paths=PackedStringArray("sprite", "area")]
+position = Vector2(960, 540)
+script = ExtResource("14_vk2n8")
 id = "shop"
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
 
-[node name="BuildingInfoRect" type="ColorRect" parent="." unique_id=1653616954]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -324.0
-offset_bottom = 648.0
-grow_horizontal = 0
-mouse_filter = 1
-color = Color(0.2509804, 0.5019608, 1, 0.7529412)
+[node name="Sprite2D" type="Sprite2D" parent="Shop" unique_id=1338675390]
+texture = ExtResource("4_vk2n8")
 
-[node name="BackButton" type="Button" parent="BuildingInfoRect" unique_id=1746932779]
-layout_mode = 1
+[node name="Area2D" type="Area2D" parent="Shop" unique_id=1047855421]
+position = Vector2(0, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Area2D" unique_id=126051042]
+position = Vector2(135.99994, -7.9999685)
+rotation = 1.3962634
+shape = SubResource("CircleShape2D_3wy3r")
+
+[node name="Ref" type="Sprite2D" parent="." unique_id=286166769]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("15_qje4f")
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1923696864]
+position = Vector2(1213, 556)
+rotation = 0.14835298
+texture = ExtResource("16_m76ao")
+
+[node name="Label" type="Label" parent="Paper" unique_id=297317076]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -608.0
+offset_top = -263.0
+offset_right = -138.0
+offset_bottom = 367.0
+grow_horizontal = 2
+theme = ExtResource("17_nwqdf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "???"
+
+[node name="BackButton" type="Button" parent="Paper" unique_id=1746932779]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -122.0
-offset_top = -63.0
-offset_right = -20.0
-offset_bottom = -10.0
+offset_left = -711.0
+offset_top = -650.0
+offset_right = -510.99997
+offset_bottom = -597.0
 grow_horizontal = 0
 grow_vertical = 0
+rotation = -0.017453292
 theme_override_font_sizes/font_size = 32
 text = "Back"
 
-[node name="GoButton" type="Button" parent="BuildingInfoRect" unique_id=2055013999]
-layout_mode = 1
+[node name="GoButton" type="Button" parent="Paper" unique_id=2055013999]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -63.0
-offset_right = 122.0
-offset_bottom = -10.0
+offset_left = -245.0
+offset_top = -646.0
+offset_right = -45.0
+offset_bottom = -593.0
 grow_vertical = 0
+rotation = -0.017453292
 theme_override_font_sizes/font_size = 32
 text = "Go"
 
-[node name="Label" type="Label" parent="BuildingInfoRect" unique_id=1199188840]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -142.0
-offset_top = 20.0
-offset_right = 142.0
-offset_bottom = 360.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
-text = "???"
-
-[connection signal="pressed" from="BuildingInfoRect/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="BuildingInfoRect/GoButton" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="Paper/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Paper/GoButton" to="." method="_on_go_button_pressed"]
