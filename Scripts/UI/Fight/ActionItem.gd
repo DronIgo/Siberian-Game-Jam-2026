@@ -21,7 +21,10 @@ func init(action: ActionBase, actor : ActorBase) -> void:
 	print(text)
 	if hint_box:
 		hint_box.hint_target = selection_button
-		hint_box.hint_text = action.lore_name
+		hint_box.hint_text = action.description
+		selection_button.mouse_entered.connect(hint_box._on_mouse_entered)
+		selection_button.mouse_exited.connect(hint_box._on_mouse_exited)
+
 	if !check_avialable(actor):
 		avialable = false
 		self_modulate = Color(1.0, 1.0, 1.0, 0.5);

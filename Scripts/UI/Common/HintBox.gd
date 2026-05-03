@@ -6,13 +6,14 @@ extends PanelContainer
 @export var offset_from_target: Vector2 = Vector2(10,-10)
 @export var hint_target: Node
 
-@export var anchor_to_screen_corner: bool = false
+@export var anchor_to_screen_corner: bool = true
 @export var corner_offset: Vector2 = Vector2(20, 20)
 
 var _target: Node2D
 
 func _ready() -> void:
 	hide()
+	self.top_level = true
 	if not hint_target:
 		return
 	if hint_target is Area2D:
@@ -43,6 +44,7 @@ func hide_hint() -> void:
 	hide()
 
 func _on_mouse_entered() -> void:
+	print("HintBox mouse entered, text: ", hint_text)
 	hint_label.text = hint_text
 	_update_position()
 	show()

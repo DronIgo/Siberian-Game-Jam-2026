@@ -6,6 +6,7 @@ var manacost : int = 0
 var stats : Dictionary
 var lore_name : String
 var is_aoe: bool = false
+var description: String = ""
 
 const _stats_json_path = "res://Files/ActionStats/attack_stats.json"
 
@@ -15,6 +16,7 @@ func _init(name : String) -> void:
 	_parse_lore_name()
 	_parse_stats()
 	_parse_manacost()
+	_parse_description()
 
 func _parse_lore_name() -> void:
 	if stats.has("name"):
@@ -71,3 +73,7 @@ func check_avialable(actor : ActorBase) -> bool:
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	initiator.mana -= manacost
 	return null
+
+func _parse_description() -> void:
+	if stats.has("description"):
+		description = stats["description"]

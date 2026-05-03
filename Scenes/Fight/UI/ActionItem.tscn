@@ -27,10 +27,6 @@ offset_bottom = 58.0
 texture_pressed = ExtResource("3_3hp76")
 texture_hover = ExtResource("4_h52tm")
 
-[node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
-layout_mode = 0
-anchor_to_screen_corner = true
-
 [node name="ManaLabel" type="Label" parent="." unique_id=1605069615]
 layout_mode = 0
 offset_right = 280.0
@@ -39,3 +35,7 @@ theme = ExtResource("4_87dps")
 theme_override_font_sizes/font_size = 30
 text = "50"
 horizontal_alignment = 2
+
+[node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
+layout_mode = 0
+anchors_preset = 0

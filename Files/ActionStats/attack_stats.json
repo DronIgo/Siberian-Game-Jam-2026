@@ -1,52 +1,63 @@
 {
-	"scalpel" : {
-		"damage" : 15,
-		"manacost" : 0,
-		"name" : "Надрез" 
-	},
-	"aspirin" : {
-		"amount" : 5,
-		"duration" : 3,
-		"manacost" : 15,
-		"name" : "Аспирин"
-	},
-	"crush" : {
-		"name" : "Сокрушение",
-		"damage" : 30
-	},
-	"mitos" : {
-		"name" : "Размножиться",
-		"duration" : 2
-	},
-	"buff" : {
-		"name" : "Собраться с силами",
-		"duration" : 2
-  },
-	"cauterization": {
-		"damage" : 15,
-		"manacost" : 0,
-		"name" : "Прижигание" 
-	},
-	"irtysh" : {
-		"damage": 69,
-		"manacost": 0,
-		"name": "ИРТЫШ"
-	},
-	"defend" : {
-		"manacost" : 0,
-		"name" : "Защита"
-	},
-	"heal" : {
-		"manacost" : 10,
-		"amount" : 15,
-		"name" : "Исцеление"
-	},
-	"blow" : {
-		"amount" : 5,
-		"duration" : 3,
-		"name": "Разрыв"
-	},
-	"filter" : {
-		"name" : "Прочистка"
+		"scalpel" : {
+			"damage" : 15,
+			"manacost" : 0,
+			"name" : "Надрез",
+			"description" : "Наносит урон скальпелем"
+		},
+		"aspirin" : {
+			"amount" : 5,
+			"duration" : 3,
+			"manacost" : 15,
+			"name" : "Аспирин",
+			"description" : "Снижает свертываемость крови у всех врагов. Накладывает кровотечение"
+		},
+		"crush" : {
+			"name" : "Сокрушение",
+			"damage" : 30,
+			"description" : "Мощный удар, сокрушающий орган"
+		},
+		"mitos" : {
+			"name" : "Размножиться",
+			"duration" : 2,
+			"description" : "Создает ещё одно щупальце"
+		},
+		"buff" : {
+			"name" : "Собраться с силами",
+			"duration" : 2,
+			"description" : "Повышает урон органа"
+	  },
+		"cauterization": {
+			"damage" : 15,
+			"manacost" : 0,
+			"name" : "Прижигание",
+			"description" : "Прижигает рану, нанося чистый урон"
+		},
+		"irtysh" : {
+			"damage": 69,
+			"manacost": 0,
+			"name": "ИРТЫШ",
+			"description" : "Смывает всё на своём пути. Наносит огромный урон всем врагам"
+		},
+		"defend" : {
+			"manacost" : 0,
+			"name" : "Защита",
+			"description" : "Защищает орган от атак"
+		},
+		"heal" : {
+			"manacost" : 10,
+			"amount" : 15,
+			"name" : "Исцеление",
+			"description" : "Восстанавливает здоровье органу"
+		},
+		"blow" : {
+			"amount" : 5,
+			"duration" : 3,
+			"name": "Разрыв",
+			"description" : "Накладывает кровотечение на врага"
+		},
+		"filter" : {
+			"name" : "Прочистка",
+			"description" : "Снимает один статус-эффект с органа"
+		}
 	}
-}
