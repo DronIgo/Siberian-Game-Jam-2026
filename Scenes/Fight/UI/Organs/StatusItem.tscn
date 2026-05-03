@@ -19,6 +19,7 @@ status_text = NodePath("StatusText")
 hint_box = NodePath("HintBox")
 
 [node name="StatusText" type="RichTextLabel" parent="." unique_id=193565024]
+z_index = 1
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 26.0

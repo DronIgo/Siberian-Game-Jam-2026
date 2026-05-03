@@ -11,6 +11,8 @@ extends Node
 
 func _ready() -> void:
 	actor.actor_ui = self
+	if health_bar:
+		health_bar.init(actor.max_health)
 	if selectable_component:
 		selectable_component.on_selected.connect(selected)
 	else:

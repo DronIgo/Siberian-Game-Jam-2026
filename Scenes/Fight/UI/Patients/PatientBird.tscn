@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c26aqqh3msrka"]
+[gd_scene format=3 uid="uid://od7p3ibp7aqg"]
 
 [ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_q7oks"]
 [ext_resource type="Texture2D" uid="uid://bad43mqi08si1" path="res://Assets/Characters_art/patient_bird_0.png" id="2_ipmpq"]
@@ -37,6 +37,7 @@ id = "bird"
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1615582161]
+z_index = 5
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ub1i1")
 animation = &"idle"

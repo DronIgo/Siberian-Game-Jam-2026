@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://doa8o4i0u2wco"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_2tdou"]
+[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_2tdou"]
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_i71oi"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_hpjky"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_o2fap"]

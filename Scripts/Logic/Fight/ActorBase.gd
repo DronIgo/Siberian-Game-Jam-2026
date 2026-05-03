@@ -58,6 +58,7 @@ func take_damage(amount : int) -> int:
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
+	actor_ui.take_damage()
 	actor_ui.update_health()
 	return actual_amount
 
@@ -84,6 +85,7 @@ func heal(amount : int) -> void:
 	health += amount
 	if health > max_health:
 		health = max_health
+	actor_ui.heal()
 	actor_ui.update_health()
 
 func apply_status(status : StatusEffectBase) -> void:
