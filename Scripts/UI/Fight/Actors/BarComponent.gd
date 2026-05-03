@@ -14,12 +14,11 @@ extends Node2D
 
 var _current_tweens: Array = []
 var _init_position: Vector2
-var _max_logic_value: float
-var _current_logic_value: float
+var _max_logic_value: float = 100.0
+var _current_logic_value: float = 100.0
 
 func _ready() -> void:
 	_init_position = actual_bar.position
-	init(100)
 
 func _process(delta: float) -> void:
 	if _current_tweens.is_empty():
@@ -32,6 +31,7 @@ func _process(delta: float) -> void:
 func init(max_logic_value: float):
 	_max_logic_value = max_logic_value
 	_current_logic_value = max_logic_value
+	_display_final_status_text()
 
 # set bar progress from 0 to 1
 func set_bar(value : float) -> void:

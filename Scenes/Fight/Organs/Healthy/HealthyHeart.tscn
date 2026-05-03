@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://x6staq5pspoj"]
 
 [ext_resource type="Texture2D" uid="uid://bf815rroscel5" path="res://Assets/Organs_art/Organs_human/organ_heart_healthy.png" id="1_b8pi3"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_b8pi3"]
+[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_b8pi3"]
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_ix7xx"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_f0vmv"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_otgh5"]
