@@ -77,15 +77,11 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 func _parse_description() -> void:
 	if stats.has("description"):
 		var desc = stats["description"]
-		var args = []
-		if "%d" in desc:
-			if stats.has("damage"):
-				args.append(stats["damage"])
-			if stats.has("amount"):
-				args.append(stats["amount"])
-			if stats.has("duration"):
-				args.append(stats["duration"])
-		if args.size() > 0:
-			description = desc % args
-		else:
-			description = desc
+		var args : Dictionary
+		if stats.has("damage"):
+			args["damage"] = stats["damage"]
+		if stats.has("status"):
+			var status_stats = SEG.effect_stats[stats["status"]]
+			args["duration"] = status_stats["duration"]
+			args["amount"] = status_stats["amount"]
+		description = description.format(args)

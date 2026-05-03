@@ -7,6 +7,7 @@ extends Node
 @export var statuses_grid : StatusGrid
 @export var selectable_component : SelectableObject
 @export var actor : ActorBase
+@export var animator : AnimationPlayer
 
 func _ready() -> void:
 	actor.actor_ui = self
@@ -20,6 +21,14 @@ func selected(_selected : bool) -> void:
 
 func update_health() -> void:
 	health_bar.set_bar(float(actor.health) / float(actor.max_health))
+
+func take_damage() -> void:
+	if animator:
+		animator.play("taking_damage")
+
+func heal() -> void:
+	if animator:
+		animator.play("healing")
 
 func update_mana() -> void:
 	mana_bar.set_bar(float(actor.mana) / float(actor.max_mana))
@@ -41,4 +50,7 @@ func tick_down_status(status : StatusEffectBase) -> void:
 	statuses_grid.tick_down_status(status)
 
 func on_death() -> void:
-	pass
+	if animator:
+		animator.play("death")
+		await animator.animation_finished
+	queue_free()

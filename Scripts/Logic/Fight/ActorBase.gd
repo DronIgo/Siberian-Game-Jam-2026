@@ -31,7 +31,7 @@ func init(actor_name : String) -> void:
 	else:
 		printerr(actor_name, " is missing from actor stats config!")
 
-signal died
+signal died(actor : ActorBase)
 
 func remove_action(action_name: String):
 	var actions_to_erase: Array = actions.filter(\
@@ -108,7 +108,7 @@ func at_end_turn() -> void:
 
 func _on_death() -> void:
 	actor_ui.on_death()
-	died.emit()
+	died.emit(self)
 	pass
 
 func _init_actions(action_names : Array) -> void:

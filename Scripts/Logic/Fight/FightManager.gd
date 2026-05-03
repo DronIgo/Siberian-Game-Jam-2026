@@ -144,10 +144,14 @@ func _check_victory() -> void:
 func _on_patient_died() -> void:
 	_defeat = true
 
-func _on_friendly_organ_died() -> void:
+func _on_friendly_organ_died(actor : ActorBase) -> void:
+	friendly_organs.erase(actor)
+	all_organs.erase(actor)
 	_defeat = true
 
-func _on_enemy_organ_died() -> void:
+func _on_enemy_organ_died(actor : ActorBase) -> void:
+	enemy_organs.erase(actor)
+	all_organs.erase(actor)
 	_check_victory()
 
 func _on_victory() -> void:
