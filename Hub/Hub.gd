@@ -9,6 +9,7 @@ extends CanvasLayer
 var _current_building_id: String = ""
 
 func _ready() -> void:
+	SoundProcessor.process_music("res://Assets/Sound/City.mp3")
 	PhaseManager.init()
 	building_info_rect.hide()
 	HubEventBus.building_selected.connect(_try_select_building)
