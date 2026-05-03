@@ -2,31 +2,27 @@
 
 [ext_resource type="Script" uid="uid://ouq2jm65x4f3" path="res://Scripts/UI/Common/HintBox.gd" id="1_8mjqg"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="1_t72mp"]
+[ext_resource type="Texture2D" uid="uid://b04owl16n0nip" path="res://Assets/UI/UI_battle_regular/paper_text.png" id="3_dy8hc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t72mp"]
-content_margin_left = 50.0
-bg_color = Color(0.07846785, 0.07846785, 0.07846785, 0.70000005)
-
-[node name="HintBox" type="PanelContainer" unique_id=1074084737 node_paths=PackedStringArray("hint_label")]
-custom_minimum_size = Vector2(500, 300)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -300.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("1_t72mp")
-theme_override_styles/panel = SubResource("StyleBoxFlat_t72mp")
+[node name="HintBox" type="Sprite2D" unique_id=1518820904 node_paths=PackedStringArray("hint_label")]
+position = Vector2(1691.0001, 1003.99994)
+scale = Vector2(0.61568356, 0.51954544)
+texture = ExtResource("3_dy8hc")
 script = ExtResource("1_8mjqg")
 hint_label = NodePath("HintLabel")
 hint_text = "This is the hint"
 
-[node name="HintLabel" type="Label" parent="." unique_id=2103189357]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Hint"
+[node name="HintLabel" type="Label" parent="." unique_id=1344340497]
+anchors_preset = -1
+anchor_bottom = -0.13648349
+offset_left = -350.82983
+offset_top = -225.19675
+offset_right = 337.83545
+offset_bottom = 217.4982
+theme = ExtResource("1_t72mp")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true

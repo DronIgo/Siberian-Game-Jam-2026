@@ -15,10 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
 [ext_resource type="Texture2D" uid="uid://bfecpl07fm7tg" path="res://Assets/UI/UI_battle_regular/paper_patient.png" id="17_veage"]
-[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="18_veage"]
-[ext_resource type="Texture2D" uid="uid://b04owl16n0nip" path="res://Assets/UI/UI_battle_regular/paper_text.png" id="19_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
 
@@ -179,22 +178,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "пациент"
 
-[node name="HintSprite2D" type="Sprite2D" parent="." unique_id=837589550]
-z_index = 7
-position = Vector2(1743, 1124)
-texture = ExtResource("19_mnvx0")
-
-[node name="HintLabel" type="Label" parent="HintSprite2D" unique_id=1018833370]
-offset_left = -358.0
-offset_top = -231.0
-offset_right = 142.0
-offset_bottom = -81.0
-theme = ExtResource("18_veage")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 42
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
 [node name="ActionList" parent="CanvasLayer" unique_id=1970410951 node_paths=PackedStringArray("back_b", "menu") instance=ExtResource("8_3g3hk")]
@@ -292,7 +275,7 @@ texture_hover = ExtResource("12_1aue6")
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
 battle_start_sound_name = null
 patient_label = NodePath("../PatientPaperSprite2D/PatientPaperLabel")
-hint_label = NodePath("../HintSprite2D/HintLabel")
+hint_label = NodePath("")
 menu = NodePath("../CanvasLayer/Menu")
 attack_b = NodePath("../CanvasLayer/Menu/Attack/SelectButton")
 item_b = NodePath("../CanvasLayer/Menu/Items/SelectButton")
