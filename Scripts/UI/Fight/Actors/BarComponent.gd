@@ -7,15 +7,24 @@ extends Node2D
 @export var actual_reducing_seconds: float = 1
 @export var phantom_disappearing_seconds: float = 2
 @export var empty_sprite_space_heights_sum: int = 42
+@export var right_text_label: RichTextLabel
+@export var value_format_string: String = "{current}\n/\n{total}"
+@export var intermediate_status_timer: Timer
+@export var intermediate_status_seconds: float = 1
 
 var _current_tweens: Array = []
 var _init_position: Vector2
+var _max_logic_value: float
+var _current_logic_value: float
 
 func _ready() -> void:
 	_init_position = actual_bar.position
 	# test
+	init(100)
 	await get_tree().create_timer(2).timeout
 	set_bar(0.66)
+	await get_tree().create_timer(2).timeout
+	set_bar(0.75)
 
 func _process(delta: float) -> void:
 	if _current_tweens.is_empty():
@@ -25,8 +34,15 @@ func _process(delta: float) -> void:
 	var actual_bar_height_delta = (actual_bar_original_height - actual_bar_height_current) / 2
 	actual_bar.position.y = _init_position.y + actual_bar_height_delta
 
+func init(max_logic_value: float):
+	_max_logic_value = max_logic_value
+	_current_logic_value = max_logic_value
+
 # set bar progress from 0 to 1
 func set_bar(value : float) -> void:
+	var previous_logic_value: float = _current_logic_value
+	_current_logic_value = _max_logic_value * value
+	var logic_delta = _current_logic_value - previous_logic_value
 	phantom_bar.scale.y = actual_bar.scale.y
 	phantom_bar.position = actual_bar.position
 	phantom_bar.self_modulate.a = 1
@@ -42,3 +58,23 @@ func set_bar(value : float) -> void:
 	actual_tween.tween_property(actual_bar, "scale", Vector2(actual_bar.scale.x, value), actual_reducing_seconds)
 	_current_tweens.append(actual_tween)
 	actual_tween.tween_callback(func(): _current_tweens.erase(actual_tween))
+	_display_intermediate_status_text(logic_delta)
+
+func _display_intermediate_status_text(logic_delta: float):
+	var delta_color: String = "red" if logic_delta < 0 else "blue"
+	var delta_formatted: String = str("[color=", delta_color, "]", \
+		" - " if logic_delta < 0 else " + ", abs(logic_delta), "[/color]")
+	var current: String = str(_current_logic_value, delta_formatted) if logic_delta < 0 \
+		else str(_current_logic_value, delta_formatted)
+	right_text_label.text = value_format_string.format({ \
+			"current": current, \
+			"total": _max_logic_value })
+	intermediate_status_timer.start(intermediate_status_seconds)
+
+func _on_intermediate_status_timer_timeout() -> void:
+	_display_final_status_text()
+
+func _display_final_status_text():
+	right_text_label.text = value_format_string.format({ \
+			"current": _current_logic_value, \
+			"total": _max_logic_value })

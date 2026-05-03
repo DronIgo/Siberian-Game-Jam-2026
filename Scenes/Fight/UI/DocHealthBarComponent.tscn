@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_48ff4"]
 [ext_resource type="Texture2D" uid="uid://bm6i5gjgmicrd" path="res://Assets/UI/UI_battle_regular/bottle_doc_health_png.png" id="1_bymth"]
 [ext_resource type="Texture2D" uid="uid://cbkxhbyrghhlf" path="res://Assets/UI/UI_battle_regular/bottle_doc_health_inside.png" id="2_48ff4"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="4_766wp"]
 
-[node name="DocHealthBarComponent" type="Node2D" unique_id=30255913 node_paths=PackedStringArray("actual_bar", "phantom_bar")]
+[node name="DocHealthBarComponent" type="Node2D" unique_id=30255913 node_paths=PackedStringArray("actual_bar", "phantom_bar", "right_text_label")]
 script = ExtResource("1_48ff4")
 actual_bar = NodePath("BarMask/ActualBarDisplay")
 phantom_bar = NodePath("BarMask/PhantomBarDisplay")
+right_text_label = NodePath("RichTextLabel")
 
 [node name="BarMask" type="Sprite2D" parent="." unique_id=741797560]
 clip_children = 1
@@ -22,3 +24,27 @@ texture = ExtResource("2_48ff4")
 
 [node name="BarOutside" type="Sprite2D" parent="." unique_id=892888831]
 texture = ExtResource("1_bymth")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1006129020]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -100.0
+offset_right = 110.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_766wp")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+text = "100
+/
+100"
+horizontal_alignment = 1
+vertical_alignment = 1
