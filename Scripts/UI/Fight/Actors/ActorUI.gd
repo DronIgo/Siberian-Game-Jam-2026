@@ -28,6 +28,10 @@ func take_damage() -> void:
 	if animator:
 		animator.play("taking_damage")
 
+func take_damage_vulnerable() -> void:
+	if animator:
+		animator.play("tkaing_damage")
+
 func heal() -> void:
 	if animator:
 		animator.play("healing")

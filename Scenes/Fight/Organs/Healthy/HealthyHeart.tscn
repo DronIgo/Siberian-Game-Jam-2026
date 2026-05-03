@@ -108,7 +108,10 @@ position = Vector2(70, -44)
 script = ExtResource("7_gsxy5")
 organ_name = "healthy_heart"
 organ_ai = NodePath("../AI")
+is_main = null
+is_healthy = null
 max_health = 1000
+max_mana = null
 
 [node name="AI" type="Node" parent="." unique_id=353645686]
 script = ExtResource("8_d481k")

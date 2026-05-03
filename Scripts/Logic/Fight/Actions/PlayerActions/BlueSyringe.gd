@@ -1,7 +1,7 @@
-class_name ActionScalpel
+class_name ActionSyringeBlue
 extends ActionBase
 
-var action_name = "scalpel"
+var action_name = "syringe_blue"
 var damage : int
 
 func _init() -> void:
@@ -17,8 +17,10 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	for target: ActorBase in targets:
 		target.take_damage(actual_damage, damage_type)
 		target_names.append(target.lore_name)
+		target.apply_status(\
+			SEG.create_status(StatusGenerator.STATUS.BURN))
 	return ActionResult.new(\
-		"{initiator} делаете надрез на {targets} и наносите {damage} урона", { \
+		"{initiator} вкалываете эпинефрин. {targets} получает {damage} урона и отравлен", { \
 			"initiator": initiator.lore_name,\
 			"targets": ", ".join(target_names), \
 			"damage": damage }, 1)

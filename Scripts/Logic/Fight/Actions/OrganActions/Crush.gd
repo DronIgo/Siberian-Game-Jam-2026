@@ -20,7 +20,7 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 	var actual_damage = initiator.calc_damage_dealt(damage)
-	var amount = targets[0].take_damage(actual_damage)
+	var amount = targets[0].take_damage(actual_damage, damage_type)
 	return ActionResult.new(
 		formated_result,
 		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name, "amount" : amount},

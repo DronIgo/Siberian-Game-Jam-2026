@@ -16,7 +16,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 	var target_names: Array = []
 	for target: ActorBase in targets:
-		target.take_damage(stats["damage"])
+		target.take_damage(damage, damage_type)
 		target_names.append(target.lore_name)
 	ItemStateHolder.player_pocket[action_name] -= 1
 	return ActionResult.new(\

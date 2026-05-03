@@ -1,8 +1,11 @@
 class_name FightManager
 extends Node2D
 
+@export var wait_between_turns : float = 0.5
+
 @export var curtains_opening_animation_name: String = "curtains_opening"
 @export var back_animation_player: AnimationPlayer
+@export var battle_start_sound_name: String = "res://Assets/SFX/batte_start.mp3"
 
 @export var action_list : ActionList
 @export var action_display_text : ActionDisplayText
@@ -21,6 +24,7 @@ var round_num : int = 0
 #var _fight_history : FightHistory
 var _victory : bool = false
 var _defeat : bool = false
+var _main_organ_name : String = "Инородный орган"
 
 signal _on_any_selection_signal(arg)
 
@@ -34,6 +38,8 @@ func _ready() -> void:
 			friendly_organs.append(organ)
 		else:
 			enemy_organs.append(organ)
+			if organ.is_main:
+				_main_organ_name = organ.lore_name
 		all_organs.append(organ)
 		
 	## defeat/victory management
@@ -48,7 +54,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	#_fight_history = FightHistory.new()
 	
-	back_animation_player.play(curtains_opening_animation_name)	
+	back_animation_player.play(curtains_opening_animation_name)
+	SoundProcessor.process_sound(battle_start_sound_name)
 	
 	while !(_victory or _defeat):
 		await play_round()
@@ -117,6 +124,7 @@ func take_turn_organ(enemy : OrganBase) -> void:
 	else:
 		await action_display_text.display_action(action_resilt)
 	await enemy.at_end_turn()
+	await get_tree().create_timer(wait_between_turns).timeout
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:
 	for enemy: OrganBase in enemy_organs:
@@ -155,7 +163,10 @@ func _on_enemy_organ_died(actor : ActorBase) -> void:
 	_check_victory()
 
 func _on_victory() -> void:
-	print("VICTORY!")
+	await action_display_text.display("Операция прошла успешно.", 2.0)
+	await action_display_text.display("Вы получили " + _main_organ_name, 2.0)
+	
+	get_tree().change_scene_to_file("res://Hub/hub.tscn")
 	pass
 
 func _on_defeat() -> void:

@@ -1,15 +1,15 @@
 {
 	"hand" : [
+		"penicillin",
+		"syringe_green",
+		"syringe_blue",
 		"scalpel",
 		"scalpel",
 		"scalpel",
 		"scalpel",
 		"scalpel",
 		"scalpel",
-		"scalpel",
-		"scalpel",
-		"scalpel",
-		"aspirin"
+		"aspirin",
 	],
 	"healthy_heart" : [
 		"heal"
@@ -19,8 +19,8 @@
 		"filter"
 	],
 	"tentacle" : [
-		"heal",
-		"mitos",
-		"buff"
+		"mark-for-death",
+		"mark-for-death",
+		"mark-for-death"
 	]
 }

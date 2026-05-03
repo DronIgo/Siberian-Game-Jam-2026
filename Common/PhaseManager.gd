@@ -1,6 +1,6 @@
 class_name PhaseManager
 
-static var _config_path: String = "res://Common/phases.json"
+static var _config_path: String = "res://Common/Jsons/phases.json"
 static var _phases: Dictionary
 static var _events: Dictionary
 static var _current_phase_id: String

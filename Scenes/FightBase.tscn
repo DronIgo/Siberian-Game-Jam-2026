@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
-[ext_resource type="PackedScene" uid="uid://bfi1o4ib8t7og" path="res://Scenes/Fight/UI/Patients/PatientBeetle.tscn" id="16_6uwd6"]
+[ext_resource type="PackedScene" uid="uid://eecx3a0dv71q" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
 [ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
@@ -180,7 +180,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
-wait_after_display = 2.0
+wait_after_display = 3.0
 
 [node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
@@ -223,6 +223,5 @@ position = Vector2(844, 443)
 [node name="Slot5" type="Node2D" parent="OrganSummoner" unique_id=1926079143]
 position = Vector2(1365, 422)
 
-[node name="PatientBeetle" parent="." unique_id=739772376 instance=ExtResource("16_6uwd6")]
+[node name="PatientTable" parent="." unique_id=1637330193 instance=ExtResource("16_6uwd6")]
 position = Vector2(224, 375)
-id = ""
