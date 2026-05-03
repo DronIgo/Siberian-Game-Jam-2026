@@ -35,6 +35,8 @@ var _main_organ_name : String = "Инородный орган"
 signal _on_any_selection_signal(arg)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	PhaseManager.init()
+	
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
 	

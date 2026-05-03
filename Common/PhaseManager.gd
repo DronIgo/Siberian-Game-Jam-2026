@@ -6,10 +6,13 @@ static var _events: Dictionary
 static var _current_phase_id: String
 static var _next_phase_id: String
 static var _current_event_id: String
+static var _is_initialized: bool
 
 static var is_event: bool = false
 
 static func init():
+	if _is_initialized:
+		return
 	var config: Dictionary = StorageManager.read_from(_config_path)
 	var phases_array = config["phases"]
 	for phase_dictionary: Dictionary in phases_array:
