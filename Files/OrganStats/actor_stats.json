@@ -1,0 +1,17 @@
+{
+	"hand" : {
+		"name" : "Вы"
+	},
+	"healthy_heart" : {
+		"max_health" : 80,
+		"name" : "Здоровое сердце"
+	},
+	"sick_kidney" : {
+		"max_health" : 80,
+		"name" : "Зараженная печень"
+	},
+	"tentacle" : {
+		"max_health" : 240,
+		"name" : "Щупальце"
+	}
+}

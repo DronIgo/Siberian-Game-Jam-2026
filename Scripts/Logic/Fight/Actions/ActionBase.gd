@@ -14,19 +14,28 @@ func _init(name : String) -> void:
 	stats = AG.action_stats[name]
 	_parse_lore_name()
 	_parse_stats()
+	_parse_manacost()
 
 func _parse_lore_name() -> void:
 	if stats.has("name"):
 		lore_name = stats["name"]
 	else:
 		printerr("Couldn't parse name for action")
-		lore_name = "Смекалку"
+		lore_name = "способность"
+
+func _parse_manacost() -> void:
+	manacost = _safe_try_parse("manacost")
 
 func _parse_stats() -> void:
 	pass
+	
+func _safe_try_parse(stat_name : String) -> int:
+	if stats.has(stat_name):
+		return stats[stat_name]
+	return 0
 
 func _try_parse(stat_name : String):
-	if stats[stat_name]:
+	if stats.has(stat_name):
 		return stats[stat_name]
 	else:
 		printerr("Failed to parse characteristic ", stat_name)

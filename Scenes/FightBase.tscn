@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dv0h0kvyq0lgu"]
+[gd_scene format=3 uid="uid://dlfwj0llq0bqy"]
 
-[ext_resource type="Script" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="1_vqao4"]
+[ext_resource type="Script" uid="uid://d0s2y4y285p4t" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="1_vqao4"]
 [ext_resource type="Texture2D" uid="uid://bw3dshr32ivoe" path="res://Assets/UI/UI_battle_regular/bg_organ_dark.png" id="2_xx2d7"]
 [ext_resource type="Texture2D" uid="uid://b60at1ldfoo6n" path="res://Assets/UI/UI_battle_regular/bg_organ_light.png" id="3_g5117"]
 [ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="6_3g3hk"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
-[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
@@ -98,7 +98,7 @@ action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
 patient = NodePath("../Patient/PatientLogic")
-friendly_actors = [NodePath("../PlayerHand"), null]
+friendly_actors = [NodePath("../PlayerHand"), NodePath("../PlayerHand")]
 list_organs = Array[String](["healthy_heart", "sick_liver", "tentacle"])
 
 [node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("actor")]

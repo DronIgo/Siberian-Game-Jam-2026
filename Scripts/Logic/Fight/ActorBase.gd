@@ -12,7 +12,6 @@ var health : int
 
 var mana : int = 10
 
-var _actions_json_path = "res://Files/ActionStats/avialable_actions.json"
 var actions : Array = []
 var highlighted: bool
 
@@ -20,9 +19,15 @@ func _ready() -> void:
 	health = max_health
 
 func init(actor_name : String) -> void:
-	_load_actions(actor_name)
-	#TODO load from JSON
 	lore_name = actor_name
+	if OG.actions_by_actor.has(actor_name):
+		_init_actions(OG.actions_by_actor[actor_name])
+	else:
+		printerr(actor_name, " is missing from avialable attacks config!")
+	if OG.stats_by_actor.has(actor_name):
+		_init_stats(OG.stats_by_actor[actor_name])
+	else:
+		printerr(actor_name, " is missing from actor stats config!")
 
 signal died
 
@@ -79,24 +84,26 @@ func _on_death() -> void:
 	died.emit()
 	pass
 
-func _load_actions(actor_name : String) -> void:
-	if FileAccess.file_exists(_actions_json_path):
-		var json_text = FileAccess.get_file_as_string(_actions_json_path)
-		var data = JSON.parse_string(json_text) as Dictionary
-		if data and data.has(actor_name):
-			var action_names = data[actor_name] as Array
-			_init_actions(action_names)
-		else:
-			printerr("couldn't parse action list for actor by name ", actor_name)
-	else:
-		printerr("couldn't find file ", _actions_json_path)
-	return
-
 func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
 		var action: ActionBase = AG.generate_action_by_name(a_name)
 		if action != null:
 			actions.append(action)
+
+func _init_stats(stats : Dictionary) -> void:
+	var mh = _try_parse(stats, "max_health")
+	if mh:
+		max_health = mh
+	var ln = _try_parse(stats, "name")
+	if ln:
+		lore_name = ln
+	
+func _try_parse(stats : Dictionary, stat_name : String):
+	if stats.has(stat_name):
+		return stats[stat_name]
+	else:
+		printerr("Failed to parse characteristic ", stat_name)
+		return null
 
 func take_turn(possible_targets : Array) -> ActionResult:
 	return null
