@@ -7,6 +7,7 @@ static var _current_phase_id: String
 static var _next_phase_id: String
 static var _current_event_id: String
 static var _is_initialized: bool
+static var _day_night_template: String = "day_{}_night"
 
 static var is_event: bool = false
 
@@ -37,6 +38,9 @@ static func current_phase() -> Phase:
 static func exact_phase(id: String) -> Phase:
 	if id == "":
 		return null
+	if id == "?":
+		var game_progress = CityStateHolder.game_progress
+		id = _day_night_template.format(str(game_progress))
 	var next_phase: Phase = _phases[id]
 	_current_phase_id = next_phase.id
 	_next_phase_id = next_phase.next_phase_id
