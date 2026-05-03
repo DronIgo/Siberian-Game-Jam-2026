@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_6mylq"]
 [ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="7_wqqt1"]
 [ext_resource type="Script" uid="uid://2oqywlcbu67e" path="res://Scripts/Logic/Fight/Organs/SickAI.gd" id="8_ecwrd"]
-[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="9_t48ow"]
 
 [node name="Bad Liver" type="Sprite2D" unique_id=1647623734 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 self_modulate = Color(1, 0.27058825, 0.019607844, 1)
@@ -38,7 +37,3 @@ is_healthy = false
 
 [node name="AI" type="Node" parent="." unique_id=1204999763]
 script = ExtResource("8_ecwrd")
-
-[node name="HintBox" parent="." unique_id=1074084737 node_paths=PackedStringArray("hint_target") instance=ExtResource("9_t48ow")]
-hint_target = NodePath("../LiverSelectable")
-anchor_to_screen_corner = true

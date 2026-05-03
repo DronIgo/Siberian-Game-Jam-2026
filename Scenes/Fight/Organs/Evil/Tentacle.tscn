@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_hpjky"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_o2fap"]
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_hw7ev"]
-[ext_resource type="Script" uid="uid://cb1ow1gnd0hht" path="res://Scripts/Logic/Fight/Organs/OrganTentacle.gd" id="7_hnt65"]
-[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="8_if0li"]
+[ext_resource type="Script" path="res://Scripts/Logic/Fight/Organs/OrganTentacle.gd" id="7_hnt65"]
 [ext_resource type="Script" uid="uid://cleeaee5r8f5s" path="res://Scripts/Logic/Fight/Organs/EvilAI.gd" id="9_1n7b5"]
 
 [node name="Bad Essence" type="Sprite2D" unique_id=2081682971 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
@@ -35,11 +34,6 @@ organ_name = "tentacle"
 organ_ai = NodePath("../AI")
 is_main = true
 is_healthy = false
-
-[node name="HintBox" parent="." unique_id=1074084737 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_if0li")]
-hint_text = "Essence"
-hint_target = NodePath("../EssenceSelectable")
-anchor_to_screen_corner = true
 
 [node name="AI" type="Node" parent="." unique_id=13203856]
 script = ExtResource("9_1n7b5")

@@ -40,4 +40,3 @@ offset_bottom = 300.0
 grow_horizontal = 1
 grow_vertical = 1
 hint_target = NodePath("../StatusText")
-anchor_to_screen_corner = true

@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_xcwnb"]
 [ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="7_gsxy5"]
 [ext_resource type="Script" uid="uid://dqrfcv8ger8lv" path="res://Scripts/Logic/Fight/Organs/FriendlyAI.gd" id="8_d481k"]
-[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="9_ocbgs"]
 
 [node name="Heart" type="Sprite2D" unique_id=253183415 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
 texture = ExtResource("1_rkxcm")
@@ -32,12 +31,6 @@ save_selected_state = false
 script = ExtResource("7_gsxy5")
 organ_name = "healthy_heart"
 organ_ai = NodePath("../AI")
-is_main = null
 
 [node name="AI" type="Node" parent="." unique_id=353645686]
 script = ExtResource("8_d481k")
-
-[node name="HintBox" parent="." unique_id=1074084737 node_paths=PackedStringArray("hint_target") instance=ExtResource("9_ocbgs")]
-hint_text = "Heart"
-hint_target = NodePath("../HeartSelectable")
-anchor_to_screen_corner = true
