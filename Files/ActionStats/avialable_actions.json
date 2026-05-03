@@ -19,10 +19,8 @@
 		"filter"
 	],
 	"tentacle" : [
-		"crush",
+		"heal",
 		"mitos",
-		"buff",
-		"cauterization",
-		"irtysh"
+		"buff"
 	]
 }

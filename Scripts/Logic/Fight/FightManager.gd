@@ -107,9 +107,9 @@ func take_turn_organ(enemy : OrganBase) -> void:
 		return
 	var action_resilt = await enemy.take_turn(all_organs)
 	if !action_resilt:
-		action_display_text.display(enemy.lore_name + " пропускает ход")
+		await action_display_text.display(enemy.lore_name + " пропускает ход")
 	else:
-		action_display_text.display_action(action_resilt)
+		await action_display_text.display_action(action_resilt)
 	await enemy.at_end_turn()
 
 func _highlight_valid_enemy_targets(selected_action: ActionBase) -> void:

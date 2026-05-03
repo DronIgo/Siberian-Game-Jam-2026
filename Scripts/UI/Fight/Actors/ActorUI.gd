@@ -33,6 +33,12 @@ func remove_status(status : StatusEffectBase) -> void:
 
 func reset_status(status : StatusEffectBase) -> void:
 	statuses_grid.reset_status(status)
-	
+
+func update_status(status : StatusEffectBase) -> void:
+	statuses_grid.updated_status(status)
+
+func tick_down_status(status : StatusEffectBase) -> void:
+	statuses_grid.tick_down_status(status)
+
 func on_death() -> void:
 	pass

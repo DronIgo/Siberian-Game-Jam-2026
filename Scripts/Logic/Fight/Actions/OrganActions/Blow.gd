@@ -2,16 +2,11 @@ class_name ActionBlow
 extends ActionBase
 
 var action_name = "blow"
-var damage : int
-var duration
 
 var formated_result : String = "{initiator} разорвалась, {target} кровоточит"
 
 func _init() -> void:
 	super(action_name)
-
-func _parse_stats() -> void:
-	duration = _try_parse("duration")
 
 func get_priority(actor : OrganBase, own : OrganBase) -> int:
 	if actor.is_healthy != own.is_healthy:

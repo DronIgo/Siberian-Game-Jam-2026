@@ -8,6 +8,13 @@ const STATUS_BUFF_THEME = preload("uid://bp2dlaxjat1m3")
 const STATUS_DODGE_THEME = preload("uid://doqoepvrgfu3")
 const STATUS_POISONED_THEME = preload("uid://crbgf11gx0noa")
 
+const BLEED_COLOR : Color = Color(0.573, 0.0, 0.0, 1.0)
+const POISON_COLOR : Color = Color(0.0, 0.44, 0.0, 1.0)
+const MARK_COLOR : Color = Color(0.674, 0.0, 0.371, 1.0)
+const DEFENCE_COLOR : Color = Color(0.286, 0.324, 0.002, 1.0)
+const ATTACK_COLOR : Color = Color(0.174, 0.224, 0.406, 1.0)
+const BURN_COLOR : Color = Color(1.0, 0.349, 0.0, 1.0)
+
 const _stats_json_path = "res://Files/StatusStats/status_stats.json"
 
 var effect_stats : Dictionary
@@ -76,7 +83,7 @@ func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 	new_item.set_duration_and_amount(status.duration, status.amount)
 	match status.type:
 		STATUS.BLEED:
-			new_item.set_effect("Кровотечение", STATUS_BLEEDING_THEME)
+			new_item.set_effect("Кровотечение", STATUS_BLEEDING_THEME, BLEED_COLOR)
 		STATUS.POISON:
-			new_item.set_effect("Отравление", STATUS_POISONED_THEME)
+			new_item.set_effect("Отравление", STATUS_POISONED_THEME, POISON_COLOR)
 	return new_item

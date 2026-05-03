@@ -22,6 +22,6 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
-	targets[0].apply_status(StatusGenerator.STATUS.BUFF_DEF)
+	targets[0].apply_status(SEG.create_status(StatusGenerator.STATUS.BUFF_DEF))
 	return ActionResult.new(formated_result,\
 		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name}, 1)

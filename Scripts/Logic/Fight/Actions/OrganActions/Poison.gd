@@ -2,19 +2,14 @@ class_name ActionPoison
 extends ActionBase
 
 var action_name = "poison"
-var damage : int
-var duration
 
 var formated_result : String = "{initiator} не выводит токсины. {target} получает отравление."
 
 func _init() -> void:
 	super(action_name)
 
-func _parse_stats() -> void:
-	duration = _try_parse("duration")
-
 func get_priority(actor : OrganBase, own : OrganBase) -> int:
-	if actor.is_healthy:
+	if actor.is_healthy == own.is_healthy:
 		return 2
 	else:
 		return 1

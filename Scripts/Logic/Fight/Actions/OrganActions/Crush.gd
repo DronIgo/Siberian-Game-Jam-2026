@@ -12,7 +12,7 @@ func _parse_stats() -> void:
 	damage = _try_parse("damage")
 
 func get_priority(actor : OrganBase, own : OrganBase) -> int:
-	if actor.is_healthy:
+	if actor.is_healthy == own.is_healthy:
 		return 2
 	else:
 		return 1

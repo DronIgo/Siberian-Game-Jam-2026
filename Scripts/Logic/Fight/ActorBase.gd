@@ -102,6 +102,7 @@ func remove_status(status : StatusEffectBase) -> void:
 func at_end_turn() -> void:
 	for status in statuses:
 		await status.on_turn_end(self)
+		actor_ui.tick_down_status(status)
 		if status.duration <= 0:
 			remove_status(status)
 

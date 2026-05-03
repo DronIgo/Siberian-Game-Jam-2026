@@ -31,6 +31,7 @@ save_selected_state = false
 script = ExtResource("7_gsxy5")
 organ_name = "healthy_heart"
 organ_ai = NodePath("../AI")
+max_health = 1000
 
 [node name="AI" type="Node" parent="." unique_id=353645686]
 script = ExtResource("8_d481k")
