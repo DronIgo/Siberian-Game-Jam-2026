@@ -26,8 +26,8 @@ func _init(name : String) -> void:
 	_parse_lore_name()
 	_parse_stats()
 	_parse_manacost()
-	_parse_damage_type()
 	_parse_description()
+	_parse_damage_type()
 
 func _parse_lore_name() -> void:
 	if stats.has("name"):
@@ -63,7 +63,10 @@ func _try_parse(stat_name : String):
 		return null
 
 func check_valid_target(actor : ActorBase) -> bool:
-	return true
+	if actor:
+		return true
+	else:
+		return false
 
 func pick_targets(possible_targets : Array, initiator : OrganBase) -> Array:
 	if is_aoe:
@@ -97,12 +100,12 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 
 func _parse_description() -> void:
 	if stats.has("description"):
-		var desc = stats["description"]
-		var args : Dictionary
-		if stats.has("damage"):
-			args["damage"] = stats["damage"]
-		if stats.has("status"):
-			var status_stats = SEG.effect_stats[stats["status"]]
-			args["duration"] = status_stats["duration"]
-			args["amount"] = status_stats["amount"]
-		description = description.format(args)
+		#var desc = stats["description"]
+		#var args : Dictionary
+		#if stats.has("damage"):
+			#args["damage"] = stats["damage"]
+		#if stats.has("status"):
+			#var status_stats = SEG.effect_stats[stats["status"]]
+			#args["duration"] = status_stats["duration"]
+			#args["amount"] = status_stats["amount"]
+		description = stats["description"]

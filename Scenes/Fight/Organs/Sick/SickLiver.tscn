@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://taivcdbkqdb8"]
 
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_mjbsf"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_qlbft"]
+[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_qlbft"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_sux37"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_ohhv8"]
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_6mylq"]
@@ -35,6 +35,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(146, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_85n6h"]
 resource_name = "death"
@@ -45,10 +69,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5411765), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_uucch"]
@@ -83,16 +107,44 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0.98039216, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u8ab"]
+[sub_resource type="Animation" id="Animation_2tdou"]
+resource_name = "taking_vulnerable_damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.6034334, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.22, 0.36666667, 0.46, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(146, 0), Vector2(118, -26), Vector2(159, 23.000002), Vector2(135, -11), Vector2(149, 8), Vector2(146, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlbft"]
 _data = {
 &"RESET": SubResource("Animation_b8pi3"),
 &"death": SubResource("Animation_85n6h"),
 &"healing": SubResource("Animation_uucch"),
-&"taking_damage": SubResource("Animation_ie5am")
+&"taking_damage": SubResource("Animation_ie5am"),
+&"taking_vulnerable_damage": SubResource("Animation_2tdou")
 }
 
 [node name="Bad Liver" type="Sprite2D" unique_id=1647623734 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
-self_modulate = Color(1, 0.27058825, 0.019607844, 1)
 script = ExtResource("2_mjbsf")
 health_bar = NodePath("OrganHealthBarComponent")
 statuses_grid = NodePath("StatusGrid")
@@ -115,7 +167,7 @@ is_healthy = false
 script = ExtResource("8_ecwrd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2047644253]
-position = Vector2(153, 0)
+position = Vector2(146, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_hqk7c")
 
@@ -124,5 +176,5 @@ scale = Vector2(4, 4)
 script = ExtResource("6_6mylq")
 save_selected_state = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=172040822]
-libraries/ = SubResource("AnimationLibrary_8u8ab")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1463447728]
+libraries/ = SubResource("AnimationLibrary_qlbft")

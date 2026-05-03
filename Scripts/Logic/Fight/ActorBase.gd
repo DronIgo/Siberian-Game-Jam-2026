@@ -45,10 +45,12 @@ func after_action() -> void:
 
 func highlight():
 	highlighted = true
+	actor_ui.modulate = Color(0.782, 0.801, 0.433, 1.0)
 	print(str("[!] ", lore_name, " highlighted"))
 
 func unhighlight():
 	highlighted = false
+	actor_ui.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	print(str("[!] ", lore_name, " unhighlighted"))
 
 func take_damage(amount : int, type : ActionBase.DAMAGE_TYPE) -> int:
