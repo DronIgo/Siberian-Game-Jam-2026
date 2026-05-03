@@ -16,9 +16,10 @@ var mana : int = 10
 var actions : Array = []
 var highlighted: bool
 
+var vulnerable : ActionBase.DAMAGE_TYPE
+
 func _ready() -> void:
-	health = max_health
-	mana = max_mana
+	pass
 
 func init(actor_name : String) -> void:
 	lore_name = actor_name
@@ -50,11 +51,10 @@ func unhighlight():
 	highlighted = false
 	print(str("[!] ", lore_name, " unhighlighted"))
 
-#TODO: damage types
-func take_damage(amount : int) -> int:
+func take_damage(amount : int, type : ActionBase.DAMAGE_TYPE) -> int:
 	if health <= 0:
 		return 0
-	var actual_amount = calc_damage_taken(amount)
+	var actual_amount = calc_damage_taken(amount, type)
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
@@ -62,7 +62,7 @@ func take_damage(amount : int) -> int:
 	actor_ui.update_health()
 	return actual_amount
 
-func calc_damage_taken(damage : int) -> int:
+func calc_damage_taken(damage : int, type : ActionBase.DAMAGE_TYPE) -> int:
 	var mult : float = 100.0
 	var extra : int = 0
 	for s in statuses:
@@ -71,13 +71,19 @@ func calc_damage_taken(damage : int) -> int:
 		if s.type == StatusGenerator.STATUS.MARK:
 			mult += float(s.amount)
 		if s.type == StatusGenerator.STATUS.BURN:
-			extra += s.amount
+			var vuln_mult = 1.0
+			if ActionBase.DAMAGE_TYPE.BLUE == vulnerable:
+				vuln_mult = 1.5
+			extra += int(s.amount * vuln_mult)
 		if s.type == StatusGenerator.STATUS.HASTE:
 			var dodge = randi_range(0, 100) < s.amount
 			if dodge:
 				mult = 0.
 				extra = 0
 				break
+	if vulnerable == type and type != ActionBase.DAMAGE_TYPE.NONE:
+		#TODO: make a constant
+		mult += 0.5
 	return int(damage * mult / 100.0) + extra
 
 func calc_damage_dealt(damage : int) -> int:
@@ -132,6 +138,11 @@ func _init_stats(stats : Dictionary) -> void:
 	var ln = _try_parse(stats, "name")
 	if ln:
 		lore_name = ln
+	health = max_health
+	mana = max_mana
+	var vuln_str = _try_parse(stats, "vulnerable")
+	if vuln_str:
+		vulnerable = ActionBase.DAMAGE_TYPE[vuln_str]
 	
 func _try_parse(stats : Dictionary, stat_name : String):
 	if stats.has(stat_name):

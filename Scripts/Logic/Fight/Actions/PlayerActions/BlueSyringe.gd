@@ -15,7 +15,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var actual_damage = initiator.calc_damage_dealt(damage)
 	var target_names: Array = []
 	for target: ActorBase in targets:
-		target.take_damage(actual_damage)
+		target.take_damage(actual_damage, damage_type)
 		target_names.append(target.lore_name)
 		target.apply_status(\
 			SEG.create_status(StatusGenerator.STATUS.BURN))

@@ -1,7 +1,15 @@
 class_name ActionBase
 extends Object
 
+enum DAMAGE_TYPE {
+	RED,
+	GREEN,
+	BLUE,
+	NONE
+}
+
 var manacost : int = 0
+var damage_type : DAMAGE_TYPE = DAMAGE_TYPE.NONE
 
 var stats : Dictionary
 var lore_name : String
@@ -16,6 +24,7 @@ func _init(name : String) -> void:
 	_parse_lore_name()
 	_parse_stats()
 	_parse_manacost()
+	_parse_damage_type()
 	_parse_description()
 
 func _parse_lore_name() -> void:
@@ -35,6 +44,12 @@ func _safe_try_parse(stat_name : String) -> int:
 	if stats.has(stat_name):
 		return stats[stat_name]
 	return 0
+
+func _parse_damage_type():
+	if stats.has("dmagae_type"):
+		damage_type = DAMAGE_TYPE[stats["damage_type"]]
+	else:
+		damage_type = DAMAGE_TYPE.NONE
 
 func _try_parse(stat_name : String):
 	if stats.has(stat_name):
