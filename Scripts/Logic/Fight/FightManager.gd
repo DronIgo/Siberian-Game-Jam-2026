@@ -64,6 +64,8 @@ func _ready() -> void:
 	round_num = 0
 	#_fight_history = FightHistory.new()
 	
+	var current_phase: Phase = PhaseManager.current_phase()
+	patient_label.text = current_phase.args[0]
 	back_animation_player.play(curtains_opening_animation_name)
 	SoundProcessor.process_sound(battle_start_sound_name)
 	
