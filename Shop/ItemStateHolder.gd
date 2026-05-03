@@ -1,15 +1,15 @@
 extends Node
 
 var items: Array = [
-	ShopItemInfo.new("liho-96", "ЛИХО-96", "Жесть чё это", 96),
-	ShopItemInfo.new("irtysh", "ИРТЫШ", "Жесть чё это", 69),
-	ShopItemInfo.new("syrok", "Сырок", "Ооаоаа ммм", 33)
+	ShopItemInfo.new("bandage", "Бинты", "Позволяет снять кроватечение", 20),
+	ShopItemInfo.new("mana_potion", "Витамины", "Позваляет восстановить иммунитет", 20),
+	ShopItemInfo.new("health_potion", "Анестезия", "Позволяет быстро восстановить здоровье", 20)
 ]
 
 var shop_window: Dictionary = {
-	"liho-96": 1,
-	"irtysh": 1,
-	"syrok": 5
+	"bandage": 4,
+	"mana_potion": 4,
+	"health_potion": 4
 }
 
 var player_pocket: Dictionary = {}
