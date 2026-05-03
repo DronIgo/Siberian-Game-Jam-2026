@@ -3,9 +3,9 @@
 		"penicillin",
 		"syringe_green",
 		"syringe_blue",
-		"scalpel",
-		"scalpel",
-		"scalpel",
+		"buff",
+		"buff_defense",
+		"antalgetic",
 		"scalpel",
 		"scalpel",
 		"scalpel",
@@ -19,9 +19,8 @@
 		"filter"
 	],
 	"tentacle" : [
-		"mark-for-death",
-		"mark-for-death",
-		"mark-for-death",
-		"defend"
+		"roll",
+		"roll",
+		"roll"
 	]
 }

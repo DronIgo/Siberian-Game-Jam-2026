@@ -31,6 +31,12 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionSyringeGreen.new()
 		"syringe_blue":
 			return ActionSyringeBlue.new()
+		"buff":
+			return ActionBuffAttack.new()
+		"buff_defense":
+			return ActionBuffDefense.new()
+		"antalgetic":
+			return ActionAntalgetic.new()
 		"heal":
 			return ActionHeal.new()
 		"mitosis":
@@ -39,12 +45,22 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionBlow.new()
 		"crush":
 			return ActionCrush.new()
+		"roll":
+			return ActionRoll.new()
+		"slam":
+			return ActionSlam.new()
+		"ram":
+			return ActionRam.new()
 		"filter":
 			return ActionFilter.new()
 		"cauterization":
 			return ActionСauterization.new()
 		"haste":
 			return ActionHaste.new()
+		"scan_vul":
+			return ActionScanVul.new()
+		"vampirism":
+			return ActionVampirism.new()
 		"mark-for-death":
 			return ActionMarkForDeath.new()
 		"irtysh":
