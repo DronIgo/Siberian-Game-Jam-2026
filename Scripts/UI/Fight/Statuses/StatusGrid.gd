@@ -12,7 +12,7 @@ func add_status(status : StatusEffectBase) -> void:
 	_status_to_status_item[status.type] = new_item
 
 func remove_status(status: StatusEffectBase) -> void:
-	if !_status_to_status_item[status.type]:
+	if _status_to_status_item.has(status.type):
 		return
 	_status_to_status_item[status.type].queue_free()
 	_status_to_status_item.erase(status.type)

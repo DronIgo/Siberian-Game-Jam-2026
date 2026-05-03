@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bfi1o4ib8t7og" path="res://Scenes/Fight/UI/Patients/PatientBeetle.tscn" id="16_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
-[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]

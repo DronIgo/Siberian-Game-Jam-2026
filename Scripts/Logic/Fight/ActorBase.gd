@@ -71,6 +71,12 @@ func calc_damage_taken(damage : int) -> int:
 			mult += float(s.amount)
 		if s.type == StatusGenerator.STATUS.BURN:
 			extra += s.amount
+		if s.type == StatusGenerator.STATUS.HASTE:
+			var dodge = randi_range(0, 100) < s.amount
+			if dodge:
+				mult = 0.
+				extra = 0
+				break
 	return int(damage * mult / 100.0) + extra
 
 func calc_damage_dealt(damage : int) -> int:

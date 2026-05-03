@@ -7,9 +7,31 @@
 		},
 		"aspirin" : {
 			"amount" : 5,
-			"manacost" : 15,
+			"damage" : 15,
+			"manacost" : 20,
 			"name" : "Аспирин",
 			"description" : "Снижает свертываемость крови у всех врагов. Накладывает кровотечение %d на %d хода"
+		},
+		"penicillin" : {
+			"amount" : 5,
+			"damage" : 15,
+			"manacost" : 20,
+			"name" : "Пенициллин",
+			"description" : "Уничтожает микрофлору всех врагов. Накладывает отравление %d на %d хода"
+		},
+		"syringe_green" : {
+			"amount" : 5,
+			"damage" : 20,
+			"manacost" : 10,
+			"name" : "Эпинефрин",
+			"description" : " Наносит урон и накладывает отравление %d на %d хода"
+		},
+		"syringe_blue" : {
+			"amount" : 5,
+			"damage" : 20,
+			"manacost" : 10,
+			"name" : "Гидрокортизон",
+			"description" : " Наносит урон и накладывает ожог %d на %d хода"
 		},
 		"crush" : {
 			"name" : "Сокрушение",
@@ -54,5 +76,13 @@
 		"filter" : {
 			"name" : "Прочистка",
 			"description" : "Снимает один статус-эффект с органа"
-		}
+		},
+		"haste" : {
+			"name" : "Насыщение кислородом",
+			"description" : "Повышает уклонение"
+		},
+		"mark-for-death" : {
+			"name" : "Выбор цели",
+			"description" : "Увеличивает урон"
+		},
 	}

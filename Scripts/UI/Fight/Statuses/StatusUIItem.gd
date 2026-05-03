@@ -12,7 +12,7 @@ var max_duration: int
 var duration : int
 var amount : int
 
-func set_effect(effect_name : String, theme : Theme, color_ : Color) -> void:
+func set_effect(effect_name : String, color_ : Color) -> void:
 	name_text = effect_name
 	color = color_
 	_update_hint()
