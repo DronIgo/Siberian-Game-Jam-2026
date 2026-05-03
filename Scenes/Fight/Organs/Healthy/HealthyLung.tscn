@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://taivcdbkqdb8"]
+[gd_scene format=3 uid="uid://xyi2308s1taw"]
 
-[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_mjbsf"]
-[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_qlbft"]
-[ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_sux37"]
-[ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_ohhv8"]
-[ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_6mylq"]
-[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="7_wqqt1"]
-[ext_resource type="Script" uid="uid://2oqywlcbu67e" path="res://Scripts/Logic/Fight/Organs/SickAI.gd" id="8_ecwrd"]
-[ext_resource type="Texture2D" uid="uid://copv6s7707cli" path="res://Assets/Organs_art/Organs_human/organ_liver_bad.png" id="9_hqk7c"]
+[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="1_ltkqr"]
+[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_ahioq"]
+[ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="3_pvejo"]
+[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="4_7v8je"]
+[ext_resource type="Script" uid="uid://dqrfcv8ger8lv" path="res://Scripts/Logic/Fight/Organs/FriendlyAI.gd" id="5_drs5e"]
+[ext_resource type="Texture2D" uid="uid://cprfreguq7r" path="res://Assets/Organs_art/Organs_human/organ_lungs_healthy.png" id="6_ltkqr"]
+[ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="7_71w15"]
+[ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="8_tgh15"]
 
 [sub_resource type="Animation" id="Animation_b8pi3"]
 length = 0.001
@@ -135,7 +135,7 @@ tracks/1/keys = {
 "values": [Vector2(146, 0), Vector2(118, -26), Vector2(159, 23.000002), Vector2(135, -11), Vector2(149, 8), Vector2(146, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlbft"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8pi3"]
 _data = {
 &"RESET": SubResource("Animation_b8pi3"),
 &"death": SubResource("Animation_85n6h"),
@@ -144,37 +144,37 @@ _data = {
 &"taking_vulnerable_damage": SubResource("Animation_2tdou")
 }
 
-[node name="Bad Liver" type="Sprite2D" unique_id=1647623734 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
-script = ExtResource("2_mjbsf")
+[node name="Heart" type="Sprite2D" unique_id=253183415 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
+script = ExtResource("1_ltkqr")
 health_bar = NodePath("OrganHealthBarComponent")
 statuses_grid = NodePath("StatusGrid")
-selectable_component = NodePath("Sprite2D/LiverSelectable")
+selectable_component = NodePath("Sprite2D/HeartSelectable")
 actor = NodePath("Logic")
 animator = NodePath("AnimationPlayer")
 
-[node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_qlbft")]
+[node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_ahioq")]
 
-[node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("4_sux37")]
-position = Vector2(72, -46)
+[node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("3_pvejo")]
+position = Vector2(70, -44)
 
-[node name="Logic" type="Node2D" parent="." unique_id=258606152 node_paths=PackedStringArray("organ_ai")]
-script = ExtResource("7_wqqt1")
-organ_name = "sick_liver"
+[node name="Logic" type="Node2D" parent="." unique_id=218571327 node_paths=PackedStringArray("organ_ai")]
+script = ExtResource("4_7v8je")
+organ_name = "healthy_lung"
 organ_ai = NodePath("../AI")
-is_healthy = false
+max_health = 1000
 
-[node name="AI" type="Node" parent="." unique_id=1204999763]
-script = ExtResource("8_ecwrd")
+[node name="AI" type="Node" parent="." unique_id=353645686]
+script = ExtResource("5_drs5e")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2047644253]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2078962060]
 position = Vector2(146, 0)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("9_hqk7c")
+texture = ExtResource("6_ltkqr")
 
-[node name="LiverSelectable" parent="Sprite2D" unique_id=1089380166 instance=ExtResource("5_ohhv8")]
+[node name="HeartSelectable" parent="Sprite2D" unique_id=1089380166 instance=ExtResource("7_71w15")]
 scale = Vector2(4, 4)
-script = ExtResource("6_6mylq")
+script = ExtResource("8_tgh15")
 save_selected_state = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1463447728]
-libraries/ = SubResource("AnimationLibrary_qlbft")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=469352223]
+libraries/ = SubResource("AnimationLibrary_b8pi3")
