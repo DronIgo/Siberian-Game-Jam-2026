@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://taivcdbkqdb8"]
 
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_mjbsf"]
-[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_qlbft"]
+[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_qlbft"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_sux37"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_ohhv8"]
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_6mylq"]
@@ -159,7 +159,7 @@ position = Vector2(72, -46)
 
 [node name="Logic" type="Node2D" parent="." unique_id=258606152 node_paths=PackedStringArray("organ_ai")]
 script = ExtResource("7_wqqt1")
-organ_name = "sick_kidney"
+organ_name = "sick_liver"
 organ_ai = NodePath("../AI")
 is_healthy = false
 

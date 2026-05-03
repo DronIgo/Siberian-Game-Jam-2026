@@ -53,6 +53,10 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionRam.new()
 		"filter":
 			return ActionFilter.new()
+		"poison":
+			return ActionPoison.new()
+		"detox":
+			return ActionDetox.new()
 		"cauterization":
 			return ActionСauterization.new()
 		"haste":

@@ -6,7 +6,7 @@
 		"buff",
 		"buff_defense",
 		"antalgetic",
-		"scalpel",
+		"cauterization",
 		"scalpel",
 		"scalpel",
 		"aspirin"
@@ -24,8 +24,10 @@
 		"filter",
 	],
 	"healthy_brain" : [
+		"heal",
 	],
 	"sick_heart" : [
+		"heal",
 		"heal",
 	],
 	"sick_lungs" : [
@@ -41,6 +43,8 @@
 		"blow"
 	],
 	"sick_brain" : [
+		"heal",
+		"mark-for-death"
 	],
 	"tentacle" : [
 		"roll",
@@ -48,17 +52,23 @@
 		"roll"
 	],
 	"wings" : [
-		"slam"
+		"slam",
+		"roll",
+		"roll",
 	],
 	"eyes" : [
 		"scan_vul",
-		"vampirism"
+		"vampirism",
+		"roll",
 	],
 	"horns" : [
-		"ram"
+		"ram",
+		"roll",
+		"roll",
 	],
 	"shell" : [
 		"hide",
-		"roll"
+		"roll",
+		"roll",
 	],
 }
