@@ -6,17 +6,16 @@
 [ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="6_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="8_3g3hk"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
-[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="9_aghpr"]
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 [ext_resource type="Texture2D" uid="uid://bcwkcv318pxqg" path="res://Assets/UI/UI_action_button/selected.png" id="11_khk4b"]
 [ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="12_1aue6"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
-[ext_resource type="PackedScene" uid="uid://bwichot4w3nxb" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
+[ext_resource type="PackedScene" uid="uid://eecx3a0dv71q" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
 [ext_resource type="Texture2D" uid="uid://bfecpl07fm7tg" path="res://Assets/UI/UI_battle_regular/paper_patient.png" id="17_veage"]
-[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
+[ext_resource type="Texture2D" uid="uid://bu0ileql3cgg" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="18_veage"]
 [ext_resource type="Texture2D" uid="uid://b04owl16n0nip" path="res://Assets/UI/UI_battle_regular/paper_text.png" id="19_mnvx0"]
@@ -181,6 +180,7 @@ theme_override_font_sizes/font_size = 24
 text = "пациент"
 
 [node name="HintSprite2D" type="Sprite2D" parent="." unique_id=837589550]
+z_index = 7
 position = Vector2(1743, 1124)
 texture = ExtResource("19_mnvx0")
 
@@ -192,15 +192,39 @@ offset_bottom = -81.0
 theme = ExtResource("18_veage")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
-[node name="ActionList" parent="CanvasLayer" unique_id=1970410951 instance=ExtResource("8_3g3hk")]
+[node name="ActionList" parent="CanvasLayer" unique_id=1970410951 node_paths=PackedStringArray("back_b", "menu") instance=ExtResource("8_3g3hk")]
 offset_left = 450.0
 offset_top = 750.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bjaq6")
+back_b = NodePath("Back/SelectButton")
+menu = NodePath("../Menu")
+
+[node name="Back" type="Label" parent="CanvasLayer/ActionList" unique_id=1125444139]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 1167.0
+offset_top = 29.0
+offset_right = 1447.0
+offset_bottom = 87.0
+theme = ExtResource("18_veage")
+theme_override_font_sizes/font_size = 42
+text = "Назад"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="CanvasLayer/ActionList/Back" unique_id=1881412322]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("11_khk4b")
+texture_hover = ExtResource("12_1aue6")
 
 [node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("9_vqao4")]
 self_modulate = Color(1, 1, 1, 0)
@@ -217,7 +241,7 @@ grow_horizontal = 0
 grow_vertical = 0
 wait_after_display = 3.0
 
-[node name="Menu" type="Panel" parent="CanvasLayer" unique_id=1970410951]
+[node name="Menu" type="Panel" parent="CanvasLayer" unique_id=1418809547]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 450.0
@@ -233,7 +257,7 @@ offset_left = 62.0
 offset_top = 96.0
 offset_right = 342.0
 offset_bottom = 154.0
-theme = ExtResource("9_aghpr")
+theme = ExtResource("18_veage")
 theme_override_font_sizes/font_size = 42
 text = "Атака"
 vertical_alignment = 1
@@ -252,7 +276,7 @@ offset_left = 62.0
 offset_top = 154.0
 offset_right = 342.0
 offset_bottom = 212.0
-theme = ExtResource("9_aghpr")
+theme = ExtResource("18_veage")
 theme_override_font_sizes/font_size = 42
 text = "Предметы"
 vertical_alignment = 1
@@ -264,39 +288,7 @@ offset_bottom = 58.0
 texture_pressed = ExtResource("11_khk4b")
 texture_hover = ExtResource("12_1aue6")
 
-[node name="ActionList" parent="CanvasLayer" unique_id=749554588 node_paths=PackedStringArray("back_b", "menu") instance=ExtResource("8_3g3hk")]
-visible = false
-offset_left = 450.0
-offset_top = 750.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-back_b = NodePath("Back/SelectButton")
-menu = NodePath("../Menu")
-
-[node name="Back" type="Label" parent="CanvasLayer/ActionList" unique_id=1125444139]
-custom_minimum_size = Vector2(280, 58)
-layout_mode = 0
-offset_left = 1167.0
-offset_top = 250.0
-offset_right = 1447.0
-offset_bottom = 308.0
-theme = ExtResource("9_aghpr")
-theme_override_font_sizes/font_size = 42
-text = "Назад"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SelectButton" type="TextureButton" parent="CanvasLayer/ActionList/Back" unique_id=1881412322]
-layout_mode = 0
-offset_right = 280.0
-offset_bottom = 58.0
-texture_pressed = ExtResource("11_khk4b")
-texture_hover = ExtResource("12_1aue6")
-
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
-wait_between_turns = null
-wait_after_player_turn = null
-curtains_opening_animation_name = null
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "patient_label", "hint_label", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
 battle_start_sound_name = null
 patient_label = NodePath("../PatientPaperSprite2D/PatientPaperLabel")
