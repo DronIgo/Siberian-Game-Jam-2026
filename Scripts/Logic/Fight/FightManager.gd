@@ -74,7 +74,7 @@ func _ready() -> void:
 
 var _player_turn_counter = 0
 func play_round() -> void:
-	_player_turn_counter = 0
+	_player_turn_counter = 1
 	for friend in friendly_actors:
 		await take_turn_friendly(friend)
 		while extra_turn:
@@ -110,7 +110,9 @@ func take_turn_friendly(actor : ActorBase) -> void:
 		match status.type:
 			StatusGenerator.STATUS.BUFF_ATTACK:
 				action_display_text.display(\
-					"Ваш ход. Урон повышен. Ещё " + status.duration + " хода", 2.0)
+					"Ваш ход. " + str(_player_turn_counter) +\
+					"/" + str(friendly_actors.size()) + \
+					" Урон повышен. Ещё " + str(status.duration) + " хода", 2.0)
 				msg = true
 	if !msg:
 		action_display_text.display(\

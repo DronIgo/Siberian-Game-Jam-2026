@@ -12,6 +12,8 @@ var shop_window: Dictionary = {
 	"syrok": 5
 }
 
-var player_pocket: Dictionary = {}
+var player_pocket: Dictionary = {
+	
+}
 
 var player_cash: int = 100

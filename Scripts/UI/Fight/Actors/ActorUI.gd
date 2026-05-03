@@ -13,6 +13,8 @@ func _ready() -> void:
 	actor.actor_ui = self
 	if health_bar:
 		health_bar.init(actor.max_health)
+	if mana_bar:
+		mana_bar.init(actor.max_mana)
 	if selectable_component:
 		selectable_component.on_selected.connect(selected)
 	else:
@@ -44,16 +46,20 @@ func apply_status(status : StatusEffectBase) -> void:
 		statuses_grid.add_status(status)
 
 func remove_status(status : StatusEffectBase) -> void:
-	statuses_grid.remove_status(status)
+	if statuses_grid:
+		statuses_grid.remove_status(status)
 
 func reset_status(status : StatusEffectBase) -> void:
-	statuses_grid.reset_status(status)
+	if statuses_grid:
+		statuses_grid.reset_status(status)
 
 func update_status(status : StatusEffectBase) -> void:
-	statuses_grid.updated_status(status)
+	if statuses_grid:
+		statuses_grid.updated_status(status)
 
 func tick_down_status(status : StatusEffectBase) -> void:
-	statuses_grid.tick_down_status(status)
+	if statuses_grid:
+		statuses_grid.tick_down_status(status)
 
 func on_death() -> void:
 	if animator:

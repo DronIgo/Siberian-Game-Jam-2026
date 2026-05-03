@@ -51,7 +51,7 @@ func _safe_try_parse(stat_name : String) -> int:
 	return 0
 
 func _parse_damage_type():
-	if stats.has("dmagae_type"):
+	if stats.has("damage_type"):
 		damage_type = DAMAGE_TYPE[stats["damage_type"]]
 	else:
 		damage_type = DAMAGE_TYPE.NONE

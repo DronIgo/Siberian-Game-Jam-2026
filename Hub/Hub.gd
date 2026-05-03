@@ -8,6 +8,7 @@ extends CanvasLayer
 var _current_building_id: String = ""
 
 func _ready() -> void:
+	PhaseManager.init()
 	building_info_rect.hide()
 	HubEventBus.building_selected.connect(_try_select_building)
 
