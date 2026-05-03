@@ -1,9 +1,9 @@
-class_name ActionCrush
+class_name ActionRoll
 extends ActionBase
 
-var action_name = "crush"
+var action_name = "roll"
 var damage : int
-var formated_result : String = "{initiator} сокрушил {target} и нанес {amount} урона"
+var formated_result : String = "{initiator} раскатывает {target} в лепёшку"
 
 func _init() -> void:
 	super(action_name)
@@ -23,6 +23,6 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var amount = targets[0].take_damage(actual_damage, damage_type)
 	return ActionResult.new(
 		formated_result,
-		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name, "amount" : amount},
+		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name},
 		1
 	)
