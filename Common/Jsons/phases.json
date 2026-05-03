@@ -24,10 +24,90 @@
 			"next_phase_id": "hub"
 		},
 		{
-			"id": "house_fight",
+			"id": "house_0_fight",
 			"scene_name": "res://Scenes/FightBase.tscn",
 			"args": [
-				"Полиграф Шариков",
+				"Ян Такле́вич",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_1_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Зофья Птакска",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_2_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Стани́слав Латачски",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_3_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Елена Рожинска",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_4_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Кара Пасынич",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_5_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Пётрек Ваговски",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_6_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Марек Жадлович",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_7_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Майя Хрилетич",
+				"fly",
+				[ "tentacle", "healthy_heart" ]
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "house_8_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"Святлослав Глович",
 				"fly",
 				[ "tentacle", "healthy_heart" ]
 			],
