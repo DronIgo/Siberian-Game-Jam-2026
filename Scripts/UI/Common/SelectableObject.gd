@@ -24,6 +24,7 @@ func _ready() -> void:
 	get_viewport().physics_object_picking_sort = true
 	_genenrate_sprite_polygon()
 	input_event.connect(_input_event)
+	global_scale = _parent_sprite.scale
 
 func _input_event(viewport : Viewport, event : InputEvent, shape_idx : int) -> void:
 	#TODO: BUG: нажимается дважды
