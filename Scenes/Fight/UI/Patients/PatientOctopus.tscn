@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://o013dl0uimka"]
+
+[ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_tq58t"]
+[ext_resource type="Texture2D" uid="uid://bbes8st0hmhm" path="res://Assets/Characters_art/patient_octopus_0.png" id="2_i3lw8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crd77"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i3lw8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="PatientOctopus" type="Node2D" unique_id=1883841192 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_tq58t")
+id = "octopus"
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=669721264]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_crd77")
+animation = &"idle"

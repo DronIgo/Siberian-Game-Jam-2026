@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b4ds7cajjtr3b"]
+
+[ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_m4vla"]
+[ext_resource type="Texture2D" uid="uid://drjx5msnoa6od" path="res://Assets/Characters_art/patient_flyeye_0.png" id="2_m4vla"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4namc"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m4vla")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="PatientFly" type="Node2D" unique_id=988872321 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_m4vla")
+id = "fly"
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879186046]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4namc")
+animation = &"idle"
