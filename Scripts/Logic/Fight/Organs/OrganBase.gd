@@ -9,7 +9,8 @@ extends ActorBase
 func _ready() -> void:
 	super()
 	init(organ_name)
-	organ_ai.actions = actions
+	if organ_ai:
+		organ_ai.actions = actions
 
 func take_turn(possible_targets : Array) -> ActionResult:
 	return organ_ai.take_turn(self, possible_targets)

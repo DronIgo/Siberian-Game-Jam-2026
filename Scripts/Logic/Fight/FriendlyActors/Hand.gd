@@ -1,5 +1,5 @@
 class_name Hand
-extends ActorBase
+extends OrganBase
 
 var actor_name : String = "hand"
 

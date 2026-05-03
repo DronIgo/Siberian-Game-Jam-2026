@@ -29,7 +29,9 @@ static func try_next_phase() -> Phase:
 	return exact_phase(_next_phase_id)
 
 static func current_phase() -> Phase:
-	return _phases[_current_phase_id]
+	if _phases.has(_current_phase_id):
+		return _phases[_current_phase_id]
+	return null
 
 static func exact_phase(id: String) -> Phase:
 	if id == "":

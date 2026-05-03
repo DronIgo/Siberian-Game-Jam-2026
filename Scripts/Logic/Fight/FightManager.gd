@@ -36,7 +36,7 @@ var _main_organ_name : String = "Инородный орган"
 signal _on_any_selection_signal(arg)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PhaseManager.init()
+	#PhaseManager.init()
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
 	
@@ -44,9 +44,11 @@ func _ready() -> void:
 	item_b.pressed.connect(_on_menu_button_press.bind("item"))
 	
 	var current_phase: Phase = PhaseManager.current_phase()
-	patient_label.text = current_phase.args[0]
-	patien_table.place_patient(current_phase.args[1])
-	list_organs = current_phase.args[2]
+	if current_phase:
+		if patient_label:
+			patient_label.text = current_phase.args[0]
+		patien_table.place_patient(current_phase.args[1])
+		list_organs = current_phase.args[2]
 	
 	for organ_name in list_organs:
 		var organ = organ_summoner.summon_by_name(organ_name)
