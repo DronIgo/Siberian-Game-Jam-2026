@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://taivcdbkqdb8"]
 
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_mjbsf"]
-[ext_resource type="PackedScene" uid="uid://cl5wsaq02ioet" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_mmqee"]
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_qlbft"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_sux37"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_ohhv8"]
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_6mylq"]
@@ -94,14 +94,13 @@ _data = {
 [node name="Bad Liver" type="Sprite2D" unique_id=1647623734 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
 self_modulate = Color(1, 0.27058825, 0.019607844, 1)
 script = ExtResource("2_mjbsf")
-health_bar = NodePath("Health")
+health_bar = NodePath("OrganHealthBarComponent")
 statuses_grid = NodePath("StatusGrid")
 selectable_component = NodePath("Sprite2D/LiverSelectable")
 actor = NodePath("Logic")
 animator = NodePath("AnimationPlayer")
 
-[node name="Health" parent="." unique_id=502772887 instance=ExtResource("3_mmqee")]
-position = Vector2(-80, -2)
+[node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_qlbft")]
 
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("4_sux37")]
 position = Vector2(72, -46)
@@ -116,6 +115,7 @@ is_healthy = false
 script = ExtResource("8_ecwrd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2047644253]
+position = Vector2(153, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("9_hqk7c")
 
