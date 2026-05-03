@@ -1,7 +1,8 @@
 {
 	"hand" : {
 		"name" : "Вы",
-		"max_health" : 100
+		"max_health" : 250,
+		"max_manna" : 50
 	},
 	"healthy_heart" : {
 		"max_health" : 80,

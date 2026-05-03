@@ -44,7 +44,7 @@
 			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"antalgetic" : {
-			"heal_amount" : 40,
+			"heal_amount" : 20,
 			"manacost" : 0,
 			"name" : "Анальгин",
 			"description" : "Восстанавливает здоровье"
@@ -56,7 +56,7 @@
 		},
 		"roll" : {
 			"name" : "Раскатывание",
-			"damage" : 30,
+			"damage" : 15,
 			"description" : "Мощный удар, расплющивающий орган."
 		},
 		"mitos" : {
@@ -107,7 +107,7 @@
 		},
 		"ram" : {
 			"name": "Прорывающий удар",
-			"damage": 20,
+			"damage": 15,
 			"description" : "Наносит урон всем органам"
 		},
 		"filter" : {
