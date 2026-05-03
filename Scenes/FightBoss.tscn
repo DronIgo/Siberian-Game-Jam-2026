@@ -249,11 +249,13 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="ReferenceBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1867239223]
+visible = false
 position = Vector2(0, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_ikx48")
 
 [node name="ReferenceBackSprite2D2" type="Sprite2D" parent="BackControl" unique_id=1613705777]
+visible = false
 self_modulate = Color(1, 1, 1, 0.2509804)
 position = Vector2(0, 20)
 scale = Vector2(1.5, 1.5)
@@ -263,6 +265,7 @@ texture = ExtResource("2_8w6ld")
 libraries/ = SubResource("AnimationLibrary_6uwd6")
 
 [node name="BossFullSprite" type="Sprite2D" parent="BackControl" unique_id=1926939245]
+visible = false
 position = Vector2(228.00002, -96.00001)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_fg4gi")
@@ -391,7 +394,7 @@ offset_bottom = 58.0
 texture_pressed = ExtResource("10_q1sl8")
 texture_hover = ExtResource("11_42swo")
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors", "friendly_organs", "enemy_organs") instance=ExtResource("13_2n4yq")]
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors", "friendly_organs", "enemy_organs", "all_organs") instance=ExtResource("13_2n4yq")]
 curtains_opening_animation_name = "curtains_opening_boss"
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
 menu = NodePath("../CanvasLayer/Menu")
@@ -404,6 +407,7 @@ patient = NodePath("../Player/Player")
 friendly_actors = [NodePath("../Player/Player")]
 friendly_organs = [NodePath("../Player/Player")]
 enemy_organs = [NodePath("../Head/Logic"), NodePath("../Hand2/Logic"), NodePath("../Hand1/Logic")]
+all_organs = [NodePath("../Player/Player")]
 skip_friendly_organs = true
 
 [node name="Head" parent="." unique_id=2081682971 instance=ExtResource("13_qpvpn")]

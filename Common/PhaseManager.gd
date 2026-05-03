@@ -24,6 +24,7 @@ static func init():
 		_events[event.id] = event
 	_current_phase_id = config["init_scene_id"]
 	_next_phase_id = _phases[_current_phase_id].next_phase_id
+	_is_initialized = true
 
 static func try_next_phase() -> Phase:
 	return exact_phase(_next_phase_id)
