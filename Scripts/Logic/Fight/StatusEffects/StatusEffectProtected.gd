@@ -7,7 +7,6 @@ func _init(duration_: int) -> void:
     _name = "protected"
     type = StatusGenerator.STATUS.PROTECTED
     super(0, duration_)
-    _description = "Защищён от урона"
 
 func on_turn_end(actor: ActorBase) -> void:
     duration -= 1
@@ -16,3 +15,7 @@ func on_turn_end(actor: ActorBase) -> void:
 
 func on_turn_start(actor: ActorBase) -> void:
     pass
+
+func set_shield_bearer(bearer: ActorBase) -> void:
+    shield_bearer = bearer
+    _description = "%s защищает от урона" % bearer.lore_name

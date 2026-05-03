@@ -18,3 +18,7 @@ func on_turn_end(actor: ActorBase) -> void:
 
 func on_turn_start(actor: ActorBase) -> void:
     pass
+
+func set_protected_ally(ally: ActorBase) -> void:
+    protected_ally = ally
+    _description = "Принимает урон вместо %s" % ally.lore_name

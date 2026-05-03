@@ -15,8 +15,8 @@
 		"heal"
 	],
 	"sick_kidney" : [
-		"blow",
-		"filter"
+		"hide_behind",
+		"hide_behind"
 	],
 	"tentacle" : [
 		"roll",
