@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://doa8o4i0u2wco"]
 
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_2tdou"]
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_i71oi"]
-[ext_resource type="PackedScene" uid="uid://cl5wsaq02ioet" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_b06jc"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_hpjky"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_o2fap"]
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_hw7ev"]
@@ -94,14 +94,13 @@ _data = {
 [node name="Bad Essence" type="Sprite2D" unique_id=2081682971 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
 self_modulate = Color(0.96862745, 0, 0, 1)
 script = ExtResource("2_i71oi")
-health_bar = NodePath("Health")
+health_bar = NodePath("OrganHealthBarComponent")
 statuses_grid = NodePath("StatusGrid")
 selectable_component = NodePath("Sprite2D/EssenceSelectable")
 actor = NodePath("Logic")
 animator = NodePath("AnimationPlayer")
 
-[node name="Health" parent="." unique_id=502772887 instance=ExtResource("3_b06jc")]
-position = Vector2(-81, 0)
+[node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_2tdou")]
 
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("4_hpjky")]
 position = Vector2(71, -48)
@@ -117,6 +116,7 @@ is_healthy = false
 script = ExtResource("9_1n7b5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1589655490]
+position = Vector2(146, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_2tdou")
 

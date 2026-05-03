@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dafida5yqhbwt"]
+[gd_scene format=3 uid="uid://r80quhg3k1b6"]
 
 [ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_lgdh8"]
 [ext_resource type="Texture2D" uid="uid://cfnqycemskmro" path="res://Assets/UI/UI_battle_regular/bottle_organ_health_png.png" id="2_tne58"]
