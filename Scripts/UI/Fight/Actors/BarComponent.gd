@@ -19,12 +19,8 @@ var _current_logic_value: float
 
 func _ready() -> void:
 	_init_position = actual_bar.position
-	# test
+	# todo: init from actors
 	init(100)
-	await get_tree().create_timer(2).timeout
-	set_bar(0.66)
-	await get_tree().create_timer(2).timeout
-	set_bar(0.75)
 
 func _process(delta: float) -> void:
 	if _current_tweens.is_empty():

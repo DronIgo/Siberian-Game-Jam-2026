@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_rkxcm"]
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_ix7xx"]
-[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_1wx3j"]
+[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="3_1wx3j"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_f0vmv"]
 [ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_otgh5"]
 [ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_xcwnb"]
