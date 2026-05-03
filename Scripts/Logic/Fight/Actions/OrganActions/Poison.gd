@@ -1,15 +1,15 @@
-class_name ActionMarkForDeath
+class_name ActionPoison
 extends ActionBase
 
-var action_name = "mark-for-death"
+var action_name = "poison"
 
-var formated_result : String = "Токсины задерживаются в {initiator}. {target} получает отравление."
+var formated_result : String = "Токсины задерживаются в {initiator}. {target} отравлен."
 
 func _init() -> void:
 	super(action_name)
 
 func get_priority(actor : OrganBase, own : OrganBase) -> int:
-	if actor.is_healthy == own.is_healthy:
+	if actor.is_healthy != own.is_healthy:
 		return 2
 	else:
 		return 1

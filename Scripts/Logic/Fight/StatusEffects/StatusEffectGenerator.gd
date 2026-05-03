@@ -110,4 +110,6 @@ func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 			new_item.set_effect("ПОД ЗАЩИТОЙ", PROTECTED_COLOR)
 		STATUS.HIDE:
 			new_item.set_effect("Прятки", HIDE_COLOR)
+		STATUS.BURN:
+			new_item.set_effect("Ожог", BURN_COLOR)
 	return new_item

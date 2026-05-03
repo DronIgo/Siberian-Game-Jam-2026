@@ -98,7 +98,7 @@ func calc_damage_taken(damage : int, type : ActionBase.DAMAGE_TYPE) -> int:
 				break
 	if vulnerable == type and type != ActionBase.DAMAGE_TYPE.NONE:
 		#TODO: make a constant
-		mult += 0.5
+		mult += 50
 	return int(damage * mult / 100.0) + extra
 
 func calc_damage_dealt(damage : int) -> int:
