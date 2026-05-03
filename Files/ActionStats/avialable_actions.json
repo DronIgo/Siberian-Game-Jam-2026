@@ -12,15 +12,53 @@
 		"aspirin"
 	],
 	"healthy_heart" : [
-		"heal"
+		"heal",
+	],
+	"healthy_lungs" : [
+		"haste",
+	],
+	"healthy_liver" : [
+		"detox",
+	],
+	"healthy_kidney" : [
+		"filter",
+	],
+	"healthy_brain" : [
+	],
+	"sick_heart" : [
+		"heal",
+	],
+	"sick_lungs" : [
+		"haste",
+		"defend"
+	],
+	"sick_liver" : [
+		"detox",
+		"poison"
 	],
 	"sick_kidney" : [
-		"hide_behind",
-		"hide_behind"
+		"filter",
+		"blow"
+	],
+	"sick_brain" : [
 	],
 	"tentacle" : [
 		"roll",
 		"roll",
 		"roll"
-	]
+	],
+	"wings" : [
+		"slam"
+	],
+	"eyes" : [
+		"scan_vul",
+		"vampirism"
+	],
+	"horns" : [
+		"ram"
+	],
+	"shell" : [
+		"hide",
+		"roll"
+	],
 }

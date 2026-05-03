@@ -5,30 +5,97 @@
 	},
 	"healthy_heart" : {
 		"max_health" : 80,
+		"vulnerable" : "RED",
 		"name" : "здоровое сердце"
 	},
 	"healthy_brain" : {
 		"max_health" : 80,
+		"vulnerable" : "RED",
 		"name" : "здоровый мозг"
 	},
 	"healthy_lung" : {
 		"max_health" : 80,
-		"name" : "Здоровое сердце"
+		"vulnerable" : "GREEN",
+		"name" : "Здоровое лёгкое"
 	},
 	"healthy_kidney" : {
 		"max_health" : 80,
-		"name" : "Здоровое сердце"
+		"vulnerable" : "BLUE",
+		"name" : "Здоровая почка"
 	},
 	"healthy_liver" : {
 		"max_health" : 80,
-		"name" : "Здоровое сердце"
+		"vulnerable" : "BLUE",
+		"name" : "Здоровая печень"
+	},
+	"sick_liver" : {
+		"max_health" : 80,
+		"vulnerable" : "BLUE",
+		"name" : "Зараженная печень"
+	},
+	"sick_brain" : {
+		"max_health" : 80,
+		"vulnerable" : "RED",
+		"name" : "Зараженный мозг"
 	},
 	"sick_kidney" : {
 		"max_health" : 80,
-		"name" : "Зараженная печень"
+		"vulnerable" : "BLUE",
+		"name" : "Зараженные лёгкие"
+	},
+	"sick_lung" : {
+		"max_health" : 80,
+		"vulnerable" : "GREEN",
+		"name" : "Зараженные лёгкие"
+	},
+	"sick_heart" : {
+		"max_health" : 80,
+		"vulnerable" : "RED",
+		"name" : "Зараженное сердце"
 	},
 	"tentacle" : {
 		"max_health" : 240,
+		"vulnerable" : "RED",
 		"name" : "Щупальце"
-	}
+	},
+	"wings" : {
+		"max_health" : 240,
+		"vulnerable" : "RED",
+		"name" : "Крылья"
+	},
+	"eyes" : {
+		"max_health" : 240,
+		"vulnerable" : "RED",
+		"name" : "Глаза мухи"
+	},
+	"horns" : {
+		"max_health" : 240,
+		"vulnerable" : "GREEN",
+		"name" : "Рога"
+	},
+	"shell" : {
+		"max_health" : 240,
+		"vulnerable" : "GREEN",
+		"name" : "Панцирь"
+	},
+	"scales" : {
+		"max_health" : 240,
+		"vulnerable" : "GREEN",
+		"name" : "Чешуя"
+	},
+	"tail" : {
+		"max_health" : 240,
+		"vulnerable" : "BLUE",
+		"name" : "Хвост скорпиона"
+	},
+	"axolotl" : {
+		"max_health" : 240,
+		"vulnerable" : "BLUE",
+		"name" : "Жабры аксолотля"
+	},
+	"firefly" : {
+		"max_health" : 240,
+		"vulnerable" : "BLUE",
+		"name" : "Торакс светлячка"
+	},
 }
