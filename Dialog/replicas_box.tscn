@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dnhriu48mjgqj"]
 
 [ext_resource type="Script" uid="uid://kal8a3dtgbfg" path="res://Dialog/ReplicasBox.gd" id="1_w4l6l"]
-[ext_resource type="PackedScene" uid="uid://81ufm7cjfjr0" path="res://Dialog/speaker.tscn" id="2_n4433"]
+[ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="2_n4433"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="3_2hj2m"]
 
-[node name="ReplicasBox" type="Control" unique_id=142583026 node_paths=PackedStringArray("text_label", "speaker_left", "speaker_right")]
+[node name="ReplicasBox" type="Control" unique_id=142583026 node_paths=PackedStringArray("text_label")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -13,47 +14,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_w4l6l")
-text_label = NodePath("BaseRect/Label")
-speaker_left = NodePath("BaseRect/SpeakerLeft")
-speaker_right = NodePath("BaseRect/SpeakerRight")
+text_label = NodePath("Label")
 
-[node name="BaseRect" type="ColorRect" parent="." unique_id=33175070]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -536.0
-offset_top = -230.0
-offset_right = 536.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.7529412, 0.2509804, 0.2509804, 0.7529412)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=385873256]
+position = Vector2(0, -205)
+texture = ExtResource("2_n4433")
 
-[node name="Label" type="Label" parent="BaseRect" unique_id=74134545]
+[node name="Label" type="Label" parent="." unique_id=74134545]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+offset_left = -692.0
+offset_top = -323.0
+offset_right = 690.0
+offset_bottom = -84.0
+theme = ExtResource("3_2hj2m")
+theme_override_font_sizes/font_size = 34
 autowrap_mode = 3
-
-[node name="SpeakerLeft" parent="BaseRect" unique_id=1811686688 instance=ExtResource("2_n4433")]
-layout_mode = 0
-
-[node name="SpeakerRight" parent="BaseRect" unique_id=2137729751 instance=ExtResource("2_n4433")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -240.0
-offset_right = -240.0
-grow_horizontal = 0

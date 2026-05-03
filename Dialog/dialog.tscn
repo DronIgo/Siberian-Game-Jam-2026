@@ -1,19 +1,23 @@
 [gd_scene format=3 uid="uid://bphgw16o7py08"]
 
 [ext_resource type="Script" uid="uid://cgvgvlxxyphpm" path="res://Dialog/Dialog.gd" id="1_yqm1q"]
-[ext_resource type="PackedScene" uid="uid://dnhriu48mjgqj" path="res://Dialog/replicas_box.tscn" id="2_b2mf0"]
+[ext_resource type="Texture2D" uid="uid://p1pkxwrcehu3" path="res://Assets/UI/UI_city/city_clear.png" id="2_b2mf0"]
+[ext_resource type="PackedScene" uid="uid://dnhriu48mjgqj" path="res://Dialog/replicas_box.tscn" id="3_olscm"]
 
 [node name="Dialog" type="CanvasLayer" unique_id=1090554352 node_paths=PackedStringArray("replicas_box")]
 script = ExtResource("1_yqm1q")
-replicas_box = NodePath("BaseRect/ReplicasBox")
+replicas_box = NodePath("ReplicasBox")
 
-[node name="BaseRect" type="ColorRect" parent="." unique_id=135685891]
+[node name="CityClear" type="Sprite2D" parent="." unique_id=956744338]
+position = Vector2(960, 540)
+texture = ExtResource("2_b2mf0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=872367411]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 0.5019608, 1)
+color = Color(0, 0, 0, 0.9411765)
 
-[node name="ReplicasBox" parent="BaseRect" unique_id=142583026 instance=ExtResource("2_b2mf0")]
-layout_mode = 1
+[node name="ReplicasBox" parent="." unique_id=142583026 instance=ExtResource("3_olscm")]
