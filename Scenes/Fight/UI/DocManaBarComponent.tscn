@@ -5,12 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dd2gbwfhj654b" path="res://Assets/UI/UI_battle_regular/bottle_doc_mana_inside.png" id="3_e6ebi"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="4_c4yga"]
 
-[node name="DocManaBarComponent" type="Node2D" unique_id=1842021143 node_paths=PackedStringArray("actual_bar", "phantom_bar", "right_text_label", "intermediate_status_timer")]
+[node name="DocManaBarComponent" type="Node2D" unique_id=1842021143 node_paths=PackedStringArray("actual_bar", "phantom_bar", "right_text_label")]
 script = ExtResource("1_oatxe")
 actual_bar = NodePath("BarMask/ActualBarDisplay")
 phantom_bar = NodePath("BarMask/PhantomBarDisplay")
 right_text_label = NodePath("RichTextLabel")
-intermediate_status_timer = NodePath("IntermediateStatusTimer")
 
 [node name="BarMask" type="Sprite2D" parent="." unique_id=501762385]
 texture = ExtResource("2_k2pvq")
@@ -49,5 +48,3 @@ text = "100
 100"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="IntermediateStatusTimer" type="Timer" parent="." unique_id=1484208230]
