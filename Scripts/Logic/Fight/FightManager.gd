@@ -7,6 +7,8 @@ extends Node2D
 @export var curtains_opening_animation_name: String = "curtains_opening"
 @export var back_animation_player: AnimationPlayer
 @export var battle_start_sound_name: String = "res://Assets/SFX/batte_start.mp3"
+@export var patient_label: Label
+@export var hint_label: Label
 
 @export var menu : Control
 @export var attack_b : TextureButton
