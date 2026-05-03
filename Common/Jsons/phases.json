@@ -46,7 +46,7 @@
 			"args": [
 				"res://Dialog/Jsons/day_5_morning_won.json"
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": ""
 		},
 		{
 			"id": "day_5_morning_failed",
@@ -54,7 +54,7 @@
 			"args": [
 				"res://Dialog/Jsons/day_5_morning_failed.json"
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": ""
 		},
 		{
 			"id": "hub",
