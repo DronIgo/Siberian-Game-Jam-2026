@@ -57,6 +57,7 @@ func _try_parse(type_str : String, name_str : String) -> int:
 
 func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 	var new_item = STATUS_ITEM.instantiate() as StatusUIItem
+	new_item.status = status
 	new_item.set_duration_and_amount(status.duration, status.amount)
 	match status.type:
 		STATUS.BLEED:

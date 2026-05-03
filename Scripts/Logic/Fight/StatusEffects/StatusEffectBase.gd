@@ -3,6 +3,7 @@ extends Object
 
 var type : StatusGenerator.STATUS
 var _name : String
+var _description: String = ""
 var amount : int
 var duration : int
 var max_duration : int
