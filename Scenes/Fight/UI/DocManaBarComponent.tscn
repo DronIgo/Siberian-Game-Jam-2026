@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_oatxe"]
 [ext_resource type="Texture2D" uid="uid://dkdbqpoe0fngw" path="res://Assets/UI/UI_battle_regular/bottle_doc_mana_png.png" id="2_k2pvq"]
 [ext_resource type="Texture2D" uid="uid://dd2gbwfhj654b" path="res://Assets/UI/UI_battle_regular/bottle_doc_mana_inside.png" id="3_e6ebi"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="4_c4yga"]
 
-[node name="DocManaBarComponent" type="Node2D" unique_id=1842021143 node_paths=PackedStringArray("actual_bar", "phantom_bar")]
+[node name="DocManaBarComponent" type="Node2D" unique_id=1842021143 node_paths=PackedStringArray("actual_bar", "phantom_bar", "right_text_label", "intermediate_status_timer")]
 script = ExtResource("1_oatxe")
 actual_bar = NodePath("BarMask/ActualBarDisplay")
 phantom_bar = NodePath("BarMask/PhantomBarDisplay")
+right_text_label = NodePath("RichTextLabel")
+intermediate_status_timer = NodePath("IntermediateStatusTimer")
 
 [node name="BarMask" type="Sprite2D" parent="." unique_id=501762385]
 texture = ExtResource("2_k2pvq")
@@ -21,3 +24,30 @@ texture = ExtResource("3_e6ebi")
 
 [node name="BarOutside" type="Sprite2D" parent="." unique_id=65911664]
 texture = ExtResource("2_k2pvq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1624941402]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_c4yga")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "100
+/
+100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntermediateStatusTimer" type="Timer" parent="." unique_id=1484208230]

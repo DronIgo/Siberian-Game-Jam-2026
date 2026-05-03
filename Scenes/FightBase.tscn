@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
-[ext_resource type="PackedScene" uid="uid://bm1kx6ohn6gu0" path="res://Scenes/Fight/UI/DocHealthBarComponent.tscn" id="23_khk4b"]
 
 [sub_resource type="Animation" id="Animation_6uwd6"]
 length = 0.001
@@ -187,19 +186,14 @@ patient = NodePath("../Patient/Player")
 friendly_actors = [NodePath("../Patient/Player"), NodePath("../Patient/Player")]
 list_organs = Array[String](["healthy_heart", "sick_liver", "tentacle"])
 
-[node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("health_bar", "mana_bar", "actor")]
+[node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
 script = ExtResource("13_yt7vv")
-health_bar = NodePath("PatientHealth")
 mana_bar = NodePath("PatientMana")
 actor = NodePath("Player")
 
 [node name="Player" type="Node2D" parent="Patient" unique_id=1125611731]
 position = Vector2(317, 461)
 script = ExtResource("6_3g3hk")
-
-[node name="PatientHealth" parent="Patient" unique_id=30255913 instance=ExtResource("23_khk4b")]
-position = Vector2(331, 913)
-scale = Vector2(0.5, 0.5)
 
 [node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("23_8aayq")]
 position = Vector2(179, 917)
