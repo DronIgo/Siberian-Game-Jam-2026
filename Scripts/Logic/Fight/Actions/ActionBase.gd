@@ -16,6 +16,8 @@ var lore_name : String
 var is_aoe: bool = false
 var description: String = ""
 
+var usage_sound_name: String
+
 const _stats_json_path = "res://Files/ActionStats/attack_stats.json"
 
 func _init(name : String) -> void:
@@ -33,6 +35,8 @@ func _parse_lore_name() -> void:
 	else:
 		printerr("Couldn't parse name for action")
 		lore_name = "способность"
+	if stats.has("sound"):
+		usage_sound_name = stats["sound"]
 
 func _parse_manacost() -> void:
 	manacost = _safe_try_parse("manacost")
@@ -87,6 +91,8 @@ func check_avialable(actor : ActorBase) -> bool:
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	initiator.mana -= manacost
+	if usage_sound_name != null:
+		SoundProcessor.process_sound(usage_sound_name)
 	return null
 
 func _parse_description() -> void:

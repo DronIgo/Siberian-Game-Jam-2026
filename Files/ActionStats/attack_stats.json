@@ -3,35 +3,40 @@
 			"damage" : 15,
 			"manacost" : 0,
 			"name" : "Надрез",
-			"description" : "Наносит %d урона скальпелем"
+			"description" : "Наносит %d урона скальпелем",
+			"sound": "res://Assets/SFX/player_cut.mp3"
 		},
 		"aspirin" : {
 			"amount" : 5,
 			"damage" : 15,
 			"manacost" : 20,
 			"name" : "Аспирин",
-			"description" : "Снижает свертываемость крови у всех врагов. Накладывает кровотечение %d на %d хода"
+			"description" : "Снижает свертываемость крови у всех врагов. Накладывает кровотечение %d на %d хода",
+			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"penicillin" : {
 			"amount" : 5,
 			"damage" : 15,
 			"manacost" : 20,
 			"name" : "Пенициллин",
-			"description" : "Уничтожает микрофлору всех врагов. Накладывает отравление %d на %d хода"
+			"description" : "Уничтожает микрофлору всех врагов. Накладывает отравление %d на %d хода",
+			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"syringe_green" : {
 			"amount" : 5,
 			"damage" : 20,
 			"manacost" : 10,
 			"name" : "Эпинефрин",
-			"description" : " Наносит урон и накладывает отравление %d на %d хода"
+			"description" : " Наносит урон и накладывает отравление %d на %d хода",
+			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"syringe_blue" : {
 			"amount" : 5,
 			"damage" : 20,
 			"manacost" : 10,
 			"name" : "Гидрокортизон",
-			"description" : " Наносит урон и накладывает ожог %d на %d хода"
+			"description" : " Наносит урон и накладывает ожог %d на %d хода",
+			"sound": "res://Assets/SFX/player_pills.mp3"
 		},
 		"crush" : {
 			"name" : "Сокрушение",
@@ -49,7 +54,8 @@
 		"cauterization": {
 			"manacost" : 0,
 			"name" : "Прижигание",
-			"description" : "Накладывает ожог (противник получает дополнительно %d урона при атаке по нему)"
+			"description" : "Накладывает ожог (противник получает дополнительно %d урона при атаке по нему)",
+			"sound": "res://Assets/SFX/player_burn.mp3"
 		},
 		"irtysh" : {
 			"damage": 69,
