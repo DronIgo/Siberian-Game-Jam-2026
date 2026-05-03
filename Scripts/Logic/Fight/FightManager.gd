@@ -3,6 +3,7 @@ extends Node2D
 
 @export var curtains_opening_animation_name: String = "curtains_opening"
 @export var back_animation_player: AnimationPlayer
+@export var battle_start_sound_name: String = "res://Assets/SFX/batte_start.mp3"
 
 @export var action_list : ActionList
 @export var action_display_text : ActionDisplayText
@@ -48,7 +49,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	#_fight_history = FightHistory.new()
 	
-	back_animation_player.play(curtains_opening_animation_name)	
+	back_animation_player.play(curtains_opening_animation_name)
+	SoundProcessor.process_sound(battle_start_sound_name)
 	
 	while !(_victory or _defeat):
 		await play_round()
