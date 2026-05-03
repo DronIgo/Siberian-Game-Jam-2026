@@ -16,6 +16,8 @@ func init() -> void:
 	_initialized = true
 
 func place_patient(id: String):
+	if id == "":
+		return
 	if not _initialized:
 		init()
 	if _current_patient != null:

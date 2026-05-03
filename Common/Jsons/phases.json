@@ -38,7 +38,7 @@
 			"args": [
 				"res://Dialog/Jsons/day_4_night.json"
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "boss_fight"
 		},
 		{
 			"id": "day_5_morning_won",
@@ -153,6 +153,16 @@
 				"Святлослав Глович",
 				"firefly",
 				[ "firefly", "healthy_liver", "sick_brain" ]
+			],
+			"next_phase_id": "?"
+		},
+		{
+			"id": "boss_fight",
+			"scene_name": "res://Scenes/FightBase.tscn",
+			"args": [
+				"",
+				"",
+				[]
 			],
 			"next_phase_id": "?"
 		}
