@@ -1,9 +1,15 @@
 extends Node
 
-var collected_organs: Array[String] = ["sick_heart", "sick_lung", "sick_kidney"]
-var organ_to_action: Dictionary[String, String] = {"sick_heart": "antalgetic",
-												   "sick_lung": "haste",
-												   "sick_kidney": "filter"}
+var collected_organs: Array[String] = []
+var organ_to_action: Dictionary[String, String] = {"tentacle": "roll",\
+											"horns": "ram",\
+											"tail": "poison",\
+											"wings" : "haste",\
+											"shell" : "defend",\
+											"axolotl" : "detox",\
+											"eyes":"mark-for-death",\
+											"scales":"hide",\
+											"firefly":"vampirism"}
 
 var items: Array = [
 	ShopItemInfo.new("bandage", "Бинты", "Позволяет снять кроватечение", 20),

@@ -3,28 +3,28 @@ extends Node2D
 
 # Не использую прелоад, чтобы не загружать 20 сцен на старте каждой сцены
 #TODO: для маленького тентакля всетаки сделать preload - он может появляться много раз за бой
-const HEALTHY_BRAIN_UID = "uid://uf3j8pfvapgu"
-const HEALTHY_HEART_UID = "uid://x6staq5pspoj"
-const HEALTHY_KIDNEY_UID = "uid://btnrekgkv732r"
-const HEALTHY_LIVER_UID = "uid://nk24rqijc65m"
-const HEALTHY_LUNG_UID = "uid://xyi2308s1taw"
+const HEALTHY_BRAIN_UID = "res://Scenes/Fight/Organs/Healthy/HealthyBrain.tscn"
+const HEALTHY_HEART_UID = "res://Scenes/Fight/Organs/Healthy/HealthyHeart.tscn"
+const HEALTHY_KIDNEY_UID = "res://Scenes/Fight/Organs/Healthy/HealthyKidney.tscn"
+const HEALTHY_LIVER_UID = "res://Scenes/Fight/Organs/Healthy/HealthyLiver.tscn"
+const HEALTHY_LUNG_UID = "res://Scenes/Fight/Organs/Healthy/HealthyLung.tscn"
 
-const SICK_BRAIN_UID = "uid://clabf2ncd26ot"
-const SICK_HEART_UID = "uid://bsnboj8pl0l1s"
-const SICK_KIDNEY_UID = "uid://x5e5setqg4l1"
-const SICK_LIVER_UID = "uid://taivcdbkqdb8"
-const SICK_LUNG_UID = "uid://cfpbydsb11qf3"
+const SICK_BRAIN_UID = "res://Scenes/Fight/Organs/Sick/SickBrain.tscn"
+const SICK_HEART_UID = "res://Scenes/Fight/Organs/Sick/SickHeart.tscn"
+const SICK_KIDNEY_UID = "res://Scenes/Fight/Organs/Sick/SickKidney.tscn"
+const SICK_LIVER_UID = "res://Scenes/Fight/Organs/Sick/SickLiver.tscn"
+const SICK_LUNG_UID = "res://Scenes/Fight/Organs/Sick/SickLung.tscn"
 
-const EVIL_ACSOLOTL_UID = "uid://d1pt6ctp3mqfq"
-const EVIL_EYES_UID = "uid://r04p8yth0du5"
-const EVIL_FIREFLY_UID = "uid://bljexjlp8plf8"
-const EVIL_HORNS_UID = "uid://cqromdfbponiy"
-const EVIL_SCALES_UID = "uid://dshk8vjd08w0m"
-const EVIL_SHELL_UID = "uid://cax6rrsn0t7cn"
-const EVIL_SMALL_TENTACLE_UID = "uid://b4bx5348yp1sy"
-const EVIL_TAIL_UID = "uid://dh5ak6lpn3jxv"
-const EVIL_TENTACLE_UID = "uid://doa8o4i0u2wco"
-const EVIL_WINGS_UID = "uid://cnwl7bwcsuhqj"
+const EVIL_ACSOLOTL_UID = "res://Scenes/Fight/Organs/Evil/Acsolotl.tscn"
+const EVIL_EYES_UID = "res://Scenes/Fight/Organs/Evil/Eyes.tscn"
+const EVIL_FIREFLY_UID = "res://Scenes/Fight/Organs/Evil/Firefly.tscn"
+const EVIL_HORNS_UID = "res://Scenes/Fight/Organs/Evil/Horns.tscny"
+const EVIL_SCALES_UID = "res://Scenes/Fight/Organs/Evil/Scales.tscn"
+const EVIL_SHELL_UID = "res://Scenes/Fight/Organs/Evil/Shell.tscn"
+const EVIL_SMALL_TENTACLE_UID = "res://Scenes/Fight/Organs/Evil/SmallTentacle.tscn"
+const EVIL_TAIL_UID = "res://Scenes/Fight/Organs/Evil/Tail.tscn"
+const EVIL_TENTACLE_UID = "res://Scenes/Fight/Organs/Evil/Tentacle.tscn"
+const EVIL_WINGS_UID = "res://Scenes/Fight/Organs/Evil/Wings.tscn"
 
 @export var slots_container: Node2D
 @export var friendly_slots : Array[Node2D]

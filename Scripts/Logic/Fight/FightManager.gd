@@ -32,6 +32,7 @@ var round_num : int = 0
 var _victory : bool = false
 var _defeat : bool = false
 var _main_organ_name : String = "Инородный орган"
+var _main_organ_local_name : String = "tentacle"
 
 signal _on_any_selection_signal(arg)
 # Called when the node enters the scene tree for the first time.
@@ -63,6 +64,7 @@ func _ready() -> void:
 	for organ in enemy_organs:
 		if organ.is_main:
 			_main_organ_name = organ.lore_name
+			_main_organ_local_name = organ.organ_name
 		
 	## defeat/victory management
 	patient.died.connect(_on_patient_died)
@@ -78,6 +80,13 @@ func _ready() -> void:
 		patient_label.text = current_phase.args[0]
 	back_animation_player.play(curtains_opening_animation_name)
 	SoundProcessor.process_sound(battle_start_sound_name)
+	
+	if skip_friendly_organs:
+		for organ in ItemStateHolder.collected_organs:
+			if ItemStateHolder.organ_to_action.has(organ):
+				friendly_actors[0].actions.append(\
+					AG.generate_action_by_name(\
+					ItemStateHolder.organ_to_action[organ]))
 	
 	while !(_victory or _defeat):
 		await play_round()
@@ -253,6 +262,7 @@ func _on_enemy_organ_died(actor : ActorBase) -> void:
 func _on_victory() -> void:
 	await action_display_text.display("Операция прошла успешно.", 2.0)
 	await action_display_text.display("Вы получили " + _main_organ_name, 2.0)
+	ItemStateHolder.collected_organs.append(_main_organ_local_name)
 	CityStateHolder.mission_complete()
 	get_tree().change_scene_to_file(PhaseManager.try_next_phase().scene_name)
 
