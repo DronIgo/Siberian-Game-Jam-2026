@@ -8,7 +8,7 @@ extends Node2D
 @export var back_animation_player: AnimationPlayer
 @export var battle_start_sound_name: String = "res://Assets/SFX/batte_start.mp3"
 @export var patient_label: Label
-@export var hint_label: Label
+@export var patien_table: PatientTable
 
 @export var menu : Control
 @export var attack_b : TextureButton
@@ -20,7 +20,7 @@ extends Node2D
 @export var patient : ActorBase
 @export var friendly_actors : Array[ActorBase]
 
-@export var list_organs : Array[String]
+var list_organs : Array
 var friendly_organs : Array[OrganBase]
 var enemy_organs : Array[OrganBase]
 var all_organs : Array[OrganBase]
@@ -35,12 +35,17 @@ var _main_organ_name : String = "Инородный орган"
 signal _on_any_selection_signal(arg)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PhaseManager.init()
+	#PhaseManager.init()
 	FightEventBus.action_selected.connect(_on_any_selection)
 	FightEventBus.target_selected.connect(_on_any_selection)
 	
 	attack_b.pressed.connect(_on_menu_button_press.bind("attack"))
 	item_b.pressed.connect(_on_menu_button_press.bind("item"))
+	
+	var current_phase: Phase = PhaseManager.current_phase()
+	patient_label.text = current_phase.args[0]
+	patien_table.place_patient(current_phase.args[1])
+	list_organs = current_phase.args[2]
 	
 	for organ_name in list_organs:
 		var organ = organ_summoner.summon_by_name(organ_name)
@@ -65,8 +70,6 @@ func _ready() -> void:
 	round_num = 0
 	#_fight_history = FightHistory.new()
 	
-	var current_phase: Phase = PhaseManager.current_phase()
-	patient_label.text = current_phase.args[0]
 	back_animation_player.play(curtains_opening_animation_name)
 	SoundProcessor.process_sound(battle_start_sound_name)
 	

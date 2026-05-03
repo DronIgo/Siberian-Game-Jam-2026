@@ -271,11 +271,10 @@ offset_bottom = 58.0
 texture_pressed = ExtResource("11_khk4b")
 texture_hover = ExtResource("12_1aue6")
 
-[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "patient_label", "hint_label", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
+[node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("back_animation_player", "patient_label", "patien_table", "menu", "attack_b", "item_b", "action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
 back_animation_player = NodePath("../BackControl/AnimationPlayer")
-battle_start_sound_name = null
 patient_label = NodePath("../PatientPaperSprite2D/PatientPaperLabel")
-hint_label = NodePath("")
+patien_table = NodePath("../PatientTable")
 menu = NodePath("../CanvasLayer/Menu")
 attack_b = NodePath("../CanvasLayer/Menu/Attack/SelectButton")
 item_b = NodePath("../CanvasLayer/Menu/Items/SelectButton")
@@ -284,7 +283,6 @@ action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
 patient = NodePath("../Patient/Player")
 friendly_actors = [NodePath("../Patient/Player"), NodePath("../Patient/Player")]
-list_organs = Array[String](["healthy_heart", "sick_kidney", "tentacle"])
 
 [node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
 script = ExtResource("13_yt7vv")
