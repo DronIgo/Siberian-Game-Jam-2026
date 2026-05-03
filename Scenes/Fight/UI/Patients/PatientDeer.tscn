@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://5hm4yw871j8w"]
 
 [ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_wua3v"]
-[ext_resource type="Texture2D" uid="uid://dldovlcr1hvbg" path="res://Assets/Characters_art/patient_beetle_0.png" id="2_7lg0u"]
-[ext_resource type="Texture2D" uid="uid://d1dap8ao0vrc7" path="res://Assets/Characters_art/patient_beetle_1.png" id="3_3dneg"]
-[ext_resource type="Texture2D" uid="uid://bpdmc81p4qxg5" path="res://Assets/Characters_art/patient_beetle_2.png" id="4_oe0o6"]
-[ext_resource type="Texture2D" uid="uid://cds515w876s3" path="res://Assets/Characters_art/patient_beetle_3.png" id="5_l44dk"]
+[ext_resource type="Texture2D" uid="uid://b5rcmca46u3fr" path="res://Assets/Characters_art/patient_deer_0.png" id="2_wua3v"]
+[ext_resource type="Texture2D" uid="uid://boivv6w7k66pc" path="res://Assets/Characters_art/patient_deer_1.png" id="3_7lg0u"]
+[ext_resource type="Texture2D" uid="uid://ilph71td2k8f" path="res://Assets/Characters_art/patient_deer_2.png" id="4_3dneg"]
+[ext_resource type="Texture2D" uid="uid://dvya6n7piyoyb" path="res://Assets/Characters_art/patient_deer_3.png" id="5_oe0o6"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hdcpi"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_l44dk"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -15,16 +15,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7lg0u")
+"texture": ExtResource("2_wua3v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_3dneg")
+"texture": ExtResource("3_7lg0u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_oe0o6")
+"texture": ExtResource("4_3dneg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_l44dk")
+"texture": ExtResource("5_oe0o6")
 }],
 "loop": true,
 "name": &"idle",
@@ -39,5 +39,5 @@ animated_sprite = NodePath("AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=16238231]
 z_index = 5
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_hdcpi")
+sprite_frames = SubResource("SpriteFrames_l44dk")
 animation = &"idle"

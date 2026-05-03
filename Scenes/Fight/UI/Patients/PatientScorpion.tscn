@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bf5w6u3jjkdn4"]
 
 [ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_ovg3o"]
-[ext_resource type="Texture2D" uid="uid://dldovlcr1hvbg" path="res://Assets/Characters_art/patient_beetle_0.png" id="2_u7bm8"]
-[ext_resource type="Texture2D" uid="uid://d1dap8ao0vrc7" path="res://Assets/Characters_art/patient_beetle_1.png" id="3_1ok7c"]
-[ext_resource type="Texture2D" uid="uid://bpdmc81p4qxg5" path="res://Assets/Characters_art/patient_beetle_2.png" id="4_8mopv"]
-[ext_resource type="Texture2D" uid="uid://cds515w876s3" path="res://Assets/Characters_art/patient_beetle_3.png" id="5_8usr4"]
+[ext_resource type="Texture2D" uid="uid://imsxo88yj42f" path="res://Assets/Characters_art/patient_scorpio_0.png" id="2_ovg3o"]
+[ext_resource type="Texture2D" uid="uid://b603okj3x4cjm" path="res://Assets/Characters_art/patient_scorpio_1.png" id="3_u7bm8"]
+[ext_resource type="Texture2D" uid="uid://b42a5kunb6oiv" path="res://Assets/Characters_art/patient_scorpio_2.png" id="4_1ok7c"]
+[ext_resource type="Texture2D" uid="uid://bprjyk2bkhpgq" path="res://Assets/Characters_art/patient_scorpio_3.png" id="5_8mopv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hdcpi"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8usr4"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -15,16 +15,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_u7bm8")
+"texture": ExtResource("2_ovg3o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1ok7c")
+"texture": ExtResource("3_u7bm8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8mopv")
+"texture": ExtResource("4_1ok7c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8usr4")
+"texture": ExtResource("5_8mopv")
 }],
 "loop": true,
 "name": &"idle",
@@ -39,5 +39,5 @@ animated_sprite = NodePath("AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=16238231]
 z_index = 5
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_hdcpi")
+sprite_frames = SubResource("SpriteFrames_8usr4")
 animation = &"idle"

@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://coqem3ogbm8or"]
+[gd_scene format=3 uid="uid://tv70l4huk545"]
 
 [ext_resource type="Script" uid="uid://dse4jgp56iu8k" path="res://Scripts/UI/Fight/Patient.gd" id="1_dj7yj"]
-[ext_resource type="Texture2D" uid="uid://dldovlcr1hvbg" path="res://Assets/Characters_art/patient_beetle_0.png" id="2_mk4fx"]
-[ext_resource type="Texture2D" uid="uid://d1dap8ao0vrc7" path="res://Assets/Characters_art/patient_beetle_1.png" id="3_5vgyc"]
-[ext_resource type="Texture2D" uid="uid://bpdmc81p4qxg5" path="res://Assets/Characters_art/patient_beetle_2.png" id="4_i1hcc"]
-[ext_resource type="Texture2D" uid="uid://cds515w876s3" path="res://Assets/Characters_art/patient_beetle_3.png" id="5_kmow3"]
+[ext_resource type="Texture2D" uid="uid://bxtydwuvxqthy" path="res://Assets/Characters_art/patient_firefly_0.png" id="2_dj7yj"]
+[ext_resource type="Texture2D" uid="uid://dmxouei2elrxi" path="res://Assets/Characters_art/patient_firefly_1.png" id="3_mk4fx"]
+[ext_resource type="Texture2D" uid="uid://bccsojr7g1hmu" path="res://Assets/Characters_art/patient_firefly_2.png" id="4_5vgyc"]
+[ext_resource type="Texture2D" uid="uid://da0nmat5erfv8" path="res://Assets/Characters_art/patient_firefly_3.png" id="5_i1hcc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hdcpi"]
 animations = [{
@@ -15,16 +15,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_mk4fx")
+"texture": ExtResource("2_dj7yj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5vgyc")
+"texture": ExtResource("3_mk4fx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_i1hcc")
+"texture": ExtResource("4_5vgyc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_kmow3")
+"texture": ExtResource("5_i1hcc")
 }],
 "loop": true,
 "name": &"idle",
