@@ -1,15 +1,58 @@
 {
 	"phases": [
 		{
-			"id": "start",
-			"scene_name": "",
-			"next_phase_id": "start_dialog"
-		},
-		{
-			"id": "start_dialog",
+			"id": "day_1_day",
 			"scene_name": "res://Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/start.json"
+				"res://Dialog/Jsons/day_1_day.json"
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "day_1_night",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/day_1_night.json"
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "day_2_night",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/day_2_night.json"
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "day_3_night",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/day_3_night.json"
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "day_4_night",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/day_4_night.json"
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "day_5_morning_won",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/day_5_morning_won.json"
+			],
+			"next_phase_id": "hub"
+		},
+		{
+			"id": "day_5_morning_failed",
+			"scene_name": "res://Dialog/dialog.tscn",
+			"args": [
+				"res://Dialog/Jsons/day_5_morning_failed.json"
 			],
 			"next_phase_id": "hub"
 		},
@@ -31,7 +74,7 @@
 				"octopus",
 				[ "tentacle", "healthy_heart" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_1_fight",
@@ -41,7 +84,7 @@
 				"bird",
 				[ "wings", "healthy_kidney", "sick_liver" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_2_fight",
@@ -51,7 +94,7 @@
 				"fly",
 				[ "eyes", "healthy_brain", "sick_lung" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_3_fight",
@@ -61,7 +104,7 @@
 				"deer",
 				[ "horns", "healthy_lung", "sick_brain" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_4_fight",
@@ -71,7 +114,7 @@
 				"beetle",
 				[ "shell", "healthy_liver", "sick_kidney" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_5_fight",
@@ -81,7 +124,7 @@
 				"fish",
 				[ "scales", "healthy_heart", "sick_kidney" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_6_fight",
@@ -91,7 +134,7 @@
 				"scorpion",
 				[ "tail", "healthy_brain", "sick_liver" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_7_fight",
@@ -101,7 +144,7 @@
 				"axolotl",
 				[ "axolotl", "healthy_kidney", "sick_lung" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		},
 		{
 			"id": "house_8_fight",
@@ -111,7 +154,7 @@
 				"firefly",
 				[ "firefly", "healthy_liver", "sick_brain" ]
 			],
-			"next_phase_id": "hub"
+			"next_phase_id": "?"
 		}
 	],
 	"events": [],

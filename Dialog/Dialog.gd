@@ -9,6 +9,7 @@ var _current_replica_dictionaries: Array
 var _next_replica_index: int = 0
 
 func _ready():
+	PhaseManager.init()
 	DialogEventBus.dialog_start.connect(start)
 	if PhaseManager.is_event:
 		start(PhaseManager.current_event())

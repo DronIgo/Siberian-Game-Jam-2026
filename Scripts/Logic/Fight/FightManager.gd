@@ -253,11 +253,10 @@ func _on_enemy_organ_died(actor : ActorBase) -> void:
 func _on_victory() -> void:
 	await action_display_text.display("Операция прошла успешно.", 2.0)
 	await action_display_text.display("Вы получили " + _main_organ_name, 2.0)
-	
-	get_tree().change_scene_to_file("res://Hub/hub.tscn")
-	pass
+	CityStateHolder.mission_complete()
+	get_tree().change_scene_to_file(PhaseManager.try_next_phase().scene_name)
 
 func _on_defeat() -> void:
-	get_tree().change_scene_to_file("res://Hub/hub.tscn")
+	CityStateHolder.mission_complete()
+	get_tree().change_scene_to_file(PhaseManager.try_next_phase().scene_name)
 	print("GAME OVER")
-	pass
