@@ -147,10 +147,10 @@ func _init_actions(action_names : Array) -> void:
 			actions.append(action)
 
 func _init_item_actions() -> void:
-	for key in ISH.player_pocket:
+	for key in ItemStateHolder.player_pocket:
 		var action: ActionBase = AG.generate_action_by_name(key)
 		item_actions.append(action)
-		amount_by_action[action.lore_name] = ISH.player_pocket[key]
+		amount_by_action[action.lore_name] =  ItemStateHolder.player_pocket[key]
 
 func _init_stats(stats : Dictionary) -> void:
 	var mh = _try_parse(stats, "max_health")
