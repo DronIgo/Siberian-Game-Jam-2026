@@ -18,6 +18,7 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 		return 1
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	super.take_action(initiator, targets)
 	var amount = targets[0].take_damage(stats["damage"])
 	return ActionResult.new(
 		formated_result,

@@ -12,5 +12,6 @@ func _parse_stats() -> void:
 	pass
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	super.take_action(initiator, targets)
 	return ActionResult.new(formated_result,\
 		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name}, 1)

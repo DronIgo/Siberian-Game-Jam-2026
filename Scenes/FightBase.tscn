@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/UI/FightManager.tscn" id="8_6x1fx"]
 [ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="9_vqao4"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
-[ext_resource type="Script" uid="uid://bc10xeah8w1ae" path="res://Scripts/Logic/Fight/ActorBase.gd" id="14_m54b6"]
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
@@ -68,10 +67,6 @@ texture = ExtResource("18_mnvx0")
 position = Vector2(-715, -145)
 texture = ExtResource("19_r4ejf")
 
-[node name="PlayerHand" type="Node2D" parent="." unique_id=1125611731]
-position = Vector2(317, 461)
-script = ExtResource("6_3g3hk")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
 
 [node name="ActionList" parent="CanvasLayer" unique_id=1970410951 instance=ExtResource("8_3g3hk")]
@@ -92,18 +87,25 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
+wait_after_display = 2.0
 
 [node name="FightManager" parent="." unique_id=1868931586 node_paths=PackedStringArray("action_list", "action_display_text", "organ_summoner", "patient", "friendly_actors") instance=ExtResource("8_6x1fx")]
 action_list = NodePath("../CanvasLayer/ActionList")
 action_display_text = NodePath("../CanvasLayer/FightText")
 organ_summoner = NodePath("../OrganSummoner")
-patient = NodePath("../Patient/PatientLogic")
-friendly_actors = [NodePath("../PlayerHand"), NodePath("../PlayerHand")]
+patient = NodePath("../Patient/Player")
+friendly_actors = [NodePath("../Patient/Player"), NodePath("../Patient/Player")]
 list_organs = Array[String](["healthy_heart", "sick_liver", "tentacle"])
 
-[node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("actor")]
+[node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("health_bar", "mana_bar", "actor")]
 script = ExtResource("13_yt7vv")
-actor = NodePath("PatientLogic")
+health_bar = NodePath("PatientHealth")
+mana_bar = NodePath("PatientMana")
+actor = NodePath("Player")
+
+[node name="Player" type="Node2D" parent="Patient" unique_id=1125611731]
+position = Vector2(317, 461)
+script = ExtResource("6_3g3hk")
 
 [node name="PatientHealth" parent="Patient" unique_id=30255913 instance=ExtResource("23_khk4b")]
 position = Vector2(331, 913)
@@ -111,9 +113,6 @@ scale = Vector2(0.5, 0.5)
 
 [node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("23_8aayq")]
 position = Vector2(179, 917)
-
-[node name="PatientLogic" type="Node" parent="Patient" unique_id=1332978716]
-script = ExtResource("14_m54b6")
 
 [node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("friendly_slots", "enemy_slots")]
 script = ExtResource("1_vqao4")

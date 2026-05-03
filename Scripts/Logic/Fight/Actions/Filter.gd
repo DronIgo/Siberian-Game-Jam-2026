@@ -22,6 +22,7 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 	return priority
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	super.take_action(initiator, targets)
 	var removed_status_name = "ничего"
 	if targets[0].statuses.size() > 0:
 		removed_status_name = (targets[0].statuses[0] as StatusEffectBase).lore_name

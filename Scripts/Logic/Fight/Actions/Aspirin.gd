@@ -16,6 +16,7 @@ func _parse_stats() -> void:
 	duration = _try_parse("duration")
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	super.take_action(initiator, targets)
 	for target in targets:
 		target.apply_status(\
 			SEG.create_status(StatusGenerator.STATUS.BLEED))

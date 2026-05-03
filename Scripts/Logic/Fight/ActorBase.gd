@@ -3,6 +3,7 @@ extends Node
 
 @export_category("Stats")
 @export var max_health : int = 20
+@export var max_mana : int = 20
 @export_category("UI display")
 @export var actor_ui : ActorUI
 var lore_name : String
@@ -17,6 +18,7 @@ var highlighted: bool
 
 func _ready() -> void:
 	health = max_health
+	mana = max_mana
 
 func init(actor_name : String) -> void:
 	lore_name = actor_name
@@ -36,6 +38,9 @@ func remove_action(action_name: String):
 		func(action): return action.action_name == action_name)
 	for action_to_erase in actions_to_erase:
 		actions.erase(action_to_erase)
+
+func after_action() -> void:
+	actor_ui.update_mana()
 
 func highlight():
 	highlighted = true

@@ -2,7 +2,8 @@ class_name ActorUI
 extends Node
 
 @export_category("Nodes")
-@export var health_bar : Node
+@export var health_bar : BarComponent
+@export var mana_bar : BarComponent
 @export var statuses_grid : StatusGrid
 @export var selectable_component : SelectableObject
 @export var actor : ActorBase
@@ -19,7 +20,10 @@ func selected(_selected : bool) -> void:
 
 func update_health() -> void:
 	health_bar.set_bar(float(actor.health) / float(actor.max_health))
-		
+
+func update_mana() -> void:
+	mana_bar.set_bar(float(actor.mana) / float(actor.max_mana))
+
 func apply_status(status : StatusEffectBase) -> void:
 	if statuses_grid:
 		statuses_grid.add_status(status)

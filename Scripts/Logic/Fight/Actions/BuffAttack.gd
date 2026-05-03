@@ -15,6 +15,7 @@ func _parse_stats() -> void:
 	amount = _try_parse("amount")
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	super.take_action(initiator, targets)
 	targets[0].apply_status(\
 		SEG.create_status(StatusGenerator.STATUS.BUFF_ATTACK))
 	return ActionResult.new(formated_result,\

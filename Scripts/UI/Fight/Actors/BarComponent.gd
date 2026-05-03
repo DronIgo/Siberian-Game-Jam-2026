@@ -1,3 +1,4 @@
+class_name BarComponent
 extends Node2D
 
 @export var actual_bar : Sprite2D 

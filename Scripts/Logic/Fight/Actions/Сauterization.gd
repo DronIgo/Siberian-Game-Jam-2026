@@ -12,6 +12,7 @@ func _parse_stats() -> void:
 	damage = _try_parse("damage")
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
+	super.take_action(initiator, targets)
 	var target_names: Array = []
 	for target: ActorBase in targets:
 		target.take_damage(stats["damage"])

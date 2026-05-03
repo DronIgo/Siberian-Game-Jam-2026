@@ -41,6 +41,8 @@ func _ready() -> void:
 		organ.died.connect(_on_enemy_organ_died)
 
 	round_num = 0
+	# let everything load
+	await get_tree().create_timer(0.5).timeout
 	#_fight_history = FightHistory.new()
 	while !(_victory or _defeat):
 		await play_round()
@@ -96,6 +98,7 @@ func take_turn_friendly(actor : ActorBase) -> void:
 	if not action_result.has_more():
 		for friendly_actor in friendly_actors:
 			friendly_actor.remove_action(selected_action.action_name)
+	actor.after_action()
 	await action_display_text.display_action(action_result)
 
 func take_turn_organ(enemy : OrganBase) -> void:
