@@ -69,10 +69,11 @@ radius = 125.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8s3js"]
 
-[node name="Hub" type="CanvasLayer" unique_id=1730030736 node_paths=PackedStringArray("building_info_rect", "building_info_label")]
+[node name="Hub" type="CanvasLayer" unique_id=1730030736 node_paths=PackedStringArray("building_info_rect", "building_info_description_label", "building_info_patient_name_label")]
 script = ExtResource("1_siedd")
 building_info_rect = NodePath("Paper")
-building_info_label = NodePath("Paper/Label")
+building_info_description_label = NodePath("Paper/DescriptionLabel")
+building_info_patient_name_label = NodePath("Paper/PatientNameLabel")
 
 [node name="BackControl" type="Control" parent="." unique_id=395668535]
 layout_mode = 3
@@ -276,7 +277,24 @@ position = Vector2(1213, 556)
 rotation = 0.14835298
 texture = ExtResource("16_m76ao")
 
-[node name="Label" type="Label" parent="Paper" unique_id=297317076]
+[node name="PatientNameLabel" type="Label" parent="Paper" unique_id=583550178]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -623.0
+offset_top = -380.0
+offset_right = -123.0
+offset_bottom = -306.0
+grow_horizontal = 2
+rotation = 0.05235988
+theme = ExtResource("17_nwqdf")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Paper" unique_id=297317076]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

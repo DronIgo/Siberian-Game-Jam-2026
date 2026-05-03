@@ -3,7 +3,8 @@ class_name Hub
 extends CanvasLayer
 
 @export var building_info_rect: Sprite2D
-@export var building_info_label: Label
+@export var building_info_description_label: Label
+@export var building_info_patient_name_label: Label
 
 var _current_building_id: String = ""
 
@@ -27,7 +28,8 @@ func _try_select_building(id: String):
 		return
 	building_info_rect.show()
 	var building: BuildingInfo = _get_building_info(id)
-	building_info_label.text = building.building_name
+	building_info_patient_name_label.text = building.building_patient_name
+	building_info_description_label.text = building.building_description
 	_current_building_id = id
 
 func _get_building_info(id: String) -> BuildingInfo:
