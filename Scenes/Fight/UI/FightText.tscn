@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://b1fpgukkuypmk" path="res://Scripts/UI/Fight/ActionDisplayText.gd" id="1_ha8qo"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="2_51frg"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51frg"]
+
 [node name="FightText" type="Panel" unique_id=36838454 node_paths=PackedStringArray("label")]
 offset_right = 1470.0
 offset_bottom = 330.0
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_51frg")
 script = ExtResource("1_ha8qo")
 label = NodePath("Label")
 

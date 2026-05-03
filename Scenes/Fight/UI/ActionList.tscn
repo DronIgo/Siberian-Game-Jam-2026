@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dojcpwrpiprd0" path="res://Scripts/UI/Fight/ActionList.gd" id="1_sj6t0"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjaq6"]
+
 [node name="ActionList" type="Panel" unique_id=1970410951 node_paths=PackedStringArray("vertical_container")]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 418.0
@@ -9,6 +11,7 @@ offset_top = 388.0
 offset_right = 1888.0
 offset_bottom = 718.0
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bjaq6")
 script = ExtResource("1_sj6t0")
 vertical_container = NodePath("ScrollContainer/VBoxContainer")
 

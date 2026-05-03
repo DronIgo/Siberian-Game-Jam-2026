@@ -12,11 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="12_1aue6"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="13_yt7vv"]
 [ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="16_0d5t2"]
-[ext_resource type="PackedScene" uid="uid://eecx3a0dv71q" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
+[ext_resource type="PackedScene" uid="uid://bwichot4w3nxb" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="16_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="17_6uwd6"]
 [ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="17_r4ejf"]
+[ext_resource type="Texture2D" uid="uid://bfecpl07fm7tg" path="res://Assets/UI/UI_battle_regular/paper_patient.png" id="17_veage"]
 [ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="18_bhaob"]
 [ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="18_mnvx0"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="18_veage"]
+[ext_resource type="Texture2D" uid="uid://b04owl16n0nip" path="res://Assets/UI/UI_battle_regular/paper_text.png" id="19_mnvx0"]
 [ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="19_r4ejf"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="23_8aayq"]
 
@@ -105,6 +108,8 @@ _data = {
 &"curtains_opening": SubResource("Animation_0d5t2")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjaq6"]
+
 [node name="FightBase" type="CanvasLayer" unique_id=60080579]
 
 [node name="BackControl" type="Control" parent="." unique_id=550811061]
@@ -146,24 +151,56 @@ z_index = 2
 position = Vector2(613, -145)
 texture = ExtResource("18_bhaob")
 
-[node name="FrameTextSprite2D" type="Sprite2D" parent="BackControl" unique_id=6706054]
-position = Vector2(245, 395)
-texture = ExtResource("17_6uwd6")
-
-[node name="FramePatientBackSprite2D" type="Sprite2D" parent="BackControl" unique_id=1189023969]
-z_index = 3
-position = Vector2(-715, -145)
-texture = ExtResource("18_mnvx0")
-
-[node name="FramePatientFrontSprite2D" type="Sprite2D" parent="BackControl" unique_id=424049112]
-z_index = 4
-position = Vector2(-715, -145)
-texture = ExtResource("19_r4ejf")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BackControl" unique_id=252956924]
 libraries/ = SubResource("AnimationLibrary_6uwd6")
 
+[node name="PatientPaperSprite2D" type="Sprite2D" parent="." unique_id=2128519495]
+position = Vector2(-105, 909)
+rotation = 0.034906585
+texture = ExtResource("17_veage")
+
+[node name="PatientPaperLabel" type="Label" parent="PatientPaperSprite2D" unique_id=1445571485]
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 304.0
+offset_bottom = -26.0
+rotation = 1.3089969
+theme = ExtResource("18_veage")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="PatientPaperCommonLabel" type="Label" parent="PatientPaperSprite2D" unique_id=260157176]
+offset_left = 162.0
+offset_top = -110.0
+offset_right = 257.0
+offset_bottom = -86.0
+rotation = 1.3089969
+theme = ExtResource("18_veage")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "пациент"
+
+[node name="HintSprite2D" type="Sprite2D" parent="." unique_id=837589550]
+position = Vector2(1743, 1124)
+texture = ExtResource("19_mnvx0")
+
+[node name="HintLabel" type="Label" parent="HintSprite2D" unique_id=1018833370]
+offset_left = -358.0
+offset_top = -231.0
+offset_right = 142.0
+offset_bottom = -81.0
+theme = ExtResource("18_veage")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1477469679]
+
+[node name="ActionList" parent="CanvasLayer" unique_id=1970410951 instance=ExtResource("8_3g3hk")]
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bjaq6")
 
 [node name="FightText" parent="CanvasLayer" unique_id=36838454 instance=ExtResource("9_vqao4")]
 self_modulate = Color(1, 1, 1, 0)
@@ -278,7 +315,7 @@ position = Vector2(317, 461)
 script = ExtResource("6_3g3hk")
 
 [node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("23_8aayq")]
-position = Vector2(179, 917)
+position = Vector2(358, 917)
 
 [node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "slot4", "slot5")]
 script = ExtResource("1_vqao4")
@@ -305,3 +342,23 @@ position = Vector2(1350, 520)
 
 [node name="PatientTable" parent="." unique_id=1637330193 instance=ExtResource("16_6uwd6")]
 position = Vector2(224, 375)
+
+[node name="FrontControl" type="Control" parent="." unique_id=1358595519]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrameTextSprite2D" type="Sprite2D" parent="FrontControl" unique_id=6706054]
+position = Vector2(1185, 915)
+texture = ExtResource("17_6uwd6")
+
+[node name="FramePatientBackSprite2D" type="Sprite2D" parent="FrontControl" unique_id=1189023969]
+z_index = 3
+position = Vector2(225, 375)
+texture = ExtResource("18_mnvx0")
+
+[node name="FramePatientFrontSprite2D" type="Sprite2D" parent="FrontControl" unique_id=424049112]
+z_index = 4
+position = Vector2(225, 375)
+texture = ExtResource("19_r4ejf")
