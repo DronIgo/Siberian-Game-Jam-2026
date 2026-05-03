@@ -50,14 +50,35 @@ func unhighlight():
 	highlighted = false
 	print(str("[!] ", lore_name, " unhighlighted"))
 
+#TODO: damage types
 func take_damage(amount : int) -> int:
 	if health <= 0:
 		return 0
-	health -= amount
+	var actual_amount = calc_damage_taken(amount)
+	health -= actual_amount
 	if health <= 0:
 		_on_death()
 	actor_ui.update_health()
-	return amount
+	return actual_amount
+
+func calc_damage_taken(damage : int) -> int:
+	var mult : float = 100.0
+	var extra : int = 0
+	for s in statuses:
+		if s.type == StatusGenerator.STATUS.BUFF_DEF:
+			mult -= float(s.amount)
+		if s.type == StatusGenerator.STATUS.MARK:
+			mult += float(s.amount)
+		if s.type == StatusGenerator.STATUS.BURN:
+			extra += s.amount
+	return int(damage * mult / 100.0) + extra
+
+func calc_damage_dealt(damage : int) -> int:
+	var mult : float = 100.0
+	for s in statuses:
+		if s.type == StatusGenerator.STATUS.BUFF_ATTACK:
+			mult += float(s.amount)
+	return int(damage * mult / 100.0)
 
 func heal(amount : int) -> void:
 	health += amount

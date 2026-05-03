@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b4bx5348yp1sy"]
+
+[ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="1_ev8fd"]
+[ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="2_cjpde"]
+[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/BarComponent.tscn" id="3_xs1ur"]
+[ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="4_ryg60"]
+[ext_resource type="PackedScene" uid="uid://tk8ow3x3dx31" path="res://Scenes/Common/SelectableObject.tscn" id="5_tla2b"]
+[ext_resource type="Script" uid="uid://20auybpcty0q" path="res://Scripts/UI/Common/SelectableObject.gd" id="6_h4bta"]
+[ext_resource type="Script" uid="uid://dwos70fv41yey" path="res://Scripts/Logic/Fight/Organs/OrganBase.gd" id="7_ytpwo"]
+[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="8_ko6xc"]
+[ext_resource type="Script" uid="uid://cleeaee5r8f5s" path="res://Scripts/Logic/Fight/Organs/EvilAI.gd" id="9_47p6l"]
+
+[node name="Bad Essence2" type="Sprite2D" unique_id=2081682971 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
+self_modulate = Color(0.96862745, 0, 0, 1)
+texture = ExtResource("1_ev8fd")
+script = ExtResource("2_cjpde")
+health_bar = NodePath("Health")
+statuses_grid = NodePath("StatusGrid")
+selectable_component = NodePath("EssenceSelectable")
+actor = NodePath("Logic")
+
+[node name="Health" parent="." unique_id=502772887 instance=ExtResource("3_xs1ur")]
+position = Vector2(-81, 0)
+
+[node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("4_ryg60")]
+position = Vector2(71, -48)
+
+[node name="EssenceSelectable" parent="." unique_id=1089380166 instance=ExtResource("5_tla2b")]
+script = ExtResource("6_h4bta")
+save_selected_state = false
+
+[node name="Logic" type="Node2D" parent="." unique_id=1432745422 node_paths=PackedStringArray("organ_ai")]
+script = ExtResource("7_ytpwo")
+organ_name = "tentacle"
+organ_ai = NodePath("../AI")
+is_main = true
+is_healthy = false
+
+[node name="HintBox" parent="." unique_id=1074084737 node_paths=PackedStringArray("hint_target") instance=ExtResource("8_ko6xc")]
+hint_text = "Essence"
+hint_target = NodePath("../EssenceSelectable")
+anchor_to_screen_corner = true
+
+[node name="AI" type="Node" parent="." unique_id=13203856]
+script = ExtResource("9_47p6l")

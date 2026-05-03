@@ -18,7 +18,10 @@ enum STATUS {
 	BLEED,
 	POISON,
 	BUFF_ATTACK,
-	BUFF_DEF
+	BUFF_DEF,
+	MARK,
+	BURN,
+	HEAL
 }
 
 func _ready() -> void:
@@ -44,6 +47,18 @@ func create_status(type : STATUS) -> StatusEffectBase:
 			return status
 		STATUS.BUFF_ATTACK:
 			var status = StatusEffectBuffAttack.new(buff, duration)
+			return status
+		STATUS.BUFF_DEF:
+			var status = StatusEffectBuffDefence.new(buff, duration)
+			return status
+		STATUS.MARK:
+			var status = StatusEffectMark.new(amount, duration)
+			return status
+		STATUS.BURN:
+			var status = StatusEffectBurn.new(amount, duration)
+			return status
+		STATUS.HEAL:
+			var status = StatusEffectHeal.new(amount, duration)
 			return status
 	printerr("unsupported status type")
 	return StatusEffectBase.new(amount, duration)

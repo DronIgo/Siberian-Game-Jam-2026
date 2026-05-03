@@ -25,6 +25,8 @@ func summon_by_name(organ_name : String) -> OrganBase:
 		"tentacle":
 			organ_res = load(EVIL_TENTACLE_UID)
 	var organ = organ_res.instantiate()
+	if organ_name == "tentacle":
+		organ.actor.organ_summoner = self
 	pick_slot(organ, organ.actor)
 	return organ.actor
 
