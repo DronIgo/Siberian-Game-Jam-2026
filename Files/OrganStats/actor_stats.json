@@ -41,7 +41,7 @@
 	"sick_kidney" : {
 		"max_health" : 80,
 		"vulnerable" : "BLUE",
-		"name" : "Зараженные лёгкие"
+		"name" : "Зараженная почка"
 	},
 	"sick_lung" : {
 		"max_health" : 80,
