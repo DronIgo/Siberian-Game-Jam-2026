@@ -31,6 +31,12 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionSyringeGreen.new()
 		"syringe_blue":
 			return ActionSyringeBlue.new()
+		"buff":
+			return ActionBuffAttack.new()
+		"buff_defense":
+			return ActionBuffDefense.new()
+		"antalgetic":
+			return ActionAntalgetic.new()
 		"heal":
 			return ActionHeal.new()
 		"mitosis":
