@@ -6,7 +6,7 @@
 			"args": [
 				"res://Dialog/Jsons/day_1_day.json"
 			],
-			"next_phase_id": "boss_fight"
+			"next_phase_id": "hub"
 		},
 		{
 			"id": "day_1_night",
