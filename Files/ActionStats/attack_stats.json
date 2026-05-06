@@ -5,7 +5,7 @@
 			"manacost" : 0,
 			"name" : "Надрез",
 			"description" : "Наносит режущий урон.",
-			"sound": "res://Assets/SFX/player_cut.mp3"
+			"sound": "res://Assets/SFX/player_scalpel.mp3"
 		},
 		"aspirin" : {
 			"amount" : 5,
