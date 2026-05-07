@@ -58,7 +58,7 @@
 		},
 		{
 			"id": "hub",
-			"scene_name": "res://Hub/hub.tscn",
+			"scene_name": "res://Scenes/Hub/hub.tscn",
 			"next_phase_id": ""
 		},
 		{

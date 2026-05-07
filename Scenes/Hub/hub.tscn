@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ehpfchxajgxk"]
 
-[ext_resource type="Script" uid="uid://bdo6hcjqfubs5" path="res://Hub/Hub.gd" id="1_siedd"]
+[ext_resource type="Script" uid="uid://bdo6hcjqfubs5" path="res://Scripts/Hub/Hub.gd" id="1_siedd"]
 [ext_resource type="Texture2D" uid="uid://p1pkxwrcehu3" path="res://Assets/UI/UI_city/city_clear.png" id="2_lcg3h"]
 [ext_resource type="Texture2D" uid="uid://ucgrwirqxjk6" path="res://Assets/UI/UI_city/city_highlight_only.png" id="3_m76ao"]
 [ext_resource type="Texture2D" uid="uid://6cr1o0nkx3yd" path="res://Assets/UI/UI_city/city_house_8.png" id="4_4iet2"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://4yb7cp3s435n" path="res://Assets/UI/UI_city/city_house_shop.png" id="4_vk2n8"]
 [ext_resource type="Texture2D" uid="uid://bqufpe74r3wu" path="res://Assets/UI/UI_city/city_house_0.png" id="5_842jq"]
 [ext_resource type="Texture2D" uid="uid://df70j3vea24rm" path="res://Assets/UI/UI_city/city_house_2.png" id="5_hvhe6"]
-[ext_resource type="Script" uid="uid://d2wwkwmllbtne" path="res://Hub/Building.gd" id="14_vk2n8"]
+[ext_resource type="Script" uid="uid://d2wwkwmllbtne" path="res://Scripts/Hub/Building.gd" id="14_vk2n8"]
 [ext_resource type="Texture2D" uid="uid://hjdntvsb4b68" path="res://Assets/UI/UI_city/REF_CITY.png" id="15_qje4f"]
 [ext_resource type="Texture2D" uid="uid://u1ac2tq4830e" path="res://Assets/UI/UI_city/city_paper.png" id="16_m76ao"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="17_nwqdf"]
