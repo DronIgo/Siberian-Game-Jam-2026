@@ -1,5 +1,9 @@
 class_name PhaseManager
 
+const phase_id_arg_placeholder_name: String = "arg"
+const phase_success_arg_value: String = "won"
+const phase_failure_arg_value: String = "failed"
+
 static var _config_path: String = "res://Files/phases.json"
 static var _phases: Dictionary
 static var _events: Dictionary
@@ -7,8 +11,6 @@ static var _current_phase_id: String
 static var _next_phase_id: String
 static var _current_event_id: String
 static var _is_initialized: bool
-static var _max_night: int = 5
-static var _final_phase: String = "day_5_morning_failed"
 
 static var is_event: bool = false
 
@@ -28,7 +30,7 @@ static func init():
 	_next_phase_id = _phases[_current_phase_id].next_phase_id
 	_is_initialized = true
 
-static func try_next_phase(template_arg = null) -> Phase:
+static func try_next_phase(template_arg: String = "") -> Phase:
 	return exact_phase(_next_phase_id, template_arg)
 
 static func current_phase() -> Phase:
@@ -36,7 +38,7 @@ static func current_phase() -> Phase:
 		return _phases[_current_phase_id]
 	return null
 
-static func exact_phase(id: String, template_arg = null) -> Phase:
+static func exact_phase(id: String, template_arg: String = "") -> Phase:
 	if id == "":
 		return null
 	if id == "?":
@@ -44,14 +46,10 @@ static func exact_phase(id: String, template_arg = null) -> Phase:
 		if template == "":
 			printerr("No phase id template specified")
 			return null
-		if template_arg == null:
+		if template_arg == "":
 			printerr("No phase id template argument specified")
 			return null
-		if template_arg == _max_night:
-			# todo
-			id = _final_phase
-		else:
-			id = template.format({"arg":str(template_arg)})
+		id = template.format({ phase_id_arg_placeholder_name: template_arg })
 	var next_phase: Phase = _phases[id]
 	_current_phase_id = next_phase.id
 	_next_phase_id = next_phase.next_phase_id

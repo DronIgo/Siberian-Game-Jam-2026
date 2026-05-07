@@ -1,5 +1,7 @@
 extends Node
 
+const _days_total: int = 5
+
 var buildings:  Dictionary = {
 	"shop": BuildingInfo.new("shop", "", "Магазин", "shop"),
 	"house_0": BuildingInfo.new("house_0", "Ян Такле́вич", "Пациент жалуется на аномальное образование в районе головы, способность управлять им не наблюдается, возможны выбросы вещества, похожего на чернила.
@@ -33,4 +35,7 @@ var game_progress : int = 0
 var extra_organs : Array
 
 func mission_complete() -> void:
-	game_progress += 1
+	game_progress = min(game_progress + 1, _days_total)
+
+func is_last_day() -> bool:
+	return game_progress == _days_total

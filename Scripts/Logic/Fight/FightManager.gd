@@ -265,9 +265,16 @@ func _on_victory() -> void:
 	await action_display_text.display("Вы получили " + _main_organ_name, 2.0)
 	ItemStateHolder.collected_organs.append(_main_organ_local_name)
 	CityStateHolder.mission_complete()
-	get_tree().change_scene_to_file(PhaseManager.try_next_phase(CityStateHolder.game_progress).scene_name)
+	get_tree().change_scene_to_file(PhaseManager.try_next_phase(_prepare_phase_arg(true)).scene_name)
 
 func _on_defeat() -> void:
 	CityStateHolder.mission_complete()
-	get_tree().change_scene_to_file(PhaseManager.try_next_phase(CityStateHolder.game_progress).scene_name)
+	get_tree().change_scene_to_file(PhaseManager.try_next_phase(_prepare_phase_arg(false)).scene_name)
 	print("GAME OVER")
+
+func _prepare_phase_arg(is_success: bool) -> String:
+	if CityStateHolder.is_last_day():
+		return PhaseManager.phase_success_arg_value if is_success \
+			else PhaseManager.phase_failure_arg_value
+	else:
+		return str(CityStateHolder.game_progress)

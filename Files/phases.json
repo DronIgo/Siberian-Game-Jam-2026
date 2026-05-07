@@ -174,7 +174,7 @@
 				[]
 			],
 			"next_phase_id": "?",
-			"next_phase_id_template": "day_5_morning_{result}"
+			"next_phase_id_template": "day_5_morning_{arg}"
 		}
 	],
 	"events": [],
