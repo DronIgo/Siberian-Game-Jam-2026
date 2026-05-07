@@ -63,7 +63,7 @@
 		},
 		{
 			"id": "shop",
-			"scene_name": "res://Shop/shop.tscn",
+			"scene_name": "res://Scenes/Shop/shop.tscn",
 			"next_phase_id": "hub"
 		},
 		{
