@@ -2,57 +2,57 @@
 	"phases": [
 		{
 			"id": "day_1_day",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_1_day.json"
+				"res://Files/Dialog/day_1_day.json"
 			],
 			"next_phase_id": "hub"
 		},
 		{
 			"id": "day_1_night",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_1_night.json"
+				"res://Files/Dialog/day_1_night.json"
 			],
 			"next_phase_id": "hub"
 		},
 		{
 			"id": "day_2_night",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_2_night.json"
+				"res://Files/Dialog/day_2_night.json"
 			],
 			"next_phase_id": "hub"
 		},
 		{
 			"id": "day_3_night",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_3_night.json"
+				"res://Files/Dialog/day_3_night.json"
 			],
 			"next_phase_id": "hub"
 		},
 		{
 			"id": "day_4_night",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_4_night.json"
+				"res://Files/Dialog/day_4_night.json"
 			],
 			"next_phase_id": "boss_fight"
 		},
 		{
 			"id": "day_5_morning_won",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_5_morning_won.json"
+				"res://Files/Dialog/day_5_morning_won.json"
 			],
 			"next_phase_id": ""
 		},
 		{
 			"id": "day_5_morning_failed",
-			"scene_name": "res://Dialog/dialog.tscn",
+			"scene_name": "res://Scenes/Dialog/dialog.tscn",
 			"args": [
-				"res://Dialog/Jsons/day_5_morning_failed.json"
+				"res://Files/Dialog/day_5_morning_failed.json"
 			],
 			"next_phase_id": ""
 		},

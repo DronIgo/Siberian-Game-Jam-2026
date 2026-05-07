@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bphgw16o7py08"]
 
-[ext_resource type="Script" uid="uid://cgvgvlxxyphpm" path="res://Dialog/Dialog.gd" id="1_yqm1q"]
+[ext_resource type="Script" uid="uid://cgvgvlxxyphpm" path="res://Scripts/Dialog/Dialog.gd" id="1_yqm1q"]
 [ext_resource type="Texture2D" uid="uid://p1pkxwrcehu3" path="res://Assets/UI/UI_city/city_clear.png" id="2_b2mf0"]
-[ext_resource type="PackedScene" uid="uid://dnhriu48mjgqj" path="res://Dialog/replicas_box.tscn" id="3_olscm"]
+[ext_resource type="PackedScene" uid="uid://dnhriu48mjgqj" path="res://Scenes/Dialog/replicas_box.tscn" id="3_olscm"]
 
 [node name="Dialog" type="CanvasLayer" unique_id=1090554352 node_paths=PackedStringArray("replicas_box")]
 script = ExtResource("1_yqm1q")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnhriu48mjgqj"]
 
-[ext_resource type="Script" uid="uid://kal8a3dtgbfg" path="res://Dialog/ReplicasBox.gd" id="1_w4l6l"]
+[ext_resource type="Script" uid="uid://kal8a3dtgbfg" path="res://Scripts/Dialog/ReplicasBox.gd" id="1_w4l6l"]
 [ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="2_n4433"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="3_2hj2m"]
 
