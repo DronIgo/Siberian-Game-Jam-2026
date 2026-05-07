@@ -265,9 +265,9 @@ func _on_victory() -> void:
 	await action_display_text.display("Вы получили " + _main_organ_name, 2.0)
 	ItemStateHolder.collected_organs.append(_main_organ_local_name)
 	CityStateHolder.mission_complete()
-	get_tree().change_scene_to_file(PhaseManager.try_next_phase().scene_name)
+	get_tree().change_scene_to_file(PhaseManager.try_next_phase(CityStateHolder.game_progress).scene_name)
 
 func _on_defeat() -> void:
 	CityStateHolder.mission_complete()
-	get_tree().change_scene_to_file(PhaseManager.try_next_phase().scene_name)
+	get_tree().change_scene_to_file(PhaseManager.try_next_phase(CityStateHolder.game_progress).scene_name)
 	print("GAME OVER")

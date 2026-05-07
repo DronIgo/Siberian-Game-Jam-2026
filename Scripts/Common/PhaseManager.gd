@@ -7,7 +7,6 @@ static var _current_phase_id: String
 static var _next_phase_id: String
 static var _current_event_id: String
 static var _is_initialized: bool
-static var _day_night_template: String = "day_{value}_night"
 static var _max_night: int = 5
 static var _final_phase: String = "day_5_morning_failed"
 
@@ -29,21 +28,30 @@ static func init():
 	_next_phase_id = _phases[_current_phase_id].next_phase_id
 	_is_initialized = true
 
-static func try_next_phase() -> Phase:
-	return exact_phase(_next_phase_id)
+static func try_next_phase(template_arg = null) -> Phase:
+	return exact_phase(_next_phase_id, template_arg)
 
 static func current_phase() -> Phase:
 	if _phases.has(_current_phase_id):
 		return _phases[_current_phase_id]
 	return null
 
-static func exact_phase(id: String) -> Phase:
+static func exact_phase(id: String, template_arg = null) -> Phase:
 	if id == "":
 		return null
 	if id == "?":
-		var game_progress = CityStateHolder.game_progress
-		id = _final_phase if game_progress == _max_night else \
-			_day_night_template.format({"value":str(game_progress)})
+		var template = current_phase().next_phase_id_template
+		if template == "":
+			printerr("No phase id template specified")
+			return null
+		if template_arg == null:
+			printerr("No phase id template argument specified")
+			return null
+		if template_arg == _max_night:
+			# todo
+			id = _final_phase
+		else:
+			id = template.format({"arg":str(template_arg)})
 	var next_phase: Phase = _phases[id]
 	_current_phase_id = next_phase.id
 	_next_phase_id = next_phase.next_phase_id
@@ -69,5 +77,6 @@ static func _parse_phase(source: Dictionary) -> Phase:
 	phase.args = source["args"] if source.has("args") else []
 	phase.music = source["music"] if source.has("music") else Constants.SOUND_NOTHING
 	phase.next_phase_id = source["next_phase_id"]
+	phase.next_phase_id_template = source["next_phase_id_template"] if source.has("next_phase_id_template") else ""
 	phase.is_replacement = source["is_replacement"] if source.has("is_replacement") else true
 	return phase

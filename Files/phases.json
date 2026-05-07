@@ -74,7 +74,8 @@
 				"octopus",
 				[ "tentacle", "healthy_heart" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_1_fight",
@@ -84,7 +85,8 @@
 				"bird",
 				[ "wings", "healthy_kidney", "sick_liver" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_2_fight",
@@ -94,7 +96,8 @@
 				"fly",
 				[ "eyes", "healthy_brain", "sick_lung" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_3_fight",
@@ -104,7 +107,8 @@
 				"deer",
 				[ "horns", "healthy_lung", "sick_brain" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_4_fight",
@@ -114,7 +118,8 @@
 				"beetle",
 				[ "shell", "healthy_liver", "sick_kidney" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_5_fight",
@@ -124,7 +129,8 @@
 				"fish",
 				[ "scales", "healthy_heart", "sick_kidney" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_6_fight",
@@ -134,7 +140,8 @@
 				"scorpion",
 				[ "tail", "healthy_brain", "sick_liver" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_7_fight",
@@ -144,7 +151,8 @@
 				"axolotl",
 				[ "axolotl", "healthy_kidney", "sick_lung" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_8_fight",
@@ -154,7 +162,8 @@
 				"firefly",
 				[ "firefly", "healthy_liver", "sick_brain" ]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "boss_fight",
@@ -164,7 +173,8 @@
 				"",
 				[]
 			],
-			"next_phase_id": "?"
+			"next_phase_id": "?",
+			"next_phase_id_template": "day_5_morning_{result}"
 		}
 	],
 	"events": [],
