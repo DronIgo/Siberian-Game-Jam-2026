@@ -17,6 +17,7 @@ func _ready() -> void:
 	ShopEventBus.item_selected.connect(_on_item_selected)
 	ShopEventBus.item_unselected.connect(_on_item_unselected)
 	ShopEventBus.item_bought.connect(_on_item_bought)
+	_update_cash_label()
 	_display_items()
 
 func _on_item_selected(id: String):
@@ -28,7 +29,7 @@ func _on_item_unselected(id: String):
 
 func _on_item_bought(id: String):
 	description_label.hide()
-	cash_label.text = str(ItemStateHolder.player_cash)
+	_update_cash_label()
 	_display_items()
 
 func _on_exit_button_pressed() -> void:
@@ -59,3 +60,6 @@ func _display_items():
 				y = 0
 				x += 1
 			count -= 1
+
+func _update_cash_label():
+	cash_label.text = str(ItemStateHolder.player_cash)

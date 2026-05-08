@@ -77,6 +77,7 @@ offset_right = 1815.0
 offset_bottom = 725.0
 theme = ExtResource("5_u3phx")
 theme_override_font_sizes/font_size = 34
+autowrap_mode = 3
 
 [node name="ExitButton" type="Button" parent="." unique_id=1435896005]
 anchors_preset = 3
