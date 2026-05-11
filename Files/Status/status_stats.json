@@ -1,0 +1,72 @@
+{
+	"bleed" : {
+		"damage" : 10,
+		"lore_name" : "кровотечение",
+		"description" : "Наносит {damage} урона в конце хода",
+		"damage_type" : "RED",
+		"tags" : ["negative"]
+	},
+	"poison" : {
+		"damage" : 5,
+		"default_duration" : 5,
+		"lore_name" : "отравление",
+		"description" : "Наносит {damage} урона в конце хода",
+		"damage_type" : "GREEN",
+		"tags" : ["negative"]
+	},
+	"buff_attack" : {
+		"amount" : 50,
+		"lore_name" : "усиление",
+		"description" : "Увеличивает урон от атак на {amount} процентов"
+	},
+	"buff_def" : {
+		"amount" : 60,
+		"lore_name" : "защита",
+		"description" : "Снижает входящий урон от атак на {amount} процентов"
+	},
+	"burn" : {
+		"amount" : 15,
+		"lore_name" : "ожог",
+		"description" : "Получает {amount} дополнительного урона от атак",
+		"damage_type" : "BLUE",
+		"tags" : ["negative"]
+	},
+	"mark" : {
+		"amount" : 80,
+		"default_duration" : 2,
+		"lore_name" : "метка",
+		"description" : "Получает на {amount} процентов больше урона от всех источников",
+		"tags" : ["negative"]
+	},
+	"heal" : {
+		"amount" : 5,
+		"default_duration" : 5,
+		"lore_name" : "восстановление",
+		"description" : "Восстанавливает {amount} здоровья в конце хода"
+	},
+	"haste" : {
+		"amount" : 80,
+		"default_duration" : 3,
+		"lore_name" : "скользкий",
+		"description" : "Имеет высокий шанс избежать урона от атак"
+	},
+	"taunt": {
+		"default_duration": 2,
+		"lore_name" : "защищает",
+		"description" : "Получает урон вместо {target.lore_name}"
+	},
+	"protected": {
+		"default_duration": 2,
+		"lore_name" : "под защитой",
+		"description" : "{protector.lore_name} получает весь урон вместо цели"
+	},
+	"hide": {
+		"default_duration": 2,
+		"lore_name" : "скрытый",
+		"description" : "Полностью защищен от всего урона"
+	},
+	"__default__" : {
+		"default_duration" : 3,
+		"tags" : []
+	}
+}

@@ -25,7 +25,7 @@ func reset_status(status: StatusEffectBase) -> void:
 
 func tick_down_status(status : StatusEffectBase) -> void:
 	_status_to_status_item[status.type].tick_down()
-	if _status_to_status_item[status.type].duration <= 0:
+	if _status_to_status_item[status.type].status.duration <= 0:
 		remove_status(status)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

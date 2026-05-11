@@ -14,9 +14,9 @@ func take_action(initiator: ActorBase, targets: Array) -> ActionResult:
 	super(initiator, targets)
 	var target = targets[0] as ActorBase
 
-	# Вешаем SHIELD на себя (Лёгкие)
-	var shield = SEG.create_status(StatusGenerator.STATUS.SHIELD) as StatusEffectShield
-	shield.set_protected_ally(target)
+	# Вешаем TAUNT на себя
+	var shield = SEG.create_status(StatusGenerator.STATUS.TAUNT) as StatusEffectTaunt
+	shield.set_target(target)
 	initiator.apply_status(shield)
 
 	# Вешаем PROTECTED на союзника
@@ -25,10 +25,8 @@ func take_action(initiator: ActorBase, targets: Array) -> ActionResult:
 	target.apply_status(protected_status)
 
 	return ActionResult.new(
-	"{initiator} защищает {target}",
-	{"initiator": initiator.lore_name, "target": target.lore_name},
-	0
-	)
+		"{initiator} защищает {target}",
+		{"initiator": initiator.lore_name, "target": target.lore_name}, 0)
 
 func get_priority(actor : OrganBase, own : OrganBase) -> int:
 	if actor == own:

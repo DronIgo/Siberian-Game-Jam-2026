@@ -14,12 +14,12 @@ func take_action(initiator: ActorBase, targets: Array) -> ActionResult:
 	super(initiator, targets)
 	var target = targets[0] as ActorBase
 
-	# Вешаем SHIELD на себя
-	var shield = SEG.create_status(StatusGenerator.STATUS.SHIELD) as StatusEffectShield
-	shield.set_protected_ally(initiator)
+	# Вешаем TAUNT на цель
+	var shield = SEG.create_status(StatusGenerator.STATUS.TAUNT) as StatusEffectTaunt
+	shield.set_target(initiator)
 	target.apply_status(shield)
 
-	# Вешаем PROTECTED на союзника
+	# Вешаем PROTECTED на себя
 	var protected_status = SEG.create_status(StatusGenerator.STATUS.PROTECTED) as StatusEffectProtected
 	protected_status.set_shield_bearer(target)
 	initiator.apply_status(protected_status)
