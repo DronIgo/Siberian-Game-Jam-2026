@@ -22,9 +22,9 @@ func _ready() -> void:
 		return
 	get_viewport().physics_object_picking_first_only = true
 	get_viewport().physics_object_picking_sort = true
-	_genenrate_sprite_polygon()
+	#_genenrate_sprite_polygon()
 	input_event.connect(_input_event)
-	global_scale = _parent_sprite.scale
+	#global_scale = _parent_sprite.scale
 
 func _input_event(viewport : Viewport, event : InputEvent, shape_idx : int) -> void:
 	#TODO: BUG: нажимается дважды
@@ -52,7 +52,7 @@ func _genenrate_sprite_polygon() -> void:
 		
 func _adjust_to_sprite(bitmap: BitMap) -> void:
 	if _parent_sprite.centered:
-		_collision_polygon.position -= Vector2(bitmap.get_size() / 2.0)
+		_collision_polygon.position -= Vector2(bitmap.get_size() / 2.0) * _parent_sprite.scale
 		_collision_polygon.position += get_parent().offset
 	_collision_polygon.scale = Vector2(\
 		-1.0 if _parent_sprite.flip_h else 1.0,\

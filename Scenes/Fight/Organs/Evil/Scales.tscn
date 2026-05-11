@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dshk8vjd08w0m"]
 
 [ext_resource type="Script" uid="uid://cebv2fqdd80jo" path="res://Scripts/UI/Fight/Actors/Organs/OrganUI.gd" id="1_0g06o"]
-[ext_resource type="PackedScene" uid="uid://r80quhg3k1b6" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_0u1js"]
+[ext_resource type="PackedScene" uid="uid://dafida5yqhbwt" path="res://Scenes/Fight/UI/OrganHealthBarComponent.tscn" id="2_0u1js"]
 [ext_resource type="PackedScene" uid="uid://bkj6fgm7o1nrl" path="res://Scenes/Fight/Organs/StatusGrid.tscn" id="3_pe1jx"]
 [ext_resource type="Script" uid="uid://cb1ow1gnd0hht" path="res://Scripts/Logic/Fight/Organs/OrganTentacle.gd" id="4_w2b7l"]
 [ext_resource type="Script" uid="uid://cleeaee5r8f5s" path="res://Scripts/Logic/Fight/Organs/EvilAI.gd" id="5_838ao"]
@@ -177,6 +177,10 @@ texture = ExtResource("6_0g06o")
 scale = Vector2(4, 4)
 script = ExtResource("8_f27nq")
 save_selected_state = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/EssenceSelectable" unique_id=1358736785]
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(93, -291.2, 93, -289.7, 8.600006, -271, 4.700012, -271, -63.299988, -249, -66.399994, -249, -97.29999, -236, -100.600006, -236, -110.5, -230, -112.79999, -230, -126, -216.79999, -126, -216.1, -156, -194, -156, -193.1, -193.5, -170, -195.79999, -170, -207.79999, -159, -210.70001, -159, -219, -151.9, -261, -144.70001, -280.9, -146, -283.2, -146, -314.3, -141, -321.4, -141, -331, -137.4, -331, -136.79999, -356.3, -133, -358.3, -133, -387.4, -123, -391.6, -123, -405.6, -113, -407.8, -113, -464.9, -60, -466.9, -60, -474.9, -51, -477, -51, -477, -43, -480.7, -40, -482.4, -40, -485, -33.399994, -485, -30.799988, -490.8, -25, -493.4, -25, -489, 0.2999878, -489, 1.7999878, -484.8, 6, -483.4, 6, -476, 24.400024, -476, 26.700012, -444, 68, -443.1, 68, -366, 180.59998, -366, 182.70001, -288, 276.59998, -288, 279, -278, 286.90002, -278, 289, -249.5, 289, -236, 297.09998, -236, 298.40002, -203, 310.40002, -203, 313.2, -196.5, 310, -187.29999, 313, -183.79999, 313, -80.899994, 288, -77.5, 288, -37, 264.09998, -37, 263.40002, 0.3999939, 250, 3.399994, 250, 115, 199.29999, 115, 198.29999, 192, 167.40002, 192, 166.40002, 312, 133.5, 326.40002, 133, 350, 122.29999, 350, 121.400024, 385.3, 110, 388.40002, 110, 417.40002, 97, 420.5, 97, 453.5, 78, 455.59998, 78, 480.59998, 60, 483.09998, 60, 487.09998, 54, 490.2, 54, 487, 47.5, 499, 38, 499, 33.200012, 477, 10.100006, 480, 6, 481.2, 6, 482.3, 3.7999878, 477, -3.7000122, 477, -5.700012, 353, -172.70001, 353, -175, 340, -185, 340, -186.1, 292, -214.20001, 292, -215.29999, 222, -249.3, 222, -250.4, 167, -271.5, 167, -272.6, 133, -279.7, 133, -281.2, 119.79999, -280, 118.70001, -280, 108, -288, 108, -289.8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=743724790]
 libraries/ = SubResource("AnimationLibrary_hnt65")

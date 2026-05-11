@@ -29,6 +29,7 @@ func init(actor_name : String) -> void:
 		_init_actions(OG.actions_by_actor[actor_name])
 	else:
 		printerr(actor_name, " is missing from avialable attacks config!")
+	_init_item_actions()
 	if OG.stats_by_actor.has(actor_name):
 		_init_stats(OG.stats_by_actor[actor_name])
 	else:

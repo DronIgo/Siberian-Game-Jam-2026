@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bo4nsr7leunq7" path="res://Scripts/UI/Fight/PatientTable.gd" id="1_vt8n6"]
 [ext_resource type="PackedScene" uid="uid://bfi1o4ib8t7og" path="res://Scenes/Fight/UI/Patients/PatientBeetle.tscn" id="2_g6vnj"]
-[ext_resource type="PackedScene" uid="uid://c26aqqh3msrka" path="res://Scenes/Fight/UI/Patients/PatientBird.tscn" id="3_gwtk6"]
-[ext_resource type="PackedScene" uid="uid://o013dl0uimka" path="res://Scenes/Fight/UI/Patients/PatientOctopus.tscn" id="4_gwtk6"]
-[ext_resource type="PackedScene" uid="uid://b4ds7cajjtr3b" path="res://Scenes/Fight/UI/Patients/PatientFly.tscn" id="5_dxvsa"]
-[ext_resource type="PackedScene" uid="uid://c8vfiavma7v2n" path="res://Scenes/Fight/UI/Patients/PatientAxolotl.tscn" id="6_dxvsa"]
-[ext_resource type="PackedScene" uid="uid://coqem3ogbm8or" path="res://Scenes/Fight/UI/Patients/PatientFirefly.tscn" id="7_tpsd8"]
-[ext_resource type="PackedScene" uid="uid://bf5w6u3jjkdn4" path="res://Scenes/Fight/UI/Patients/PatientScorpion.tscn" id="8_06jo0"]
-[ext_resource type="PackedScene" uid="uid://5hm4yw871j8w" path="res://Scenes/Fight/UI/Patients/PatientDeer.tscn" id="9_7nbjx"]
-[ext_resource type="PackedScene" uid="uid://de7lsek4m1kjb" path="res://Scenes/Fight/UI/Patients/PatientFish.tscn" id="10_2nkwd"]
+[ext_resource type="PackedScene" uid="uid://od7p3ibp7aqg" path="res://Scenes/Fight/UI/Patients/PatientBird.tscn" id="3_gwtk6"]
+[ext_resource type="PackedScene" uid="uid://cdygbwtmfiql7" path="res://Scenes/Fight/UI/Patients/PatientOctopus.tscn" id="4_gwtk6"]
+[ext_resource type="PackedScene" uid="uid://ygh6a5364yr5" path="res://Scenes/Fight/UI/Patients/PatientFly.tscn" id="5_dxvsa"]
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientAxolotl.tscn" id="6_dxvsa"]
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientFirefly.tscn" id="7_tpsd8"]
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientScorpion.tscn" id="8_06jo0"]
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientDeer.tscn" id="9_7nbjx"]
+[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientFish.tscn" id="10_2nkwd"]
 
 [node name="PatientTable" type="Node2D" unique_id=1637330193 node_paths=PackedStringArray("available_patients")]
 script = ExtResource("1_vt8n6")

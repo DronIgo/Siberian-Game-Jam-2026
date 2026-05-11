@@ -8,13 +8,12 @@
 		"antalgetic",
 		"cauterization",
 		"scalpel",
-		"scalpel",
 		"aspirin"
 	],
 	"healthy_heart" : [
 		"heal",
 	],
-	"healthy_lungs" : [
+	"healthy_lung" : [
 		"haste",
 	],
 	"healthy_liver" : [
@@ -30,7 +29,7 @@
 		"heal",
 		"heal",
 	],
-	"sick_lungs" : [
+	"sick_lung" : [
 		"haste",
 		"defend"
 	],
