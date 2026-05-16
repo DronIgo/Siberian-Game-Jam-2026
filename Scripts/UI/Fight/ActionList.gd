@@ -22,7 +22,7 @@ func display_actions(actor : ActorBase) -> void:
 	menu.visible = false
 	clear()
 	var row = new_row()
-	for a in actor.actions:
+	for a in actor.action_holder.get_actions():
 		var action = a as ActionBase
 		var action_item = ACTION_ITEM.instantiate()
 		action_item.init(action, actor)
@@ -37,10 +37,11 @@ func display_items(actor : ActorBase) -> void:
 	menu.visible = false
 	clear()
 	var row = new_row()
-	for a in actor.item_actions:
-		var action = a as ActionBase
+	for action_with_amount in actor.action_holder.get_item_actions():
+		var action = action_with_amount.action as ActionBase
+		var amount = action_with_amount.amount
 		var action_item = ACTION_ITEM.instantiate()
-		action_item.init(action, actor)
+		action_item.init(action, actor, amount)
 		action_item.action_list = self
 		row.add_child(action_item)
 		if (row.get_child_count() >= actions_per_row):

@@ -1,4 +1,4 @@
-class_name ActionMarkForDeath
+class_name ActionMarkForDeathL
 extends ActionBase
 
 var action_name = "mark-for-death"
@@ -18,4 +18,5 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 	targets[0].apply_status(SEG.create_status(StatusGenerator.STATUS.MARK))
 	return ActionResult.new(formated_result,\
-		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name}, 1)
+		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name}
+	)

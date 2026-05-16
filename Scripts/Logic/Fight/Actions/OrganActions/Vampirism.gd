@@ -1,4 +1,4 @@
-class_name ActionVampirism
+class_name ActionVampirismL
 extends ActionBase
 
 var action_name = "vampirism"
@@ -24,6 +24,5 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	initiator.heal(actual_damage)
 	return ActionResult.new(
 		formated_result,
-		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name},
-		1
+		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name}
 	)

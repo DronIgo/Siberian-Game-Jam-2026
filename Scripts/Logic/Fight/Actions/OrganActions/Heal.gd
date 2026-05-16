@@ -1,4 +1,4 @@
-class_name ActionHeal
+class_name ActionHealL
 extends ActionBase
 
 var action_name = "heal"
@@ -24,4 +24,5 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 	targets[0].heal(amount)
 	return ActionResult.new(formated_result,\
-		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name, "amount" : amount}, 1)
+		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name, "amount" : amount}
+	)

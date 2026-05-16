@@ -1,4 +1,4 @@
-class_name ActionRam
+class_name ActionRamL
 extends ActionBase
 
 var action_name = "ram"
@@ -27,6 +27,5 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 		target.take_damage(actual_damage, damage_type)
 	return ActionResult.new(
 		formated_result,
-		{"initiator" : initiator.lore_name},
-		1
+		{"initiator" : initiator.lore_name}
 	)

@@ -1,4 +1,4 @@
-class_name ActionBlow
+class_name ActionBlowL
 extends ActionBase
 
 var action_name = "blow"

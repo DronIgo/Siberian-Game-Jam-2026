@@ -1,4 +1,4 @@
-class_name ActionManaPotion
+class_name ActionManaPotionL
 extends ActionBase
 
 var action_name = "mana_potion"

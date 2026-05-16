@@ -1,4 +1,4 @@
-class_name ActionHealthPotion
+class_name ActionHealthPotionL
 extends ActionBase
 
 var action_name = "heal_potion"

@@ -1,4 +1,4 @@
-class_name ActionCrush
+class_name ActionCrushL
 extends ActionBase
 
 var action_name = "crush"

@@ -7,18 +7,19 @@
 [ext_resource type="Theme" uid="uid://bjc1pdbaesvrx" path="res://Assets/Themes/BlueText.tres" id="4_87dps"]
 [ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="4_h52tm"]
 
-[node name="ActionItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("selection_button", "hint_box", "mana_label")]
+[node name="ActionItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("selection_button", "hint_box", "mana_label", "count_label")]
 custom_minimum_size = Vector2(280, 58)
 offset_right = 280.0
 offset_bottom = 58.0
 theme = ExtResource("1_6m134")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 36
 text = "Action"
 vertical_alignment = 1
 script = ExtResource("1_lu0c8")
 selection_button = NodePath("SelectButton")
 hint_box = NodePath("HintBox")
 mana_label = NodePath("ManaLabel")
+count_label = NodePath("CountLabel")
 
 [node name="SelectButton" type="TextureButton" parent="." unique_id=1703572248]
 layout_mode = 0
@@ -27,7 +28,9 @@ offset_bottom = 58.0
 texture_pressed = ExtResource("3_3hp76")
 texture_hover = ExtResource("4_h52tm")
 
-[node name="ManaLabel" type="Label" parent="." unique_id=1605069615]
+[node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
+
+[node name="ManaLabel" type="Label" parent="." unique_id=1555467791]
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 58.0
@@ -36,4 +39,11 @@ theme_override_font_sizes/font_size = 30
 text = "50"
 horizontal_alignment = 2
 
-[node name="HintBox" parent="." unique_id=1074084737 instance=ExtResource("2_1cu48")]
+[node name="CountLabel" type="Label" parent="." unique_id=1755816228]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+theme = ExtResource("1_6m134")
+theme_override_font_sizes/font_size = 30
+text = "x3"
+horizontal_alignment = 2

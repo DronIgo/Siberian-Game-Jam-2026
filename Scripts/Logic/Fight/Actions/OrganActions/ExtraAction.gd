@@ -1,4 +1,4 @@
-class_name ActionExtraAction
+class_name ActionExtraActionL
 extends ActionBase
 
 var action_name = "heal"

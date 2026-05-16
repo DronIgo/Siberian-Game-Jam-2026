@@ -26,6 +26,9 @@ func _update_hint() -> void:
 	if hint_box and status:
 		hint_box.hint_text = status.get_description() + "\nОсталось: %d" % status.duration
 
+func reset() -> void:
+	update_display()
+
 func _update_text() -> void:
 	var name_text = status.lore_name
 	var point : int = name_text.length() * status.duration / status.max_duration

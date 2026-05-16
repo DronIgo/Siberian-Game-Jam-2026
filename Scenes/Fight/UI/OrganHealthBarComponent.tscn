@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwfel8is85o8p" path="res://Scripts/UI/Fight/Actors/BarComponent.gd" id="1_lgdh8"]
 [ext_resource type="Texture2D" uid="uid://cfnqycemskmro" path="res://Assets/UI/UI_battle_regular/bottle_organ_health_png.png" id="2_tne58"]
-[ext_resource type="Texture2D" uid="uid://dxe268tvwsaqk" path="res://Assets/UI/UI_battle_regular/bottle_organ_health_inside.png" id="3_fjqms"]
+[ext_resource type="Texture2D" uid="uid://lg3705akjm1f" path="res://Assets/UI/UI_battle_regular/bottle_organ_health_inside_white.png" id="3_hpkic"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="4_tne58"]
 
 [node name="OrganHealthBarComponent" type="Node2D" unique_id=502772887 node_paths=PackedStringArray("actual_bar", "phantom_bar", "right_text_label")]
@@ -16,11 +16,12 @@ clip_children = 1
 texture = ExtResource("2_tne58")
 
 [node name="PhantomBarDisplay" type="Sprite2D" parent="BarMask" unique_id=591905046]
-modulate = Color(1, 1, 1, 0.8784314)
-texture = ExtResource("3_fjqms")
+self_modulate = Color(1, 0.09411765, 0.05882353, 0.8784314)
+texture = ExtResource("3_hpkic")
 
 [node name="ActualBarDisplay" type="Sprite2D" parent="BarMask" unique_id=254065870]
-texture = ExtResource("3_fjqms")
+self_modulate = Color(1, 0.09411765, 0.05882353, 1)
+texture = ExtResource("3_hpkic")
 
 [node name="BarOutside" type="Sprite2D" parent="." unique_id=1618262406]
 texture = ExtResource("2_tne58")

@@ -1,4 +1,4 @@
-class_name ActionDefend
+class_name ActionDefendL
 extends ActionBase
 
 var action_name = "defend"

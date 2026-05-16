@@ -1,4 +1,4 @@
-class_name ActionMitosis
+class_name ActionMitosisL
 extends ActionBase
 
 var action_name = "mitosis"
@@ -15,5 +15,4 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var tentacle = initiator as OrganTentacle
 	tentacle.organ_summoner.summon_by_name("small_tentacle")
 	super.take_action(initiator, targets)
-	return ActionResult.new(formated_result,\
-		{"initiator" : initiator.lore_name}, 1)
+	return ActionResult.new(formated_result, {"initiator" : initiator.lore_name})

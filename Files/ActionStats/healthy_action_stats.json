@@ -1,0 +1,35 @@
+{
+	"defend" : {
+		"name" : "Защита",
+		"description" : "Защищает орган от атак",
+		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",
+		"enemy": ["target0->add_status[protected[initiator]]", "initiator->add_status[taunt[target0]]"],
+		"target_priority" : ["friendly"]
+	},
+	"heal" : {
+		"manacost" : 10,
+		"amount" : 15,
+		"name" : "Исцеление",
+		"description" : "Восстанавливает немного здоровья органу",
+		"result_format" : "{initiator.lore_name} исцеляет {target.lore_name}, восстанавливая {amount} здоровья",
+		"effects" : ["target0->heal[amount]"],
+		"target_priority" : ["self||friendly"]
+	},
+	"filter" : {
+		"name" : "Прочистка",
+		"description" : "Снимает один статус-эффект с органа",
+		"result_format" : "{initiator.lore_name} снимает негативный эффект с {target.lore_name}",
+		"effects": ["target0->remove_status_by_tag[bad]"],
+		"target_priority" : ["self||friendly"]
+	},
+	"haste" : {
+		"name" : "Насыщение кислородом",
+		"description" : "Повышает уклонение",
+		"result_format" : "{initiator.lore_name} повышает уклонение {target.lore_name}",
+		"effects" : ["target0->add_status[haste]"],
+		"target_priority" : ["friendly"]
+	},
+	"__default__" : {
+		"manacost" : 0
+	}
+}

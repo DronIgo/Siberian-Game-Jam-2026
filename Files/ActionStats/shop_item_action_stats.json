@@ -1,0 +1,31 @@
+{
+	"bandage": {
+		"name" : "Бинты",
+		"description" : "Снимает кровотечение с выбранного органа.",
+		"result_format" : "{initiator.lore_name} снимет кровотечение с {target.lore_name}",
+		"effects" : ["target0->remove_status_by_type[bleed]"],
+		"target_priority" : ["friendly"],
+		"tags" : ["one_use"]
+	},
+	"mana_potion": { 
+		"name" : "Витамины", 
+		"amount" : 20,
+		"description" : "Восстанавливает иммунитет",
+		"result_format" : "{initiator.lore_name} восстанавливает иммунитет пациента",
+		"effects" : ["initiator->restore_mana[amount]"],
+		"target_priority" : ["self"],
+		"tags": ["no_target", "one_use"]
+	},
+	"health_potion": { 
+		"name": "Анестезия",
+		"amount" : 20, 
+		"description" : "Восстанавливает здоровье выбранному органу",
+		"result_format" : "{initiator.lore_name} восстанавливает здоровье {target.lore_name}",
+		"effects" : ["target0->heal[amount]"],
+		"target_priority": ["friendly"],
+		"tags" : ["one_use"]
+	},
+	"__default__" : {
+		"manacost" : 0
+	}
+}

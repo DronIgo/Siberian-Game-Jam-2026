@@ -1,0 +1,101 @@
+{
+	"scalpel" : {
+		"damage" : 15,
+		"damage_type" : "RED",
+		"name" : "Надрез",
+		"description" : "Наносит режущий урон.",
+		"result_format" : "{initiator.lore_name} наносит {damage_dealt} урона {target.lore_name}",
+		"sound": "res://Assets/SFX/player_scalpel.mp3",
+		"effects" : ["target0->damage[damage]"],
+		"target_priority" : ["enemy"]
+	},
+	"aspirin" : {
+		"amount" : 5,
+		"damage" : 15,
+		"damage_type" : "RED",
+		"manacost" : 20,
+		"name" : "Аспирин",
+		"description" : "Наносит режущий урон и вызывает кровотечение всем органам.",
+		"result_format" : "{initiator.lore_name} наносит урон и накладывает кровотечение на все органы",
+		"sound": "res://Assets/SFX/player_pills.mp3",
+		"effects" : ["targets->damage[damage]", "targets->add_status[bleed]"],
+		"tags": ["aoe"]
+	},
+	"penicillin" : {
+		"amount" : 5,
+		"damage" : 15,
+		"damage_type" : "GREEN",
+		"manacost" : 20,
+		"name" : "Пенициллин",
+		"description" : "Наносит токсичный урон и отравляет все органы.",
+		"result_format" : "{initiator.lore_name} наносит урон и накладывает отравление на все органы",
+		"sound": "res://Assets/SFX/player_pills.mp3",
+		"effects" : ["targets->damage[damage]", "targets->add_status[poison]"],
+		"tags": ["aoe"]
+	},
+	"syringe_green" : {
+		"amount" : 5,
+		"damage" : 20,
+		"damage_type" : "GREEN",
+		"manacost" : 10,
+		"name" : "Эпинефрин",
+		"description" : " Наносит токсичный урон и отравляет.",
+		"result_format" : "{initiator.lore_name} наносит {damage_dealt} урона и накладывает отравление на {target.lore_name}",
+		"sound": "res://Assets/SFX/player_pills.mp3",
+		"effects" : ["target0->damage", "target0->add_status[poison]"],
+		"target_priority" : ["enemy"]
+	},
+	"syringe_blue" : {
+		"amount" : 5,
+		"damage" : 20,
+		"damage_type" : "BLUE",
+		"manacost" : 10,
+		"name" : "Гидрокортизон",
+		"description" : " Наносит огненный урон и накладывает ожог.",
+		"result_format" : "{initiator.lore_name} наносит {damage_dealt} урона и накладывает ожог на {target.lore_name}",
+		"sound": "res://Assets/SFX/player_pills.mp3",
+		"effects" : ["target0->damage", "target0->add_status[burn]"],
+		"target_priority" : ["enemy"]
+	},
+	"antalgetic" : {
+		"amount" : 20,
+		"name" : "Анальгин",
+		"description" : "Восстанавливает здоровье",
+		"result_format" : "{initiator.lore_name} восстанавливает {amount} здоровья {target.lore_name}",
+		"effects" : ["target0->heal[amount]"],
+		"target_priority" : ["self", "friendly"]
+	},
+	"buff" : {
+		"name" : "Кортизол",
+		"description" : "Повышает урон",
+		"result_format" : "{initiator.lore_name} повышает урон {target.lore_name}",
+		"effects" : ["initiator->add_status[buff_attack]"],
+		"target_priority" : ["self"]
+	},
+	"buff_defense" : {
+		"name" : "Блокировать",
+		"description" : "Повышает защиту",
+		"result_format" : "{initiator.lore_name} повышает защиту {target.lore_name}",
+		"effects" : ["target0->add_status[buff_def]"],
+		"target_priority" : ["friendly"]
+	},
+	"cauterization": {
+		"damage" : 15,
+		"damage_type" : "BLUE",
+		"name" : "Прижигание",
+		"description" : "Наносит огненный урон и накладывает ожог.",
+		"result_format" : "{initiator.lore_name} прижигает {target.lore_name}, нанося {damage_dealt} урона и накладывая ожог",
+		"sound": "res://Assets/SFX/player_burn.mp3",
+		"effects" : ["target0->damage[damage]", "target0->add_status[burn]"],
+		"target_priority" : ["enemy"]
+	},
+	"defend" : {
+		"name" : "Защита",
+		"description" : "Защищает орган от атак",
+		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",
+		"target_priority" : ["friendly"]
+	},
+	"__default__" : {
+		"manacost" : 0
+	}
+}

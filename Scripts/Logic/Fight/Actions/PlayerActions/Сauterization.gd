@@ -1,4 +1,4 @@
-class_name ActionСauterization
+class_name ActionСauterizationL
 extends ActionBase
 
 var action_name = "cauterization"

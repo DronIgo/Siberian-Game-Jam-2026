@@ -13,7 +13,7 @@ func _init(duration : int = default_duration) -> void:
 	lore_name = "ожог"
 	lore_description_template = "Получает {amount} дополнительного урона от атак"
 	type = StatusGenerator.STATUS.BURN
-	_damage_type = ActionBase.DAMAGE_TYPE[damage_type]
+	_damage_type = FightConst.DAMAGE_TYPE[damage_type]
 	super(duration)
 
 func get_description() -> String:

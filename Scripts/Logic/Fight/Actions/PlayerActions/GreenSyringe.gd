@@ -1,4 +1,4 @@
-class_name ActionSyringeGreen
+class_name ActionSyringeGreenL
 extends ActionBase
 
 var action_name = "syringe_green"

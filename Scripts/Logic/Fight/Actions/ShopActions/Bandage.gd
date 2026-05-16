@@ -1,4 +1,4 @@
-class_name ActionBandage
+class_name ActionBandageL
 extends ActionBase
 
 var action_name = "bandage"

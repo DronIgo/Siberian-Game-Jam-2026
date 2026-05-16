@@ -1,4 +1,4 @@
-class_name ActionBuffAttack
+class_name ActionBuffAttackL
 extends ActionBase
 
 var action_name = "buff"

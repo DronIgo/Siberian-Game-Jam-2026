@@ -1,4 +1,4 @@
-class_name ActionScanVul
+class_name ActionScanVulL
 extends ActionBase
 
 var action_name = "scan_vul"
@@ -19,5 +19,4 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 	initiator.apply_status(SEG.create_status(StatusGenerator.STATUS.BUFF_ATTACK))
-	return ActionResult.new(formated_result,\
-		{"initiator" : initiator.lore_name}, 1)
+	return ActionResult.new(formated_result, {"initiator" : initiator.lore_name})

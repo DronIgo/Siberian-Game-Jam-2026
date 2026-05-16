@@ -1,4 +1,4 @@
-class_name ActionHideBehind
+class_name ActionHideBehindL
 extends ActionBase
 
 var action_name = "hide_behind"

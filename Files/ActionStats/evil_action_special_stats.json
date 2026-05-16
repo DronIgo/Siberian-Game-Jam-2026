@@ -1,0 +1,53 @@
+{
+	"crush" : {
+		"name" : "Сокрушение",
+		"damage" : 30,
+		"damage_type" : "RED",
+		"description" : "Мощный удар, сокрушающий орган.",
+		"result_format" : "{initiator.lore_name} сокрушает {target.lore_name}, нанося {damage_dealt} урона",
+		"effects" : ["target0->damage[damage]"],
+		"target_priority" : ["enemy"]
+	},
+	"mitos" : {
+		"name" : "Размножиться",
+		"description" : "Создает ещё одно щупальце.",
+		"result_format" : "{initiator.lore_name} создаёт новое щупальце",
+		"tags": ["no_target"]
+	},
+	"ram" : {
+		"name": "Прорывающий удар",
+		"damage": 15,
+		"damage_type" : "RED",
+		"description" : "Наносит урон всем органам",
+		"result_format" : "{initiator.lore_name} наносит урон всем органам",
+		"effects" : ["targets->damage[damage]"],
+		"tags": ["aoe"]
+	},
+	"scan_vul" : {
+		"name" : "Поиск уязвимости",
+		"description" : "Увеличивает свой урон",
+		"result_format" : "{initiator.lore_name} ищет уязвимости, увеличивая свой урон",
+		"effects" : ["target0->add_status[buff_attack]"],
+		"target_priority" : ["self"]
+	},
+	"vampirism" : {
+		"name" : "Высасывание",
+		"damage": 10,
+		"amount": 10,
+		"damage_type" : "RED",
+		"description" : "Наносит урон и восстанавливает своё здоровье",
+		"result_format" : "{initiator.lore_name} высасывает здоровье из {target.lore_name}, нанося {damage_dealt} урона",
+		"effects" : ["target0->damage[damage]", "initiator->heal[amount]"],
+		"target_priority" : ["enemy"]
+	},
+	"hide" : {
+		"name" : "Прятки",
+		"description" : "Даёт 100% брони на 1 ход",
+		"result_format" : "{initiator.lore_name} прячется, получая 100% брони",
+		"effects" : ["target0->add_status[hide]"],
+		"target_priority" : ["self", "friendly"]
+	},
+	"__default__" : {
+		"manacost" : 0
+	}
+}

@@ -1,15 +1,18 @@
 class_name BarComponent
 extends Node2D
 
-@export var actual_bar : Sprite2D 
-@export var phantom_bar: Sprite2D
+@export_category("settings")
+@export var bar_color : Color = Color(1.0, 0.094, 0.059, 1.0)
 @export var bar_name : String
 @export var actual_reducing_seconds: float = 1
 @export var phantom_disappearing_seconds: float = 2
 @export var empty_sprite_space_heights_sum: int = 42
-@export var right_text_label: RichTextLabel
 @export var value_format_string: String = "{current}\n/\n{total}"
 @export var intermediate_status_seconds: float = 1
+@export_category("child nodes")
+@export var actual_bar : Sprite2D 
+@export var phantom_bar: Sprite2D
+@export var right_text_label: RichTextLabel
 
 var _current_tweens: Array = []
 var _init_position: Vector2
@@ -18,6 +21,10 @@ var _current_logic_value: float = 100.0
 
 func _ready() -> void:
 	_init_position = actual_bar.position
+	actual_bar.self_modulate = bar_color
+	var phantom_bar_color = bar_color
+	phantom_bar_color.a = 0.87
+	phantom_bar.self_modulate = phantom_bar_color
 
 func _process(delta: float) -> void:
 	if _current_tweens.is_empty():

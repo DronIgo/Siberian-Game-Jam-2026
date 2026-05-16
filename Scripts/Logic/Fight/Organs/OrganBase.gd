@@ -10,7 +10,7 @@ func _ready() -> void:
 	super()
 	init(organ_name)
 	if organ_ai:
-		organ_ai.actions = actions
+		organ_ai.actions = action_holder.get_actions()
 
 func take_turn(possible_targets : Array) -> ActionResult:
 	return organ_ai.take_turn(self, possible_targets)

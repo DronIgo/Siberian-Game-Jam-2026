@@ -1,4 +1,4 @@
-class_name ActionAntalgetic
+class_name ActionAntalgeticL
 extends ActionBase
 
 var action_name = "antalgetic"

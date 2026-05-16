@@ -7,7 +7,7 @@ var duration : int
 var max_duration : int
 var lore_name : String = "негативный эффект"
 var _tags : Array
-var _damage_type : ActionBase.DAMAGE_TYPE = ActionBase.DAMAGE_TYPE.NONE
+var _damage_type : FightConst.DAMAGE_TYPE = FightConst.DAMAGE_TYPE.NONE
 
 func reset_duration() -> void:
 	duration = max_duration

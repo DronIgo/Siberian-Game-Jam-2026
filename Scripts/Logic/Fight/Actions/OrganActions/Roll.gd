@@ -1,4 +1,4 @@
-class_name ActionRoll
+class_name ActionRollL
 extends ActionBase
 
 var action_name = "roll"
@@ -23,6 +23,5 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var amount = targets[0].take_damage(actual_damage, damage_type)
 	return ActionResult.new(
 		formated_result,
-		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name},
-		1
+		{"initiator" : initiator.lore_name, "target" : targets[0].lore_name}
 	)

@@ -9,12 +9,12 @@ const tags : Array = ["negative"]
 const damage : int = 10
 const damage_type : String = "RED"
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "кровотечение"
 	lore_description_template = "Наносит {damage} урона в конце хода"
 	type = StatusGenerator.STATUS.BLEED
-	_damage_type = ActionBase.DAMAGE_TYPE[damage_type]
-	super(duration)
+	_damage_type = FightConst.DAMAGE_TYPE[damage_type]
+	super(duration_)
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}

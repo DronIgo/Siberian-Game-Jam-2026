@@ -1,4 +1,4 @@
-class_name ActionScalpel
+class_name ActionScalpelL
 extends ActionBase
 
 var action_name = "scalpel"

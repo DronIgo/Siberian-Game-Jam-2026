@@ -87,7 +87,7 @@ def generate_init_block(effect_name: str, config: dict) -> list[str]:
     description = config.get("description", "")
 
     lines.append(
-        f"func _init(duration : int = default_duration) -> void:"
+        f"func _init(duration_ : int = default_duration) -> void:"
     )
     lines.append(f'\tlore_name = "{lore_name}"')
     lines.append(
@@ -99,7 +99,9 @@ def generate_init_block(effect_name: str, config: dict) -> list[str]:
 
     if "damage_type" in config:
         lines.append("\t_damage_type = ActionBase.DAMAGE_TYPE[damage_type]")
-    lines.append("\tsuper(duration)")
+    if "tags" in config:
+        lines.append("\t_tags = tags")
+    lines.append("\tsuper(duration_)")
     lines.append("")
     return lines
 

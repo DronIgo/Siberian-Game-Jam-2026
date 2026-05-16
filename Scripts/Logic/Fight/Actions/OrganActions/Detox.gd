@@ -1,4 +1,4 @@
-class_name ActionDetox
+class_name ActionDetoxL
 extends ActionBase
 
 var action_name = "detox"

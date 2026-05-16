@@ -100,6 +100,7 @@ selectable_component = NodePath("Sprite2D/EssenceSelectable")
 actor = NodePath("Logic")
 
 [node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("3_ev8fd")]
+bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)
 
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("4_ryg60")]
 position = Vector2(71, -48)

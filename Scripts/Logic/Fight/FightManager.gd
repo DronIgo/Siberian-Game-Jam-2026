@@ -167,12 +167,12 @@ func take_turn_friendly(actor : ActorBase) -> void:
 		if _check_action_valid_target(selected_action, selected_target):
 			print("[!!] taking action")
 			action_result = selected_action.take_action(actor, \
-				[ selected_target ] if not selected_action.is_aoe else all_organs)
+				[ selected_target ] if not selected_action.has_tag("aoe") else all_organs)
 			#_fight_history.add_action(actor, selected_action)
 			_unhighlight_all()
 			break
 	action_list.clear()
-	if selected_action.is_shop:
+	if selected_action.has_tag("one_use"):
 		actor.remove_action(selected_action.lore_name)
 		extra_turn = true
 	actor.after_action()
@@ -200,14 +200,11 @@ func player_wait_action(actor : ActorBase) -> void:
 		if _check_action_valid_target(selected_action, selected_target):
 			print("[!!] taking action")
 			action_result = selected_action.take_action(actor, \
-				[ selected_target ] if not selected_action.is_aoe else all_organs)
+				[ selected_target ] if not selected_action.has_tag("aoe") else all_organs)
 			#_fight_history.add_action(actor, selected_action)
 			_unhighlight_all()
 			break
 	action_list.clear()
-	if not action_result.has_more():
-		for friendly_actor in friendly_actors:
-			friendly_actor.remove_action(selected_action.action_name)
 	actor.after_action()
 	actor.at_end_turn()
 	await action_display_text.display_action(action_result, wait_after_player_turn)
@@ -234,8 +231,11 @@ func _unhighlight_all():
 		organ.unhighlight()
 
 func _check_action_valid_target(selected_action : ActionBase, selected_actor : ActorBase) -> bool:
-	return selected_action and \
-		(selected_action.is_aoe or selected_action.check_valid_target(selected_actor))
+	if !selected_action:
+		return false
+	if selected_action.has_tag("aoe") or selected_action.has_tag("no_target"):
+		return true
+	return selected_action.check_valid_target(selected_actor)
 
 ## DEFEAT/VICTORY management
 # only main should die

@@ -1,0 +1,21 @@
+{
+	"roll" : {
+		"name" : "Раскатывание",
+		"damage" : 15,
+		"damage_type" : "RED",
+		"description" : "Мощный удар, расплющивающий орган.",
+		"result_format" : "{initiator.lore_name} расплющивает {target.lore_name}, нанося {damage_dealt} урона",
+		"effects" : ["target0->damage[damage]"],
+		"target_priority" : ["enemy"]
+	},
+	"hide_behind" : {
+		"name" : "Спрятаться за другим",
+		"description" : "Перенаправляет весь урон на другой орган",
+		"result_format" : "{initiator.lore_name} перенаправляет урон на {target.lore_name}",
+		"effects" : ["target0->add_status[taunt[initiator]]", "initiator->add_status[protected[target0]]"],
+		"target_priority" : ["enemy"]
+	},
+	"__default__" : {
+		"manacost" : 0
+	}
+}

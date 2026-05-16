@@ -1,18 +1,18 @@
-class_name ActionHide
+class_name ActionHideL
 extends ActionBase
 
 func _init() -> void:
-    super("hide")
-    is_aoe = false
+	super("hide")
+	is_aoe = false
 
 func _parse_stats() -> void:
-    pass
+	pass
 
 func pick_targets(possible_targets: Array, initiator: OrganBase) -> Array:
-    return [initiator]
+	return [initiator]
 
 func take_action(initiator: ActorBase, targets: Array) -> ActionResult:
-    super(initiator, targets)
-    var status = SEG.create_status(StatusGenerator.STATUS.HIDE) as StatusEffectHide
-    initiator.apply_status(status)
-    return ActionResult.new("{initiator} прячется", {"initiator": initiator.lore_name}, 0)
+	super(initiator, targets)
+	var status = SEG.create_status(StatusGenerator.STATUS.HIDE) as StatusEffectHide
+	initiator.apply_status(status)
+	return ActionResult.new("{initiator} прячется", {"initiator": initiator.lore_name}, 0)

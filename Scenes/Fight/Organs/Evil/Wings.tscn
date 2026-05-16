@@ -154,6 +154,7 @@ actor = NodePath("Logic")
 animator = NodePath("AnimationPlayer")
 
 [node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_4tjr8")]
+bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)
 
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("3_rgq8l")]
 position = Vector2(71, -48)

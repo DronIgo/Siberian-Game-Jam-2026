@@ -1,4 +1,4 @@
-class_name ActionAspirin
+class_name ActionAspirinL
 extends ActionBase
 
 var action_name = "aspirin"

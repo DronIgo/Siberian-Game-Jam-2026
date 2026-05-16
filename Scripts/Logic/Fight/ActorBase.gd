@@ -6,6 +6,7 @@ extends Node
 @export var max_mana : int = 20
 @export_category("UI display")
 @export var actor_ui : ActorUI
+
 var lore_name : String
 
 var statuses : Array
@@ -13,17 +14,16 @@ var health : int
 
 var mana : int = 10
 
-var actions : Array = []
-var item_actions : Array = []
-var amount_by_action : Dictionary
+var action_holder : ActionHolder
 var highlighted: bool
 
-var vulnerable : ActionBase.DAMAGE_TYPE
+var vulnerable : FightConst.DAMAGE_TYPE
 
 func _ready() -> void:
 	pass
 
 func init(actor_name : String) -> void:
+	action_holder = ActionHolder.new()
 	lore_name = actor_name
 	if OG.actions_by_actor.has(actor_name):
 		_init_actions(OG.actions_by_actor[actor_name])
@@ -38,13 +38,7 @@ func init(actor_name : String) -> void:
 signal died(actor : ActorBase)
 
 func remove_action(action_name: String):
-	amount_by_action[action_name] -= 1
-	if amount_by_action[action_name] <= 0:
-		for action in item_actions:
-			if action.lore_name == action_name:
-				item_actions.erase(action)
-		amount_by_action.erase(action_name)
-	
+	action_holder.remove_action(action_name)
 
 func after_action() -> void:
 	actor_ui.update_mana()
@@ -59,7 +53,7 @@ func unhighlight():
 	actor_ui.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	print(str("[!] ", lore_name, " unhighlighted"))
 
-func take_damage(amount : int, type : ActionBase.DAMAGE_TYPE) -> int:
+func take_damage(amount : int, type : FightConst.DAMAGE_TYPE) -> int:
 	if health <= 0:
 		print("HEALTH IS ZERO %s takesdamage (had %d health)" % [lore_name, health])
 		return 0
@@ -76,7 +70,7 @@ func take_damage(amount : int, type : ActionBase.DAMAGE_TYPE) -> int:
 	actor_ui.update_health()
 	return actual_amount
 
-func calc_damage_taken(damage : int, type : ActionBase.DAMAGE_TYPE) -> int:
+func calc_damage_taken(damage : int, type : FightConst.DAMAGE_TYPE) -> int:
 	var mult : float = 100.0
 	var extra : int = 0
 	for s in statuses:
@@ -88,7 +82,7 @@ func calc_damage_taken(damage : int, type : ActionBase.DAMAGE_TYPE) -> int:
 			mult += float(s.amount)
 		if s.type == StatusGenerator.STATUS.BURN:
 			var vuln_mult = 1.0
-			if ActionBase.DAMAGE_TYPE.BLUE == vulnerable:
+			if FightConst.DAMAGE_TYPE.BLUE == vulnerable:
 				vuln_mult = 1.5
 			extra += int(s.amount * vuln_mult)
 		if s.type == StatusGenerator.STATUS.HASTE:
@@ -97,7 +91,7 @@ func calc_damage_taken(damage : int, type : ActionBase.DAMAGE_TYPE) -> int:
 				mult = 0.
 				extra = 0
 				break
-	if vulnerable == type and type != ActionBase.DAMAGE_TYPE.NONE:
+	if vulnerable == type and type != FightConst.DAMAGE_TYPE.NONE:
 		#TODO: make a constant
 		mult += 50
 	return int(damage * mult / 100.0) + extra
@@ -115,6 +109,12 @@ func heal(amount : int) -> void:
 		health = max_health
 	actor_ui.heal()
 	actor_ui.update_health()
+
+func restore_mana(amount : int) -> void:
+	mana += amount
+	if mana > max_mana:
+		mana = max_mana
+	actor_ui.update_mana()
 
 func apply_status(status : StatusEffectBase) -> void:
 	for s in statuses:
@@ -145,13 +145,12 @@ func _init_actions(action_names : Array) -> void:
 	for a_name in action_names:
 		var action: ActionBase = AG.generate_action_by_name(a_name)
 		if action != null:
-			actions.append(action)
+			action_holder.add_action(action)
 
 func _init_item_actions() -> void:
 	for key in ItemStateHolder.player_pocket:
 		var action: ActionBase = AG.generate_action_by_name(key)
-		item_actions.append(action)
-		amount_by_action[action.lore_name] =  ItemStateHolder.player_pocket[key]
+		action_holder.add_item_action(action, ItemStateHolder.player_pocket[key])
 
 func _init_stats(stats : Dictionary) -> void:
 	var mh = _try_parse(stats, "max_health")
@@ -164,7 +163,7 @@ func _init_stats(stats : Dictionary) -> void:
 	mana = max_mana
 	var vuln_str = _try_parse(stats, "vulnerable")
 	if vuln_str:
-		vulnerable = ActionBase.DAMAGE_TYPE[vuln_str]
+		vulnerable = FightConst.DAMAGE_TYPE[vuln_str]
 	
 func _try_parse(stats : Dictionary, stat_name : String):
 	if stats.has(stat_name):
@@ -181,3 +180,14 @@ func remove_status_by_type(type: StatusGenerator.STATUS) -> void:
 	for s in to_remove:
 		statuses.erase(s)
 		actor_ui.remove_status(s)
+
+func remove_status_by_tag(tag : String, all : bool = false) -> void:
+	var to_remove = statuses.filter(func(s): return s.tags.has(tag))
+	for s in to_remove:
+		statuses.erase(s)
+		actor_ui.remove_status(s)
+		if !all:
+			break
+
+func remove_status_by_tag_all(tag: String) -> void:
+	remove_status_by_tag(tag, true)
