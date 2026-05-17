@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://3sr04u60o6t4"]
+
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="1_1elln"]
+[ext_resource type="Script" uid="uid://bpxqnumlvy0pl" path="res://Scripts/UI/Shop/ShopItemUI.gd" id="2_6trjg"]
+[ext_resource type="Texture2D" uid="uid://bcwkcv318pxqg" path="res://Assets/UI/UI_action_button/selected.png" id="3_wnojt"]
+[ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="4_uqxe6"]
+[ext_resource type="Theme" uid="uid://c66ua0tl2j5v3" path="res://Assets/Themes/GoldenText.tres" id="5_6trjg"]
+
+[node name="ShopItem" type="Label" unique_id=734473577 node_paths=PackedStringArray("price_label", "count_label", "selection_button")]
+custom_minimum_size = Vector2(280, 58)
+offset_right = 280.0
+offset_bottom = 58.0
+theme = ExtResource("1_1elln")
+theme_override_font_sizes/font_size = 36
+text = "Action"
+vertical_alignment = 1
+script = ExtResource("2_6trjg")
+price_label = NodePath("PriceLabel")
+count_label = NodePath("CountLabel")
+selection_button = NodePath("SelectButton")
+
+[node name="SelectButton" type="TextureButton" parent="." unique_id=1703572248]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("3_wnojt")
+texture_hover = ExtResource("4_uqxe6")
+
+[node name="PriceLabel" type="Label" parent="." unique_id=1555467791]
+layout_mode = 0
+offset_right = 225.0
+offset_bottom = 58.0
+theme = ExtResource("5_6trjg")
+theme_override_font_sizes/font_size = 30
+text = "50"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CountLabel" type="Label" parent="." unique_id=1755816228]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+theme = ExtResource("1_1elln")
+theme_override_font_sizes/font_size = 30
+text = "x33"
+horizontal_alignment = 2
+vertical_alignment = 1

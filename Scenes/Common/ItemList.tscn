@@ -1,26 +1,27 @@
-[gd_scene format=3 uid="uid://bide15wsedji3"]
+[gd_scene format=3 uid="uid://ce8b7wlhukmip"]
 
-[ext_resource type="Script" uid="uid://dojcpwrpiprd0" path="res://Scripts/UI/Fight/ActionListWrapper.gd" id="1_sj6t0"]
+[ext_resource type="Script" uid="uid://ktmtmpy1qkoj" path="res://Scripts/UI/Common/ItemListUI.gd" id="1_aplq8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjaq6"]
 
-[node name="ActionList" type="Panel" unique_id=1970410951 node_paths=PackedStringArray("vertical_container")]
+[node name="ItemList" type="Panel" unique_id=1970410951 node_paths=PackedStringArray("vertical_container")]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 418.0
 offset_top = 388.0
-offset_right = 1888.0
+offset_right = 1618.0
 offset_bottom = 718.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bjaq6")
-script = ExtResource("1_sj6t0")
+script = ExtResource("1_aplq8")
 vertical_container = NodePath("ScrollContainer/VBoxContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1165879748]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 96.0
-offset_right = 936.0
-offset_bottom = 276.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=293873156]
 layout_mode = 2

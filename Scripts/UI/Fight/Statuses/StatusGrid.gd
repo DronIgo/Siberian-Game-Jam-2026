@@ -11,21 +11,23 @@ func add_status(status : StatusEffectBase) -> void:
 	v_box_container.add_child(new_item)
 	_status_to_status_item[status.type] = new_item
 
-func remove_status(status: StatusEffectBase) -> void:
-	if not _status_to_status_item.has(status.type):
-		return
-	_status_to_status_item[status.type].queue_free()
-	_status_to_status_item.erase(status.type)
-
 func reset_status(status: StatusEffectBase) -> void:
 	if _status_to_status_item.has(status.type):
 		_status_to_status_item[status.type].reset()
 	else:
 		add_status(status)
 
+func remove_status(status : StatusEffectBase) -> void:
+	var type = status.type
+	if not _status_to_status_item.has(type):
+		return
+	_status_to_status_item[type].queue_free()
+	_status_to_status_item.erase(type)
+
 func tick_down_status(status : StatusEffectBase) -> void:
-	_status_to_status_item[status.type].tick_down()
-	if _status_to_status_item[status.type].status.duration <= 0:
+	var type = status.type
+	_status_to_status_item[type].tick_down()
+	if _status_to_status_item[type].status.duration <= 0:
 		remove_status(status)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

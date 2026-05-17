@@ -10,6 +10,8 @@ var _manacost : int = 0
 var _damage_type : FightConst.DAMAGE_TYPE = FightConst.DAMAGE_TYPE.NONE
 var _tags : Array
 
+var _holder : ActionHolder
+
 func _init() -> void:
 	pass
 
@@ -51,3 +53,9 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	if usage_sound_name != null:
 		SoundProcessor.process_sound(usage_sound_name)
 	return null
+
+func init_holder(holder : ActionHolder) -> void:
+	_holder = holder
+
+func remove_from_holder() -> void:
+	_holder.remove_action(lore_name)

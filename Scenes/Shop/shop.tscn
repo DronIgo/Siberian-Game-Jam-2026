@@ -1,11 +1,31 @@
 [gd_scene format=3 uid="uid://c63j3y4tqatfu"]
 
-[ext_resource type="Script" uid="uid://bo3oif4cg8um7" path="res://Scripts/Shop/Shop.gd" id="1_3weqf"]
+[ext_resource type="Script" uid="uid://bo3oif4cg8um7" path="res://Scripts/UI/Shop/ShopUI.gd" id="1_3weqf"]
 [ext_resource type="Texture2D" uid="uid://bmp4nlp812pss" path="res://Assets/UI/UI_city/shop_bg.png" id="2_qlv7h"]
 [ext_resource type="Texture2D" uid="uid://6pouwqkh6cpe" path="res://Assets/UI/UI_city/REF_SHOP.png" id="3_6mmxm"]
+[ext_resource type="Script" uid="uid://bpxqnumlvy0pl" path="res://Scripts/UI/Shop/ShopItemUI.gd" id="3_xybqi"]
+[ext_resource type="Texture2D" uid="uid://bcwkcv318pxqg" path="res://Assets/UI/UI_action_button/selected.png" id="4_cjwgl"]
 [ext_resource type="Texture2D" uid="uid://dgwvw4su8e3ra" path="res://Assets/UI/UI_city/shop_frame.png" id="4_nunvh"]
+[ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="5_fsgtm"]
 [ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="5_u3phx"]
-[ext_resource type="PackedScene" uid="uid://cx83xhdn57x8c" path="res://Scenes/Shop/shop_item.tscn" id="6_56y0i"]
+[ext_resource type="Theme" uid="uid://bjc1pdbaesvrx" path="res://Assets/Themes/BlueText.tres" id="6_oha7t"]
+[ext_resource type="PackedScene" uid="uid://ce8b7wlhukmip" path="res://Scenes/Common/ItemList.tscn" id="10_ps16d"]
+[ext_resource type="Script" uid="uid://ouq2jm65x4f3" path="res://Scripts/UI/Common/HintBox.gd" id="11_cjwgl"]
+
+[sub_resource type="PackedScene" id="PackedScene_m2v70"]
+_bundled = {
+"conn_count": 3,
+"conns": PackedInt32Array(1073741827, 1073741826, 28, 27, 2, 0, 0, 1073741829, 1073741828, 30, 29, 2, 0, 0, 1073741831, 1073741830, 32, 31, 2, 0, 0),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("ShopItem", "Label", "offset_right", "offset_bottom", "theme", "theme_override_font_sizes/font_size", "text", "vertical_alignment", "script", "price_label", "BuyButton", "TextureButton", "layout_mode", "offset_right", "offset_bottom", "texture_pressed", "texture_hover", "PriceLabel", "Label", "layout_mode", "offset_right", "offset_bottom", "theme", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment", "_on_buy_button_mouse_entered", "mouse_entered", "_on_buy_button_mouse_exited", "mouse_exited", "_on_buy_button_pressed", "pressed"),
+"node_count": 3,
+"node_ids": PackedInt32Array(1573506112, 1820829198, 2054580948),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("BuyButton"), NodePath("."), NodePath("BuyButton"), NodePath("."), NodePath("BuyButton")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 1073741833, 7, 0, 1073741824, 0, 11, 10, -1, 5, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 8, 19, 13, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 25, 19, 26, 20, 0),
+"variants": [435.0, 58.0, ExtResource("5_u3phx"), 34, "> ЛИХО-96", 1, ExtResource("3_xybqi"), NodePath("PriceLabel"), 0, 435.0, 58.0, ExtResource("4_cjwgl"), ExtResource("5_fsgtm"), 0, 435.0, 58.0, ExtResource("6_oha7t"), 30, "96", 2, 1],
+"version": 3
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56y0i"]
 
@@ -17,11 +37,10 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_buhfn"]
 
-[node name="Shop" type="CanvasLayer" unique_id=740057473 node_paths=PackedStringArray("items_base", "description_label", "cash_label")]
+[node name="Shop" type="CanvasLayer" unique_id=740057473 node_paths=PackedStringArray("item_list", "cash_label")]
 script = ExtResource("1_3weqf")
-display_item_scene = ExtResource("6_56y0i")
-items_base = NodePath("ItemsBaseControl")
-description_label = NodePath("DescriptionLabel")
+display_item_scene = SubResource("PackedScene_m2v70")
+item_list = NodePath("ItemList")
 cash_label = NodePath("CashLabel")
 
 [node name="BackControl" type="Control" parent="." unique_id=698830720]
@@ -52,13 +71,10 @@ theme = ExtResource("5_u3phx")
 theme_override_font_sizes/font_size = 42
 text = "Налетай, покупай!"
 
-[node name="ItemsBaseControl" type="Control" parent="." unique_id=1079691664]
-layout_mode = 3
-anchors_preset = 0
+[node name="ItemList" parent="." unique_id=1970410951 node_paths=PackedStringArray("hint_box") instance=ExtResource("10_ps16d")]
 offset_left = 135.0
-offset_top = 370.0
-offset_right = 175.0
-offset_bottom = 410.0
+offset_right = 1205.0
+hint_box = NodePath("../HintBox")
 
 [node name="CashLabel" type="Label" parent="." unique_id=786247379]
 offset_left = 988.0
@@ -70,7 +86,11 @@ theme_override_font_sizes/font_size = 50
 text = "100"
 horizontal_alignment = 2
 
-[node name="DescriptionLabel" type="Label" parent="." unique_id=442622229]
+[node name="HintBox" type="Node2D" parent="." unique_id=1586166902 node_paths=PackedStringArray("hint_label")]
+script = ExtResource("11_cjwgl")
+hint_label = NodePath("DescriptionLabel")
+
+[node name="DescriptionLabel" type="Label" parent="HintBox" unique_id=442622229]
 offset_left = 1315.0
 offset_top = 365.0
 offset_right = 1815.0

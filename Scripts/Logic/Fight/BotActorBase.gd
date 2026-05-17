@@ -1,5 +1,5 @@
-class_name ActorBase
-extends Node
+class_name BotActorBase
+extends ActorBase
 
 @export_category("Stats")
 @export var max_health : int = 20
@@ -23,12 +23,12 @@ func _ready() -> void:
 	pass
 
 func init(actor_name : String) -> void:
-	action_holder = ActionHolder.new()
 	lore_name = actor_name
 	if OG.actions_by_actor.has(actor_name):
 		_init_actions(OG.actions_by_actor[actor_name])
 	else:
 		printerr(actor_name, " is missing from avialable attacks config!")
+	_init_item_actions()
 	if OG.stats_by_actor.has(actor_name):
 		_init_stats(OG.stats_by_actor[actor_name])
 	else:
@@ -99,7 +99,7 @@ func calc_damage_dealt(damage : int) -> int:
 	var mult : float = 100.0
 	for s in statuses:
 		if s.type == StatusGenerator.STATUS.BUFF_ATTACK:
-			mult += float(s.buff)
+			mult += float(s.amount)
 	return int(damage * mult / 100.0)
 
 func heal(amount : int) -> void:
@@ -108,12 +108,6 @@ func heal(amount : int) -> void:
 		health = max_health
 	actor_ui.heal()
 	actor_ui.update_health()
-
-func restore_mana(amount : int) -> void:
-	mana += amount
-	if mana > max_mana:
-		mana = max_mana
-	actor_ui.update_mana()
 
 func apply_status(status : StatusEffectBase) -> void:
 	for s in statuses:
@@ -146,6 +140,11 @@ func _init_actions(action_names : Array) -> void:
 		if action != null:
 			action_holder.add_action(action)
 
+func _init_item_actions() -> void:
+	for key in ItemStateHolder.player_items_holder:
+		var action: ActionBase = AG.generate_action_by_name(key)
+		action_holder.add_item_action(action, ItemStateHolder.player_items_holder[key])
+
 func _init_stats(stats : Dictionary) -> void:
 	var mh = _try_parse(stats, "max_health")
 	if mh:
@@ -174,14 +173,3 @@ func remove_status_by_type(type: StatusGenerator.STATUS) -> void:
 	for s in to_remove:
 		statuses.erase(s)
 		actor_ui.remove_status(s)
-
-func remove_status_by_tag(tag : String, all : bool = false) -> void:
-	var to_remove = statuses.filter(func(s): return s.tags.has(tag))
-	for s in to_remove:
-		statuses.erase(s)
-		actor_ui.remove_status(s)
-		if !all:
-			break
-
-func remove_status_by_tag_all(tag: String) -> void:
-	remove_status_by_tag(tag, true)

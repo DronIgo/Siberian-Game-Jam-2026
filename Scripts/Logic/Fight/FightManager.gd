@@ -13,7 +13,7 @@ extends Node2D
 @export var menu : Control
 @export var attack_b : TextureButton
 @export var item_b : TextureButton
-@export var action_list : ActionList
+@export var action_list_wrapper : ActionListWrapper
 @export var action_display_text : ActionDisplayText
 @export var organ_summoner : OrganSummoner
 
@@ -119,9 +119,9 @@ func _on_any_selection(arg) -> void:
 
 func _on_menu_button_press(button : String) -> void:
 	if button == "attack":
-		action_list.display_actions(friendly_actors[0])
+		action_list_wrapper.display_actions_from_actor(friendly_actors[0])
 	else:
-		action_list.display_items(friendly_actors[0])
+		action_list_wrapper.display_actions_from_items(friendly_actors[0])
 
 var extra_turn = false
 func take_turn_friendly(actor : ActorBase) -> void:
@@ -171,9 +171,9 @@ func take_turn_friendly(actor : ActorBase) -> void:
 			#_fight_history.add_action(actor, selected_action)
 			_unhighlight_all()
 			break
-	action_list.clear()
+	action_list_wrapper.clear()
 	if selected_action.has_tag("one_use"):
-		actor.remove_action(selected_action.lore_name)
+		selected_action.remove_from_holder()
 		extra_turn = true
 	actor.after_action()
 	actor.at_end_turn()
@@ -204,7 +204,7 @@ func player_wait_action(actor : ActorBase) -> void:
 			#_fight_history.add_action(actor, selected_action)
 			_unhighlight_all()
 			break
-	action_list.clear()
+	action_list_wrapper.clear()
 	actor.after_action()
 	actor.at_end_turn()
 	await action_display_text.display_action(action_result, wait_after_player_turn)
