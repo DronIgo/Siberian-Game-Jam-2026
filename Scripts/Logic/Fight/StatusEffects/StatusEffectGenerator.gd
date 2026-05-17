@@ -92,6 +92,7 @@ func create_status(type : STATUS) -> StatusEffectBase:
 
 	printerr("unsupported status type")
 	return StatusEffectBase.new(3)
+
 func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 	var new_item = STATUS_ITEM.instantiate() as StatusUIItem
 	new_item.set_effect_base(status)

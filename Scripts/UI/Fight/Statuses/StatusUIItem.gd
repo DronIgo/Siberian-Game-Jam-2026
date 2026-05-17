@@ -1,11 +1,18 @@
 class_name StatusUIItem
-extends Node
+extends Control
 
 var status : StatusEffectBase
 @export var status_text: RichTextLabel
 @export var hint_box: HintBox
 
+var _description : String
 var color : Color
+
+func set_hint_box(hint_box_ : HintBox) -> void:
+	hint_box = hint_box_
+	if hint_box:
+		status_text.mouse_entered.connect(hint_box.show_hint.bind(_description))
+		status_text.mouse_exited.connect(hint_box.hide_hint)
 
 func set_color(color_ : Color) -> void:
 	color = color_
@@ -24,7 +31,7 @@ func tick_down() -> void:
 
 func _update_hint() -> void:
 	if hint_box and status:
-		hint_box.hint_text = status.get_description() + "\nОсталось: %d" % status.duration
+		_description = status.get_description() + "\nОсталось: %d" % status.duration
 
 func reset() -> void:
 	update_display()

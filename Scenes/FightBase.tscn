@@ -309,11 +309,12 @@ script = ExtResource("6_3g3hk")
 [node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("23_8aayq")]
 position = Vector2(358, 917)
 
-[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "slot4", "slot5")]
+[node name="OrganSummoner" type="Node2D" parent="." unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "hint_box", "slot4", "slot5")]
 script = ExtResource("1_vqao4")
 slots_container = NodePath(".")
 friendly_slots = [NodePath("Slot"), NodePath("Slot4")]
 enemy_slots = [NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot5")]
+hint_box = NodePath("../CanvasLayer/HintBox")
 slot4 = NodePath("Slot4")
 slot5 = NodePath("Slot5")
 

@@ -29,6 +29,7 @@ const EVIL_WINGS_UID = "res://Scenes/Fight/Organs/Evil/Wings.tscn"
 @export var slots_container: Node2D
 @export var friendly_slots : Array[Node2D]
 @export var enemy_slots : Array[Node2D]
+@export var hint_box : HintBox
 
 @export var slot4 : Node2D
 @export var slot5 : Node2D
@@ -80,9 +81,10 @@ func summon_by_name(organ_name : String) -> OrganBase:
 			organ_res = load(EVIL_TENTACLE_UID)
 		"wings":
 			organ_res = load(EVIL_WINGS_UID)
-	var organ = organ_res.instantiate()
+	var organ = organ_res.instantiate() as ActorUI
 	if organ_name == "tentacle":
 		organ.actor.organ_summoner = self
+	organ.set_hint_box(hint_box)
 	pick_slot(organ, organ.actor)
 	return organ.actor
 

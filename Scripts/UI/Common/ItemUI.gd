@@ -7,7 +7,7 @@ var item_list : ItemListUI
 
 var _default_texture_hover : Texture2D
 
-var _descrition : String
+var _description : String
 
 func _ready() -> void:
 	selection_button.pressed.connect(selected)
@@ -15,12 +15,12 @@ func _ready() -> void:
 
 func init(text_ : String, description_ : String = "") -> void:
 	text = text_
-	_descrition = description_
+	_description = description_
 
 func init_list(item_list_ : ItemListUI, hint_box : HintBox = null) -> void:
 	item_list = item_list_
 	if hint_box:
-		selection_button.mouse_entered.connect(hint_box.show_hint.bind(_descrition))
+		selection_button.mouse_entered.connect(hint_box.show_hint.bind(_description))
 		selection_button.mouse_exited.connect(hint_box.hide_hint)
 
 func selected() -> void:

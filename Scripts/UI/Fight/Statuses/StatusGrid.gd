@@ -4,10 +4,16 @@ extends Node2D
 @export var actor_owner : ActorBase
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
+var hint_box : HintBox
+
 var _status_to_status_item : Dictionary
+
+func set_hint_box(hint_box_ : HintBox) -> void:
+	hint_box = hint_box_
 
 func add_status(status : StatusEffectBase) -> void:
 	var new_item = SEG.create_status_item(status)
+	new_item.set_hint_box(hint_box)
 	v_box_container.add_child(new_item)
 	_status_to_status_item[status.type] = new_item
 

@@ -20,6 +20,9 @@ func _ready() -> void:
 	else:
 		printerr("THIS ACTOR UI IS NOT SELECTABLE! --> ", self)
 
+func set_hint_box(hint_box : HintBox) -> void:
+	statuses_grid.set_hint_box(hint_box)
+
 func selected(_selected : bool) -> void:
 	FightEventBus.target_selected.emit(actor)
 
