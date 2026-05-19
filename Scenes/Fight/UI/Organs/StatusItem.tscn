@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b6fe65ih5uvsw" path="res://Scripts/UI/Fight/Statuses/StatusUIItem.gd" id="1_frycw"]
 [ext_resource type="Theme" uid="uid://h2ts7xdwbo3d" path="res://Assets/Themes/Statuses/StatusDefault.tres" id="2_53wjk"]
 
-[node name="StatusItem" type="Control" unique_id=1111211913 node_paths=PackedStringArray("status_text", "hint_box")]
+[node name="StatusItem" type="Control" unique_id=1111211913 node_paths=PackedStringArray("status_text")]
 custom_minimum_size = Vector2(80, 20)
 layout_mode = 3
 anchors_preset = 15
@@ -16,7 +16,6 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_frycw")
 status_text = NodePath("StatusText")
-hint_box = NodePath("")
 
 [node name="StatusText" type="RichTextLabel" parent="." unique_id=193565024]
 z_index = 1

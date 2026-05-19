@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bj6rcigeja2bk"]
+
+[ext_resource type="Script" uid="uid://bow1jarqwkpk2" path="res://Scripts/UI/Fight/FightPlayerUI.gd" id="1_gmdca"]
+[ext_resource type="PackedScene" uid="uid://bide15wsedji3" path="res://Scenes/Fight/UI/ActionList.tscn" id="2_t8ma2"]
+[ext_resource type="PackedScene" uid="uid://ce8b7wlhukmip" path="res://Scenes/Common/ItemList.tscn" id="3_ei8pb"]
+[ext_resource type="PackedScene" uid="uid://32a56pshh308" path="res://Scenes/Fight/UI/FightText.tscn" id="4_thp0g"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="5_5mi2x"]
+[ext_resource type="Texture2D" uid="uid://bcwkcv318pxqg" path="res://Assets/UI/UI_action_button/selected.png" id="6_qo0rc"]
+[ext_resource type="Texture2D" uid="uid://d4ic78jek703t" path="res://Assets/UI/UI_action_button/hover.png" id="7_q15wp"]
+[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="8_2tjgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjaq6"]
+
+[node name="PlayerUI" type="CanvasLayer" unique_id=1836918060 node_paths=PackedStringArray("menu", "attack_b", "item_b", "back_b_label", "back_b", "action_list_wrapper", "action_display_text", "hint_box")]
+script = ExtResource("1_gmdca")
+menu = NodePath("Menu")
+attack_b = NodePath("Menu/Attack/SelectButton")
+item_b = NodePath("Menu/Items/SelectButton")
+back_b_label = NodePath("Back")
+back_b = NodePath("Back/SelectButton")
+action_list_wrapper = NodePath("ActionList")
+action_display_text = NodePath("FightText")
+hint_box = NodePath("HintBox")
+
+[node name="ActionList" parent="." unique_id=1970410951 node_paths=PackedStringArray("action_list", "hint_box") instance=ExtResource("2_t8ma2")]
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bjaq6")
+action_list = NodePath("ItemList")
+hint_box = NodePath("../HintBox")
+
+[node name="ItemList" parent="ActionList" unique_id=1259091186 instance=ExtResource("3_ei8pb")]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 85.0
+offset_right = 1021.0
+offset_bottom = 285.0
+
+[node name="FightText" parent="." unique_id=36838454 instance=ExtResource("4_thp0g")]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1470.0
+offset_top = -330.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+wait_after_display = 3.0
+
+[node name="Back" type="Label" parent="." unique_id=1344027696]
+custom_minimum_size = Vector2(280, 58)
+offset_left = 1617.0
+offset_top = 779.0
+offset_right = 1897.0
+offset_bottom = 837.0
+theme = ExtResource("5_5mi2x")
+theme_override_font_sizes/font_size = 42
+text = "Назад"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="Back" unique_id=382571627]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("6_qo0rc")
+texture_hover = ExtResource("7_q15wp")
+
+[node name="Menu" type="Panel" parent="." unique_id=547981395]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 450.0
+offset_top = 750.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+
+[node name="Attack" type="Label" parent="Menu" unique_id=54252127]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 96.0
+offset_right = 342.0
+offset_bottom = 154.0
+theme = ExtResource("5_5mi2x")
+theme_override_font_sizes/font_size = 42
+text = "Атака"
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="Menu/Attack" unique_id=1450737002]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("6_qo0rc")
+texture_hover = ExtResource("7_q15wp")
+
+[node name="Items" type="Label" parent="Menu" unique_id=1815194886]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 0
+offset_left = 62.0
+offset_top = 154.0
+offset_right = 342.0
+offset_bottom = 212.0
+theme = ExtResource("5_5mi2x")
+theme_override_font_sizes/font_size = 42
+text = "Предметы"
+vertical_alignment = 1
+
+[node name="SelectButton" type="TextureButton" parent="Menu/Items" unique_id=493049057]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 58.0
+texture_pressed = ExtResource("6_qo0rc")
+texture_hover = ExtResource("7_q15wp")
+
+[node name="HintBox" parent="." unique_id=1518820904 instance=ExtResource("8_2tjgm")]

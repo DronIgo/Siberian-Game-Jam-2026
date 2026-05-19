@@ -6,8 +6,7 @@ extends ActorBase
 @export var is_main : bool = false
 @export var is_healthy : bool = true
 
-func _ready() -> void:
-	super()
+func init_organ() -> void:
 	init(organ_name)
 	if organ_ai:
 		organ_ai.actions = action_holder.get_actions()

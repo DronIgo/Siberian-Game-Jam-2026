@@ -18,8 +18,16 @@ func _init() -> void:
 func has_tag(tag : String) -> bool:
 	return _tags.has(tag)
 
-func check_valid_target(actor : ActorBase) -> bool:
-	if actor:
+func check_valid_target(target : ActorBase) -> bool:
+	if target:
+		return true
+	return false
+
+# Это чтобы поддержать действия с несколькими целями
+func check_enough_targets(targets : Array) -> bool:
+	if has_tag("aoe") or has_tag("no_target"):
+		return true
+	if targets.size() > 0:
 		return true
 	else:
 		return false

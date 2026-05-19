@@ -86,6 +86,7 @@ func summon_by_name(organ_name : String) -> OrganBase:
 		organ.actor.organ_summoner = self
 	organ.set_hint_box(hint_box)
 	pick_slot(organ, organ.actor)
+	organ.actor.init_organ()
 	return organ.actor
 
 func pick_slot(organ_node : Node2D, organ : OrganBase) -> void:

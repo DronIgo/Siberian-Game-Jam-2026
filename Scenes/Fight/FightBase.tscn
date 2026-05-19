@@ -1,0 +1,257 @@
+[gd_scene format=3 uid="uid://dlfwj0llq0bqy"]
+
+[ext_resource type="Texture2D" uid="uid://brac3yuseqc30" path="res://Assets/UI/UI_battle_regular/BATTLE_REGULAR_REF_0.png" id="1_bmrbv"]
+[ext_resource type="Texture2D" uid="uid://bw3dshr32ivoe" path="res://Assets/UI/UI_battle_regular/bg_organ_dark.png" id="2_0d2ll"]
+[ext_resource type="Texture2D" uid="uid://b60at1ldfoo6n" path="res://Assets/UI/UI_battle_regular/bg_organ_light.png" id="3_qe16a"]
+[ext_resource type="Texture2D" uid="uid://cv5fs3tnqwof4" path="res://Assets/UI/UI_battle_regular/curtain_left.png" id="4_aegh7"]
+[ext_resource type="Texture2D" uid="uid://b8md4fe65fg6g" path="res://Assets/UI/UI_battle_regular/curtain_right.png" id="5_gaewr"]
+[ext_resource type="Texture2D" uid="uid://bfecpl07fm7tg" path="res://Assets/UI/UI_battle_regular/paper_patient.png" id="6_ict47"]
+[ext_resource type="Theme" uid="uid://de0lt2ohpxq0p" path="res://Assets/Themes/DefaultText.tres" id="7_67j7m"]
+[ext_resource type="PackedScene" uid="uid://bj6rcigeja2bk" path="res://Scenes/Fight/UI/PlayerUi.tscn" id="9_q4e0k"]
+[ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="14_iih4a"]
+[ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/FightManager.tscn" id="15_3xcug"]
+[ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="16_tg1fh"]
+[ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="17_p0n8l"]
+[ext_resource type="Script" uid="uid://barshpuj0f1bb" path="res://Scripts/Logic/Fight/FightInitializor.gd" id="18_0mhl6"]
+[ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="18_1tx6g"]
+[ext_resource type="Script" uid="uid://d0s2y4y285p4t" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="19_qpifj"]
+[ext_resource type="PackedScene" uid="uid://eecx3a0dv71q" path="res://Scenes/Fight/UI/Patients/PatientTable.tscn" id="20_78xvb"]
+[ext_resource type="Texture2D" uid="uid://c28cihidna533" path="res://Assets/UI/UI_battle_regular/frame_text.png" id="21_2m656"]
+[ext_resource type="Texture2D" uid="uid://d4hyqg4gds5hc" path="res://Assets/UI/UI_battle_regular/frame_patient_back.png" id="22_fa0jf"]
+[ext_resource type="Texture2D" uid="uid://gvmtghu5odk6" path="res://Assets/UI/UI_battle_regular/frame_patient_front.png" id="23_cjqfd"]
+
+[sub_resource type="Animation" id="Animation_6uwd6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLeftSprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-122.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurtainRightSprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [613.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BgOrganLightSprite2D:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0d5t2"]
+resource_name = "curtains_opening"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLeftSprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-122.0, -455.0, -788.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurtainRightSprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [613.0, 920.0, 1266.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BgOrganLightSprite2D:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uwd6"]
+_data = {
+&"RESET": SubResource("Animation_6uwd6"),
+&"curtains_opening": SubResource("Animation_0d5t2")
+}
+
+[node name="FightBase2" type="CanvasLayer" unique_id=60080579]
+
+[node name="Scene" type="Control" parent="." unique_id=550811061]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ReferenceBackSprite2D" type="Sprite2D" parent="Scene" unique_id=1867239223]
+visible = false
+position = Vector2(20, 20)
+texture = ExtResource("1_bmrbv")
+
+[node name="BgOrganDarkSprite2D" type="Sprite2D" parent="Scene" unique_id=2046382522]
+position = Vector2(245, -145)
+texture = ExtResource("2_0d2ll")
+
+[node name="BgOrganLightSprite2D" type="Sprite2D" parent="Scene" unique_id=19293288]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(245, -145)
+texture = ExtResource("3_qe16a")
+
+[node name="CurtainLeftSprite2D" type="Sprite2D" parent="Scene" unique_id=1341114287]
+z_index = 2
+position = Vector2(-122, -145)
+texture = ExtResource("4_aegh7")
+
+[node name="CurtainRightSprite2D" type="Sprite2D" parent="Scene" unique_id=810683040]
+z_index = 2
+position = Vector2(613, -145)
+texture = ExtResource("5_gaewr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scene" unique_id=252956924]
+libraries/ = SubResource("AnimationLibrary_6uwd6")
+
+[node name="PatientPaperSprite2D" type="Sprite2D" parent="Scene" unique_id=2128519495]
+position = Vector2(-1045, 389)
+rotation = 0.034906585
+texture = ExtResource("6_ict47")
+
+[node name="PatientPaperLabel" type="Label" parent="Scene/PatientPaperSprite2D" unique_id=1445571485]
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 304.0
+offset_bottom = -26.0
+rotation = 1.3089969
+theme = ExtResource("7_67j7m")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="PatientPaperCommonLabel" type="Label" parent="Scene/PatientPaperSprite2D" unique_id=260157176]
+offset_left = 162.0
+offset_top = -110.0
+offset_right = 257.0
+offset_bottom = -86.0
+rotation = 1.3089969
+theme = ExtResource("7_67j7m")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "пациент"
+
+[node name="HintBox" parent="Scene" unique_id=1518820904 instance=ExtResource("14_iih4a")]
+position = Vector2(751.0001, 483.99994)
+scale = Vector2(0.6156836, 0.51954544)
+
+[node name="PlayerUI" parent="." unique_id=234436569 node_paths=PackedStringArray("hint_box") instance=ExtResource("9_q4e0k")]
+hint_box = NodePath("../Scene/HintBox")
+
+[node name="Player" type="Node2D" parent="." unique_id=1125611731]
+position = Vector2(317, 461)
+script = ExtResource("17_p0n8l")
+
+[node name="Patient" type="Node" parent="." unique_id=1322021031 node_paths=PackedStringArray("mana_bar", "actor")]
+script = ExtResource("16_tg1fh")
+mana_bar = NodePath("PatientMana")
+actor = NodePath("../Player")
+
+[node name="PatientMana" parent="Patient" unique_id=1842021143 instance=ExtResource("18_1tx6g")]
+position = Vector2(358, 917)
+
+[node name="PatientTable" parent="." unique_id=1637330193 instance=ExtResource("20_78xvb")]
+position = Vector2(224, 375)
+
+[node name="FrontControl" type="Control" parent="." unique_id=1358595519]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrameTextSprite2D" type="Sprite2D" parent="FrontControl" unique_id=6706054]
+position = Vector2(1185, 915)
+texture = ExtResource("21_2m656")
+
+[node name="FramePatientBackSprite2D" type="Sprite2D" parent="FrontControl" unique_id=1189023969]
+z_index = 3
+position = Vector2(225, 375)
+texture = ExtResource("22_fa0jf")
+
+[node name="FramePatientFrontSprite2D" type="Sprite2D" parent="FrontControl" unique_id=424049112]
+z_index = 4
+position = Vector2(225, 375)
+texture = ExtResource("23_cjqfd")
+
+[node name="FightManaging" type="Node" parent="." unique_id=1307214428]
+
+[node name="FightManager" parent="FightManaging" unique_id=1868931586 node_paths=PackedStringArray("organ_summoner", "player_ui", "initializer", "player_actor") instance=ExtResource("15_3xcug")]
+organ_summoner = NodePath("../OrganSummoner")
+player_ui = NodePath("../../PlayerUI")
+initializer = NodePath("../Initializer")
+player_actor = NodePath("../../Player")
+
+[node name="OrganSummoner" type="Node2D" parent="FightManaging" unique_id=1348695482 node_paths=PackedStringArray("slots_container", "friendly_slots", "enemy_slots", "hint_box", "slot4", "slot5")]
+script = ExtResource("19_qpifj")
+slots_container = NodePath(".")
+friendly_slots = [NodePath("Slot"), NodePath("Slot4")]
+enemy_slots = [NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot5")]
+hint_box = NodePath("../../Scene/HintBox")
+slot4 = NodePath("Slot4")
+slot5 = NodePath("Slot5")
+
+[node name="Slot" type="Node2D" parent="FightManaging/OrganSummoner" unique_id=984775769]
+position = Vector2(750, 200)
+
+[node name="Slot2" type="Node2D" parent="FightManaging/OrganSummoner" unique_id=1735350151]
+position = Vector2(1150, 200)
+
+[node name="Slot3" type="Node2D" parent="FightManaging/OrganSummoner" unique_id=1293658669]
+position = Vector2(1550, 200)
+
+[node name="Slot4" type="Node2D" parent="FightManaging/OrganSummoner" unique_id=548574260]
+position = Vector2(950, 520)
+
+[node name="Slot5" type="Node2D" parent="FightManaging/OrganSummoner" unique_id=1926079143]
+position = Vector2(1350, 520)
+
+[node name="Initializer" type="Node2D" parent="FightManaging" unique_id=903176361 node_paths=PackedStringArray("organ_summoner", "patient_label", "patien_table", "back_animation_player")]
+script = ExtResource("18_0mhl6")
+organ_summoner = NodePath("../OrganSummoner")
+patient_label = NodePath("../../Scene/PatientPaperSprite2D/PatientPaperLabel")
+patien_table = NodePath("../../PatientTable")
+back_animation_player = NodePath("../../Scene/AnimationPlayer")

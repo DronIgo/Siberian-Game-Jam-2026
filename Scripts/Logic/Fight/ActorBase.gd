@@ -44,24 +44,20 @@ func after_action() -> void:
 
 func highlight():
 	highlighted = true
-	actor_ui.modulate = Color(0.782, 0.801, 0.433, 1.0)
-	print(str("[!] ", lore_name, " highlighted"))
+	actor_ui.modulate = Color(0.605, 0.654, 0.274, 1.0)
 
 func unhighlight():
 	highlighted = false
 	actor_ui.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	print(str("[!] ", lore_name, " unhighlighted"))
 
 func take_damage(amount : int, type : FightConst.DAMAGE_TYPE) -> int:
 	if health <= 0:
-		print("HEALTH IS ZERO %s takesdamage (had %d health)" % [lore_name, health])
 		return 0
 	for s in statuses:
 		if s.type == StatusGenerator.STATUS.PROTECTED and s.shield_bearer and s.shield_bearer.health > 0:
 			print("Redirecting %d damage from %s to %s" % [amount, lore_name, s.shield_bearer.lore_name])
 			return s.shield_bearer.take_damage(amount, type)
 	var actual_amount = calc_damage_taken(amount, type)
-	print("%s takes %d damage (had %d health)" % [lore_name, actual_amount, health])
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
@@ -165,9 +161,6 @@ func _try_parse(stats : Dictionary, stat_name : String):
 	else:
 		printerr("Failed to parse characteristic ", stat_name)
 		return null
-
-func take_turn(possible_targets : Array) -> ActionResult:
-	return null
 
 func remove_status_by_type(type: StatusGenerator.STATUS) -> void:
 	var to_remove = statuses.filter(func(s): return s.type == type)

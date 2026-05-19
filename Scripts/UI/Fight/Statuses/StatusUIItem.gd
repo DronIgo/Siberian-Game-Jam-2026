@@ -30,7 +30,7 @@ func tick_down() -> void:
 	update_display()
 
 func _update_hint() -> void:
-	if hint_box and status:
+	if status:
 		_description = status.get_description() + "\nОсталось: %d" % status.duration
 
 func reset() -> void:
