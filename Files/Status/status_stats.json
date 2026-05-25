@@ -53,17 +53,24 @@
 	"taunt": {
 		"default_duration": 2,
 		"lore_name" : "защищает",
-		"description" : "Получает урон вместо {target.lore_name}"
+		"description" : "Получает урон вместо {_target.lore_name}",
+		"init" : "target : ActorBase"
 	},
 	"protected": {
 		"default_duration": 2,
 		"lore_name" : "под защитой",
-		"description" : "{protector.lore_name} получает весь урон вместо цели"
+		"description" : "{_protector.lore_name} получает весь урон вместо цели",
+		"init" : "protector : ActorBase"
 	},
 	"hide": {
 		"default_duration": 2,
 		"lore_name" : "скрытый",
 		"description" : "Полностью защищен от всего урона"
+	},
+	"amnezia": {
+		"lore_name" : "амнезия",
+		"description" : "Забыл как использовать {removed_action.lore_name}",
+		"init" : "target : ActorBase"
 	},
 	"__default__" : {
 		"default_duration" : 3,

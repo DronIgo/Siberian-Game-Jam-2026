@@ -9,7 +9,7 @@ var avialable : bool = true
 
 func init_action(action: ActionBase, actor: ActorBase, count: int) -> void:
 	_action = action
-	init(action.lore_name, action.description)
+	init(action.lore_name, get_full_description(action, actor))
 	
 	if !_action.check_avialable(actor):
 		avialable = false
@@ -20,7 +20,13 @@ func init_action(action: ActionBase, actor: ActorBase, count: int) -> void:
 	
 	mana_label.text = "" if action.manacost == 0 else str(action.manacost)
 	count_label.text = "" if count == 0 else "x" + str(count)
-	
+
+func get_full_description(action: ActionBase, actor : ActorBase) -> String:
+	var desc = action.description
+	desc += action.get_unavialable_reason(actor)
+	return desc
+
+
 func selected() -> void:
 	if !avialable:
 		return

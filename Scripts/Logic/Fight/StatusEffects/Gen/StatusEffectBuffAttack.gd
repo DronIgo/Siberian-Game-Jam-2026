@@ -6,17 +6,18 @@ extends StatusEffectBase
 # constants from config
 const default_duration : int = 3
 const tags : Array = []
-const buff : int = 50
+const amount : int = 50
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "усиление"
-	lore_description_template = "Увеличивает урон на {buff} процентов"
+	lore_description_template = "Увеличивает урон от атак на {amount} процентов"
 	type = StatusGenerator.STATUS.BUFF_ATTACK
-	super(duration)
+	_tags = tags
+	super(duration_)
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}
-	format_dict["buff"] = buff
+	format_dict["amount"] = amount
 
 	return lore_description_template.format(format_dict)
 

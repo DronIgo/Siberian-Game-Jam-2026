@@ -1,11 +1,4 @@
 {
-	"defend" : {
-		"name" : "Защита",
-		"description" : "Защищает орган от атак",
-		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",
-		"enemy": ["target0->add_status[protected[initiator]]", "initiator->add_status[taunt[target0]]"],
-		"target_priority" : ["friendly"]
-	},
 	"heal" : {
 		"manacost" : 10,
 		"amount" : 15,

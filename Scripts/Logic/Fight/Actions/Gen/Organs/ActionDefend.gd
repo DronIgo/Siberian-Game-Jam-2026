@@ -5,7 +5,6 @@ extends ActionBase
 
 # constants from config
 const manacost : int = 0
-const enemy : Array = ["target0->add_status[protected[initiator]]", "initiator->add_status[taunt[target0]]"]
 
 func _init() -> void:
 	lore_name = "Защита"
@@ -22,13 +21,21 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
-	var target: ActorBase = targets[0]
 
 	##EFFECTS START
-	#TODO: add logic for effects here
+	var status_protected = SEG.create_status(StatusGenerator.STATUS.PROTECTED)
+	status_protected.init(initiator)
+	targets[0].apply_status(status_protected)
+	var status_taunt = SEG.create_status(StatusGenerator.STATUS.TAUNT)
+	status_taunt.init(targets[0])
+	initiator.apply_status(status_taunt)
 	##EFFECTS END
 	#TODO: add logic for effects here
 
 	#TODO: add logic for effects here
 
-	return null
+	var format_dict : Dictionary = {}
+	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["target.lore_name"] = targets[0].lore_name
+
+	return ActionResult.new(result_format, format_dict)

@@ -7,32 +7,26 @@ extends StatusEffectBase
 const default_duration : int = 2
 const tags : Array = []
 
-var protector : ActorBase
+var _protector : ActorBase
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "под защитой"
-	lore_description_template = "{protector.lore_name} получает весь урон вместо цели"
+	lore_description_template = "{_protector.lore_name} получает весь урон вместо цели"
 	type = StatusGenerator.STATUS.PROTECTED
-	super(duration)
+	_tags = tags
+	super(duration_)
+
+func init(protector : ActorBase) -> void:
+	_protector = protector
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}
-	format_dict["protector.lore_name"] = protector.lore_name
+	format_dict["_protector.lore_name"] = _protector.lore_name
 
 	return lore_description_template.format(format_dict)
-
-func set_shield_bearer(actor : ActorBase) -> void:
-	protector = actor
 
 func on_turn_end(actor : ActorBase, data = null) -> void:
 	duration -= 1
 
 func on_turn_start(actor : ActorBase, data = null) -> void:
 	pass
-	
-func on_effect_end(actor : ActorBase) -> void:
-	if !protector:
-		return
-	for s in protector.statuses:
-		if (s as StatusEffectBase).type == StatusGenerator.STATUS.PROTECTED:
-			protector.statuses.erase(s)

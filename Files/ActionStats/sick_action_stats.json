@@ -28,6 +28,20 @@
 		"effects" : ["target0->add_status[mark]"],
 		"target_priority" : ["enemy"]
 	},
+	"defend" : {
+		"name" : "Защита",
+		"description" : "Защищает орган от атак",
+		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",
+		"effects": ["target0->add_status[protected(initiator)]", "initiator->add_status[taunt(targets[0])]"],
+		"target_priority" : ["friendly"]
+	},
+	"amnezia" : {
+		"name" : "Амнезия",
+		"description" : "Заставляет цель забыть одну из своих способностей",
+		"result_format" : "{initiator.lore_name} заставляет {target.lore_name} забыть {removed_action.lore_name}",
+		"effects": ["target0->add_status[amnezia(targets[0])]"],
+		"target_priority": ["self"]
+	},
 	"__default__" : {
 		"manacost" : 0
 	}

@@ -22,8 +22,14 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var target: ActorBase = targets[0]
 
 	##EFFECTS START
-	#TODO: add logic for effects here
 	##EFFECTS END
 	#TODO: add logic for effects here
+	#TODO: add logic for effects here
+	#TODO: add logic for effects here
+	#TODO: add logic for effects here
+	#TODO: add logic for effects here
 
-	return null
+	var format_dict : Dictionary = {}
+	format_dict["initiator.lore_name"] = initiator.lore_name
+
+	return ActionResult.new(result_format, format_dict)

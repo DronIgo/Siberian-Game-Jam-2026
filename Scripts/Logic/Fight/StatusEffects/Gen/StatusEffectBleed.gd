@@ -14,6 +14,7 @@ func _init(duration_ : int = default_duration) -> void:
 	lore_description_template = "Наносит {damage} урона в конце хода"
 	type = StatusGenerator.STATUS.BLEED
 	_damage_type = FightConst.DAMAGE_TYPE[damage_type]
+	_tags = tags
 	super(duration_)
 
 func get_description() -> String:

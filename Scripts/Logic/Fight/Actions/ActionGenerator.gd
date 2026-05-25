@@ -23,8 +23,6 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionCauterization.new()
 		"defend":
 			return ActionDefend.new()
-		"defend":
-			return ActionDefend.new()
 		"heal":
 			return ActionHeal.new()
 		"filter":
@@ -39,6 +37,10 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionPoison.new()
 		"mark-for-death":
 			return ActionMarkForDeath.new()
+		"defend":
+			return ActionDefend.new()
+		"amnezia":
+			return ActionAmnezia.new()
 		"bandage":
 			return ActionBandage.new()
 		"mana_potion":

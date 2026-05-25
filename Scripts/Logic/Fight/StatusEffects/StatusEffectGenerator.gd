@@ -21,7 +21,8 @@ enum STATUS {
 		HASTE,
 		TAUNT,
 		PROTECTED,
-		HIDE
+		HIDE,
+		AMNEZIA
 	}
 
 # if there is no color for a given name add it with a default color 
@@ -38,6 +39,7 @@ const color_by_type : Dictionary = {
 		STATUS.TAUNT : Color(0.496, 0.244, 0.857, 1.0),
 		STATUS.PROTECTED : Color(0.496, 0.244, 0.857, 1.0),
 		STATUS.HIDE : Color(0.776, 0.461, 0.696, 1.0),
+		STATUS.AMNEZIA : Color(0.311, 0.601, 0.46, 1.0),
 	}
 
 #const POISON_COLOR : Color = Color(0.0, 0.44, 0.0, 1.0)
@@ -89,10 +91,12 @@ func create_status(type : STATUS) -> StatusEffectBase:
 		STATUS.HIDE:
 			var status = StatusEffectHide.new()
 			return status
+		STATUS.AMNEZIA:
+			var status = StatusEffectAmnezia.new()
+			return status
 
 	printerr("unsupported status type")
 	return StatusEffectBase.new(3)
-
 func create_status_item(status : StatusEffectBase) -> StatusUIItem:
 	var new_item = STATUS_ITEM.instantiate() as StatusUIItem
 	new_item.set_effect_base(status)

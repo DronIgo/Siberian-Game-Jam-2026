@@ -30,7 +30,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	#TODO: add logic for effects here
 
 	var format_dict : Dictionary = {}
-	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["target.lore_name"] = targets[0].lore_name
 
 	return ActionResult.new(result_format, format_dict)

@@ -71,7 +71,7 @@ def generate_const_block(config: dict) -> list[str]:
     """Генерирует строки с константами из конфига."""
     lines = ["# constants from config"]
     for key, value in config.items():
-        if key in ["lore_name", "description"]:
+        if key in ["lore_name", "description", "init"]:
             continue
         gd_type = get_gdscript_type(value)
         lines.append(
@@ -98,11 +98,20 @@ def generate_init_block(effect_name: str, config: dict) -> list[str]:
     )
 
     if "damage_type" in config:
-        lines.append("\t_damage_type = ActionBase.DAMAGE_TYPE[damage_type]")
+        lines.append("\t_damage_type = FightConst.DAMAGE_TYPE[damage_type]")
     if "tags" in config:
         lines.append("\t_tags = tags")
     lines.append("\tsuper(duration_)")
     lines.append("")
+    return lines
+
+
+def generate_extra_init_block(config: dict) -> list[str]:
+    """Генерирует содержимое init()."""
+    lines = []
+    lines.append("func init(" + config.get("init") + ") -> void:")
+    lines.append("\t#TODO")
+    lines.append("\tpass")
     return lines
 
 
@@ -141,6 +150,10 @@ def generate_full_file(effect_name: str, config: dict) -> tuple[str, str]:
     lines.append("")
     lines.extend(generate_init_block(effect_name, config))
     lines.append("")
+    if "init" in config:
+        lines.extend(generate_extra_init_block(config))
+        lines.append("")
+
 
     lines.extend(get_description_block(effect_name, config))
 
@@ -186,7 +199,7 @@ def update_existing_file(file_path: Path, effect_name: str, config: dict) -> str
     new_init_block = "\n".join(generate_init_block(effect_name, config))
 
     content = re.sub(
-        r"func _init\(duration : int = default_duration\) -> void:.*?(?=\nfunc |\n#|\Z)",
+        r"func _init\(.*?\) -> void:.*?(?=\nfunc |\nclass_name |\n#|\Z)",
         new_init_block,
         content,
         flags=re.DOTALL
@@ -196,7 +209,7 @@ def update_existing_file(file_path: Path, effect_name: str, config: dict) -> str
     new_get_description = "\n".join(get_description_block(effect_name, config))
 
     content = re.sub(
-        r"func get_description\(\) -> String:.*?(?=\nfunc |\n#|\Z)",
+        r"func get_description\(\) -> String:.*?(?=\nfunc |\nclass_name |\n#|\Z)",
         new_get_description,
         content,
         flags=re.DOTALL

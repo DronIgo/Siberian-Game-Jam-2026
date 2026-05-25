@@ -7,17 +7,21 @@ extends StatusEffectBase
 const default_duration : int = 2
 const tags : Array = []
 
-var target : ActorBase
+var _target : ActorBase
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "защищает"
-	lore_description_template = "Получает урон вместо {target.lore_name}"
+	lore_description_template = "Получает урон вместо {_target.lore_name}"
 	type = StatusGenerator.STATUS.TAUNT
-	super(duration)
+	_tags = tags
+	super(duration_)
+
+func init(target : ActorBase) -> void:
+	_target = target
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}
-	format_dict["target.lore_name"] = target.lore_name
+	format_dict["_target.lore_name"] = _target.lore_name
 
 	return lore_description_template.format(format_dict)
 
@@ -26,6 +30,3 @@ func on_turn_end(actor : ActorBase, data = null) -> void:
 
 func on_turn_start(actor : ActorBase, data = null) -> void:
 	pass
-
-func set_target(actor : ActorBase) -> void:
-	target = actor

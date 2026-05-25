@@ -54,7 +54,22 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 	return 1
 
 func check_avialable(actor : ActorBase) -> bool:
-	return actor.mana >= _manacost
+	if actor.mana < _manacost:
+		return false
+	for s in actor.statuses:
+		if s.type == StatusGenerator.STATUS.AMNEZIA:
+			if (s as StatusEffectAmnezia).removed_action.lore_name == lore_name:
+				return false
+	return true
+	
+func get_unavialable_reason(actor : ActorBase) -> String:
+	if actor.mana < _manacost:
+		return "\nНа действие не хватит иммунитета"
+	for s in actor.statuses:
+		if s.type == StatusGenerator.STATUS.AMNEZIA:
+			if (s as StatusEffectAmnezia).removed_action.lore_name == lore_name:
+				return "\nВылетело из головы"
+	return ""
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	initiator.mana -= _manacost

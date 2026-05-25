@@ -7,11 +7,12 @@ extends StatusEffectBase
 const default_duration : int = 2
 const tags : Array = []
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "скрытый"
 	lore_description_template = "Полностью защищен от всего урона"
 	type = StatusGenerator.STATUS.HIDE
-	super(duration)
+	_tags = tags
+	super(duration_)
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}

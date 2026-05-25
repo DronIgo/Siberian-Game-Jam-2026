@@ -36,8 +36,8 @@ EFFECTS_END_MARKER = "\t##EFFECTS END"
 EFFECT_PATTERN = re.compile(
     r"^(?P<target>target\d+|targets|initiator)"
     r"->"
-    r"(?P<action>\w+(?:-\w+)*)"
-    r"(?:\[(?P<arg>\w+)\])?$"
+    r"(?P<action>[\w-]+)"
+    r"(?:\[(?P<arg>.+)\])?$"
 )
 
 
@@ -46,7 +46,7 @@ class ParsedEffect:
     """Распарсенный эффект из строки формата {target}->{action}[{arg}]."""
     target: str         # "target0", "target1", ..., "targets", "initiator"
     action: str         # "damage", "heal", или имя статуса
-    arg: Optional[str]  # аргумент (необязательный), например "damage", "amount"
+    arg: Optional[str]  # аргумент (необязательный), например "damage", "amount", "protected(initiator)"
 
 
 def parse_effect(effect_str: str) -> Optional[ParsedEffect]:
@@ -171,17 +171,50 @@ def generate_effect_code(pe: ParsedEffect, status_names: set[str], inside_loop: 
         lines.append(f"{prefix}{target_expr}.restore_mana({restore_src})")
 
     elif pe.action == "add_status":
-        # Статус
-        upper_name = snake_to_upper(pe.arg)
-        if pe.arg in status_names:
-            lines.append(
-                f"{prefix}{target_expr}.apply_status(SEG.create_status(StatusGenerator.STATUS.{upper_name}))"
-            )
+        # Парсим аргумент статуса: может быть просто имя или имя(аргументы)
+        status_arg = pe.arg
+        status_name = status_arg
+        init_args = ""
+        
+        # Проверяем, есть ли аргументы инициализации в формате status_name(args)
+        init_match = re.match(r'^(\w+)\((.*)\)$', status_arg)
+        if init_match:
+            status_name = init_match.group(1)
+            init_args = init_match.group(2)
+        
+        upper_name = snake_to_upper(status_name)
+        if status_name in status_names:
+            if init_args:
+                # Вызываем init(...) с переданными аргументами
+                lines.append(
+                    f"{prefix}var status_{status_name} = SEG.create_status(StatusGenerator.STATUS.{upper_name})"
+                )
+                lines.append(
+                    f"{prefix}status_{status_name}.init({init_args})"
+                )
+                lines.append(
+                    f"{prefix}{target_expr}.apply_status(status_{status_name})"
+                )
+            else:
+                lines.append(
+                    f"{prefix}{target_expr}.apply_status(SEG.create_status(StatusGenerator.STATUS.{upper_name}))"
+                )
         else:
-            lines.append(f"{prefix}#TODO: apply status '{pe.action}' to {target_expr}")
-            lines.append(
-                f"{prefix}{target_expr}.apply_status(SEG.create_status(StatusGenerator.STATUS.{upper_name}))"
-            )
+            lines.append(f"{prefix}#TODO: apply status '{status_name}' to {target_expr}")
+            if init_args:
+                lines.append(
+                    f"{prefix}var status_{status_name} = SEG.create_status(StatusGenerator.STATUS.{upper_name})"
+                )
+                lines.append(
+                    f"{prefix}status_{status_name}.init({init_args})"
+                )
+                lines.append(
+                    f"{prefix}{target_expr}.apply_status(status_{status_name})"
+                )
+            else:
+                lines.append(
+                    f"{prefix}{target_expr}.apply_status(SEG.create_status(StatusGenerator.STATUS.{upper_name}))"
+                )
 
     elif pe.action == "remove_status_by_type":
         upper_name = snake_to_upper(pe.arg)
@@ -204,6 +237,28 @@ def generate_effect_code(pe: ParsedEffect, status_names: set[str], inside_loop: 
 
 
 # ===== ГЕНЕРАЦИЯ take_action() =====
+
+def generate_result_format_output(config: dict, ) -> list[str]:
+    lines = []
+    result_format = config.get("result_format", "")
+
+    if result_format:
+        lines.append("\tvar format_dict : Dictionary = {}")
+        used_vars = extract_template_variables(result_format)
+        for var in used_vars:
+            if var == "target.lore_name":
+                lines.append(f'\tformat_dict["{var}"] = targets[0].lore_name')
+            else:
+                lines.append(f'\tformat_dict["{var}"] = {var}')
+        lines.append("")
+        lines.append(
+            f'\treturn ActionResult.new(result_format, format_dict)'
+        )
+    else:
+        lines.append("\treturn null")
+
+    lines.append("")
+    return lines
 
 def generate_take_action_block(action_name: str, config: dict, status_names: set[str]) -> list[str]:
     """
@@ -233,11 +288,10 @@ def generate_take_action_block(action_name: str, config: dict, status_names: set
         lines.append("\tvar target: ActorBase = targets[0]")
         lines.append("")
         lines.append(EFFECTS_START_MARKER)
-        lines.append("\t#TODO: add logic for effects here")
         lines.append(EFFECTS_END_MARKER)
+        lines.append("\t#TODO: add logic for effects here")
         lines.append("")
-        lines.append("\treturn null")
-        lines.append("")
+        lines.extend(generate_result_format_output(config))
         return lines
 
     lines.append("")
@@ -266,24 +320,7 @@ def generate_take_action_block(action_name: str, config: dict, status_names: set
     lines.append("")
 
     # Формируем result_format
-    result_format = config.get("result_format", "")
-
-    if result_format:
-        lines.append("\tvar format_dict : Dictionary = {}")
-        used_vars = extract_template_variables(result_format)
-        for var in used_vars:
-            if var == "target.lore_name":
-                lines.append(f'\tformat_dict["{var}"] = targets[0].lore_name')
-            else:
-                lines.append(f'\tformat_dict["{var}"] = {var}')
-        lines.append("")
-        lines.append(
-            f'\treturn ActionResult.new(result_format, format_dict)'
-        )
-    else:
-        lines.append("\treturn null")
-
-    lines.append("")
+    lines.extend(generate_result_format_output(config))
     return lines
 
 

@@ -12,7 +12,7 @@
 		"name" : "Спрятаться за другим",
 		"description" : "Перенаправляет весь урон на другой орган",
 		"result_format" : "{initiator.lore_name} перенаправляет урон на {target.lore_name}",
-		"effects" : ["target0->add_status[taunt[initiator]]", "initiator->add_status[protected[target0]]"],
+		"effects" : ["target0->add_status[taunt(initiator)]", "initiator->add_status[protected(targets[0])]"],
 		"target_priority" : ["enemy"]
 	},
 	"__default__" : {

@@ -89,7 +89,7 @@
 		"effects" : ["target0->damage[damage]", "target0->add_status[burn]"],
 		"target_priority" : ["enemy"]
 	},
-	"defend" : {
+	"defend_ally" : {
 		"name" : "Защита",
 		"description" : "Защищает орган от атак",
 		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",

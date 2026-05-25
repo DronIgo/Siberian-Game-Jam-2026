@@ -8,11 +8,12 @@ const default_duration : int = 5
 const tags : Array = []
 const amount : int = 5
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "восстановление"
 	lore_description_template = "Восстанавливает {amount} здоровья в конце хода"
 	type = StatusGenerator.STATUS.HEAL
-	super(duration)
+	_tags = tags
+	super(duration_)
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}
@@ -21,7 +22,6 @@ func get_description() -> String:
 	return lore_description_template.format(format_dict)
 
 func on_turn_end(actor : ActorBase, data = null) -> void:
-	actor.heal(amount)
 	duration -= 1
 
 func on_turn_start(actor : ActorBase, data = null) -> void:

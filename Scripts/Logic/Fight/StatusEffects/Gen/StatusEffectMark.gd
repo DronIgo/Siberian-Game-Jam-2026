@@ -8,11 +8,12 @@ const default_duration : int = 2
 const tags : Array = ["negative"]
 const amount : int = 80
 
-func _init(duration : int = default_duration) -> void:
+func _init(duration_ : int = default_duration) -> void:
 	lore_name = "метка"
 	lore_description_template = "Получает на {amount} процентов больше урона от всех источников"
 	type = StatusGenerator.STATUS.MARK
-	super(duration)
+	_tags = tags
+	super(duration_)
 
 func get_description() -> String:
 	var format_dict : Dictionary = {}
