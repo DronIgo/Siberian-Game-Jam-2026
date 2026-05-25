@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://o16hahql5rwv"]
+
+[ext_resource type="Script" uid="uid://cv6xxulaq0ha8" path="res://Scripts/UI/Fight/Animations/AnimationEffects/AnimationLineBase.gd" id="1_r8ktx"]
+
+[node name="AnimationEffectLineBase" type="Node2D" unique_id=1884720831]
+script = ExtResource("1_r8ktx")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=676842798]
