@@ -14,7 +14,7 @@ func _init() -> void:
 	_tags = ["no_target"]
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 	return -1
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
@@ -23,11 +23,6 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 
 	##EFFECTS START
 	##EFFECTS END
-	#TODO: add logic for effects here
-	#TODO: add logic for effects here
-	#TODO: add logic for effects here
-	#TODO: add logic for effects here
-	#TODO: add logic for effects here
 
 	var format_dict : Dictionary = {}
 	format_dict["initiator.lore_name"] = initiator.lore_name

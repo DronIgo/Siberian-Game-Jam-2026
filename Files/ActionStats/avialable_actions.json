@@ -27,7 +27,7 @@
 	],
 	"sick_heart" : [
 		"heal",
-		"heal",
+		"tachycardia",
 	],
 	"sick_lung" : [
 		"haste",
@@ -42,7 +42,7 @@
 		"blow"
 	],
 	"sick_brain" : [
-		"heal",
+		"amnezia",
 		"mark-for-death"
 	],
 	"tentacle" : [

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cgj2hrh7wl8xp" path="res://Scenes/Common/HintBox.tscn" id="14_iih4a"]
 [ext_resource type="PackedScene" uid="uid://5qi45hecqpb8" path="res://Scenes/Fight/FightManager.tscn" id="15_3xcug"]
 [ext_resource type="Script" uid="uid://bxefb2y56dpkn" path="res://Scripts/UI/Fight/Actors/ActorUI.gd" id="16_tg1fh"]
-[ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/Hand.gd" id="17_p0n8l"]
+[ext_resource type="Script" uid="uid://bbbet7vouxg0f" path="res://Scripts/Logic/Fight/FriendlyActors/PlayerActor.gd" id="17_p0n8l"]
 [ext_resource type="Script" uid="uid://barshpuj0f1bb" path="res://Scripts/Logic/Fight/FightInitializor.gd" id="18_0mhl6"]
 [ext_resource type="PackedScene" uid="uid://dxxput81q8axq" path="res://Scenes/Fight/UI/DocManaBarComponent.tscn" id="18_1tx6g"]
 [ext_resource type="Script" uid="uid://d0s2y4y285p4t" path="res://Scripts/Logic/Fight/Organs/OrganSummoner.gd" id="19_qpifj"]
@@ -105,7 +105,7 @@ _data = {
 &"curtains_opening": SubResource("Animation_0d5t2")
 }
 
-[node name="FightBase2" type="CanvasLayer" unique_id=60080579]
+[node name="FightBase" type="CanvasLayer" unique_id=60080579]
 
 [node name="Scene" type="Control" parent="." unique_id=550811061]
 layout_mode = 3

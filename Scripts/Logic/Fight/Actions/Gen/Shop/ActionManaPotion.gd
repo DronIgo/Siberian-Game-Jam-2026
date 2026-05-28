@@ -15,7 +15,7 @@ func _init() -> void:
 	_tags = ["no_target", "one_use"]
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
 	if own == actor:
 		return 3

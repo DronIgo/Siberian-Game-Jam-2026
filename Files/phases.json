@@ -68,7 +68,7 @@
 		},
 		{
 			"id": "house_0_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Ян Такле́вич",
 				"octopus",
@@ -79,7 +79,7 @@
 		},
 		{
 			"id": "house_1_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Зофья Птакска",
 				"bird",
@@ -90,7 +90,7 @@
 		},
 		{
 			"id": "house_2_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Стани́слав Латачски",
 				"fly",
@@ -101,7 +101,7 @@
 		},
 		{
 			"id": "house_3_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Елена Рожинска",
 				"deer",
@@ -112,18 +112,18 @@
 		},
 		{
 			"id": "house_4_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Кара Пасынич",
 				"beetle",
-				[ "shell", "healthy_liver", "sick_kidney" ]
+				[ "shell", "healthy_liver", "sick_heart" ]
 			],
 			"next_phase_id": "?",
 			"next_phase_id_template": "day_{arg}_night"
 		},
 		{
 			"id": "house_5_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Пётрек Ваговски",
 				"fish",
@@ -134,7 +134,7 @@
 		},
 		{
 			"id": "house_6_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Марек Жадлович",
 				"scorpion",
@@ -145,7 +145,7 @@
 		},
 		{
 			"id": "house_7_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Майя Хрилетич",
 				"axolotl",
@@ -156,7 +156,7 @@
 		},
 		{
 			"id": "house_8_fight",
-			"scene_name": "res://Scenes/FightBase.tscn",
+			"scene_name": "res://Scenes/Fight/FightBase.tscn",
 			"args": [
 				"Святлослав Глович",
 				"firefly",

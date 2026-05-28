@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://od7p3ibp7aqg" path="res://Scenes/Fight/UI/Patients/PatientBird.tscn" id="3_gwtk6"]
 [ext_resource type="PackedScene" uid="uid://cdygbwtmfiql7" path="res://Scenes/Fight/UI/Patients/PatientOctopus.tscn" id="4_gwtk6"]
 [ext_resource type="PackedScene" uid="uid://ygh6a5364yr5" path="res://Scenes/Fight/UI/Patients/PatientFly.tscn" id="5_dxvsa"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientAxolotl.tscn" id="6_dxvsa"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientFirefly.tscn" id="7_tpsd8"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientScorpion.tscn" id="8_06jo0"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientDeer.tscn" id="9_7nbjx"]
-[ext_resource type="PackedScene" path="res://Scenes/Fight/UI/Patients/PatientFish.tscn" id="10_2nkwd"]
+[ext_resource type="PackedScene" uid="uid://c8vfiavma7v2n" path="res://Scenes/Fight/UI/Patients/PatientAxolotl.tscn" id="6_dxvsa"]
+[ext_resource type="PackedScene" uid="uid://tv70l4huk545" path="res://Scenes/Fight/UI/Patients/PatientFireFly.tscn" id="7_2nkwd"]
+[ext_resource type="PackedScene" uid="uid://bf5w6u3jjkdn4" path="res://Scenes/Fight/UI/Patients/PatientScorpion.tscn" id="8_06jo0"]
+[ext_resource type="PackedScene" uid="uid://5hm4yw871j8w" path="res://Scenes/Fight/UI/Patients/PatientDeer.tscn" id="9_7nbjx"]
+[ext_resource type="PackedScene" uid="uid://de7lsek4m1kjb" path="res://Scenes/Fight/UI/Patients/PatientFish.tscn" id="10_2nkwd"]
 
 [node name="PatientTable" type="Node2D" unique_id=1637330193 node_paths=PackedStringArray("available_patients")]
 script = ExtResource("1_vt8n6")
@@ -25,7 +25,7 @@ available_patients = [NodePath("PatientBeetle"), NodePath("PatientBird"), NodePa
 
 [node name="PatientAxolotl" parent="." unique_id=345093087 instance=ExtResource("6_dxvsa")]
 
-[node name="PatientFirefly" parent="." unique_id=2141867058 instance=ExtResource("7_tpsd8")]
+[node name="PatientFirefly" parent="." unique_id=2094178177 instance=ExtResource("7_2nkwd")]
 
 [node name="PatientScorpion" parent="." unique_id=1365326433 instance=ExtResource("8_06jo0")]
 

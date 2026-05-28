@@ -12,9 +12,9 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} заставляет {target.lore_name} забыть {removed_action.lore_name}"
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
-	if own == actor:
+	if actor is PlayerActor:
 		return 3
 
 	return -1
@@ -30,8 +30,8 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	var removed_action = (status_amnezia as StatusEffectAmnezia).removed_action
 
 	var format_dict : Dictionary = {}
-	format_dict["removed_action.lore_name"] = removed_action.lore_name
-	format_dict["initiator.lore_name"] = initiator.lore_name
 	format_dict["target.lore_name"] = targets[0].lore_name
+	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["removed_action.lore_name"] = removed_action.lore_name
 
 	return ActionResult.new(result_format, format_dict)

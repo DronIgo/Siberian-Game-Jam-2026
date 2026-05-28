@@ -12,7 +12,7 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} ищет уязвимости, увеличивая свой урон"
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
 	if own == actor:
 		return 3

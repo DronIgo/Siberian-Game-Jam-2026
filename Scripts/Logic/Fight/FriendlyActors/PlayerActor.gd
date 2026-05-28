@@ -1,4 +1,4 @@
-class_name Hand
+class_name PlayerActor
 extends ActorBase
 
 var actor_name : String = "hand"

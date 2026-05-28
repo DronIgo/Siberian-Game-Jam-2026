@@ -12,12 +12,12 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} прячется, получая 100% брони"
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
 	if own == actor:
 		return 3
 
-	if own.is_healthy == actor.is_healthy:
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
 		return 2
 
 	return -1

@@ -289,7 +289,6 @@ def generate_take_action_block(action_name: str, config: dict, status_names: set
         lines.append("")
         lines.append(EFFECTS_START_MARKER)
         lines.append(EFFECTS_END_MARKER)
-        lines.append("\t#TODO: add logic for effects here")
         lines.append("")
         lines.extend(generate_result_format_output(config))
         return lines
@@ -382,7 +381,7 @@ def generate_get_priority_block(config: dict) -> list[str]:
     """
     lines = []
     lines.append(
-        "func get_priority(actor : OrganBase, own : OrganBase) -> int:"
+        "func get_priority(actor : ActorBase, own : OrganBase) -> int:"
     )
 
     target_priority = config.get("target_priority", [])
@@ -405,9 +404,11 @@ def generate_get_priority_block(config: dict) -> list[str]:
             if c == "self":
                 cond_parts.append("own == actor")
             elif c == "friendly":
-                cond_parts.append("own.is_healthy == actor.is_healthy")
+                cond_parts.append("(actor is OrganBase and own.is_healthy == actor.is_healthy)")
             elif c == "enemy":
-                cond_parts.append("own.is_healthy != actor.is_healthy")
+                cond_parts.append("(actor is OrganBase and own.is_healthy != actor.is_healthy)")
+            elif c == "player":
+                cond_parts.append("actor is PlayerActor")
 
         if cond_parts:
             lines.append("")

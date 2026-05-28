@@ -11,6 +11,7 @@ extends Node2D
 var _friendly_organs : Array
 var _enemy_organs : Array
 var _all_organs : Array
+var _all_actors : Array
 
 var round_num : int = 0
 
@@ -22,6 +23,10 @@ func _ready() -> void:
 	_friendly_organs = initializer.get_friendly_organs()
 	_enemy_organs = initializer.get_enemy_organs()
 	_all_organs = initializer.get_all_organs()
+	_all_actors = _all_organs.duplicate()
+	_all_actors.append(player_actor)
+	
+	FightEventBus.add_actor_turn.connect(add_turn)
 	
 	# let everything load
 	await get_tree().create_timer(0.5).timeout
@@ -43,19 +48,33 @@ func _ready() -> void:
 	elif _defeat:
 		_on_defeat()
 
+var _turn_queue : Array = []
 func play_round() -> void:
+	generate_turn_queue()
+	var player_turn = 1
+	while _turn_queue.size() > 0:
+		var actor = _turn_queue.pop_front()
+		if actor is PlayerActor:
+			var extra_turn = await take_turn_friendly(player_turn)
+			while extra_turn:
+				extra_turn = await take_turn_friendly(player_turn)
+			player_turn += 1
+			if _defeat || _victory: return
+		else:
+			await take_turn_organ(actor)
+			if _defeat || _victory: return
+
+func add_turn(actor : ActorBase) -> void:
+	_turn_queue.insert(0, actor)
+
+func generate_turn_queue() -> void:
+	_turn_queue.clear()
 	for turn in range(num_of_player_turns):
-		var extra_turn = await take_turn_friendly(turn + 1)
-		while extra_turn:
-			extra_turn = await take_turn_friendly(turn + 1)
-	if _defeat || _victory: return
-	
+		_turn_queue.append(player_actor)
 	for enemy in _enemy_organs:
-		await take_turn_organ(enemy)
-		if _defeat || _victory: return
+		_turn_queue.append(enemy)
 	for friend_organ in _friendly_organs:
-		await take_turn_organ(friend_organ)
-		if _defeat || _victory: return
+		_turn_queue.append(friend_organ)
 
 func take_turn_friendly(turn_num : int) -> bool:
 	var extra_turn = false
@@ -88,7 +107,7 @@ func take_turn_organ(organ : OrganBase) -> void:
 	if organ.health <= 0:
 		print("organ can not take turn, health is zero, ", organ)
 		return
-	var action_resilt = organ.take_turn(_all_organs)
+	var action_resilt = organ.take_turn(_all_actors)
 	if !action_resilt:
 		await player_ui.display_turn_skip(organ, false)
 	else:

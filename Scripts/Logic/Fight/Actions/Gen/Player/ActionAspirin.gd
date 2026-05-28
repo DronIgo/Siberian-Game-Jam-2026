@@ -18,7 +18,7 @@ func _init() -> void:
 	_tags = ["aoe"]
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 	return -1
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:

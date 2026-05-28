@@ -34,7 +34,11 @@ func check_enough_targets(targets : Array) -> bool:
 
 func pick_targets(possible_targets : Array, initiator : OrganBase) -> Array:
 	if has_tag("aoe"):
-		return possible_targets
+		var result = []
+		for target in possible_targets:
+			if !target is PlayerActor:
+				result.append(target)
+		return result
 	var best_targets : Array
 	var max_priority = -1
 	for target in possible_targets:
@@ -50,7 +54,7 @@ func pick_targets(possible_targets : Array, initiator : OrganBase) -> Array:
 func pick_random(possible_targets : Array) -> ActorBase:
 	return possible_targets[randi_range(0, possible_targets.size() - 1)]
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 	return 1
 
 func check_avialable(actor : ActorBase) -> bool:

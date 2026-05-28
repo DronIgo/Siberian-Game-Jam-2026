@@ -12,7 +12,7 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} снимает все негативные эффекты"
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
 	if own == actor:
 		return 3
@@ -24,9 +24,6 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 
 	##EFFECTS START
 	##EFFECTS END
-	#TODO: add logic for effects here
-
-	#TODO: add logic for effects here
 
 	var format_dict : Dictionary = {}
 	format_dict["initiator.lore_name"] = initiator.lore_name

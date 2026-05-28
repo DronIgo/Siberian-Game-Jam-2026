@@ -13,12 +13,12 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} восстанавливает {amount} здоровья {target.lore_name}"
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
 	if own == actor:
 		return 3
 
-	if own.is_healthy == actor.is_healthy:
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
 		return 2
 
 	return -1
@@ -31,8 +31,8 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["amount"] = amount
-	format_dict["initiator.lore_name"] = initiator.lore_name
 	format_dict["target.lore_name"] = targets[0].lore_name
+	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["amount"] = amount
 
 	return ActionResult.new(result_format, format_dict)

@@ -18,7 +18,7 @@ func _init() -> void:
 	#remove pass
 	pass
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 	# here we need to generate lines with a following alghorithm 
 	# int p = 3
 	# go through all targets in target_priority:
@@ -33,6 +33,10 @@ func get_priority(actor : OrganBase, own : OrganBase) -> int:
 	# if target = enemy add line 
 	#if own.is_healthy != actor.is_healthy: 
 	#	return {p}
+	
+	# if target = player add line
+	#if actor is PlayerActor:
+	#	return {p}s
 	return -1
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:

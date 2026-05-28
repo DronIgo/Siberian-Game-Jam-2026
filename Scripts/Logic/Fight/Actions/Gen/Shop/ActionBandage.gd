@@ -14,9 +14,9 @@ func _init() -> void:
 	_tags = ["one_use"]
 	_manacost = manacost
 
-func get_priority(actor : OrganBase, own : OrganBase) -> int:
+func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
-	if own.is_healthy == actor.is_healthy:
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
 		return 3
 
 	return -1
@@ -29,7 +29,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["initiator.lore_name"] = initiator.lore_name
 	format_dict["target.lore_name"] = targets[0].lore_name
+	format_dict["initiator.lore_name"] = initiator.lore_name
 
 	return ActionResult.new(result_format, format_dict)
