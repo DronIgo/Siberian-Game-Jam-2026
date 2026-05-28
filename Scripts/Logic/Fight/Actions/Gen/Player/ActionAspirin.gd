@@ -10,6 +10,7 @@ const damage : int = 15
 const tags : Array = ["aoe"]
 
 func _init() -> void:
+	code_name = "aspirin"
 	lore_name = "Аспирин"
 	description = "Наносит режущий урон и вызывает кровотечение всем органам."
 	result_format = "{initiator.lore_name} наносит урон и накладывает кровотечение на все органы"

@@ -9,6 +9,7 @@ const amount : int = 20
 const tags : Array = ["no_target", "one_use"]
 
 func _init() -> void:
+	code_name = "mana_potion"
 	lore_name = "Витамины"
 	description = "Восстанавливает иммунитет"
 	result_format = "{initiator.lore_name} восстанавливает иммунитет пациента"

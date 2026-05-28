@@ -7,14 +7,16 @@ extends ActionBase
 const manacost : int = 0
 
 func _init() -> void:
+	code_name = "buff_defense"
 	lore_name = "Блокировать"
 	description = "Повышает защиту"
 	result_format = "{initiator.lore_name} повышает защиту {target.lore_name}"
+	usage_sound_name = "res://Assets/SFX/player_grip.mp3"
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
-	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy and own != actor):
 		return 3
 
 	return -1

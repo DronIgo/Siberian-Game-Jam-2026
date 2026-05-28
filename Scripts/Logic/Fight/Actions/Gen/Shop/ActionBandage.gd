@@ -8,6 +8,7 @@ const manacost : int = 0
 const tags : Array = ["one_use"]
 
 func _init() -> void:
+	code_name = "bandage"
 	lore_name = "Бинты"
 	description = "Снимает кровотечение с выбранного органа."
 	result_format = "{initiator.lore_name} снимет кровотечение с {target.lore_name}"
@@ -16,7 +17,7 @@ func _init() -> void:
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
-	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy and own != actor):
 		return 3
 
 	return -1

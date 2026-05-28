@@ -3,12 +3,12 @@
 		"penicillin",
 		"syringe_green",
 		"syringe_blue",
-		"buff",
 		"buff_defense",
 		"antalgetic",
 		"cauterization",
 		"scalpel",
-		"aspirin"
+		"aspirin",
+		"study"
 	],
 	"healthy_heart" : [
 		"heal",

@@ -9,9 +9,11 @@ const damage : int = 10
 const amount : int = 10
 
 func _init() -> void:
+	code_name = "vampirism"
 	lore_name = "Высасывание"
 	description = "Наносит урон и восстанавливает своё здоровье"
 	result_format = "{initiator.lore_name} высасывает здоровье из {target.lore_name}, нанося {damage_dealt} урона"
+	usage_sound_name = "res://Assets/SFX/fly_suck.mp3"
 	_damage_type = FightConst.DAMAGE_TYPE.RED
 	_manacost = manacost
 
@@ -32,8 +34,8 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
+	format_dict["damage_dealt"] = damage_dealt
 	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["initiator.lore_name"] = initiator.lore_name
-	format_dict["damage_dealt"] = damage_dealt
 
 	return ActionResult.new(result_format, format_dict)

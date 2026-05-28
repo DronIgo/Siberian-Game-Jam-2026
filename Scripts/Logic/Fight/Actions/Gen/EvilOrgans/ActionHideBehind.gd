@@ -7,6 +7,7 @@ extends ActionBase
 const manacost : int = 0
 
 func _init() -> void:
+	code_name = "hide_behind"
 	lore_name = "Спрятаться за другим"
 	description = "Перенаправляет весь урон на другой орган"
 	result_format = "{initiator.lore_name} перенаправляет урон на {target.lore_name}"

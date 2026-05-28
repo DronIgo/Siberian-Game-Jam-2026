@@ -5,48 +5,55 @@
 		"description" : "Накладывает кровотечение на врага",
 		"result_format" : "{initiator.lore_name} накладывает кровотечение на {target.lore_name}",
 		"effects" : ["target0->add_status[bleed]"],
-		"target_priority" : ["enemy"]
+		"target_priority" : ["enemy"],
+		"sound": "res://Assets/SFX/kidney_rip.mp3"
 	},
 	"detox" : {
 		"name" : "Детоксикация",
 		"description" : "Снимает негативные эффекты",
 		"result_format" : "{initiator.lore_name} снимает все негативные эффекты",
 		"effects": ["initiator->remove_status_by_tag_all[bad]"],
-		"target_priority": ["self"]
+		"target_priority": ["self"],
+		"sound": "res://Assets/SFX/liver_detox.mp3"
 	},
 	"poison" : {
 		"name" : "Цирроз",
 		"description" : "Накладывает отравление",
 		"result_format" : "{initiator.lore_name} накладывает отравление на {target.lore_name}",
 		"effects" : ["target0->add_status[poison]"],
-		"target_priority" : ["enemy"]
+		"target_priority" : ["enemy"],
+		"sound": "res://Assets/SFX/kidney_rip.mp3"
 	},
 	"mark-for-death" : {
 		"name" : "Выбор цели",
 		"description" : "Увеличивает урон",
 		"result_format" : "{initiator.lore_name} отмечает {target.lore_name} как цель",
 		"effects" : ["target0->add_status[mark]"],
-		"target_priority" : ["enemy"]
+		"target_priority" : ["enemy"],
+		"sound": "res://Assets/SFX/brain_choosing_target.mp3"
 	},
 	"defend" : {
 		"name" : "Защита",
 		"description" : "Защищает орган от атак",
 		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",
 		"effects": ["target0->add_status[protected(initiator)]", "initiator->add_status[taunt(targets[0])]"],
-		"target_priority" : ["friendly"]
+		"target_priority" : ["friendly"],
+		"sound": "res://Assets/SFX/lungs_cough.mp3"
 	},
 	"amnezia" : {
 		"name" : "Амнезия",
 		"description" : "Заставляет цель забыть одну из своих способностей",
 		"result_format" : "{initiator.lore_name} заставляет {target.lore_name} забыть {removed_action.lore_name}",
 		"effects": ["target0->add_status[amnezia(targets[0])]"],
-		"target_priority": ["player"]
+		"target_priority": ["player"],
+		"sound": "res://Assets/SFX/brain_amnesia.mp3"
 	},
 	"tachycardia" : {
 		"name" : "Тахикардия",
 		"description" : "Выбранная цель немедленно совершает ещё один ход",
 		"result_format" : "{initiator.lore_name} дает {target.lore_name} совершить ещё один ход",
-		"target_priority": ["friendly"]
+		"target_priority": ["friendly"],
+		"sound": "res://Assets/SFX/heart_tachycardia.mp3"
 	},
 	"__default__" : {
 		"manacost" : 0

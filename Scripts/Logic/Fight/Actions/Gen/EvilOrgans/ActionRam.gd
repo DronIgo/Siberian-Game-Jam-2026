@@ -9,9 +9,11 @@ const damage : int = 15
 const tags : Array = ["aoe"]
 
 func _init() -> void:
+	code_name = "ram"
 	lore_name = "Прорывающий удар"
 	description = "Наносит урон всем органам"
 	result_format = "{initiator.lore_name} наносит урон всем органам"
+	usage_sound_name = "res://Assets/SFX/horns_bash.mp3"
 	_damage_type = FightConst.DAMAGE_TYPE.RED
 	_tags = ["aoe"]
 	_manacost = manacost

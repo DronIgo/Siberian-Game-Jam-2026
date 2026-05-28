@@ -348,6 +348,7 @@ def generate_init_block(action_name: str, config: dict) -> list[str]:
     sound = config.get("sound", "")
     result_format = config.get("result_format", "")
 
+    lines.append(f'\tcode_name = "{action_name}"')
     lines.append(f'\tlore_name = "{lore_name}"')
     lines.append(f'\tdescription = "{description}"')
     lines.append(f'\tresult_format = "{result_format}"')
@@ -404,7 +405,7 @@ def generate_get_priority_block(config: dict) -> list[str]:
             if c == "self":
                 cond_parts.append("own == actor")
             elif c == "friendly":
-                cond_parts.append("(actor is OrganBase and own.is_healthy == actor.is_healthy)")
+                cond_parts.append("(actor is OrganBase and own.is_healthy == actor.is_healthy and own != actor)")
             elif c == "enemy":
                 cond_parts.append("(actor is OrganBase and own.is_healthy != actor.is_healthy)")
             elif c == "player":

@@ -62,6 +62,8 @@ func set_bar(value : float) -> void:
 	_display_intermediate_status_text(logic_delta)
 
 func _display_intermediate_status_text(logic_delta: float):
+	if logic_delta == 0:
+		return
 	var delta_color: String = "red" if logic_delta < 0 else "blue"
 	var delta_formatted: String = str("[color=", delta_color, "]", \
 		" - " if logic_delta < 0 else " + ", abs(logic_delta as int), "[/color]")

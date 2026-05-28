@@ -35,22 +35,12 @@ const color_by_type : Dictionary = {
 		STATUS.BURN : Color(0.949, 0.51, 0.0, 1.0),
 		STATUS.MARK : Color(0.538, 0.0, 0.394, 1.0),
 		STATUS.HEAL : Color(0.445, 0.81, 0.0, 1.0),
-		STATUS.HASTE : Color(0.345, 0.687, 0.323, 1.0),
+		STATUS.HASTE : Color(0.863, 0.89, 0.0, 1.0),
 		STATUS.TAUNT : Color(0.496, 0.244, 0.857, 1.0),
 		STATUS.PROTECTED : Color(0.496, 0.244, 0.857, 1.0),
 		STATUS.HIDE : Color(0.776, 0.461, 0.696, 1.0),
-		STATUS.AMNEZIA : Color(0.311, 0.601, 0.46, 1.0),
+		STATUS.AMNEZIA : Color(0.0, 0.342, 0.227, 1.0),
 	}
-
-#const POISON_COLOR : Color = Color(0.0, 0.44, 0.0, 1.0)
-#const MARK_COLOR : Color = Color(0.674, 0.0, 0.371, 1.0)
-#const DEFENCE_COLOR : Color = Color(0.286, 0.324, 0.002, 1.0)
-#const ATTACK_COLOR : Color = Color(0.174, 0.224, 0.406, 1.0)
-#const BURN_COLOR : Color = Color(1.0, 0.349, 0.0, 1.0)
-#const HASTE_COLOR : Color = Color(0.58, 0.893, 0.961, 1.0)
-#const SHIELD_COLOR : Color = Color(0.4, 0.6, 0.8)
-#const PROTECTED_COLOR : Color = Color(0.4, 0.6, 0.8)
-#const HIDE_COLOR : Color = Color(0.5, 0.5, 0.5)
 
 func _ready() -> void:
 	pass

@@ -8,9 +8,11 @@ const manacost : int = 0
 const amount : int = 5
 
 func _init() -> void:
+	code_name = "blow"
 	lore_name = "Разрыв"
 	description = "Накладывает кровотечение на врага"
 	result_format = "{initiator.lore_name} накладывает кровотечение на {target.lore_name}"
+	usage_sound_name = "res://Assets/SFX/kidney_rip.mp3"
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:

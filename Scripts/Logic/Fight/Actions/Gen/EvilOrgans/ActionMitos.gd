@@ -8,9 +8,11 @@ const manacost : int = 0
 const tags : Array = ["no_target"]
 
 func _init() -> void:
+	code_name = "mitos"
 	lore_name = "Размножиться"
 	description = "Создает ещё одно щупальце."
 	result_format = "{initiator.lore_name} создаёт новое щупальце"
+	usage_sound_name = "res://Assets/SFX/tentacle_mitosis.mp3"
 	_tags = ["no_target"]
 	_manacost = manacost
 

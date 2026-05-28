@@ -7,9 +7,11 @@ extends ActionBase
 const manacost : int = 0
 
 func _init() -> void:
+	code_name = "detox"
 	lore_name = "Детоксикация"
 	description = "Снимает негативные эффекты"
 	result_format = "{initiator.lore_name} снимает все негативные эффекты"
+	usage_sound_name = "res://Assets/SFX/liver_detox.mp3"
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:

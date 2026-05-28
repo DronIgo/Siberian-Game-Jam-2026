@@ -1,7 +1,7 @@
 class_name HintBox
 extends Node2D
 
-@export var hint_label: Label
+@export var hint_label: RichTextLabel
 @export var hint_text: String = ""
 
 func _ready() -> void:

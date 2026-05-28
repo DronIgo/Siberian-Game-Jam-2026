@@ -12,18 +12,15 @@ script = ExtResource("1_8mjqg")
 hint_label = NodePath("HintLabel")
 hint_text = "This is the hint"
 
-[node name="HintLabel" type="Label" parent="." unique_id=1344340497]
-anchors_preset = -1
-anchor_top = -0.13648349
-anchor_bottom = -0.13648349
+[node name="HintLabel" type="RichTextLabel" parent="." unique_id=1073533789]
 offset_left = -350.82983
-offset_top = -225.19675
+offset_top = -300.26266
 offset_right = 337.83545
-offset_bottom = 217.4982
+offset_bottom = 142.43228
 theme = ExtResource("1_t72mp")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "Подсказка, чтобы не запутатся [color=BLUE]жирная[/color]"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
-metadata/_edit_use_anchors_ = true

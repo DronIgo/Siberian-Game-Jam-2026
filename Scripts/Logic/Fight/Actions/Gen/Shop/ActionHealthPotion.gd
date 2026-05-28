@@ -9,6 +9,7 @@ const amount : int = 20
 const tags : Array = ["one_use"]
 
 func _init() -> void:
+	code_name = "health_potion"
 	lore_name = "Анестезия"
 	description = "Восстанавливает здоровье выбранному органу"
 	result_format = "{initiator.lore_name} восстанавливает здоровье {target.lore_name}"
@@ -17,7 +18,7 @@ func _init() -> void:
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
 
-	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy and own != actor):
 		return 3
 
 	return -1

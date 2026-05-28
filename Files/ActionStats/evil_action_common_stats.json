@@ -6,7 +6,8 @@
 		"description" : "Мощный удар, расплющивающий орган.",
 		"result_format" : "{initiator.lore_name} расплющивает {target.lore_name}, нанося {damage_dealt} урона",
 		"effects" : ["target0->damage[damage]"],
-		"target_priority" : ["enemy"]
+		"target_priority" : ["enemy"],
+		"sound": "res://Assets/SFX/horns_bash.mp3"
 	},
 	"hide_behind" : {
 		"name" : "Спрятаться за другим",

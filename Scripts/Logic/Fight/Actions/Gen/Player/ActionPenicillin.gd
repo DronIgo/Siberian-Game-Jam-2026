@@ -10,6 +10,7 @@ const damage : int = 15
 const tags : Array = ["aoe"]
 
 func _init() -> void:
+	code_name = "penicillin"
 	lore_name = "Пенициллин"
 	description = "Наносит токсичный урон и отравляет все органы."
 	result_format = "{initiator.lore_name} наносит урон и накладывает отравление на все органы"

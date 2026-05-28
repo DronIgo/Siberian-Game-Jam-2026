@@ -6,13 +6,15 @@
 		"description" : "Мощный удар, сокрушающий орган.",
 		"result_format" : "{initiator.lore_name} сокрушает {target.lore_name}, нанося {damage_dealt} урона",
 		"effects" : ["target0->damage[damage]"],
-		"target_priority" : ["enemy"]
+		"target_priority" : ["enemy"],
+		"sound": "res://Assets/SFX/tentacle_smash.mp3"
 	},
 	"mitos" : {
 		"name" : "Размножиться",
 		"description" : "Создает ещё одно щупальце.",
 		"result_format" : "{initiator.lore_name} создаёт новое щупальце",
-		"tags": ["no_target"]
+		"tags": ["no_target"],
+		"sound": "res://Assets/SFX/tentacle_mitosis.mp3"
 	},
 	"ram" : {
 		"name": "Прорывающий удар",
@@ -21,14 +23,16 @@
 		"description" : "Наносит урон всем органам",
 		"result_format" : "{initiator.lore_name} наносит урон всем органам",
 		"effects" : ["targets->damage[damage]"],
-		"tags": ["aoe"]
+		"tags": ["aoe"],
+		"sound": "res://Assets/SFX/horns_bash.mp3"
 	},
 	"scan_vul" : {
 		"name" : "Поиск уязвимости",
 		"description" : "Увеличивает свой урон",
 		"result_format" : "{initiator.lore_name} ищет уязвимости, увеличивая свой урон",
 		"effects" : ["target0->add_status[buff_attack]"],
-		"target_priority" : ["self"]
+		"target_priority" : ["self"],
+		"sound": "res://Assets/SFX/fly_find_vulnerability.mp3"
 	},
 	"vampirism" : {
 		"name" : "Высасывание",
@@ -38,14 +42,16 @@
 		"description" : "Наносит урон и восстанавливает своё здоровье",
 		"result_format" : "{initiator.lore_name} высасывает здоровье из {target.lore_name}, нанося {damage_dealt} урона",
 		"effects" : ["target0->damage[damage]", "initiator->heal[amount]"],
-		"target_priority" : ["enemy"]
+		"target_priority" : ["enemy"],
+		"sound": "res://Assets/SFX/fly_suck.mp3"
 	},
 	"hide" : {
 		"name" : "Прятки",
 		"description" : "Даёт 100% брони на 1 ход",
 		"result_format" : "{initiator.lore_name} прячется, получая 100% брони",
 		"effects" : ["target0->add_status[hide]"],
-		"target_priority" : ["self", "friendly"]
+		"target_priority" : ["self", "friendly"],
+		"sound": "res://Assets/SFX/shell_hide.mp3"
 	},
 	"__default__" : {
 		"manacost" : 0

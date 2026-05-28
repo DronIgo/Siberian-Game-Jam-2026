@@ -41,7 +41,7 @@
 		"name" : "Эпинефрин",
 		"description" : " Наносит токсичный урон и отравляет.",
 		"result_format" : "{initiator.lore_name} наносит {damage_dealt} урона и накладывает отравление на {target.lore_name}",
-		"sound": "res://Assets/SFX/player_pills.mp3",
+		"sound": "res://Assets/SFX/player_syringe.mp3",
 		"effects" : ["target0->damage", "target0->add_status[poison]"],
 		"target_priority" : ["enemy"]
 	},
@@ -53,7 +53,7 @@
 		"name" : "Гидрокортизон",
 		"description" : " Наносит огненный урон и накладывает ожог.",
 		"result_format" : "{initiator.lore_name} наносит {damage_dealt} урона и накладывает ожог на {target.lore_name}",
-		"sound": "res://Assets/SFX/player_pills.mp3",
+		"sound": "res://Assets/SFX/player_burn.mp3",
 		"effects" : ["target0->damage", "target0->add_status[burn]"],
 		"target_priority" : ["enemy"]
 	},
@@ -63,21 +63,24 @@
 		"description" : "Восстанавливает здоровье",
 		"result_format" : "{initiator.lore_name} восстанавливает {amount} здоровья {target.lore_name}",
 		"effects" : ["target0->heal[amount]"],
-		"target_priority" : ["self", "friendly"]
+		"target_priority" : ["self", "friendly"],
+		"sound": "res://Assets/SFX/player_syringe.mp3"
 	},
 	"buff" : {
 		"name" : "Кортизол",
 		"description" : "Повышает урон",
 		"result_format" : "{initiator.lore_name} повышает урон {target.lore_name}",
 		"effects" : ["initiator->add_status[buff_attack]"],
-		"target_priority" : ["self"]
+		"target_priority" : ["self"],
+		"sound": "res://Assets/SFX/player_buff.mp3"
 	},
 	"buff_defense" : {
 		"name" : "Блокировать",
 		"description" : "Повышает защиту",
 		"result_format" : "{initiator.lore_name} повышает защиту {target.lore_name}",
 		"effects" : ["target0->add_status[buff_def]"],
-		"target_priority" : ["friendly"]
+		"target_priority" : ["friendly"],
+		"sound": "res://Assets/SFX/player_grip.mp3"
 	},
 	"cauterization": {
 		"damage" : 15,
@@ -89,11 +92,20 @@
 		"effects" : ["target0->damage[damage]", "target0->add_status[burn]"],
 		"target_priority" : ["enemy"]
 	},
+	"study": {
+		"name" : "Анализ",
+		"description" : "Вы получаете случайную способность выбранного органа",
+		"result_format" : "Вы получили способность {action.lore_name}",
+		"sound": "res://Assets/SFX/firefly_light.mp3",
+		"target_priority" : ["enemy"],
+		"manacost": 5
+	},
 	"defend_ally" : {
 		"name" : "Защита",
 		"description" : "Защищает орган от атак",
 		"result_format" : "{initiator.lore_name} защищает {target.lore_name} от атак",
-		"target_priority" : ["friendly"]
+		"target_priority" : ["friendly"],
+		"sound": "res://Assets/SFX/player_grip.mp3"
 	},
 	"__default__" : {
 		"manacost" : 0

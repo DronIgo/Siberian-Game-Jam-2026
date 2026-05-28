@@ -21,6 +21,8 @@ func generate_action_by_name(action_name : String) -> ActionBase:
 			return ActionBuffDefense.new()
 		"cauterization":
 			return ActionCauterization.new()
+		"study":
+			return ActionStudy.new()
 		"defend_ally":
 			return ActionDefendAlly.new()
 		"heal":

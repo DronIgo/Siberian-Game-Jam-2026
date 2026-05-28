@@ -8,9 +8,11 @@ const manacost : int = 0
 const amount : int = 20
 
 func _init() -> void:
+	code_name = "antalgetic"
 	lore_name = "Анальгин"
 	description = "Восстанавливает здоровье"
 	result_format = "{initiator.lore_name} восстанавливает {amount} здоровья {target.lore_name}"
+	usage_sound_name = "res://Assets/SFX/player_syringe.mp3"
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
@@ -18,7 +20,7 @@ func get_priority(actor : ActorBase, own : OrganBase) -> int:
 	if own == actor:
 		return 3
 
-	if (actor is OrganBase and own.is_healthy == actor.is_healthy):
+	if (actor is OrganBase and own.is_healthy == actor.is_healthy and own != actor):
 		return 2
 
 	return -1
@@ -31,8 +33,8 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
+	format_dict["amount"] = amount
 	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["initiator.lore_name"] = initiator.lore_name
-	format_dict["amount"] = amount
 
 	return ActionResult.new(result_format, format_dict)
