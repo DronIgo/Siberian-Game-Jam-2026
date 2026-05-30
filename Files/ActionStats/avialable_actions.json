@@ -11,23 +11,23 @@
 		"study"
 	],
 	"healthy_heart" : [
-		"heal",
+		"heal"
 	],
 	"healthy_lung" : [
-		"haste",
+		"haste"
 	],
 	"healthy_liver" : [
-		"detox",
+		"detox"
 	],
 	"healthy_kidney" : [
-		"filter",
+		"filter"
 	],
 	"healthy_brain" : [
-		"heal",
+		"heal"
 	],
 	"sick_heart" : [
 		"heal",
-		"tachycardia",
+		"tachycardia"
 	],
 	"sick_lung" : [
 		"haste",
@@ -53,36 +53,36 @@
 	"wings" : [
 		"slam",
 		"roll",
-		"roll",
+		"roll"
 	],
 	"eyes" : [
 		"scan_vul",
 		"vampirism",
-		"roll",
+		"roll"
 	],
 	"horns" : [
 		"ram",
 		"roll",
-		"roll",
+		"roll"
 	],
 	"shell" : [
 		"hide",
 		"roll",
-		"roll",
+		"roll"
 	],
 	"boss_head" : [
 		"scan_vul",
 		"mark-for-death",
-		"defend",
+		"defend"
 	],
 	"boss_hand_1" : [
 		"crush",
 		"roll",
-		"blow",
+		"blow"
 	],
 	"boss_hand_2" : [
 		"heal",
 		"detox",
-		"haste",
+		"haste"
 	],
 }

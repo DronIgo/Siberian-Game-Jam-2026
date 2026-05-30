@@ -158,7 +158,7 @@ def generate_effect_code(pe: ParsedEffect, status_names: set[str], inside_loop: 
     lines = []
 
     if pe.action == "damage":
-        dmg_src = pe.arg if pe.arg else "damage"
+        dmg_src = pe.arg if pe.arg else "get_rand_damage()"
         lines.append(f"{prefix}var actual_damage = initiator.calc_damage_dealt({dmg_src})")
         lines.append(f"{prefix}var damage_dealt : int = {target_expr}.take_damage(actual_damage, _damage_type)")
 
@@ -367,6 +367,13 @@ def generate_init_block(action_name: str, config: dict) -> list[str]:
             lines.append(f'\t_tags = ["{tags_val}"]')
         else:
             lines.append(f'\t_tags = {gdscript_value(tags_val)}')
+
+    if "damage" in config:
+        lines.append(f'\t_min_damage = {gdscript_value(config["damage"])}')
+        if "damage_var" in config:
+            lines.append(f'\t_max_damage = {gdscript_value(config["damage"])} + {gdscript_value(config["damage_var"])}')
+        else:
+            lines.append(f'\t_max_damage = damage')
 
     manacost = config.get("manacost", 0)
     lines.append(f'\t_manacost = manacost')

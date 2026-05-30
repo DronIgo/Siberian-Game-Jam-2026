@@ -14,6 +14,8 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} расплющивает {target.lore_name}, нанося {damage_dealt} урона"
 	usage_sound_name = "res://Assets/SFX/horns_bash.mp3"
 	_damage_type = FightConst.DAMAGE_TYPE.RED
+	_min_damage = 15
+	_max_damage = damage
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
@@ -27,13 +29,13 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 
 	##EFFECTS START
-	var actual_damage = initiator.calc_damage_dealt(damage)
+	var actual_damage = initiator.calc_damage_dealt(get_rand_damage())
 	var damage_dealt : int = targets[0].take_damage(actual_damage, _damage_type)
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["damage_dealt"] = damage_dealt
-	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["target.lore_name"] = targets[0].lore_name
+	format_dict["damage_dealt"] = damage_dealt
 
 	return ActionResult.new(result_format, format_dict)

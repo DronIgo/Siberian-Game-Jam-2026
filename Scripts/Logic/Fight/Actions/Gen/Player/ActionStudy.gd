@@ -32,6 +32,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	
 	initiator.action_holder.add_action(AG.generate_action_by_name(action.code_name))
 	
+
 	var format_dict : Dictionary = {}
 	format_dict["action.lore_name"] = action.lore_name
 

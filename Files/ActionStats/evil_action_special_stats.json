@@ -2,10 +2,11 @@
 	"crush" : {
 		"name" : "Сокрушение",
 		"damage" : 30,
+		"damage_var" : 15,
 		"damage_type" : "RED",
 		"description" : "Мощный удар, сокрушающий орган.",
 		"result_format" : "{initiator.lore_name} сокрушает {target.lore_name}, нанося {damage_dealt} урона",
-		"effects" : ["target0->damage[damage]"],
+		"effects" : ["target0->damage"],
 		"target_priority" : ["enemy"],
 		"sound": "res://Assets/SFX/tentacle_smash.mp3"
 	},
@@ -19,10 +20,11 @@
 	"ram" : {
 		"name": "Прорывающий удар",
 		"damage": 15,
+		"damage_var" : 5,
 		"damage_type" : "RED",
 		"description" : "Наносит урон всем органам",
 		"result_format" : "{initiator.lore_name} наносит урон всем органам",
-		"effects" : ["targets->damage[damage]"],
+		"effects" : ["targets->damage"],
 		"tags": ["aoe"],
 		"sound": "res://Assets/SFX/horns_bash.mp3"
 	},
@@ -37,11 +39,11 @@
 	"vampirism" : {
 		"name" : "Высасывание",
 		"damage": 10,
-		"amount": 10,
+		"damage_var" : 5,
 		"damage_type" : "RED",
 		"description" : "Наносит урон и восстанавливает своё здоровье",
 		"result_format" : "{initiator.lore_name} высасывает здоровье из {target.lore_name}, нанося {damage_dealt} урона",
-		"effects" : ["target0->damage[damage]", "initiator->heal[amount]"],
+		"effects" : ["target0->damage", "initiator->heal[damage_dealt]"],
 		"target_priority" : ["enemy"],
 		"sound": "res://Assets/SFX/fly_suck.mp3"
 	},

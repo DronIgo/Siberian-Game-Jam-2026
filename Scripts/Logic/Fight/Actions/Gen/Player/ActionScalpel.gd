@@ -6,6 +6,7 @@ extends ActionBase
 # constants from config
 const manacost : int = 0
 const damage : int = 15
+const damage_var : int = 5
 
 func _init() -> void:
 	code_name = "scalpel"
@@ -14,6 +15,8 @@ func _init() -> void:
 	result_format = "{initiator.lore_name} наносит {damage_dealt} урона {target.lore_name}"
 	usage_sound_name = "res://Assets/SFX/player_scalpel.mp3"
 	_damage_type = FightConst.DAMAGE_TYPE.RED
+	_min_damage = 15
+	_max_damage = 15 + 5
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
@@ -27,13 +30,13 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 
 	##EFFECTS START
-	var actual_damage = initiator.calc_damage_dealt(damage)
+	var actual_damage = initiator.calc_damage_dealt(get_rand_damage())
 	var damage_dealt : int = targets[0].take_damage(actual_damage, _damage_type)
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["damage_dealt"] = damage_dealt
 	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["damage_dealt"] = damage_dealt
 
 	return ActionResult.new(result_format, format_dict)
