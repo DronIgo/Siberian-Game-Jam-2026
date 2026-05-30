@@ -3,9 +3,13 @@
 class_name ActionMitos
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 0
+const heal_amount : int = 30
 const tags : Array = ["no_target"]
+##CONST END
+var organ_summoner : OrganSummoner
 
 func _init() -> void:
 	code_name = "mitos"
@@ -25,6 +29,11 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 
 	##EFFECTS START
 	##EFFECTS END
+	if initiator.organ_summoner.is_slot_avialable(false):
+		initiator.organ_summoner.summon_by_name("small_tentacle")
+	else:
+		initiator.heal(heal_amount)
+	
 
 	var format_dict : Dictionary = {}
 	format_dict["initiator.lore_name"] = initiator.lore_name

@@ -30,6 +30,10 @@ GENERATOR_PATH = "../Scripts/Logic/Fight/Actions/ActionGenerator.gd"
 EFFECTS_START_MARKER = "\t##EFFECTS START"
 EFFECTS_END_MARKER = "\t##EFFECTS END"
 
+# Маркеры для пользовательских констант
+CONST_START_MARKER = "##CONST START"
+CONST_END_MARKER = "##CONST END"
+
 
 # ===== ПАРСИНГ НОВОГО ФОРМАТА EFFECTS =====
 
@@ -161,6 +165,7 @@ def generate_effect_code(pe: ParsedEffect, status_names: set[str], inside_loop: 
         dmg_src = pe.arg if pe.arg else "get_rand_damage()"
         lines.append(f"{prefix}var actual_damage = initiator.calc_damage_dealt({dmg_src})")
         lines.append(f"{prefix}var damage_dealt : int = {target_expr}.take_damage(actual_damage, _damage_type)")
+        lines.append(f"{prefix}initiator.after_dealing_damage(damage_dealt)")
 
     elif pe.action == "heal":
         heal_src = pe.arg if pe.arg else "amount"
@@ -328,7 +333,7 @@ def generate_take_action_block(action_name: str, config: dict, status_names: set
 def generate_const_block(config: dict) -> list[str]:
     skip_fields = {"name", "description", "sound", "target_priority",
                    "effects", "result_format", "lore_name", "damage_type"}
-    lines = ["# constants from config"]
+    lines = [CONST_START_MARKER, "# constants from config"]
     for key, value in config.items():
         if key in skip_fields:
             continue
@@ -336,6 +341,7 @@ def generate_const_block(config: dict) -> list[str]:
         lines.append(
             f"const {key} : {gd_type} = {gdscript_value(value)}"
         )
+    lines.append(CONST_END_MARKER)
     return lines
 
 
@@ -464,12 +470,25 @@ def generate_file_prefix(action_name: str) -> str:
 def update_existing_file(file_path: Path, action_name: str, config: dict, status_names: set[str]) -> str:
     """
     Обновляет существующий файл действия:
-    - Всегда перезаписывает: константы, _init(), get_priority()
+    - Всегда перезаписывает: блок между ##CONST START и ##CONST END, _init(), get_priority()
+    - Сохраняет пользовательские константы между ##CONST END и первым func
     - В take_action() сохраняет пользовательский код между ##EFFECTS END и var format_dict
     """
     old_content = file_path.read_text(encoding="utf-8")
 
-    # Извлекаем пользовательский код из take_action()
+    # --- Извлекаем пользовательские константы (между ##CONST END и первым func) ---
+    preserved_consts = ""
+    const_end_pos = old_content.find(CONST_END_MARKER)
+    if const_end_pos != -1:
+        after_const_end = const_end_pos + len(CONST_END_MARKER)
+        next_func_pos = old_content.find("\nfunc ", after_const_end)
+        if next_func_pos != -1:
+            snippet = old_content[after_const_end:next_func_pos]
+        else:
+            snippet = old_content[after_const_end:]
+        preserved_consts = snippet.strip("\n")
+
+    # --- Извлекаем пользовательский код из take_action() ---
     preserved_code = ""
     effects_end_pos = old_content.find(EFFECTS_END_MARKER)
     if effects_end_pos != -1:
@@ -485,12 +504,24 @@ def update_existing_file(file_path: Path, action_name: str, config: dict, status
                 snippet = old_content[after_marker:return_null_pos]
                 preserved_code = snippet.rstrip("\n")
 
-    # Собираем новый файл
+    # --- Собираем новый файл ---
     lines = []
     lines.append(generate_file_prefix(action_name))
     lines.append("")
 
+    # Автогенерированные константы (между маркерами)
     lines.extend(generate_const_block(config))
+
+    # Пользовательские константы — после ##CONST END, сохраняются между перегенерациями
+    if preserved_consts:
+        custom_const_lines = preserved_consts.split("\n")
+        while custom_const_lines and custom_const_lines[0].strip() == "":
+            custom_const_lines.pop(0)
+        while custom_const_lines and custom_const_lines[-1].strip() == "":
+            custom_const_lines.pop()
+        if custom_const_lines:
+            lines.extend(custom_const_lines)
+
     lines.append("")
 
     lines.extend(generate_init_block(action_name, config))

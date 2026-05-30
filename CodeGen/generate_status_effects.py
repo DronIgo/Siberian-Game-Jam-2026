@@ -67,17 +67,59 @@ def generate_color_from_name(name: str) -> str:
 
 # ===== ГЕНЕРАЦИЯ ФАЙЛА ЭФФЕКТА =====
 
+# Keys that are not constants but special directives
+SKIP_CONST_KEYS = {"lore_name", "description", "init", "effects_deal_damage", "effects_take_damage"}
+
+# Маркеры для секций в on_damage_dealt / on_damage_taken
+DEAL_DAMAGE_START_MARKER = "\t##DEAL_DAMAGE START"
+DEAL_DAMAGE_END_MARKER   = "\t##DEAL_DAMAGE END"
+TAKE_DAMAGE_START_MARKER = "\t##TAKE_DAMAGE START"
+TAKE_DAMAGE_END_MARKER   = "\t##TAKE_DAMAGE END"
+
+
 def generate_const_block(config: dict) -> list[str]:
     """Генерирует строки с константами из конфига."""
     lines = ["# constants from config"]
     for key, value in config.items():
-        if key in ["lore_name", "description", "init"]:
+        if key in SKIP_CONST_KEYS:
             continue
         gd_type = get_gdscript_type(value)
         lines.append(
             f"const {key} : {gd_type} = {gdscript_value(value)}"
         )
     return lines
+
+
+def translate_effect_expr(expr: str) -> str:
+    """Переводит выражение эффекта (напр. 'heal(damage)') в вызов GDScript на actor."""
+    return f"actor.{expr}"
+
+
+def generate_damage_event_block(method_name: str, start_marker: str, end_marker: str, effects: list[str]) -> list[str]:
+    """Генерирует on_damage_dealt или on_damage_taken с маркерами для сохранения пользовательского кода."""
+    lines = []
+    lines.append(f"func {method_name}(actor : ActorBase, damage : int) -> void:")
+    lines.append(start_marker)
+    for expr in effects:
+        lines.append(f"\t{translate_effect_expr(expr)}")
+    lines.append(end_marker)
+    lines.append("")
+    return lines
+
+
+def extract_preserved_code(content: str, end_marker: str, next_func_pattern: str) -> str:
+    """Извлекает пользовательский код между end_marker и следующей функцией/концом файла."""
+    end_pos = content.find(end_marker)
+    if end_pos == -1:
+        return ""
+    after_marker = end_pos + len(end_marker)
+    # Ищем следующую func или конец файла
+    next_match = re.search(next_func_pattern, content[after_marker:])
+    if next_match:
+        snippet = content[after_marker: after_marker + next_match.start()]
+    else:
+        snippet = content[after_marker:]
+    return snippet.strip("\n")
 
 
 def generate_init_block(effect_name: str, config: dict) -> list[str]:
@@ -177,14 +219,63 @@ def generate_full_file(effect_name: str, config: dict) -> tuple[str, str]:
     lines.append("\tpass")
     lines.append("")
 
+    # on_damage_dealt
+    if "effects_deal_damage" in config:
+        lines.extend(generate_damage_event_block(
+            "on_damage_dealt",
+            DEAL_DAMAGE_START_MARKER, DEAL_DAMAGE_END_MARKER,
+            config["effects_deal_damage"]
+        ))
+
+    # on_damage_taken
+    if "effects_take_damage" in config:
+        lines.extend(generate_damage_event_block(
+            "on_damage_taken",
+            TAKE_DAMAGE_START_MARKER, TAKE_DAMAGE_END_MARKER,
+            config["effects_take_damage"]
+        ))
+
     return "\n".join(lines), class_name
+
+
+def _rebuild_damage_event_block(
+    content: str,
+    method_name: str,
+    start_marker: str,
+    end_marker: str,
+    effects: list[str],
+) -> str:
+    """
+    Заменяет или добавляет on_damage_dealt / on_damage_taken.
+    Пользовательский код между end_marker и следующей func сохраняется.
+    """
+    new_block_lines = generate_damage_event_block(method_name, start_marker, end_marker, effects)
+
+    existing = re.search(
+        rf"func {re.escape(method_name)}\(.*?\) -> void:.*?(?=\nfunc |\nclass_name |\n#|\Z)",
+        content,
+        flags=re.DOTALL,
+    )
+
+    if existing:
+        old_block = existing.group(0)
+        # Извлекаем пользовательский код после end_marker внутри старого блока
+        preserved = extract_preserved_code(old_block, end_marker, r"\nfunc |\nclass_name |\n#|\Z")
+        new_block = "\n".join(new_block_lines).rstrip("\n")
+        if preserved:
+            # Вставляем сохранённый код перед последней пустой строкой блока
+            new_block = new_block.rstrip("\n") + "\n" + preserved
+        content = content[:existing.start()] + new_block + content[existing.end():]
+    else:
+        new_block = "\n".join(new_block_lines)
+        content = content.rstrip() + "\n\n" + new_block
+
+    return content
 
 
 def update_existing_file(file_path: Path, effect_name: str, config: dict) -> str:
     """Обновляет существующий файл: заменяет константы, _init() и get_description(), остальное оставляет."""
     content = file_path.read_text(encoding="utf-8")
-
-    class_name = f"StatusEffect{snake_to_pascal(effect_name)}"
 
     # 1. Заменяем блок констант (от "# constants from config" до пустой строки перед func)
     new_const_block = "\n".join(generate_const_block(config))
@@ -214,6 +305,22 @@ def update_existing_file(file_path: Path, effect_name: str, config: dict) -> str
         content,
         flags=re.DOTALL
     )
+
+    # 4. Заменяем или добавляем on_damage_dealt (с сохранением пользовательского кода)
+    if "effects_deal_damage" in config:
+        content = _rebuild_damage_event_block(
+            content, "on_damage_dealt",
+            DEAL_DAMAGE_START_MARKER, DEAL_DAMAGE_END_MARKER,
+            config["effects_deal_damage"]
+        )
+
+    # 5. Заменяем или добавляем on_damage_taken (с сохранением пользовательского кода)
+    if "effects_take_damage" in config:
+        content = _rebuild_damage_event_block(
+            content, "on_damage_taken",
+            TAKE_DAMAGE_START_MARKER, TAKE_DAMAGE_END_MARKER,
+            config["effects_take_damage"]
+        )
 
     return content
 

@@ -3,11 +3,13 @@
 class_name ActionRam
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 0
 const damage : int = 15
 const damage_var : int = 5
 const tags : Array = ["aoe"]
+##CONST END
 
 func _init() -> void:
 	code_name = "ram"
@@ -31,6 +33,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	for t: ActorBase in targets:
 		var actual_damage = initiator.calc_damage_dealt(get_rand_damage())
 		var damage_dealt : int = t.take_damage(actual_damage, _damage_type)
+		initiator.after_dealing_damage(damage_dealt)
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}

@@ -3,10 +3,12 @@
 class_name ActionManaPotion
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 0
 const amount : int = 20
 const tags : Array = ["no_target", "one_use"]
+##CONST END
 
 func _init() -> void:
 	code_name = "mana_potion"

@@ -61,9 +61,19 @@ func take_damage(amount : int, type : FightConst.DAMAGE_TYPE) -> int:
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
-	actor_ui.take_damage()
-	actor_ui.update_health()
+	if amount != 0:
+		actor_ui.take_damage()
+		actor_ui.update_health()
+	after_taking_damage(actual_amount)
 	return actual_amount
+
+func after_taking_damage(amount : int) -> void:
+	for s in statuses:
+		(s as StatusEffectBase).on_damage_taken(self, amount)
+
+func after_dealing_damage(amount : int) -> void:
+	for s in statuses:
+		(s as StatusEffectBase).on_damage_dealt(self, amount)
 
 func calc_damage_taken(damage : int, type : FightConst.DAMAGE_TYPE) -> int:
 	var mult : float = 100.0

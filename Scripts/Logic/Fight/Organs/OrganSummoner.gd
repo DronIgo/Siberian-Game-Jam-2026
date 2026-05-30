@@ -38,6 +38,19 @@ var _slot_by_organ : Dictionary
 var _shift_amount: float = 180.0
 var _shifted_down : bool = false
 
+signal organ_summoned
+
+func is_slot_avialable(friendly : bool) -> bool:
+	if friendly:
+		for slot in friendly_slots:
+			if slot.get_child_count() == 0:
+				return true
+	else:
+		for slot in enemy_slots:
+			if slot.get_child_count() == 0:
+				return true
+	return false
+
 func summon_by_name(organ_name : String) -> OrganBase:
 	var organ_res
 	match organ_name:
@@ -87,6 +100,7 @@ func summon_by_name(organ_name : String) -> OrganBase:
 	organ.set_hint_box(hint_box)
 	pick_slot(organ, organ.actor)
 	organ.actor.init_organ()
+	organ_summoned.emit(organ.actor)
 	return organ.actor
 
 func pick_slot(organ_node : Node2D, organ : OrganBase) -> void:

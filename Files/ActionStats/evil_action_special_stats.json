@@ -12,6 +12,7 @@
 	},
 	"mitos" : {
 		"name" : "Размножиться",
+		"heal_amount" : 30,
 		"description" : "Создает ещё одно щупальце.",
 		"result_format" : "{initiator.lore_name} создаёт новое щупальце",
 		"tags": ["no_target"],

@@ -18,13 +18,19 @@ var round_num : int = 0
 var _victory : bool = false
 var _defeat : bool = false
 
+func on_organ_summoned(organ : OrganBase) -> void:
+	if organ.is_healthy:
+		_friendly_organs.append(organ)
+		organ.died.connect(_on_friendly_organ_died)
+	else:
+		_enemy_organs.append(organ)
+		organ.died.connect(_on_enemy_organ_died)
+	_all_organs.append(organ)
+	_all_actors.append(organ)
+
 func _ready() -> void:
+	organ_summoner.organ_summoned.connect(on_organ_summoned)
 	await initializer.init()
-	_friendly_organs = initializer.get_friendly_organs()
-	_enemy_organs = initializer.get_enemy_organs()
-	_all_organs = initializer.get_all_organs()
-	_all_actors = _all_organs.duplicate()
-	_all_actors.append(player_actor)
 	
 	FightEventBus.add_actor_turn.connect(add_turn)
 	
@@ -32,12 +38,6 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	
 	player_ui.init(player_actor, _all_organs)
-	
-	## defeat/victory management
-	for organ in _friendly_organs:
-		organ.died.connect(_on_friendly_organ_died)
-	for organ in _enemy_organs:
-		organ.died.connect(_on_enemy_organ_died)
 
 	round_num = 0
 

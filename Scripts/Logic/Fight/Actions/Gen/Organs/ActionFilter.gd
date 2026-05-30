@@ -3,8 +3,10 @@
 class_name ActionFilter
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 0
+##CONST END
 
 func _init() -> void:
 	code_name = "filter"
@@ -29,7 +31,7 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["initiator.lore_name"] = initiator.lore_name
 	format_dict["target.lore_name"] = targets[0].lore_name
+	format_dict["initiator.lore_name"] = initiator.lore_name
 
 	return ActionResult.new(result_format, format_dict)

@@ -144,14 +144,9 @@ _data = {
 &"taking_vulnerable_damage": SubResource("Animation_2tdou")
 }
 
-[node name="Bad Essence" type="Sprite2D" unique_id=2081682971 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
+[node name="Bad Essence" type="Sprite2D" unique_id=2081682971]
 self_modulate = Color(0.96862745, 0, 0, 1)
 script = ExtResource("1_dmbd3")
-health_bar = NodePath("OrganHealthBarComponent")
-statuses_grid = NodePath("StatusGrid")
-selectable_component = NodePath("Sprite2D/EssenceSelectable")
-actor = NodePath("Logic")
-animator = NodePath("AnimationPlayer")
 
 [node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_4tjr8")]
 bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)
@@ -159,12 +154,8 @@ bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("3_rgq8l")]
 position = Vector2(71, -48)
 
-[node name="Logic" type="Node2D" parent="." unique_id=1432745422 node_paths=PackedStringArray("organ_ai")]
+[node name="Logic" type="Node2D" parent="." unique_id=1432745422]
 script = ExtResource("4_trg6n")
-organ_name = "wings"
-organ_ai = NodePath("../AI")
-is_main = true
-is_healthy = false
 
 [node name="AI" type="Node" parent="." unique_id=13203856]
 script = ExtResource("5_iyfen")

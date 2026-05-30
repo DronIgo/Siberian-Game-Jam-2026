@@ -3,8 +3,10 @@
 class_name ActionStudy
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 5
+##CONST END
 
 func _init() -> void:
 	code_name = "study"

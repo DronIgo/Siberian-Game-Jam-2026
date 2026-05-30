@@ -48,7 +48,10 @@
 	"tentacle" : [
 		"roll",
 		"roll",
-		"roll"
+		"mitos"
+	],
+	"small_tentacle" : [
+		"ram"
 	],
 	"wings" : [
 		"slam",

@@ -91,13 +91,9 @@ _data = {
 &"taking_damage": SubResource("Animation_ie5am")
 }
 
-[node name="Bad Essence2" type="Sprite2D" unique_id=2081682971 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor")]
+[node name="SmallTentacle" type="Sprite2D" unique_id=2081682971]
 self_modulate = Color(0.96862745, 0, 0, 1)
 script = ExtResource("2_cjpde")
-health_bar = NodePath("OrganHealthBarComponent")
-statuses_grid = NodePath("StatusGrid")
-selectable_component = NodePath("Sprite2D/EssenceSelectable")
-actor = NodePath("Logic")
 
 [node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("3_ev8fd")]
 bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)
@@ -121,9 +117,8 @@ polygon = PackedVector2Array(-84, -477.1, -84, -475.9, -102.20001, -474, -109.29
 
 [node name="Logic" type="Node2D" parent="." unique_id=1432745422 node_paths=PackedStringArray("organ_ai")]
 script = ExtResource("7_ytpwo")
-organ_name = "tentacle"
+organ_name = "small_tentacle"
 organ_ai = NodePath("../AI")
-is_main = true
 is_healthy = false
 
 [node name="AI" type="Node" parent="." unique_id=13203856]

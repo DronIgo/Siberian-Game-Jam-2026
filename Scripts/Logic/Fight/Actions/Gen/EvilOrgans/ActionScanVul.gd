@@ -3,8 +3,10 @@
 class_name ActionScanVul
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 0
+##CONST END
 
 func _init() -> void:
 	code_name = "scan_vul"

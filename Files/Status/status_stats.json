@@ -72,6 +72,17 @@
 		"description" : "Забыл как использовать {removed_action.lore_name}",
 		"init" : "target : ActorBase"
 	},
+	"vampirizm": {
+		"lore_name" : "вампиризм",
+		"description" : "Восстанавливает здоровье при нанесении урона",
+		"effects_deal_damage" : ["heal(damage)"] 
+	},
+	"consumption": {
+		"lore_name" : "поглощение",
+		"amount" : 5,
+		"description" : "Восстанавливает {amount} здоровья при получении урона",
+		"effects_take_damage" : ["heal(amount)"]
+	},
 	"__default__" : {
 		"default_duration" : 3,
 		"tags" : []

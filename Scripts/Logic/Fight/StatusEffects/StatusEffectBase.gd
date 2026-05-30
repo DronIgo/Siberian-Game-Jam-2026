@@ -31,6 +31,12 @@ func on_effect_end(actor : ActorBase) -> void:
 func has_tag(tag : String) -> bool:
 	return _tags.has(tag)
 
+func on_damage_taken(actor: ActorBase, damage : int) -> void:
+	pass
+
+func on_damage_dealt(actor: ActorBase, damage : int) -> void:
+	pass
+
 func modify_damage_dealt(params : Dictionary) -> void:
 	pass
 	

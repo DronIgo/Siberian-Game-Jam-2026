@@ -3,9 +3,11 @@
 class_name ActionRoll
 extends ActionBase
 
+##CONST START
 # constants from config
 const manacost : int = 0
 const damage : int = 15
+##CONST END
 
 func _init() -> void:
 	code_name = "roll"
@@ -31,11 +33,12 @@ func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	##EFFECTS START
 	var actual_damage = initiator.calc_damage_dealt(get_rand_damage())
 	var damage_dealt : int = targets[0].take_damage(actual_damage, _damage_type)
+	initiator.after_dealing_damage(damage_dealt)
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["initiator.lore_name"] = initiator.lore_name
 	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["damage_dealt"] = damage_dealt
+	format_dict["initiator.lore_name"] = initiator.lore_name
 
 	return ActionResult.new(result_format, format_dict)
