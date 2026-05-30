@@ -154,8 +154,9 @@ bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)
 [node name="StatusGrid" parent="." unique_id=355555301 instance=ExtResource("3_rgq8l")]
 position = Vector2(71, -48)
 
-[node name="Logic" type="Node2D" parent="." unique_id=1432745422]
+[node name="Logic" type="Node2D" parent="." unique_id=1432745422 node_paths=PackedStringArray("actor_ui")]
 script = ExtResource("4_trg6n")
+actor_ui = NodePath("..")
 
 [node name="AI" type="Node" parent="." unique_id=13203856]
 script = ExtResource("5_iyfen")

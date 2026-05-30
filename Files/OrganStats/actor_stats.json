@@ -59,6 +59,11 @@
 		"vulnerable" : "RED",
 		"name" : "Щупальце"
 	},
+	"small_tentacle" : {
+		"max_health" : 20,
+		"vulnerable" : "RED",
+		"name" : "Небольшое щупальце"
+	},
 	"wings" : {
 		"max_health" : 240,
 		"vulnerable" : "RED",
