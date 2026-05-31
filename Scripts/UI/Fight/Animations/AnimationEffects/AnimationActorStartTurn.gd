@@ -1,11 +1,11 @@
-extends Node
+class_name AnimationActorStartTurn
+extends AnimationBase
 
+var _actor : ActorUI
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func init(actor : ActorBase) -> void:
+	_actor = actor.actor_ui
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func start() -> void:
+	_actor.turn_on_light()
+	finished.emit(_idx)

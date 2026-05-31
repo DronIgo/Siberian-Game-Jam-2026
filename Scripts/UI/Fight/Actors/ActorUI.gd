@@ -8,6 +8,7 @@ extends Node
 @export var selectable_component : SelectableObject
 @export var actor : ActorBase
 @export var animator : AnimationPlayer
+@export var light : Sprite2D
 
 func _ready() -> void:
 	actor.actor_ui = self
@@ -73,3 +74,9 @@ func on_death() -> void:
 		animator.play("death")
 		await animator.animation_finished
 	queue_free()
+
+func turn_on_light() -> void:
+	light.visible = true
+
+func turn_off_light() -> void:
+	light.visible = false

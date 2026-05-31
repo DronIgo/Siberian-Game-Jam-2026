@@ -35,3 +35,11 @@ static func add_vuln_damage_effect(actor : ActorBase, amount : int) -> void:
 	var damage_animation = AnimationActorDamageVulnerable.new()
 	damage_animation.init(actor, amount)
 	AQ.add_animation(damage_animation)
+
+static func add_light(actor : ActorBase) -> void:
+	if !UIByLogic.actor_ui_by_actor[actor]:
+		return
+	var actor_ui = UIByLogic.actor_ui_by_actor[actor]
+	var start_turn = AnimationActorStartTurn.new()
+	start_turn.init(actor)
+	AQ.add_animation(start_turn)
