@@ -139,13 +139,11 @@ position = Vector2(245, -145)
 texture = ExtResource("3_qe16a")
 
 [node name="CurtainLeftSprite2D" type="Sprite2D" parent="Scene" unique_id=1341114287]
-visible = false
 z_index = 2
 position = Vector2(-122, -145)
 texture = ExtResource("4_aegh7")
 
 [node name="CurtainRightSprite2D" type="Sprite2D" parent="Scene" unique_id=810683040]
-visible = false
 z_index = 2
 position = Vector2(613, -145)
 texture = ExtResource("5_gaewr")

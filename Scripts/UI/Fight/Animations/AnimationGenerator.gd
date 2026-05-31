@@ -16,21 +16,21 @@ static func add_status_tick_down_effect(status : StatusEffectBase, duration : in
 	AQ.add_animation(tick_down_animation)
 
 static func add_heal_effect(actor : ActorBase, amount : int) -> void:
-	if !UIByLogic.status_ui_by_status.has(actor):
+	if !UIByLogic.actor_ui_by_actor.has(actor):
 		return
 	var heal_animation = AnimationActorHeal.new()
 	heal_animation.init(actor, amount)
 	AQ.add_animation(heal_animation)
 
 static func add_damage_effect(actor : ActorBase, amount : int) -> void:
-	if !UIByLogic.status_ui_by_status.has(actor):
+	if !UIByLogic.actor_ui_by_actor.has(actor):
 		return
 	var damage_animation = AnimationActorDamage.new()
 	damage_animation.init(actor, amount)
 	AQ.add_animation(damage_animation)
 
 static func add_vuln_damage_effect(actor : ActorBase, amount : int) -> void:
-	if !UIByLogic.status_ui_by_status.has(actor):
+	if !UIByLogic.actor_ui_by_actor.has(actor):
 		return
 	var damage_animation = AnimationActorDamageVulnerable.new()
 	damage_animation.init(actor, amount)

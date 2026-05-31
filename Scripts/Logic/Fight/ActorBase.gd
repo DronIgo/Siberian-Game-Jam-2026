@@ -53,21 +53,34 @@ func unhighlight():
 func take_damage(amount : int, type : FightConst.DAMAGE_TYPE) -> int:
 	if health <= 0:
 		return 0
-	for s in statuses:
-		if s.type == StatusGenerator.STATUS.PROTECTED and s._protector and s._protector.health > 0:
-			(s as StatusEffectBase).activate()
-			for st in s._protector.statuses:
-				if st.type == StatusGenerator.STATUS.TAUNT:
-					(st as StatusEffectBase).activate()
-			return s._protector.take_damage(amount, type)
+	var protected = statuses.filter(func(s): return s.type == StatusGenerator.STATUS.PROTECTED)
+	#var shared = statuses.filter(func(s): return s.type == StatusGenerator.STATUS.PROTECTED)
+	if protected.size() > 0 and protected[0]._protector and protected[0]._protector.health > 0:
+		(protected[0] as StatusEffectBase).activate()
+		var taunt = protected[0]._protector.statuses.filter(func(s): return s.type == StatusGenerator.STATUS.TAUNT)
+		(taunt[0] as StatusEffectBase).activate()
+		return protected[0]._protector.take_damage(amount, type)
+		
 	var actual_amount = calc_damage_taken(amount, type)
-	health -= actual_amount
+	health -= actual_amount["damage"]
+	AnimationGenerator.add_damage_effect(self, actual_amount["damage"])
+	after_taking_damage(actual_amount["damage"])
 	if health <= 0:
 		_on_death()
-	if amount != 0:
-		AnimationGenerator.add_damage_effect(self, amount)
-	after_taking_damage(actual_amount)
-	return actual_amount
+	if actual_amount.has("extra"):
+		actual_amount["burn_effect"].activate()
+		take_damage_no_mods(actual_amount["extra"])
+		actual_amount["damage"] += actual_amount["extra"]
+	return actual_amount["damage"]
+
+func take_damage_no_mods(amount : int) -> void:
+	if health <= 0:
+		return 
+	health -= amount
+	AnimationGenerator.add_damage_effect(self, amount)
+	after_taking_damage(amount)
+	if health <= 0:
+		_on_death()
 
 func after_taking_damage(amount : int) -> void:
 	for s in statuses:
@@ -77,21 +90,26 @@ func after_dealing_damage(amount : int) -> void:
 	for s in statuses:
 		(s as StatusEffectBase).on_damage_dealt(self, amount)
 
-func calc_damage_taken(damage : int, type : FightConst.DAMAGE_TYPE) -> int:
+func calc_damage_taken(damage : int, type : FightConst.DAMAGE_TYPE) -> Dictionary:
 	var mult : float = 100.0
 	var extra : int = 0
+	var burn_effect : StatusEffectBase
 	for s in statuses:
 		if s.type == StatusGenerator.STATUS.HIDE:
-			return 0
+			s.activate()
+			return {"damage" : 0}
 		if s.type == StatusGenerator.STATUS.BUFF_DEF:
+			s.activate()
 			mult -= float(s.amount)
 		if s.type == StatusGenerator.STATUS.MARK:
+			s.activate()
 			mult += float(s.amount)
 		if s.type == StatusGenerator.STATUS.BURN:
 			var vuln_mult = 1.0
 			if FightConst.DAMAGE_TYPE.BLUE == vulnerable:
 				vuln_mult = 1.5
 			extra += int(s.amount * vuln_mult)
+			burn_effect = s
 		if s.type == StatusGenerator.STATUS.HASTE:
 			var dodge = randi_range(0, 100) < s.amount
 			if dodge:
@@ -101,7 +119,9 @@ func calc_damage_taken(damage : int, type : FightConst.DAMAGE_TYPE) -> int:
 	if vulnerable == type and type != FightConst.DAMAGE_TYPE.NONE:
 		#TODO: make a constant
 		mult += 50
-	return int(damage * mult / 100.0) + extra
+	if extra == 0:
+		return {"damage" : int(damage * mult / 100.0)}
+	return {"damage": int(damage * mult / 100.0), "extra" : extra, "burn_effect": burn_effect}
 
 func calc_damage_dealt(damage : int) -> int:
 	var mult : float = 100.0
@@ -138,7 +158,6 @@ func remove_status(status : StatusEffectBase) -> void:
 func at_end_turn() -> void:
 	for status in statuses:
 		await status.on_turn_end(self)
-		actor_ui.tick_down_status(status)
 		if status.duration <= 0:
 			remove_status(status)
 
