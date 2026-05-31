@@ -70,7 +70,8 @@
 	"amnezia": {
 		"lore_name" : "амнезия",
 		"description" : "Забыл как использовать {removed_action.lore_name}",
-		"init" : "target : ActorBase"
+		"init" : "target : ActorBase",
+		"tags" : ["negative"]
 	},
 	"vampirizm": {
 		"lore_name" : "вампиризм",

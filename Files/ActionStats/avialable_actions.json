@@ -45,6 +45,11 @@
 		"amnezia",
 		"mark-for-death"
 	],
+	"scales" : [
+		"hide",
+		"roll",
+		"amnezia"
+	],
 	"tentacle" : [
 		"roll",
 		"roll",

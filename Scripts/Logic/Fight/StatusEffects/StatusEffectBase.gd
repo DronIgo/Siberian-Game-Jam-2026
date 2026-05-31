@@ -31,6 +31,9 @@ func on_effect_end(actor : ActorBase) -> void:
 func has_tag(tag : String) -> bool:
 	return _tags.has(tag)
 
+func activate() -> void:
+	AnimationGenerator.add_status_activate_effect(self)
+
 func on_damage_taken(actor: ActorBase, damage : int) -> void:
 	pass
 

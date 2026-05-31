@@ -128,20 +128,24 @@ position = Vector2(20, 20)
 texture = ExtResource("1_bmrbv")
 
 [node name="BgOrganDarkSprite2D" type="Sprite2D" parent="Scene" unique_id=2046382522]
+modulate = Color(0.27387273, 0.27387273, 0.27387273, 1)
 position = Vector2(245, -145)
 texture = ExtResource("2_0d2ll")
 
 [node name="BgOrganLightSprite2D" type="Sprite2D" parent="Scene" unique_id=19293288]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.41598046, 0.41598043, 0.4159804, 1)
 position = Vector2(245, -145)
 texture = ExtResource("3_qe16a")
 
 [node name="CurtainLeftSprite2D" type="Sprite2D" parent="Scene" unique_id=1341114287]
+visible = false
 z_index = 2
 position = Vector2(-122, -145)
 texture = ExtResource("4_aegh7")
 
 [node name="CurtainRightSprite2D" type="Sprite2D" parent="Scene" unique_id=810683040]
+visible = false
 z_index = 2
 position = Vector2(613, -145)
 texture = ExtResource("5_gaewr")

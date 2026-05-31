@@ -54,16 +54,18 @@ func take_damage(amount : int, type : FightConst.DAMAGE_TYPE) -> int:
 	if health <= 0:
 		return 0
 	for s in statuses:
-		if s.type == StatusGenerator.STATUS.PROTECTED and s.shield_bearer and s.shield_bearer.health > 0:
-			print("Redirecting %d damage from %s to %s" % [amount, lore_name, s.shield_bearer.lore_name])
-			return s.shield_bearer.take_damage(amount, type)
+		if s.type == StatusGenerator.STATUS.PROTECTED and s._protector and s._protector.health > 0:
+			(s as StatusEffectBase).activate()
+			for st in s._protector.statuses:
+				if st.type == StatusGenerator.STATUS.TAUNT:
+					(st as StatusEffectBase).activate()
+			return s._protector.take_damage(amount, type)
 	var actual_amount = calc_damage_taken(amount, type)
 	health -= actual_amount
 	if health <= 0:
 		_on_death()
 	if amount != 0:
-		actor_ui.take_damage()
-		actor_ui.update_health()
+		AnimationGenerator.add_damage_effect(self, amount)
 	after_taking_damage(actual_amount)
 	return actual_amount
 
@@ -112,8 +114,7 @@ func heal(amount : int) -> void:
 	health += amount
 	if health > max_health:
 		health = max_health
-	actor_ui.heal()
-	actor_ui.update_health()
+	AnimationGenerator.add_heal_effect(self, amount)
 
 func restore_mana(amount : int) -> void:
 	mana += amount

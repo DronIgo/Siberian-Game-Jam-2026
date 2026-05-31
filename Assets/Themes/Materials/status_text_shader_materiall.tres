@@ -1,0 +1,49 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b3kg4jay828bi"]
+
+[sub_resource type="Shader" id="Shader_4ivfc"]
+code = "shader_type canvas_item;
+
+uniform vec3 deactivated_color : source_color;
+instance uniform vec3 color : source_color;
+
+uniform sampler2D noise_tex : repeat_enable;
+
+instance uniform float point;
+instance uniform float size;
+
+instance uniform float energy;
+
+varying vec2 pixel_pos;
+
+void vertex() {
+	pixel_pos = VERTEX;
+}
+
+void fragment() {
+	float noise_val = texture(noise_tex, UV + vec2(0.1, 0.0) * TIME).r * 20.0 - 10.0;
+	
+	vec4 tex = texture(TEXTURE, UV);
+	vec4 original_color = tex * COLOR;
+	
+	float outline = original_color.r;
+	
+	float past_point = step((pixel_pos.x + noise_val) / size, point);
+	vec3 font_color = past_point * color + (1.0 - past_point) * deactivated_color;
+	COLOR.rgb = (outline * original_color.rgb + font_color) * energy;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_4ivfc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8wile"]
+frequency = 0.0011
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_682sk"]
+noise = SubResource("FastNoiseLite_8wile")
+color_ramp = SubResource("Gradient_4ivfc")
+seamless = true
+
+[resource]
+shader = SubResource("Shader_4ivfc")
+shader_parameter/deactivated_color = Color(0.14555794, 0.14286026, 0.14825502, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_682sk")

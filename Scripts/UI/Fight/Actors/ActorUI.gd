@@ -11,6 +11,7 @@ extends Node
 
 func _ready() -> void:
 	actor.actor_ui = self
+	UIByLogic.actor_ui_by_actor[actor] = self
 	if health_bar:
 		health_bar.init(actor.max_health)
 	if mana_bar:

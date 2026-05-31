@@ -5,7 +5,7 @@ extends StatusEffectBase
 
 # constants from config
 const default_duration : int = 3
-const tags : Array = []
+const tags : Array = ["negative"]
 
 var removed_action : ActionBase
 
@@ -18,7 +18,7 @@ func _init(duration_ : int = default_duration) -> void:
 
 func init(target : ActorBase) -> void:
 	var actions = target.action_holder.get_actions()
-	var rand_action_idx = randi_range(0, actions.size())
+	var rand_action_idx = randi_range(0, actions.size() - 1)
 	removed_action = actions[rand_action_idx]
 
 func get_description() -> String:
@@ -29,6 +29,8 @@ func get_description() -> String:
 
 func on_turn_end(actor : ActorBase, data = null) -> void:
 	duration -= 1
-
+	AnimationGenerator.add_status_tick_down_effect(self, duration)
+	##TURN_END USER CODE START
+	##TURN_END USER CODE END
 func on_turn_start(actor : ActorBase, data = null) -> void:
 	pass

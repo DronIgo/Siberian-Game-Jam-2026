@@ -21,11 +21,14 @@ func get_description() -> String:
 
 func on_turn_end(actor : ActorBase, data = null) -> void:
 	duration -= 1
-
+	AnimationGenerator.add_status_tick_down_effect(self, duration)
+	##TURN_END USER CODE START
+	##TURN_END USER CODE END
 func on_turn_start(actor : ActorBase, data = null) -> void:
 	pass
 
 func on_damage_dealt(actor : ActorBase, damage : int) -> void:
 	##DEAL_DAMAGE START
 	actor.heal(damage)
+	activate()
 	##DEAL_DAMAGE END

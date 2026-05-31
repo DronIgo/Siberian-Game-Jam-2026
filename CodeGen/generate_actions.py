@@ -467,10 +467,37 @@ def generate_file_prefix(action_name: str) -> str:
     return "\n".join(lines)
 
 
+def generate_empty_get_priority_block() -> list[str]:
+    """Генерирует пустую заглушку get_priority() для случая target_priority: custom."""
+    return [
+        "func get_priority(actor : ActorBase, own : OrganBase) -> int:",
+        "\t#TODO: custom priority logic",
+        "\treturn -1",
+        "",
+    ]
+
+
+def extract_existing_get_priority(content: str) -> list[str] | None:
+    """Извлекает существующий блок get_priority() из содержимого файла.
+    Возвращает список строк или None если функция не найдена."""
+    m = re.search(
+        r"(func get_priority\(.*?\) -> int:.*?)(?=\nfunc |\nclass_name |\n#|\Z)",
+        content,
+        flags=re.DOTALL,
+    )
+    if not m:
+        return None
+    block = m.group(1).rstrip("\n")
+    lines = block.split("\n")
+    lines.append("")
+    return lines
+
+
 def update_existing_file(file_path: Path, action_name: str, config: dict, status_names: set[str]) -> str:
     """
     Обновляет существующий файл действия:
     - Всегда перезаписывает: блок между ##CONST START и ##CONST END, _init(), get_priority()
+    - Если target_priority содержит "custom" — сохраняет существующий get_priority() или генерирует заглушку
     - Сохраняет пользовательские константы между ##CONST END и первым func
     - В take_action() сохраняет пользовательский код между ##EFFECTS END и var format_dict
     """
@@ -525,7 +552,21 @@ def update_existing_file(file_path: Path, action_name: str, config: dict, status
     lines.append("")
 
     lines.extend(generate_init_block(action_name, config))
-    lines.extend(generate_get_priority_block(config))
+
+    regen_priority = True
+    target_priority = config.get("target_priority", [])
+    for target in target_priority:
+        if target == "custom":
+            regen_priority = False
+            break
+    if regen_priority:
+        lines.extend(generate_get_priority_block(config))
+    else:
+        existing_priority = extract_existing_get_priority(old_content)
+        if existing_priority is not None:
+            lines.extend(existing_priority)
+        else:
+            lines.extend(generate_empty_get_priority_block())
 
     ta_lines = generate_take_action_block(action_name, config, status_names)
 

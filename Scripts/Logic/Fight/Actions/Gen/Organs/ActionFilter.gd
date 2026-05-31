@@ -17,21 +17,26 @@ func _init() -> void:
 	_manacost = manacost
 
 func get_priority(actor : ActorBase, own : OrganBase) -> int:
-
-	if own == actor or (actor is OrganBase and own.is_healthy == actor.is_healthy and own != actor):
-		return 3
-
-	return -1
+	# top priority - friendly with negative, then enemy with negative
+	if actor is PlayerActor:
+		return -1
+	var p : int = 0
+	if (actor as OrganBase).is_healthy == own.is_healthy:
+		p = 1
+	for s in actor.statuses:
+		if (s as StatusEffectBase).has_tag("negative"):
+			return 1 + p
+	return p
 
 func take_action(initiator: ActorBase, targets : Array) -> ActionResult:
 	super.take_action(initiator, targets)
 
 	##EFFECTS START
-	targets[0].remove_status_by_tag("bad")
+	targets[0].remove_status_by_tag("negative")
 	##EFFECTS END
 
 	var format_dict : Dictionary = {}
-	format_dict["target.lore_name"] = targets[0].lore_name
 	format_dict["initiator.lore_name"] = initiator.lore_name
+	format_dict["target.lore_name"] = targets[0].lore_name
 
 	return ActionResult.new(result_format, format_dict)

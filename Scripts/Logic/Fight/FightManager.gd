@@ -32,6 +32,8 @@ func _ready() -> void:
 	organ_summoner.organ_summoned.connect(on_organ_summoned)
 	await initializer.init()
 	
+	_all_actors.append(player_actor)
+	
 	FightEventBus.add_actor_turn.connect(add_turn)
 	
 	# let everything load

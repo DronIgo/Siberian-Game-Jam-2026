@@ -11,10 +11,10 @@
 	},
 	"filter" : {
 		"name" : "Прочистка",
-		"description" : "Снимает один статус-эффект с органа",
+		"description" : "Снимает один негативный статус-эффект с органа",
 		"result_format" : "{initiator.lore_name} снимает негативный эффект с {target.lore_name}",
-		"effects": ["target0->remove_status_by_tag[bad]"],
-		"target_priority" : ["self||friendly"],
+		"effects": ["target0->remove_status_by_tag[negative]"],
+		"target_priority" : ["custom"],
 		"sound": "res://Assets/SFX/liver_filter.mp3"
 	},
 	"haste" : {

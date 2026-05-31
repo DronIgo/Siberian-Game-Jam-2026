@@ -16,6 +16,7 @@ func add_status(status : StatusEffectBase) -> void:
 	new_item.set_hint_box(hint_box)
 	v_box_container.add_child(new_item)
 	_status_to_status_item[status.type] = new_item
+	new_item.update_display()
 
 func reset_status(status: StatusEffectBase) -> void:
 	if _status_to_status_item.has(status.type):
@@ -27,7 +28,7 @@ func remove_status(status : StatusEffectBase) -> void:
 	var type = status.type
 	if not _status_to_status_item.has(type):
 		return
-	_status_to_status_item[type].queue_free()
+	_status_to_status_item[type].remove()
 	_status_to_status_item.erase(type)
 
 func tick_down_status(status : StatusEffectBase) -> void:

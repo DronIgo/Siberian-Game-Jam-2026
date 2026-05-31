@@ -144,9 +144,14 @@ _data = {
 &"taking_vulnerable_damage": SubResource("Animation_2tdou")
 }
 
-[node name="Bad Essence" type="Sprite2D" unique_id=2081682971]
+[node name="Bad Essence" type="Sprite2D" unique_id=2081682971 node_paths=PackedStringArray("health_bar", "statuses_grid", "selectable_component", "actor", "animator")]
 self_modulate = Color(0.96862745, 0, 0, 1)
 script = ExtResource("1_dmbd3")
+health_bar = NodePath("OrganHealthBarComponent")
+statuses_grid = NodePath("StatusGrid")
+selectable_component = NodePath("Sprite2D/EssenceSelectable")
+actor = NodePath("Logic")
+animator = NodePath("AnimationPlayer")
 
 [node name="OrganHealthBarComponent" parent="." unique_id=502772887 instance=ExtResource("2_4tjr8")]
 bar_color = Color(0.49803922, 0.07450981, 0.84705883, 1)

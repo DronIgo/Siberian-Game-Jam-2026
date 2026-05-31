@@ -2,8 +2,9 @@ class_name AnimationActorDamageVulnerable
 extends AnimationBase
 
 var _actor : ActorUI
+var _damage : int
 
-func init(actor : ActorBase) -> void:
+func init(actor : ActorBase, damage : int) -> void:
 	_actor = actor.actor_ui
 
 func start() -> void:

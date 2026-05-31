@@ -71,10 +71,12 @@ def generate_color_from_name(name: str) -> str:
 SKIP_CONST_KEYS = {"lore_name", "description", "init", "effects_deal_damage", "effects_take_damage"}
 
 # Маркеры для секций в on_damage_dealt / on_damage_taken
-DEAL_DAMAGE_START_MARKER = "\t##DEAL_DAMAGE START"
-DEAL_DAMAGE_END_MARKER   = "\t##DEAL_DAMAGE END"
-TAKE_DAMAGE_START_MARKER = "\t##TAKE_DAMAGE START"
-TAKE_DAMAGE_END_MARKER   = "\t##TAKE_DAMAGE END"
+DEAL_DAMAGE_START_MARKER  = "\t##DEAL_DAMAGE START"
+DEAL_DAMAGE_END_MARKER    = "\t##DEAL_DAMAGE END"
+TAKE_DAMAGE_START_MARKER  = "\t##TAKE_DAMAGE START"
+TAKE_DAMAGE_END_MARKER    = "\t##TAKE_DAMAGE END"
+TURN_END_START_MARKER     = "\t##TURN_END USER CODE START"
+TURN_END_END_MARKER       = "\t##TURN_END USER CODE END"
 
 
 def generate_const_block(config: dict) -> list[str]:
@@ -102,6 +104,8 @@ def generate_damage_event_block(method_name: str, start_marker: str, end_marker:
     lines.append(start_marker)
     for expr in effects:
         lines.append(f"\t{translate_effect_expr(expr)}")
+    
+    lines.append("\tactivate()")
     lines.append(end_marker)
     lines.append("")
     return lines
@@ -199,18 +203,7 @@ def generate_full_file(effect_name: str, config: dict) -> tuple[str, str]:
 
     lines.extend(get_description_block(effect_name, config))
 
-    # on_turn_end
-    lines.append(
-        "func on_turn_end(actor : ActorBase, data = null) -> void:"
-    )
-
-    if "damage" in config:
-        lines.append(
-            "\tactor.take_damage(damage, _damage_type)"
-        )
-
-    lines.append("\tduration -= 1")
-    lines.append("")
+    lines.extend(generate_turn_end_block(config))
 
     # on_turn_start
     lines.append(
@@ -236,6 +229,28 @@ def generate_full_file(effect_name: str, config: dict) -> tuple[str, str]:
         ))
 
     return "\n".join(lines), class_name
+
+
+def generate_turn_end_block(config: dict) -> list[str]:
+    """Генерирует on_turn_end с маркерами для сохранения пользовательского кода."""
+    lines = []
+    lines.append("func on_turn_end(actor : ActorBase, data = null) -> void:")
+
+    if "damage" in config:
+        lines.append("\tactivate()")
+        lines.append("\tactor.take_damage(damage, _damage_type)")
+
+    if "heal_amount" in config:
+        lines.append("\tactivate()")
+        lines.append("\tactor.heal(heal_amount)")
+
+    lines.append("\tduration -= 1")
+    lines.append("\tAnimationGenerator.add_status_tick_down_effect(self, duration)")
+    lines.append(TURN_END_START_MARKER)
+    lines.append(TURN_END_END_MARKER)
+    lines.append("")
+    lines.append("")
+    return lines
 
 
 def _rebuild_damage_event_block(
@@ -306,7 +321,10 @@ def update_existing_file(file_path: Path, effect_name: str, config: dict) -> str
         flags=re.DOTALL
     )
 
-    # 4. Заменяем или добавляем on_damage_dealt (с сохранением пользовательского кода)
+    # 4. Заменяем on_turn_end (с сохранением пользовательского кода между маркерами)
+    content = _rebuild_turn_end_block(content, config)
+
+    # 5. Заменяем или добавляем on_damage_dealt (с сохранением пользовательского кода)
     if "effects_deal_damage" in config:
         content = _rebuild_damage_event_block(
             content, "on_damage_dealt",
@@ -314,13 +332,42 @@ def update_existing_file(file_path: Path, effect_name: str, config: dict) -> str
             config["effects_deal_damage"]
         )
 
-    # 5. Заменяем или добавляем on_damage_taken (с сохранением пользовательского кода)
+    # 6. Заменяем или добавляем on_damage_taken (с сохранением пользовательского кода)
     if "effects_take_damage" in config:
         content = _rebuild_damage_event_block(
             content, "on_damage_taken",
             TAKE_DAMAGE_START_MARKER, TAKE_DAMAGE_END_MARKER,
             config["effects_take_damage"]
         )
+
+    return content
+
+
+def _rebuild_turn_end_block(content: str, config: dict) -> str:
+    """
+    Заменяет on_turn_end, сохраняя пользовательский код между маркерами TURN_END START/END.
+    Если маркеров нет (старый файл) — полностью перезаписывает on_turn_end.
+    """
+    new_block_lines = generate_turn_end_block(config)
+    new_block = "\n".join(new_block_lines).rstrip("\n")
+
+    existing = re.search(
+        r"func on_turn_end\(.*?\) -> void:.*?(?=\nfunc |\nclass_name |\n#|\Z)",
+        content,
+        flags=re.DOTALL,
+    )
+
+    if existing:
+        old_block = existing.group(0)
+        # Сохраняем пользовательский код между маркерами TURN_END START и TURN_END END
+        preserved = extract_preserved_code(old_block, TURN_END_END_MARKER, r"\nfunc |\nclass_name |\n#|\Z")
+        if preserved:
+            # Вставляем сохранённый код сразу после TURN_END END маркера
+            insert_pos = new_block.find(TURN_END_END_MARKER) + len(TURN_END_END_MARKER)
+            new_block = new_block[:insert_pos] + "\n" + preserved + new_block[insert_pos:]
+        content = content[:existing.start()] + new_block + content[existing.end():]
+    else:
+        content = content.rstrip() + "\n\n" + new_block
 
     return content
 

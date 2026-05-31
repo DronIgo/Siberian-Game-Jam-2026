@@ -24,8 +24,11 @@ func get_description() -> String:
 	return lore_description_template.format(format_dict)
 
 func on_turn_end(actor : ActorBase, data = null) -> void:
+	activate()
 	actor.take_damage(damage, _damage_type)
 	duration -= 1
-
+	AnimationGenerator.add_status_tick_down_effect(self, duration)
+	##TURN_END USER CODE START
+	##TURN_END USER CODE END
 func on_turn_start(actor : ActorBase, data = null) -> void:
 	pass
